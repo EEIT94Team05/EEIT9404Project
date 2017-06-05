@@ -19,7 +19,7 @@
 <body>
 
 	<p>
-	<input type="text" id="address" size="50">
+	<input type="text" id="address" size="25">
 	<input type="button" value="Geocode" id="submit" onClick="geocodeAddress(geocoder, resultsMap)">
 	</p>
 	<div id="map"></div>
@@ -43,14 +43,14 @@
 	function geocodeAddress(geocoder, resultsMap){
 		var address=document.getElementById('address').value;
 		geocoder.geocode({'address':address},function(results,status){
-			if(status==google.maps.GeocoderStatus.ok){
+			if(status==google.maps.GeocoderStatus.OK){
 				resultsMap.setCenter(results[0].geometry.location);
 				var marker=new google.maps.Marker({
 					map:resultsMap,
 					position:results[0].geometry.location
 				});
 			}else{
-				alert('Geocode was not successful for the following reason:'+status);
+				alert('error');
 			}
 		});
 	}
