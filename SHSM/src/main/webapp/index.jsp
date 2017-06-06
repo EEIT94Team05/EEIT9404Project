@@ -20,7 +20,7 @@
 
 	<p>
 	<input type="text" id="address" size="25">
-	<input type="button" value="Geocode" id="submit" onClick="geocodeAddress(geocoder, resultsMap)">
+	<input type="button" value="Geocode" id="submit" onclick="geocodeAddress(geocoder, resultsMap)">
 	</p>
 	<div id="map"></div>
 	
@@ -59,6 +59,7 @@
 	</script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBhl0-jqVW9O6osIL3tKw7Qo8_qjvbxH0&callback=initMap" 
 	async defer></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	
 
 </body>
