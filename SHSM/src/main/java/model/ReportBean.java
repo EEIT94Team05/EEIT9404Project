@@ -1,6 +1,13 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="report")
 public class ReportBean {
+	@Id
 	private String report_id;
 	private String report_cause;
 	private java.util.Date report_date;

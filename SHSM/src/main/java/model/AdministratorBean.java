@@ -1,6 +1,13 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="administrator")
 public class AdministratorBean {
+	@Id
 	private String admin_id;
 	private String admin_password;
 	private String dmin_name;
