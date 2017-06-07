@@ -23,7 +23,8 @@ public interface IRepaircaseDAO {
 			
 			String repaircase_status,
 			java.util.Date repaircase_finday,
-			Integer repaircase_score);
+			Integer repaircase_score,
+			CompanyBean companybean);
 
 	boolean delete(Integer id);
 }

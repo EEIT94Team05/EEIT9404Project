@@ -10,6 +10,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import model.CompanyBean;
 import model.IRepaircaseDAO;
 import model.RepaircaseBean;
 
@@ -30,8 +31,8 @@ public class RepaircaseDAO implements IRepaircaseDAO {
 			IRepaircaseDAO productDao = new RepaircaseDAO(sf);
 			
 //			RepaircaseBean selects = productDao.select(1);
-////			List<RepaircaseBean> selects = productDao.select();
-//			System.out.println("selects="+selects);
+			List<RepaircaseBean> selects = productDao.select();
+			System.out.println("selects="+selects);
 			
 //			SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 //			java.util.Date date1 =  new Date();
@@ -95,7 +96,7 @@ public class RepaircaseDAO implements IRepaircaseDAO {
 	public RepaircaseBean update(Integer repaircase_id, String repaircase_budget, String repaircase_type,
 			String repaircase_title, String repaircase_area, String repaircase_address, String repaircase_place,
 			Date repaircase_repairdate, String repaircase_context, String repaircase_img, byte[] repaircase_media,
-			 String repaircase_status, Date repaircase_finday, Integer repaircase_score) {
+			 String repaircase_status, Date repaircase_finday, Integer repaircase_score, CompanyBean companybean) {
 		
 		RepaircaseBean bean = this.select(repaircase_id);
 		if(bean!=null) {
@@ -113,6 +114,7 @@ public class RepaircaseDAO implements IRepaircaseDAO {
 			bean.setRepaircase_status(repaircase_status); 
 			bean.setRepaircase_finday(repaircase_finday); 
 			bean.setRepaircase_score(repaircase_score);
+			bean.setCompanybean(companybean);
 		}
 		return bean;
 	}

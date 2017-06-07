@@ -4,13 +4,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import model.CustomerBean;
-import model.ICustomerDAO;
+import model.CompanyBean;
+import model.ICompanyDAO;
 
-
-public class CustomerDAO implements ICustomerDAO {
+public class CompanyDAO implements ICompanyDAO {
 	private SessionFactory sessionFactory;
-	public CustomerDAO(SessionFactory sessionFactory) {
+	public CompanyDAO(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
 	public Session getSession() {
@@ -22,8 +21,8 @@ public class CustomerDAO implements ICustomerDAO {
 		try {
 			sf.getCurrentSession().beginTransaction();
 			
-			ICustomerDAO customerDao = new CustomerDAO(sf);
-			CustomerBean select = customerDao.select("eeit9410");
+			ICompanyDAO companyDao = new CompanyDAO(sf);
+			CompanyBean select = companyDao.select("eeit9450");
 			System.out.println("select="+select);
 			
 //			boolean update = customerDao.update(
@@ -37,9 +36,8 @@ public class CustomerDAO implements ICustomerDAO {
 		}
 	}
 	@Override
-	public CustomerBean select(String custid) {
-		return getSession().get(CustomerBean.class, custid);
+	public CompanyBean select(String comid) {
+		return getSession().get(CompanyBean.class, comid);
 	}
-	
-}
 
+}

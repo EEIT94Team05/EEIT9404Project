@@ -32,9 +32,9 @@ public class CustomerService {
 //			sf.getCurrentSession().beginTransaction();
 //
 //			CustomerService customerService = new CustomerService(
-//					new CustomerDAO(sf.getCurrentSession()));
+//					new CustomerDAO(sf));
 //			
-//			CustomerBean bean = customerService.login("A", "a");
+//			CustomerBean bean = customerService.login("eeit9410", "a87654321");
 //			System.out.println("bean="+bean);
 //			
 //			
