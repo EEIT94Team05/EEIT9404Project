@@ -1,7 +1,15 @@
 package model;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.Session;
@@ -12,38 +20,43 @@ import org.hibernate.cfg.Configuration;
 @Table(name="customer")
 public class CustomerBean {
 	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="cus_id")
 	private String cus_id;
 	private String cus_password;
 	private String cus_name;
 	private String cus_address;
 	private String cus_phone;
-	private java.util.Date bdate;
+	private java.sql.Timestamp cus_regist;
 	private String cus_email;
 	private String sex;
+	@OneToMany
+	@Column(name="cus_id")
+	private List<RepaircaseBean> companybean = new ArrayList<RepaircaseBean>();
 	
-//	public static void main(String[] args) {
-//		Configuration config = new Configuration().configure("hibernate.cfg.xml");
-//		SessionFactory sf = config.buildSessionFactory();
-//		try {
-//			sf.getCurrentSession().beginTransaction();
-//			Session session = sf.getCurrentSession();
-//			
-//			CustomerBean select = session.get(CustomerBean.class, "A");
-//			System.out.println("select=" + select);
-//			
-////			CustomerBean insert = new CustomerBean();
-////			insert.setCustid("Alex");
-////			insert.setPassword("xxx".getBytes());
-////			insert.setBirth(new java.util.Date());
-////			insert.setEmail("alex@iii.org.tw");
-////			session.save(insert);
-//			
-//			sf.getCurrentSession().getTransaction().commit();
-//			sf.getCurrentSession().close();
-//		} finally {
-//			sf.close();;
-//		}
-//	}
+	public static void main(String[] args) {
+		Configuration config = new Configuration().configure("hibernate.cfg.xml");
+		SessionFactory sf = config.buildSessionFactory();
+		try {
+			sf.getCurrentSession().beginTransaction();
+			Session session = sf.getCurrentSession();
+			
+			CustomerBean select = session.get(CustomerBean.class, "eeit9410");
+			System.out.println("select=" + select);
+			
+//			CustomerBean insert = new CustomerBean();
+//			insert.setCustid("Alex");
+//			insert.setPassword("xxx".getBytes());
+//			insert.setBirth(new java.util.Date());
+//			insert.setEmail("alex@iii.org.tw");
+//			session.save(insert);
+			
+			sf.getCurrentSession().getTransaction().commit();
+			sf.getCurrentSession().close();
+		} finally {
+			sf.close();;
+		}
+	}
 	@Override
 	public String toString() {
 		
@@ -80,11 +93,11 @@ public class CustomerBean {
 	public void setCus_phone(String cus_phone) {
 		this.cus_phone = cus_phone;
 	}
-	public java.util.Date getBdate() {
-		return bdate;
+	public java.sql.Timestamp getBdate() {
+		return cus_regist;
 	}
-	public void setBdate(java.util.Date bdate) {
-		this.bdate = bdate;
+	public void setBdate(java.sql.Timestamp cus_regist) {
+		this.cus_regist = cus_regist;
 	}
 	public String getCus_email() {
 		return cus_email;
@@ -97,6 +110,18 @@ public class CustomerBean {
 	}
 	public void setSex(String sex) {
 		this.sex = sex;
+	}
+	public List<RepaircaseBean> getCompanybean() {
+		return companybean;
+	}
+	public void setCompanybean(List<RepaircaseBean> companybean) {
+		this.companybean = companybean;
+	}
+	public java.sql.Timestamp getCus_regist() {
+		return cus_regist;
+	}
+	public void setCus_regist(java.sql.Timestamp cus_regist) {
+		this.cus_regist = cus_regist;
 	}
 	
 	

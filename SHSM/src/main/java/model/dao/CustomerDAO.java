@@ -18,26 +18,26 @@ public class CustomerDAO implements ICustomerDAO {
 	public Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
-//	public static void main(String[] args) {
-//		Configuration config = new Configuration().configure("hibernate.cfg.xml");
-//		SessionFactory sf = config.buildSessionFactory();
-//		try {
-//			sf.getCurrentSession().beginTransaction();
-//			Session session = sf.getCurrentSession();
-//			ICustomerDAO customerDao = new CustomerDAO(session);
-//			CustomerBean select = customerDao.select("A");
-//			System.out.println("select="+select);
-//			
-////			boolean update = customerDao.update(
-////					"E".getBytes(), "ellen@iii.org.tw", new java.util.Date(), "Ellen");
-////			System.out.println("update="+update);
-//			
-//			sf.getCurrentSession().getTransaction().commit();
-//			sf.getCurrentSession().close();
-//		} finally {
-//			sf.close();
-//		}
-//	}
+	public static void main(String[] args) {
+		Configuration config = new Configuration().configure("hibernate.cfg.xml");
+		SessionFactory sf = config.buildSessionFactory();
+		try {
+			sf.getCurrentSession().beginTransaction();
+			
+			ICustomerDAO customerDao = new CustomerDAO(sf);
+			CustomerBean select = customerDao.select("eeit9410");
+			System.out.println("select="+select);
+			
+//			boolean update = customerDao.update(
+//					"E".getBytes(), "ellen@iii.org.tw", new java.util.Date(), "Ellen");
+//			System.out.println("update="+update);
+			
+			sf.getCurrentSession().getTransaction().commit();
+			sf.getCurrentSession().close();
+		} finally {
+			sf.close();
+		}
+	}
 	@Override
 	public CustomerBean select(String custid) {
 		return getSession().get(CustomerBean.class, custid);
