@@ -14,7 +14,7 @@
 
 <h3>Login</h3>
 
-<form action="<c:url value="/secure/login.controller" />" method="get">
+<%-- <form action="<c:url value="/secure/login.controller" />" method="get"> --%>
 <table>
 	<tr>
 		<td>ID : </td>

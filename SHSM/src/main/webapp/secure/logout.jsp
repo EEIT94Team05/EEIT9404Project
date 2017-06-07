@@ -13,7 +13,6 @@
 </head>
 <body>
 您已經登出<P/>
-
 <a href="<c:url value='../index.jsp' /> ">回首頁</a>
 </body>
 </html>

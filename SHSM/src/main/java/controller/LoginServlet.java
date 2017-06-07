@@ -49,7 +49,7 @@ public class LoginServlet extends HttpServlet {
 		
 		if(errors!=null && !errors.isEmpty()) {
 			request.getRequestDispatcher(
-					"/secure/login.jsp").forward(request, response);
+					"/secure/member-logning.jsp").forward(request, response);
 			return;
 		}
 
@@ -60,13 +60,13 @@ public class LoginServlet extends HttpServlet {
 		if(bean==null) {
 			errors.put("psderror", "登入失敗，請再次輸入帳號密碼");
 			request.getRequestDispatcher(
-					"/secure/login.jsp").forward(request, response);
+					"/secure/member-logning.jsp").forward(request, response);
 		} else {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", bean);
 			
 			String path = request.getContextPath();
-			response.sendRedirect(path+"/index.jsp");
+			response.sendRedirect(path+"/member.jsp");
 		}
 	}
 	@Override
