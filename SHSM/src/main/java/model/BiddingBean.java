@@ -1,6 +1,8 @@
 package model;
 
-public class BiddingBean {
+import java.io.Serializable;
+
+public class BiddingBean implements Serializable{
 	private Integer repaircase_Id;
 	private String com_id;
 	private String bidding_amount;
