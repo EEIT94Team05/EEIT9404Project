@@ -4,13 +4,13 @@
     <groupId>org.iiiedu.eeit</groupId>
     <artifactId>SHSM</artifactId>
     <packaging>war</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
     <name>Servlet 3 Web Application</name>
     <url>http://maven.apache.org</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java-version>1.8</java-version>
+        <java-version>1.6</java-version>
     </properties>
 
     <dependencies>
@@ -80,5 +80,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
