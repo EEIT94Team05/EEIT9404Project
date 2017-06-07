@@ -1,66 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Simple Map</title>
-<style>
-	#map{
-		height:100%;
-	}
-	html,body{
-		height:100%;
-		margin:0;
-		padding:0;
-	}
-</style>
+<title>Home</title>
 </head>
 <body>
+<!-- git test 1 -->
+<h3>Welcome ${user}</h3>
 
-	<p>
-	<input type="text" id="address" size="25">
-	<input type="button" value="Geocode" id="submit" onclick="geocodeAddress(geocoder, resultsMap)">
-	</p>
-	<div id="map"></div>
-	
-	<script>
-	
-	var map;
-	var geocoder;
-	function initMap(){
-		map=new google.maps.Map(document.getElementById('map'),{
-				center:{lat:25.1023554,lng:121.54849250000007},
-				zoom:10
-				});
-		geocoder=new google.maps.Geocoder();
-		
-		document.getElementById('submit').addEventListener('click',function(){
-			geocodeAddress(geocoder,map);
-		});
-	}
-	var resultsMap;
-	function geocodeAddress(geocoder, resultsMap){
-		var address=document.getElementById('address').value;
-		geocoder.geocode({'address':address},function(results,status){
-			if(status==google.maps.GeocoderStatus.OK){
-				resultsMap.setCenter(results[0].geometry.location);
-				var marker=new google.maps.Marker({
-					map:resultsMap,
-					position:results[0].geometry.location
-				});
-			}else{
-				alert('error');
-			}
-		});
-	}
-	
+<h3><a href="<c:url value="/secure/login.jsp" />">Login</a></h3>
+<h3><a href="<c:url value='/secure/logout.jsp'  />">Logout</a></h3>
 
-	</script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBhl0-jqVW9O6osIL3tKw7Qo8_qjvbxH0&callback=initMap" 
-	async defer></script>
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	
 
 </body>
 </html>
