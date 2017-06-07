@@ -1,12 +1,14 @@
 package model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="administrator")
-public class AdministratorBean {
+public class AdministratorBean implements Serializable {
 	@Id
 	private String admin_id;
 	private String admin_password;
