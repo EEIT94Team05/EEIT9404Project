@@ -8,10 +8,10 @@ public interface ReportDAO {
 //	private java.util.Date report_date;
 //	private String reporter;
 //	private String case_id;
-	ReportBean select(String report_id);
+	ReportBean select(Integer report_id);
 	List<ReportBean> select();
 	ReportBean insert(ReportBean bean);
 	ReportBean update(ReportBean bean);
-	boolean delete(String report_id);
+	boolean delete(Integer report_id);
 	
 }

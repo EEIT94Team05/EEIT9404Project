@@ -17,7 +17,7 @@ import model.dao.ReportDAOHibernate;
 @Table(name="report")
 public class ReportBean implements Serializable{
 	@Id
-	private String report_id;
+	private Integer report_id;
 	private String report_case;
 	private java.util.Date report_date;
 	private String reporter;
@@ -70,10 +70,10 @@ public class ReportBean implements Serializable{
 		return "ReportBean [report_id=" + report_id + ", report_case=" + report_case + ", report_date=" + report_date
 				+ ", reporter=" + reporter + ", case_id=" + case_id + "]"+"\n";
 	}
-	public String getReport_id() {
+	public Integer getReport_id() {
 		return report_id;
 	}
-	public void setReport_id(String report_id) {
+	public void setReport_id(Integer report_id) {
 		this.report_id = report_id;
 	}
 	

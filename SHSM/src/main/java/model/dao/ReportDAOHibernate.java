@@ -18,7 +18,7 @@ public class ReportDAOHibernate implements ReportDAO{
 		return sessionFactory.getCurrentSession();
 	}
 	@Override
-	public ReportBean select(String report_id) {
+	public ReportBean select(Integer report_id) {
 		
 		return this.getSession().get(ReportBean.class,report_id);//get方法:沒符合的資料會傳回null
 	}
@@ -56,7 +56,7 @@ public class ReportDAOHibernate implements ReportDAO{
 	}
 
 	@Override
-	public boolean delete(String report_id) {
+	public boolean delete(Integer report_id) {
 		ReportBean bean = this.select(report_id);
 		if(bean!=null){
 			this.getSession().delete(bean);
