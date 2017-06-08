@@ -1,5 +1,7 @@
 package model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +17,7 @@ import org.hibernate.cfg.Configuration;
 
 @Entity
 @Table(name="RepairCase")
-public class RepaircaseBean {
+public class RepaircaseBean implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)  
 	@Column(name="repaircase_id")

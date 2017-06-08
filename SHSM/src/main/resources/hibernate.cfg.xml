@@ -3,6 +3,7 @@
 		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
 		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
+
 	 <session-factory>
 <!-- 	 	<property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;database=SHSM</property> -->
 <!-- 		<property name="hibernate.connection.username">sa</property> -->
@@ -18,5 +19,7 @@
 		<mapping class="model.CustomerBean"/>
 		<mapping class="model.CompanyBean"/>
 	 	<mapping class="model.RepaircaseBean" />
+	 	<mapping class="model.ReportBean"/>
 	 </session-factory>
 </hibernate-configuration>
+

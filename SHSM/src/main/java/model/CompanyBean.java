@@ -1,6 +1,6 @@
 package model;
 
-import java.text.SimpleDateFormat;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +18,7 @@ import org.hibernate.cfg.Configuration;
 
 @Entity
 @Table(name="company")
-public class CompanyBean {
+public class CompanyBean implements Serializable{
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="com_id")
