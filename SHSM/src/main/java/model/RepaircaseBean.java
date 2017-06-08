@@ -30,7 +30,9 @@ public class RepaircaseBean implements Serializable{
 	private String repaircase_place;
 	private java.util.Date repaircase_repairdate;
 	private String repaircase_context;
-	private String repaircase_img;
+	private byte[] repaircase_img1;
+	private byte[] repaircase_img2;
+	private byte[] repaircase_img3;
 	private byte[] repaircase_media;
 	private java.sql.Timestamp repaircase_createdate;
 	private String repaircase_status;
@@ -61,7 +63,9 @@ public class RepaircaseBean implements Serializable{
 										   select.repaircase_place + ", " +
 										   select.repaircase_repairdate + ", " +
 										   select.repaircase_context + ", " +
-										   select.repaircase_img + ", " +
+										   select.repaircase_img1 + ", " +
+										   select.repaircase_img2 + ", " +
+										   select.repaircase_img3 + ", " +
 										   select.repaircase_media + ", " +
 										   select.repaircase_createdate + ", " +
 										   select.repaircase_status + ", " +
@@ -142,12 +146,31 @@ public class RepaircaseBean implements Serializable{
 	public void setRepaircase_context(String repaircase_context) {
 		this.repaircase_context = repaircase_context;
 	}
-	public String getRepaircase_img() {
-		return repaircase_img;
+	
+	public byte[] getRepaircase_img1() {
+		return repaircase_img1;
 	}
-	public void setRepaircase_img(String repaircase_img) {
-		this.repaircase_img = repaircase_img;
+
+	public void setRepaircase_img1(byte[] repaircase_img1) {
+		this.repaircase_img1 = repaircase_img1;
 	}
+
+	public byte[] getRepaircase_img2() {
+		return repaircase_img2;
+	}
+
+	public void setRepaircase_img2(byte[] repaircase_img2) {
+		this.repaircase_img2 = repaircase_img2;
+	}
+
+	public byte[] getRepaircase_img3() {
+		return repaircase_img3;
+	}
+
+	public void setRepaircase_img3(byte[] repaircase_img3) {
+		this.repaircase_img3 = repaircase_img3;
+	}
+
 	public byte[] getRepaircase_media() {
 		return repaircase_media;
 	}

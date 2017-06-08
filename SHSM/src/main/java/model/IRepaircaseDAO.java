@@ -18,7 +18,9 @@ public interface IRepaircaseDAO {
 			String repaircase_place,
 			java.util.Date repaircase_repairdate,
 			String repaircase_context,
-			String repaircase_img,
+			byte[] repaircase_img1,
+			byte[] repaircase_img2,
+			byte[] repaircase_img3,
 			byte[] repaircase_media,
 			
 			String repaircase_status,
