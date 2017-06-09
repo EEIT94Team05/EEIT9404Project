@@ -140,7 +140,7 @@ public class CaseServlet extends HttpServlet {
 			}
 		}
 //呼叫Model
-		CustomerBean custbean = (CustomerBean)session.getAttribute("LoginOK");
+		CustomerBean custbean = (CustomerBean)session.getAttribute("custuser");
 		RepaircaseBean bean = new RepaircaseBean();
 		bean.setRepaircase_id(repaircase_id);
 		bean.setRepaircase_budget(repaircase_budget);
