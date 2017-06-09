@@ -47,12 +47,12 @@ public class ReportDAOHibernate implements ReportDAO{
 	public ReportBean update(ReportBean bean) {
 		ReportBean select=this.select(bean.getReport_id());
 		if(select!=null){
-			select.setReport_case(select.getReport_case());
-			select.setReport_date(select.getReport_date());
-			select.setReporter(select.getReporter());
-			select.setCase_id(select.getCase_id());
+			bean.setReport_case(select.getReport_case());
+			bean.setReport_date(select.getReport_date());
+			bean.setReporter(select.getReporter());
+			bean.setCase_id(select.getCase_id());
 		}
-		return select;
+		return bean;
 	}
 
 	@Override
