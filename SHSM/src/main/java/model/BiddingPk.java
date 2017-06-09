@@ -7,16 +7,22 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@Embeddable
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.cfg.Configuration;
+
+
 public class BiddingPk implements Serializable{
-	@Id
-	@ManyToOne
-	@JoinColumn(name="repaircase_Id")
+//	@Id
+//	@ManyToOne
+//	@JoinColumn(name="repaircase_Id")
 	private Integer repaircase_Id;
-	@Id
-	@ManyToOne
-	@JoinColumn(name="com_id")
+//	@Id
+//	@ManyToOne
+//	@JoinColumn(name="com_id")
 	private String com_id;
+	
+	
 	
 	public Integer getRepaircase_Id() {
 		return repaircase_Id;
@@ -59,6 +65,25 @@ public class BiddingPk implements Serializable{
 			return false;
 		return true;
 	}
+	
+//	public static void main(String[] args){
+//		 Session session = new Configuration().configure().buildSessionFactory().getCurrentSession();
+//		 try {
+//			 session.beginTransaction();
+//			 
+//			 System.out.println(session.get(BiddingPk.class, new BiddingPk().repaircase_Id));
+//			 
+//			 session.getTransaction().commit();
+//		} catch (HibernateException e) {
+//			 session.getTransaction().rollback();
+//			e.printStackTrace();
+//		}finally{
+//			 new Configuration().configure().buildSessionFactory().close();
+//		}
+//		
+//	}
+	
+	
 	
 	
 	

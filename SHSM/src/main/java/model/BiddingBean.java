@@ -1,11 +1,13 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -14,10 +16,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 @Entity
-@IdClass(BiddingPk.class)
 @Table(name="bidding")
 public class BiddingBean implements Serializable{
-	@Id
+	
 	private BiddingPk biddingPk;
 	
 	private String bidding_amount;
@@ -25,7 +26,14 @@ public class BiddingBean implements Serializable{
 	private String bidding_context;
 	private byte[] bidding_img;
 	
-//	@EmbeddedId
+	
+	@Override
+	public String toString() {
+		return "BiddingBean [biddingPk=" + biddingPk + ", bidding_amount=" + bidding_amount + ", bidding_date="
+				+ bidding_date + ", bidding_context=" + bidding_context + ", bidding_img="
+				+ Arrays.toString(bidding_img) + "]";
+	}
+	@EmbeddedId
 	public BiddingPk getBiddingPk() {
 		return biddingPk;
 	}
@@ -65,9 +73,25 @@ public class BiddingBean implements Serializable{
 		try {
 			session.beginTransaction();
 			
-			BiddingBean bb = new BiddingBean();
-			BiddingBean select = session.get(BiddingBean.class, bb);
+
+			BiddingPk biddingPk=new BiddingPk();
+			biddingPk.setRepaircase_Id(2);
+			biddingPk.setCom_id("eeit9457");
+			BiddingBean select = session.get(BiddingBean.class, biddingPk);
 			System.out.println("select=" + select);
+
+			
+			BiddingBean biddingBean = (BiddingBean) session.load(BiddingBean.class, biddingPk);
+			System.out.println("hahaha");
+	       
+			System.out.println(
+					biddingBean.getBiddingPk().getRepaircase_Id() + "\t" +
+					biddingBean.getBiddingPk().getCom_id()+ "\t" +
+					biddingBean.getBidding_amount()+"\t"+
+					biddingBean.getBidding_date() + "\t" +
+					biddingBean.getBidding_context() + "\t" +
+					biddingBean.getBidding_img() 
+					);
 
 			session.getTransaction().commit();
 		} catch (Exception e) {
