@@ -23,6 +23,7 @@ import model.dao.CustomerDAO;
 )
 public class LoginServlet extends HttpServlet {
 	private CustomerService customerService;
+	
 	@Override
 	public void init() throws ServletException {
 		customerService = new CustomerService(
@@ -31,6 +32,7 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
 //接收資料
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
@@ -55,6 +57,14 @@ public class LoginServlet extends HttpServlet {
 
 //呼叫Model
 		CustomerBean bean = customerService.login(username, password);
+//		if (bean != null) {
+//			// OK, 將mb物件放入Session範圍內，識別字串為"LoginOK"，表示此使用者已經登入
+//			session.setAttribute("LoginOK", bean);
+//		} else {
+//			// NG, userid與密碼的組合錯誤，放錯誤訊息"該帳號不存在或密碼錯誤"到 errorMsgMap 之內
+//			// 對應的識別字串為 "LoginError"
+//			errors.put("LoginError", "該帳號不存在或密碼錯誤");
+//		}
 		
 //根據Model執行結果呼叫View
 		if(bean==null) {
@@ -62,8 +72,8 @@ public class LoginServlet extends HttpServlet {
 			request.getRequestDispatcher(
 					"/secure/member-logning.jsp").forward(request, response);
 		} else {
-			HttpSession session = request.getSession();
-			session.setAttribute("user", bean);
+			
+			session.setAttribute("custuser", bean);
 			
 			String path = request.getContextPath();
 			response.sendRedirect(path+"/member.jsp");
