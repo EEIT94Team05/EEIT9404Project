@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TimeZone;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,7 +22,7 @@ import model.RepaircaseService;
 import model.dao.RepaircaseDAO;
 
 @WebServlet(
-		urlPatterns={"/map/Case.controller"}
+		urlPatterns={"/map/createcase.controller"}
 )
 public class CaseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -36,16 +37,16 @@ public class CaseServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		
+		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(false);
 //接收資料
 		String temp1 = request.getParameter("id");
 		String repaircase_budget = request.getParameter("budget");
-		String repaircase_type = request.getParameter("type");
-		String repaircase_title = request.getParameter("title");
-		String repaircase_area = request.getParameter("area");
-		String repaircase_address = request.getParameter("address");
-		String repaircase_place = request.getParameter("place");
+		String repaircase_type = request.getParameter("casetype");
+		String repaircase_title = request.getParameter("casetitle");
+		String repaircase_area = request.getParameter("casearea");
+		String repaircase_address = request.getParameter("caseaddress");
+		String repaircase_place = request.getParameter("caseplace");
 		String temp2 = request.getParameter("repairdate");
 		String repaircase_context = request.getParameter("context");
 		String temp3 = request.getParameter("img1");
@@ -61,19 +62,7 @@ public class CaseServlet extends HttpServlet {
 //驗證資料
 		Map<String, String> errors = new HashMap<String, String>();
 		request.setAttribute("errors", errors);
-//		
-//		if(username==null || username.length()==0) {
-//			errors.put("acterror", "請輸入帳號");
-//		}
-//		if(password==null || password.length()==0) {
-//			errors.put("psderror", "請輸入密碼");
-//		}
-//		
-//		if(errors!=null && !errors.isEmpty()) {
-//			request.getRequestDispatcher(
-//					"/secure/member-logning.jsp").forward(request, response);
-//			return;
-//		}
+
 
 //轉換資料
 		int repaircase_id = 0;
@@ -87,6 +76,8 @@ public class CaseServlet extends HttpServlet {
 		}
 		
 		java.util.Date repaircase_repairdate = null;
+		System.out.println(temp2);
+		sdFormat = new SimpleDateFormat("yyyy-MM-dd");
 		if (temp2!=null && temp2.length()!=0) {
 			try {
 				repaircase_repairdate = sdFormat.parse(temp2);
@@ -95,6 +86,7 @@ public class CaseServlet extends HttpServlet {
 				errors.put("make", "Make必須是擁有YYYY-MM-DD格式的日期");
 			} 
 		}
+		System.out.println(repaircase_repairdate);
 		
 		byte[] repaircase_img1 = null;
 		if(temp3!=null && temp3.length()!=0) {
@@ -116,9 +108,13 @@ public class CaseServlet extends HttpServlet {
 		SimpleDateFormat cdformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		java.sql.Timestamp repaircase_createdate = null;
 		if(temp7!=null && temp7.length()!=0) {
-			String time = cdformat.format(new Date());
+			String time = cdformat.format(temp7);
 			repaircase_createdate = java.sql.Timestamp.valueOf(time);
 		}
+		System.out.println(repaircase_createdate);
+		
+		repaircase_place = "居家";
+		repaircase_status = "招標中";
 		
 		java.util.Date repaircase_finday = null;
 		if (temp8!=null && temp8.length()!=0) {

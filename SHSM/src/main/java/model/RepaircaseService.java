@@ -1,6 +1,8 @@
 package model;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class RepaircaseService {
@@ -24,6 +26,7 @@ public class RepaircaseService {
 	public RepaircaseBean insert(RepaircaseBean bean){
 		RepaircaseBean result = null;
 		if(bean!=null) {
+			bean.setRepaircase_createdate(getTime());
 			result = repaircasedao.insert(bean);
 		}
 		return result;
@@ -50,5 +53,13 @@ public class RepaircaseService {
 			result = repaircasedao.delete(bean.getRepaircase_id());
 		}
 		return result;
+	}
+	
+	public java.sql.Timestamp getTime(){
+		SimpleDateFormat cdformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		java.sql.Timestamp repaircase_createdate = null;
+		String time = cdformat.format(new Date());
+		repaircase_createdate = java.sql.Timestamp.valueOf(time);
+		return repaircase_createdate;
 	}
 }

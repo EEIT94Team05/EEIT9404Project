@@ -32,6 +32,7 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 //接收資料
 		String username = request.getParameter("username");
@@ -76,7 +77,8 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("custuser", bean);
 			
 			String path = request.getContextPath();
-			response.sendRedirect(path+"/member.jsp");
+//			response.sendRedirect(path+"/member.jsp");
+			response.sendRedirect(path+"/map/createcase.jsp");
 		}
 	}
 	@Override
