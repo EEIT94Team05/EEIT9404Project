@@ -19,6 +19,8 @@ public class RepaircaseService {
 				result = new ArrayList<RepaircaseBean>();
 				result.add(temp);
 			}
+		}else {
+			result = repaircasedao.select(); 
 		}
 		return result;
 	}

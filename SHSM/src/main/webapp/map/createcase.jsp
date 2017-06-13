@@ -5,7 +5,7 @@
 <html>
 
 <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <meta charset="utf-8">
     <title>YZUSPS-SIS</title>
     <link rel="Shortcut Icon" type="../image/x-icon" href="../img/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -78,8 +78,7 @@
                     <div class="wow flipInY" data-wow-offset="0" data-wow-delay="0.4s">
                         <div class="section-heading text-center">
                             <h3 class="h-bold">新建立案件</h3>
-                            <div class="divider-header"></div>
-                            <h4 style="font-family: 微軟正黑體;color:#0455F7;;font-weight:bold;">歡迎來到SHSM</h4>
+                          
                         </div>
                     </div>
                 </div>
@@ -89,36 +88,18 @@
             <div class="row marginbot-80">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="regbox">
-                        <form id="form1" class="wow bounceInUp" action="<c:url value="/map/createcase.controller" />" data-wow-offset="10" data-wow-delay="0.2s" method="post" data-ajax="false">
+                        <form id="form1" class="wow bounceInUp" action="<c:url value="/map/createcase.controller" />"  data-wow-offset="10" data-wow-delay="0.2s" method="post" data-ajax="false">
                             <div class="row marginbot-20">
                                 <div class="col-md-6 xs-marginbot-20">
-                                    <h4 align="right"><strong>案件編號</strong>：</h4>
-                                </div>
-                                <!--
-                                <div class="col-md-6">
-                                    <input class="form-control input-lg" name="m_passwd" type="text" class="normalinput" id="#" value="A0000000001">
-                                    <br>
-                                </div>
-                                -->
-                            </div>
-                            <div class="row marginbot-20">
-                                <div class="col-md-6 xs-marginbot-20">
-                                    <h4 align="right"><strong>案件種類</strong>：</h4>
+                                    <h6 align="right"><strong>案件種類</strong>：</h6>
                                 </div>
                                 <div class="col-md-6">
                                     <input class="form-control input-lg" name="casetype" type="text" class="normalinput" id="#" value="ex:水電">
                                 </div>
                             </div>
-                            <!--
-							<div class="row marginbot-20">
-								<span class="text">若不修改密碼，請不要填寫。若要修改，請輸入密碼</span><span class="text">二次。<br>
-								若修改密碼，系統會自動登出，請用新密碼登入。</span>
-								<hr size="1" />
-							</div>
-							-->
                             <div class="row marginbot-20">
                                 <div class="col-md-6 xs-marginbot-20">
-                                    <h4 align="right"><strong><font color="#FF0000">*</font>案件標題</strong>：</h4>
+                                    <h6 align="right"><strong><font color="#FF0000">*</font>案件標題</strong>：</h6>
                                 </div>
                                 <div class="col-md-6">
                                     <textarea placeholder="請輸入標題" id="comment" name="casetitle" cols="45" rows="1" maxlength="10" aria-required="true" required="required"></textarea>
@@ -126,7 +107,7 @@
                             </div>
                             <div class="row marginbot-20">
                                 <div class="col-md-6 xs-marginbot-20">
-                                    <h4 align="right"><strong><font color="#FF0000">*</font>區域</strong>：</h4>
+                                    <h6 align="right"><strong><font color="#FF0000">*</font>區域</strong>：</h6>
                                 </div>
                                 <div class="col-md-6">
                                     <input class="form-control input-lg" name="casearea" type="text" class="normalinput" id="m_div" value="台北市">
@@ -134,7 +115,7 @@
                             </div>
                             <div class="row marginbot-20">
                                 <div class="col-md-6 xs-marginbot-20">
-                                    <h4 align="right"><strong><font color="#FF0000">*</font>地域</strong>：</h4>
+                                    <h6 align="right"><strong><font color="#FF0000">*</font>地址</strong>：</h6>
                                 </div>
                                 <div class="col-md-6">
                                     <input class="form-control input-lg" name="caseaddress" type="text" class="normalinput" id="m_dep" value="請填入住址                      ">
@@ -142,21 +123,29 @@
                             </div>
                             <div class="row marginbot-20">
                                 <div class="col-md-6 xs-marginbot-20">
-                                    <h4 align="right"><strong><font color="#FF0000">*</font>期望維修日期</strong>：</h4>
+                                    <h6 align="right"><strong><font color="#FF0000">*</font>期望維修日期</strong>：</h6>
                                 </div>
                                 <div class="col-md-6">
                                     <input class="form-control input-lg" name="repairdate" type="date" class="normalinput" id="m_gra_year" value="93">
                                 </div>
                             </div>
+                            <div class="row marginbot-20">
+                                <div class="col-md-6 xs-marginbot-20">
+                                    <h6 align="right"><strong><font color="#FF0000">*</font>維修地點</strong>：</h6>
+                                </div>
+                                <div class="col-md-6">
+                                    <input class="form-control input-lg" name="caseplace" type="text" class="normalinput" id="m_email_one" value="">
+                                </div>
+                            </div>
                             <div class="row marginbot-20" id="">
                                 <div class="col-md-6 xs-marginbot-20">
-                                    <h4 align="right"><strong >內文</strong>：</h4>
+                                    <h6 align="right"><strong >內文</strong>：</h6>
                                 </div>
                                 <textarea placeholder="請輸入詳細說明" id="comment" name="context" cols="45" rows="3" maxlength="65525" aria-required="true" required="required"></textarea>
                             </div>
                             <div class="row marginbot-20">
                                 <div class="col-md-6 xs-marginbot-20">
-                                    <h4 align="right"><strong><font color="#FF0000">*</font>照片上傳</strong>：</h4>
+                                    <h6 align="right"><strong>照片上傳</strong>：</h6>
                                 </div>
                                 <div class="col-md-6">
                                     <input class="form-control input-lg" name="img1" type="file" class="normalinput" id="m_em_sta" value="">
@@ -164,26 +153,10 @@
                             </div>
                             <div class="row marginbot-20">
                                 <div class="col-md-6 xs-marginbot-20">
-                                    <h4 align="right"><strong><font color="#FF0000">*</font>影片上傳</strong>：</h4>
+                                    <h6 align="right"><strong>影片上傳</strong>：</h6>
                                 </div>
                                 <div class="col-md-6">
                                     <input class="form-control input-lg" name="media" type="file" class="normalinput" id="m_em_un" value="">
-                                </div>
-                            </div>
-                            <div class="row marginbot-20">
-                                <div class="col-md-6 xs-marginbot-20">
-                                    <h4 align="right"><strong><font color="#FF0000">*</font>建立日期</strong>：</h4>
-                                </div>
-                                <div class="col-md-6">
-                                    <input class="form-control input-lg" name="#" type="date" class="normalinput" id="#" value="">
-                                </div>
-                            </div>
-                            <div class="row marginbot-20">
-                                <div class="col-md-6 xs-marginbot-20">
-                                    <h4 align="right"><strong><font color="#FF0000">*</font>案件狀態</strong>：</h4>
-                                </div>
-                                <div class="col-md-6">
-                                    <input class="form-control input-lg" name="m_email_one" type="text" class="normalinput" id="m_email_one" value="">
                                 </div>
                             </div>
                             <div class="row marginbot-20">

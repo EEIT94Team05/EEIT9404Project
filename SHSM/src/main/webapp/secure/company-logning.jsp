@@ -25,7 +25,7 @@
 
 <body>
 	<div class="container">
-		<form class="form-signin" action="<c:url value="/secure/Customerlogin.controller" />" method="get">
+		<form class="form-signin" action="<c:url value="/secure/Companylogin.controller" />" method="get">
 			<h2 class="form-signin-heading">會員登入</h2>
 			<label for="inputEmail" class="sr-only">Email address</label> 
 			<input type="text" id="inputEmail" class="form-control"

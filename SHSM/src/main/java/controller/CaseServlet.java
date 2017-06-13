@@ -113,7 +113,6 @@ public class CaseServlet extends HttpServlet {
 		}
 		System.out.println(repaircase_createdate);
 		
-		repaircase_place = "居家";
 		repaircase_status = "招標中";
 		
 		java.util.Date repaircase_finday = null;

@@ -19,9 +19,9 @@ import model.CustomerService;
 import model.dao.CustomerDAO;
 
 @WebServlet(
-		urlPatterns={"/secure/login.controller"}
+		urlPatterns={"/secure/Customerlogin.controller"}
 )
-public class LoginServlet extends HttpServlet {
+public class CustomerLoginServlet extends HttpServlet {
 	private CustomerService customerService;
 	
 	@Override
@@ -78,7 +78,7 @@ public class LoginServlet extends HttpServlet {
 			
 			String path = request.getContextPath();
 //			response.sendRedirect(path+"/member.jsp");
-			response.sendRedirect(path+"/map/createcase.jsp");
+			response.sendRedirect(path+"/map/mapframe.jsp");
 		}
 	}
 	@Override

@@ -1,10 +1,5 @@
 package model;
 
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-
-import model.dao.CustomerDAO;
-
 public class CustomerService {
 	private ICustomerDAO customerDao;
 	public CustomerService(ICustomerDAO customerDao) {

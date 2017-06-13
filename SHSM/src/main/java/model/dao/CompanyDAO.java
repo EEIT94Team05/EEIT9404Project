@@ -1,5 +1,7 @@
 package model.dao;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -39,5 +41,9 @@ public class CompanyDAO implements ICompanyDAO {
 	public CompanyBean select(String comid) {
 		return getSession().get(CompanyBean.class, comid);
 	}
-
+	@Override
+	public List<CompanyBean> select() {
+		return this.getSession().createQuery("FROM CompanyBean", CompanyBean.class).getResultList();
+	}
+	
 }
