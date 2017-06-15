@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import hibernate.HibernateUtil;
+import model.dao.RepaircaseDAO;
+
 public class RepaircaseService {
 	IRepaircaseDAO repaircasedao;
 	public RepaircaseService(IRepaircaseDAO repaircasedao) {
@@ -13,7 +16,7 @@ public class RepaircaseService {
 	
 	public List<RepaircaseBean> select(RepaircaseBean bean){
 		List<RepaircaseBean> result = null;
-		if(bean!=null && bean.getRepaircase_id()!=0){
+		if(bean!=null && bean.getRepaircase_id()!=null){
 			RepaircaseBean temp = repaircasedao.select(bean.getRepaircase_id());
 			if(temp!=null) {
 				result = new ArrayList<RepaircaseBean>();
@@ -24,6 +27,24 @@ public class RepaircaseService {
 		}
 		return result;
 	}
+	
+//	public static void main(String[] args) {
+//		
+//		try {
+//			HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
+//		
+//			RepaircaseService service = new RepaircaseService(
+//					new RepaircaseDAO(HibernateUtil.getSessionFactory()));
+//			RepaircaseBean a = new RepaircaseBean();
+//			List<RepaircaseBean> beans = service.select(a);
+//			System.out.println("beans="+beans);		
+//		
+//			HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
+//			HibernateUtil.getSessionFactory().getCurrentSession().close();
+//		} finally {
+//			HibernateUtil.closeSessionFactory();
+//		}
+//	}
 	
 	public RepaircaseBean insert(RepaircaseBean bean){
 		RepaircaseBean result = null;

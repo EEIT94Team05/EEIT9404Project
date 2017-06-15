@@ -10,8 +10,71 @@
     <title>Google Map 座標工具</title>
     <link rel="canonical" href="https://code.essoduke.org/gmap/" />
     <link rel="license" href="http://www.opensource.org/licenses/mit-license.php" />
-    <script src="js/analytics.js"></script>
-    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="../js/analytics.js"></script>
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/jquery.tinyMap-3.4.6.min.js"></script>
+    <script>
+    	$(function(){
+    		loadProduct();
+    		function loadProduct(){
+    		    $.getJSON('casesearch.controller',{},function(datas){
+		    		//datas > json object
+		    		var tb = $('#case>ul');
+		    		//tb.empty();
+		    		var docFrag = $(document.createDocumentFragment());
+		    		$.each(datas,function(idx,product){
+		    			var cell1 = $('<li class="template hide"></li>').text(product.repaircase_address);
+		    			docFrag.append(cell1);
+		    			
+		    			
+		    		})
+		    		tb.html(docFrag);
+		    	})
+		    	
+		    	
+	   
+		   }
+    		
+		})
+		$('#map-marker-01').tinyMap({
+    'center': ['25.039065815333753', '121.56097412109375'],
+    'zoom': 14,
+    'marker': [
+        {
+            'addr': ['25.039065815333753', '121.56097412109375'],
+            'text': '<strong>110台灣台北市信義區逸仙路288號</strong>',
+            'newLabel': '文字標籤',
+            'newLabelCSS': 'labels',
+            // 自訂外部圖示
+            'icon': {
+                'url': '/images/big.png',
+                'scaledSize': [48, 48]
+            },
+            // 動畫效果
+            'animation': 'DROP'
+        },
+        {'addr': ['25.041282077030896', '121.56741142272949']},
+        {'addr': ['25.0383270525352', '121.57045841217041'], 'text': '<strong>110台灣台北市信義區松高路68號</strong>'},
+        {'addr': ['25.034516521123315','121.56496524810791'], 'text': '<strong>110台灣台北市信義區台北101</strong>'},
+        {'addr': ['25.037627167884715', '121.56732559204102'], 'text': '<strong>110台灣台北市信義區松壽路20巷</strong>'},
+        {'addr': ['25.039726809855434', '121.55633926391602'], 'text': '<strong>106台灣台北市大安區光復南路280巷25號</strong>'},
+        {'addr': ['25.037160575899154', '121.55350685119629'], 'text': '<strong>106台灣台北市大安區仁愛路四段300巷11號</strong>'},
+        {'addr': ['25.035877438787317', '121.55715465545654'], 'text': '<strong>106台灣台北市大安區光復南路440-1號</strong>'},
+        {'addr': ['25.033972149830436', '121.56063079833984'], 'text': '<strong>110台灣台北市信義區莊敬路</strong>'},
+        {'addr': ['25.031794640503858', '121.56414985656738'], 'text': '<strong>110台灣台北市信義區松勤街80號</strong>'},
+        {'addr': ['25.035255306871402', '121.56998634338379'], 'text': '<strong>110台灣台北市信義區松勇路47號</strong>'},
+        {'addr': ['25.033855498524844', '121.5686559677124'], 'text': '<strong>110台灣台北市信義區松仁路130號</strong>'},
+        {'addr': ['25.036927279240775', '121.57376289367676'], 'text': '<strong>110台灣台北市信義區松德路168巷12弄9號</strong>'},
+        {'addr': ['25.041593128099265', '121.5723466873169'], 'text': '<strong>110台灣台北市信義區忠孝東路五段295巷5號</strong>'},
+        {'addr': ['25.04485911668452', '121.56917095184326'], 'text': '<strong>110台灣台北市信義區松隆路61號</strong>'},
+        {'addr': ['25.04536455952624', '121.56402111053467'], 'text': '<strong>110台灣台北市信義區市民大道</strong>'},
+        {'addr': ['25.04380934412532', '121.55998706817627'], 'text': '<strong>110台灣台北市信義區光復南路133號</strong>'},
+        {'addr': ['25.041904178378704', '121.55848503112793'], 'text': '<strong>110台灣台北市信義區光復南路169巷14號</strong>'},
+        {'addr': ['25.038521464229383', '121.55900001525879'], 'text': '<strong>110台灣台北市信義區仁愛路四段450號</strong>'}
+    ]
+});
+    </script>
+
     <style>
       html,
     body {
@@ -133,7 +196,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
+                <div id="case" class="col-md-12">
                     <p class="help-block">在地圖上點一下建立標記</p>
                     <ul class="list-unstyled" id="maplist">
                         <li class="template hide">
@@ -269,9 +332,9 @@
     <script src="http://ditu.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyDlB3fXCAUu0LWGQQ50qk2Ox3lAz83d6XM"></script>
     <link rel="stylesheet" property="stylesheet" href="https://code.essoduke.org/css/style.css" />
     <script src="https://code.essoduke.org/js/jquery-bootstrap-prism.js"></script>
-    <script src="js/jquery.tinyMap-3.4.6.min.js"></script>
+    <script src="../js/jquery.tinyMap-3.4.6.min.js"></script>
     <script src="https://code.essoduke.org/js/gmap/bs-gmap-v3.js?ver=15112702" async></script>
-    <script async src="js/adsbygoogle.js" async></script>
+    <script async src="../js/adsbygoogle.js" async></script>
     <script>
     (function(i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
@@ -283,7 +346,7 @@
         a.async = 1;
         a.src = g;
         m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', 'js/analytics.js', 'ga');
+    })(window, document, 'script', '../js/analytics.js', 'ga');
     ga('create', 'UA-125128-20', 'essoduke.org');
     ga('require', 'displayfeatures');
     ga('send', 'pageview');

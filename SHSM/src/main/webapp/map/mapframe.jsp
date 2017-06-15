@@ -8,6 +8,11 @@
     <script src="../js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript">
     function load() {
+    	$.getJSON("casesearch.controller",null,function call(data){  
+   		 var add=addresstolatlng(data[2].repaircase_address);
+   		 console.log(add+"a a aaaS");
+   		 });  
+    	
         //載入後動作
         $("#divId").hide();
         $(function() {
@@ -44,13 +49,30 @@
             var myMarker = new GMarker(myLatLng);
             //在地圖上放置標點 :myMap.addOverlay( 45 行 );
             myMap.addOverlay(myMarker);
+            var point1 = new GPoint(121.516900, 25.047795);
+            var marker1 = new GMarker(point1);
+            myMap.addOverlay(marker1);
 
+            var point2 = new GPoint(121.521481, 25.034730);
+            var marker2 = new GMarker(point2);
+            myMap.addOverlay(marker2);
+
+            var point3 = new GPoint(121.237371, 25.081479);
+            var marker3 = new GMarker(point3);
+            
+            myMap.addOverlay(marker3);
+            
+            
+            console.log(add);
+            var marker4 = new GMarker(add);
+            myMap.addOverlay(marker4);
             GEvent.addListener(myMap, "click", function(overlay, point) {
                 if (point) {
 
                     //設定標註座標 把point 轉成 字串 存放到 id = inLatLng  的 input/text 內
                     myMarker.setLatLng(point);
                     document.getElementById('inLatLng').value = point.toString();
+                    
                     var myGeocoder = new GClientGeocoder();
 
                     myGeocoder.getLocations(point, function(addresses) {
@@ -67,7 +89,21 @@
         }
 
     }
-
+    function addresstolatlng(address){
+		var geocoder = new google.maps.Geocoder();
+		 geocoder.geocode({
+	            'address': address
+	        }, function(results, status) {
+	            if (status == google.maps.GeocoderStatus.OK) {
+	            	console.log(results[0].geometry.location.lat()+","+results[0].geometry.location.lng()+" "+status);
+	            	console.log(results);
+	            	return results;
+	            } else {
+	                alert("失敗, 原因: " + status);
+	            }
+	        }
+	        );
+		} ;
     function codeAddress() {
         var address = document.getElementById("address").value;
         geocoder.geocode({
