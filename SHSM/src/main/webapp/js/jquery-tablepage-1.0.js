@@ -1,10 +1,4 @@
-﻿/*
-作者：hsu po-wei
-E-Mail：hpw925@hotmail.com
-授權：GPL 3
-*/
-
-(function($){
+﻿(function($){
 		  
 	$.fn.tablepage = function(oObj, dCountOfPage) {
 

@@ -30,10 +30,10 @@ public class CustomerBean implements Serializable{
 	private java.sql.Timestamp cus_regist;
 	private String cus_email;
 	private String sex;
-	@OneToMany
-	@Column(name="cus_id")
-	private List<RepaircaseBean> companybean = new ArrayList<RepaircaseBean>();
-	
+//	@OneToMany
+//	@Column(name="repaircase_id")
+//	private List<RepaircaseBean> repaircasebean = new ArrayList<RepaircaseBean>();
+//	
 	public static void main(String[] args) {
 		Configuration config = new Configuration().configure("hibernate.cfg.xml");
 		SessionFactory sf = config.buildSessionFactory();
@@ -41,8 +41,8 @@ public class CustomerBean implements Serializable{
 			sf.getCurrentSession().beginTransaction();
 			Session session = sf.getCurrentSession();
 			
-			CustomerBean select = session.get(CustomerBean.class, "eeit9410");
-			System.out.println("select=" + select);
+//			CustomerBean select = session.get(CustomerBean.class, "eeit9410");
+//			System.out.println("select=" + select);
 			
 //			CustomerBean insert = new CustomerBean();
 //			insert.setCustid("Alex");
@@ -57,72 +57,86 @@ public class CustomerBean implements Serializable{
 			sf.close();;
 		}
 	}
+
 	@Override
 	public String toString() {
-		
-		return "CustomerBean ["+ cus_id+", "+cus_password+", "+ cus_name + "]";
+		return "cus_id=" + cus_id + ", cus_password=" + cus_password + ", cus_name=" + cus_name
+				+ ", cus_address=" + cus_address + ", cus_phone=" + cus_phone + ", cus_regist=" + cus_regist
+				+ ", cus_email=" + cus_email + ", sex=" + sex;
 	}
+
 	public String getCus_id() {
 		return cus_id;
 	}
-	
+
 	public void setCus_id(String cus_id) {
 		this.cus_id = cus_id;
 	}
+
 	public String getCus_password() {
 		return cus_password;
 	}
+
 	public void setCus_password(String cus_password) {
 		this.cus_password = cus_password;
 	}
+
 	public String getCus_name() {
 		return cus_name;
 	}
+
 	public void setCus_name(String cus_name) {
 		this.cus_name = cus_name;
 	}
+
 	public String getCus_address() {
 		return cus_address;
 	}
+
 	public void setCus_address(String cus_address) {
 		this.cus_address = cus_address;
 	}
+
 	public String getCus_phone() {
 		return cus_phone;
 	}
+
 	public void setCus_phone(String cus_phone) {
 		this.cus_phone = cus_phone;
 	}
-	public java.sql.Timestamp getBdate() {
-		return cus_regist;
-	}
-	public void setBdate(java.sql.Timestamp cus_regist) {
-		this.cus_regist = cus_regist;
-	}
-	public String getCus_email() {
-		return cus_email;
-	}
-	public void setCus_email(String cus_email) {
-		this.cus_email = cus_email;
-	}
-	public String getSex() {
-		return sex;
-	}
-	public void setSex(String sex) {
-		this.sex = sex;
-	}
-	public List<RepaircaseBean> getCompanybean() {
-		return companybean;
-	}
-	public void setCompanybean(List<RepaircaseBean> companybean) {
-		this.companybean = companybean;
-	}
+
 	public java.sql.Timestamp getCus_regist() {
 		return cus_regist;
 	}
+
 	public void setCus_regist(java.sql.Timestamp cus_regist) {
 		this.cus_regist = cus_regist;
 	}
+
+	public String getCus_email() {
+		return cus_email;
+	}
+
+	public void setCus_email(String cus_email) {
+		this.cus_email = cus_email;
+	}
+
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+
+//	public List<RepaircaseBean> getRepaircasebean() {
+//		return repaircasebean;
+//	}
+//
+//	public void setRepaircasebean(List<RepaircaseBean> repaircasebean) {
+//		this.repaircasebean = repaircasebean;
+//	}
+
 	
 	
 

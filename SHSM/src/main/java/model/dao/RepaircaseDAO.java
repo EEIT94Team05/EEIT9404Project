@@ -23,13 +23,16 @@ public class RepaircaseDAO implements IRepaircaseDAO {
 	public Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
+
 	
+
 //	public static void main(String[] args) {
 //		Configuration config = new Configuration().configure("hibernate.cfg.xml");
 //		SessionFactory sf = config.buildSessionFactory();
 //		try {
 //			sf.getCurrentSession().beginTransaction();
 //			IRepaircaseDAO productDao = new RepaircaseDAO(sf);
+
 //			
 ////			RepaircaseBean selects = productDao.select(1);
 ////			List<RepaircaseBean> selects = productDao.select();
