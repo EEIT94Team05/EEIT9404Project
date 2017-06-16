@@ -61,7 +61,7 @@ public class RepaircaseDAO implements IRepaircaseDAO {
 			bean.setRepaircase_createdate(nowdate);
 			bean.setRepaircase_status("未處理");
 			bean.setRepaircase_score(3);
-			bean.setCustomerbean(a);
+//			bean.setCustomer_RepairCase(a);
 			System.out.println(productDao.insert(bean));
 //			
 //			RepaircaseBean selects = productDao.select(9);

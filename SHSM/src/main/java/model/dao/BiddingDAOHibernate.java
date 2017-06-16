@@ -25,7 +25,7 @@ public class BiddingDAOHibernate implements BiddingDAO {
 
 	@Override
 	public List<BiddingBean> select() {
-		Query query = this.getSession().createQuery("from BiddingBean");
+		Query query = this.getSession().createQuery("from BiddingBean",BiddingBean.class);
 		List<BiddingBean> list = query.list();
 		return list;
 	}

@@ -284,8 +284,7 @@ ul.nav-wil li a {
     margin-top: 9px;
 }
 
-/*首頁 top 粉紅色區塊  設定*/
-ul.nav-wil li:nth-child(7) a {
+ul.nav-wil li:nth-child(6) a {
     font-size: 16px;
     padding: 8px 15px;
     color: #ff3366;
@@ -295,7 +294,7 @@ ul.nav-wil li:nth-child(7) a {
     font-weight: 600;
 }
 
-ul.nav-wil li:nth-child(7) a:hover {
+ul.nav-wil li:nth-child(6) a:hover {
     background: #ff3366;
     color: #fff;
 }

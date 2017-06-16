@@ -1,15 +1,21 @@
 package model.dao;
 
+import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 
 import model.ReportBean;
 import model.ReportDAO;
 
 public class ReportDAOHibernate implements ReportDAO{
+	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	private SessionFactory sessionFactory;
 	public ReportDAOHibernate(SessionFactory sessionFactory){
 		this.sessionFactory=sessionFactory;
@@ -26,9 +32,33 @@ public class ReportDAOHibernate implements ReportDAO{
 	@Override
 	public List<ReportBean> select() {
 		
-		Query query = this.getSession().createQuery("from ReportBean");
+		Query query = this.getSession().createQuery("from ReportBean",ReportBean.class);
 		List<ReportBean> list = query.list();
 		return list;
+	}
+	
+	public  String selectAll() {
+		int i=0;
+		JSONArray array;
+		List<ReportBean> list = this.getSession().createQuery("from ReportBean",ReportBean.class).getResultList();
+		String date = null;
+		for(ReportBean report:list){
+			 date = sdf.format(report.getReport_date());
+		}
+		JSONArray array1 = new JSONArray(); 
+		while(i<list.size()){
+			array = new JSONArray();
+			array.add(list.get(i).getReport_id());
+			array.add(list.get(i).getCase_id());
+			array.add(list.get(i).getReporter());
+			array.add(date);
+			array.add(list.get(i).getReport_case());
+			array1.add(array);
+			i++;
+		}
+		HashMap<Object, Object> map = new HashMap<>();
+		map.put("data",array1);
+		return JSONValue.toJSONString(map);
 	}
 
 	@Override

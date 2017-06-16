@@ -5,11 +5,11 @@
 <hibernate-configuration>
 
 	 <session-factory>
-	 	<property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;database=SHSM</property>
-		<property name="hibernate.connection.username">sa</property>
-		<property name="hibernate.connection.password">sa123456</property>
+<!-- 	 	<property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;database=SHSM</property> -->
+<!-- 		<property name="hibernate.connection.username">sa</property> -->
+<!-- 		<property name="hibernate.connection.password">sa123456</property> -->
 		
-<!-- 		<property name="hibernate.connection.datasource">java:comp/env/jdbc/SHSM</property> -->
+		<property name="hibernate.connection.datasource">java:comp/env/jdbc/SHSM</property>
 		
 		<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
 		<property name="hibernate.current_session_context_class">thread</property>

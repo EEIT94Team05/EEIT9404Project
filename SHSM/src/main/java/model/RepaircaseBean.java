@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.Session;
@@ -38,9 +39,7 @@ public class RepaircaseBean implements Serializable{
 	private String repaircase_status;
 	private java.util.Date repaircase_finday;
 	private Integer repaircase_score;
-	@ManyToOne
-	@JoinColumn(name="cus_id")
-	private CustomerBean customerbean;
+	
 	@ManyToOne
 	@JoinColumn(name="com_id")
 	private CompanyBean companybean;
@@ -71,7 +70,7 @@ public class RepaircaseBean implements Serializable{
 										   select.repaircase_status + ", " +
 										   select.repaircase_finday + ", " +
 										   select.repaircase_score + ", " +
-										   select.customerbean + ", " +
+//										   select.customer_RepairCase + ", " +
 										   select.companybean);
 			
 //			CustomerBean insert = new CustomerBean();
@@ -92,61 +91,79 @@ public class RepaircaseBean implements Serializable{
 	public String toString() {
 		return "RepaircaseBean ["+ repaircase_id+", "+repaircase_type+", "+ repaircase_budget + "]";
 	}
+
 	public Integer getRepaircase_id() {
 		return repaircase_id;
 	}
+
 	public void setRepaircase_id(Integer repaircase_id) {
 		this.repaircase_id = repaircase_id;
 	}
+
 	public String getRepaircase_budget() {
 		return repaircase_budget;
 	}
+
 	public void setRepaircase_budget(String repaircase_budget) {
 		this.repaircase_budget = repaircase_budget;
 	}
+
 	public String getRepaircase_type() {
 		return repaircase_type;
 	}
+
 	public void setRepaircase_type(String repaircase_type) {
 		this.repaircase_type = repaircase_type;
 	}
+
 	public String getRepaircase_title() {
 		return repaircase_title;
 	}
+
 	public void setRepaircase_title(String repaircase_title) {
 		this.repaircase_title = repaircase_title;
 	}
+
 	public String getRepaircase_area() {
 		return repaircase_area;
 	}
+
 	public void setRepaircase_area(String repaircase_area) {
 		this.repaircase_area = repaircase_area;
 	}
+
 	public String getRepaircase_address() {
 		return repaircase_address;
 	}
+
 	public void setRepaircase_address(String repaircase_address) {
 		this.repaircase_address = repaircase_address;
 	}
+
 	public String getRepaircase_place() {
 		return repaircase_place;
 	}
+
 	public void setRepaircase_place(String repaircase_place) {
 		this.repaircase_place = repaircase_place;
 	}
+
 	public java.util.Date getRepaircase_repairdate() {
 		return repaircase_repairdate;
 	}
+
 	public void setRepaircase_repairdate(java.util.Date repaircase_repairdate) {
 		this.repaircase_repairdate = repaircase_repairdate;
 	}
+
 	public String getRepaircase_context() {
 		return repaircase_context;
 	}
+
 	public void setRepaircase_context(String repaircase_context) {
 		this.repaircase_context = repaircase_context;
 	}
-	
+
 	public byte[] getRepaircase_img1() {
 		return repaircase_img1;
 	}
@@ -174,47 +191,58 @@ public class RepaircaseBean implements Serializable{
 	public byte[] getRepaircase_media() {
 		return repaircase_media;
 	}
+
 	public void setRepaircase_media(byte[] repaircase_media) {
 		this.repaircase_media = repaircase_media;
 	}
+
 	public java.sql.Timestamp getRepaircase_createdate() {
 		return repaircase_createdate;
 	}
+
 	public void setRepaircase_createdate(java.sql.Timestamp repaircase_createdate) {
 		this.repaircase_createdate = repaircase_createdate;
 	}
+
 	public String getRepaircase_status() {
 		return repaircase_status;
 	}
+
 	public void setRepaircase_status(String repaircase_status) {
 		this.repaircase_status = repaircase_status;
 	}
+
 	public java.util.Date getRepaircase_finday() {
 		return repaircase_finday;
 	}
+
 	public void setRepaircase_finday(java.util.Date repaircase_finday) {
 		this.repaircase_finday = repaircase_finday;
 	}
+
 	public Integer getRepaircase_score() {
 		return repaircase_score;
 	}
+
 	public void setRepaircase_score(Integer repaircase_score) {
 		this.repaircase_score = repaircase_score;
 	}
-	
-	
-	public CustomerBean getCustomerbean() {
-		return customerbean;
-	}
-	public void setCustomerbean(CustomerBean customerbean) {
-		this.customerbean = customerbean;
-	}
+
+//	public CustomerBean getCustomer_RepairCase() {
+//		return customer_RepairCase;
+//	}
+//
+//	public void setCustomer_RepairCase(CustomerBean customer_RepairCase) {
+//		this.customer_RepairCase = customer_RepairCase;
+//	}
+
 	public CompanyBean getCompanybean() {
 		return companybean;
 	}
+
 	public void setCompanybean(CompanyBean companybean) {
 		this.companybean = companybean;
 	}
-
+	
 	
 }
