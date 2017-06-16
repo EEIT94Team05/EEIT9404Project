@@ -1,4 +1,4 @@
-package model;
+ package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -34,8 +35,8 @@ public class CompanyBean implements Serializable{
 	private String fax;
 	private java.sql.Timestamp com_regist;
 	@OneToMany
-	@Column(name="com_id")
-	private List<RepaircaseBean> companybean = new ArrayList<RepaircaseBean>();
+	@JoinColumn(name="com_id")
+	private List<BiddingBean> biddingBean = new ArrayList<BiddingBean>();
 	
 	public static void main(String[] args) {
 	Configuration config = new Configuration().configure("hibernate.cfg.xml");
@@ -44,10 +45,11 @@ public class CompanyBean implements Serializable{
 		sf.getCurrentSession().beginTransaction();
 		Session session = sf.getCurrentSession();
 		
-		CompanyBean select = session.get(CompanyBean.class, "eeit9450");
+		CompanyBean select = session.get(CompanyBean.class, "eeit9458");
 		System.out.println("select=" + select.getCom_id() + ", " +
 									   select.getCom_name() + ", " +
-									   select.getCom_contact());
+									   select.getCom_contact() + ", " +
+									   select.biddingBean);
 		
 //		CustomerBean insert = new CustomerBean();
 //		insert.setCustid("Alex");
@@ -127,11 +129,11 @@ public class CompanyBean implements Serializable{
 	public void setFax(String fax) {
 		this.fax = fax;
 	}
-	public List<RepaircaseBean> getCompanybean() {
-		return companybean;
+	public List<BiddingBean> getCompanybean() {
+		return biddingBean;
 	}
-	public void setCompanybean(List<RepaircaseBean> companybean) {
-		this.companybean = companybean;
+	public void setCompanybean(List<BiddingBean> biddingBean) {
+		this.biddingBean = biddingBean;
 	}
 
 	public java.sql.Timestamp getCom_regist() {

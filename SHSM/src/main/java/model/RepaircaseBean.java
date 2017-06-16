@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -44,9 +46,12 @@ public class RepaircaseBean implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="cus_id")
 	private CustomerBean customerbean;
-	@ManyToOne
-	@JoinColumn(name="com_id")
-	private List<CompanyBean> companybean;
+	@OneToMany
+	@JoinColumn(name="repaircase_id")
+	private List<BiddingBean> biddingBean = new ArrayList<BiddingBean>();
+//	@ManyToOne
+//	@JoinColumn(name="com_id")
+//	private String companybean;
 	
 	
 	public static void main(String[] args) {
@@ -74,8 +79,9 @@ public class RepaircaseBean implements Serializable{
 										   select.repaircase_status + ", " +
 										   select.repaircase_finday + ", " +
 										   select.repaircase_score + ", " +
-										   select.customerbean + ", " +
-										   select.companybean);
+										   select.customerbean + ", "  +
+										   select.biddingBean
+										   );
 			
 //			CustomerBean insert = new CustomerBean();
 //			insert.setCustid("Alex");
@@ -241,15 +247,26 @@ public class RepaircaseBean implements Serializable{
 		this.customerbean = customerbean;
 	}
 
-	public List<CompanyBean> getCompanybean() {
 
-		return companybean;
+	public List<BiddingBean> getBiddingBean() {
+		return biddingBean;
 	}
 
 
-	public void setCompanybean(List<CompanyBean> companybean) {
-
-		this.companybean = companybean;
+	public void setBiddingBean(List<BiddingBean> biddingBean) {
+		this.biddingBean = biddingBean;
 	}
+
+
+//	public String getCompanybean() {
+//		return companybean;
+//	}
+//
+//
+//	public void setCompanybean(String companybean) {
+//		this.companybean = companybean;
+//	}
+
+	
 	
 }
