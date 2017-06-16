@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -44,7 +45,7 @@ public class RepaircaseBean implements Serializable{
 	private CustomerBean customerbean;
 	@ManyToOne
 	@JoinColumn(name="com_id")
-	private CompanyBean companybean;
+	private List<CompanyBean> companybean;
 	
 	
 	public static void main(String[] args) {
@@ -210,12 +211,15 @@ public class RepaircaseBean implements Serializable{
 	public void setCustomerbean(CustomerBean customerbean) {
 		this.customerbean = customerbean;
 	}
-	public CompanyBean getCompanybean() {
+
+	public List<CompanyBean> getCompanybean() {
 		return companybean;
 	}
-	public void setCompanybean(CompanyBean companybean) {
+
+	public void setCompanybean(List<CompanyBean> companybean) {
 		this.companybean = companybean;
 	}
-
+	
+	
 	
 }

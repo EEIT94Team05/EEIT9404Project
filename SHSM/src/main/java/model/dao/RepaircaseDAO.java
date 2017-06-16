@@ -105,7 +105,7 @@ public class RepaircaseDAO implements IRepaircaseDAO {
 	public RepaircaseBean update(Integer repaircase_id, String repaircase_budget, String repaircase_type,
 			String repaircase_title, String repaircase_area, String repaircase_address, String repaircase_place,
 			Date repaircase_repairdate, String repaircase_context, byte[] repaircase_img1,	byte[] repaircase_img2,
-			byte[] repaircase_img3, byte[] repaircase_media, String repaircase_status, Date repaircase_finday, Integer repaircase_score, CompanyBean companybean) {
+			byte[] repaircase_img3, byte[] repaircase_media, String repaircase_status, Date repaircase_finday, Integer repaircase_score) {
 		
 		RepaircaseBean bean = this.select(repaircase_id);
 		if(bean!=null) {
@@ -125,7 +125,6 @@ public class RepaircaseDAO implements IRepaircaseDAO {
 			bean.setRepaircase_status(repaircase_status); 
 			bean.setRepaircase_finday(repaircase_finday); 
 			bean.setRepaircase_score(repaircase_score);
-			bean.setCompanybean(companybean);
 		}
 		return bean;
 	}

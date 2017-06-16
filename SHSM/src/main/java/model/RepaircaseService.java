@@ -10,6 +10,7 @@ import model.dao.RepaircaseDAO;
 
 public class RepaircaseService {
 	IRepaircaseDAO repaircasedao;
+	BiddingDAO biddingdao;
 	public RepaircaseService(IRepaircaseDAO repaircasedao) {
 		this.repaircasedao = repaircasedao;
 	}
@@ -65,7 +66,7 @@ public class RepaircaseService {
 										  bean.getRepaircase_context(), bean.getRepaircase_img1(), 
 										  bean.getRepaircase_img2(), bean.getRepaircase_img3(), 
 										  bean.getRepaircase_media(), bean.getRepaircase_status(), 
-										  bean.getRepaircase_finday(), bean.getRepaircase_score(), bean.getCompanybean());
+										  bean.getRepaircase_finday(), bean.getRepaircase_score());
 		}
 		return result;
 	}
@@ -84,5 +85,19 @@ public class RepaircaseService {
 		String time = cdformat.format(new Date());
 		repaircase_createdate = java.sql.Timestamp.valueOf(time);
 		return repaircase_createdate;
+	}
+	
+	public RepaircaseBean selectBidding(Integer id){
+		RepaircaseBean result = null;
+		BiddingBean bid = null;
+		if(id!=null && id!=0){
+			result = repaircasedao.select(id);
+			
+			if(result!=null) {
+//				bid = biddingdao.select();
+				
+			}
+		}
+		return result;
 	}
 }
