@@ -1,7 +1,12 @@
 package model;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import hibernate.HibernateUtil;
+import model.dao.RepaircaseDAO;
 
 public class RepaircaseService {
 	IRepaircaseDAO repaircasedao;
@@ -11,19 +16,40 @@ public class RepaircaseService {
 	
 	public List<RepaircaseBean> select(RepaircaseBean bean){
 		List<RepaircaseBean> result = null;
-		if(bean!=null && bean.getRepaircase_id()!=0){
+		if(bean!=null && bean.getRepaircase_id()!=null){
 			RepaircaseBean temp = repaircasedao.select(bean.getRepaircase_id());
 			if(temp!=null) {
 				result = new ArrayList<RepaircaseBean>();
 				result.add(temp);
 			}
+		}else {
+			result = repaircasedao.select(); 
 		}
 		return result;
 	}
 	
+//	public static void main(String[] args) {
+//		
+//		try {
+//			HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
+//		
+//			RepaircaseService service = new RepaircaseService(
+//					new RepaircaseDAO(HibernateUtil.getSessionFactory()));
+//			RepaircaseBean a = new RepaircaseBean();
+//			List<RepaircaseBean> beans = service.select(a);
+//			System.out.println("beans="+beans);		
+//		
+//			HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
+//			HibernateUtil.getSessionFactory().getCurrentSession().close();
+//		} finally {
+//			HibernateUtil.closeSessionFactory();
+//		}
+//	}
+	
 	public RepaircaseBean insert(RepaircaseBean bean){
 		RepaircaseBean result = null;
 		if(bean!=null) {
+			bean.setRepaircase_createdate(getTime());
 			result = repaircasedao.insert(bean);
 		}
 		return result;
@@ -50,5 +76,13 @@ public class RepaircaseService {
 			result = repaircasedao.delete(bean.getRepaircase_id());
 		}
 		return result;
+	}
+	
+	public java.sql.Timestamp getTime(){
+		SimpleDateFormat cdformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		java.sql.Timestamp repaircase_createdate = null;
+		String time = cdformat.format(new Date());
+		repaircase_createdate = java.sql.Timestamp.valueOf(time);
+		return repaircase_createdate;
 	}
 }

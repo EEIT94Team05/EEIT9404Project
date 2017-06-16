@@ -46,7 +46,7 @@ public class ReportBean implements Serializable{
 			List<ReportBean> reportBean = reportDao.select();
 			System.out.println(reportBean);
 			
-//			ReportBean select = reportDao.select("2");
+//			ReportBean select = reportDao.select(2);
 //			ReportBean update = reportDao.update(select);
 //			update.setReport_case("到底在修什麼東西");
 //			update.setReport_date(new java.util.Date());

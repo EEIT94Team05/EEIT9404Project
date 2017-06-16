@@ -19,6 +19,7 @@ import org.hibernate.cfg.Configuration;
 @Entity
 @Table(name="RepairCase")
 public class RepaircaseBean implements Serializable{
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)  
 	@Column(name="repaircase_id")
@@ -87,10 +88,11 @@ public class RepaircaseBean implements Serializable{
 		}
 	}
 	
-	@Override
-	public String toString() {
-		return "RepaircaseBean ["+ repaircase_id+", "+repaircase_type+", "+ repaircase_budget + "]";
-	}
+
+//	@Override
+//	public String toString() {
+//		return "RepaircaseBean ["+ repaircase_id+", "+repaircase_type+", "+ repaircase_budget + "]";
+//	}
 
 	public Integer getRepaircase_id() {
 		return repaircase_id;

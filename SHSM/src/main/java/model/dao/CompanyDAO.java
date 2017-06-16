@@ -1,7 +1,9 @@
 package model.dao;
 
+
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+
 import java.util.List;
 
 import org.hibernate.Session;
@@ -45,6 +47,7 @@ public class CompanyDAO implements ICompanyDAO {
 	public CompanyBean select(String comid) {
 		return getSession().get(CompanyBean.class, comid);
 	}
+
 	
 	public String selectAll(){
 		int i = 0;
@@ -76,5 +79,12 @@ public class CompanyDAO implements ICompanyDAO {
 		map.put("data", arrayAll);
 		return JSONValue.toJSONString(map);
 	}
+
+
+	@Override
+	public List<CompanyBean> select() {
+		return this.getSession().createQuery("FROM CompanyBean", CompanyBean.class).getResultList();
+	}
+	
 
 }

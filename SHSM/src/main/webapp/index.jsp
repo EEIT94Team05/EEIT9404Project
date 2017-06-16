@@ -13,6 +13,7 @@
 
 <h3><a href="<c:url value="/secure/login.jsp" />">Login</a></h3>
 <h3><a href="<c:url value='/secure/logout.jsp'  />">Logout</a></h3>
+<h3><a href="<c:url value='/map/casesearch.controller'  />">casesearch</a></h3>
 
 
 </body>
