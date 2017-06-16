@@ -23,47 +23,8 @@ public class RepaircaseDAO implements IRepaircaseDAO {
 	public Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
-	
 
-	public static void main(String[] args) {
-		Configuration config = new Configuration().configure("hibernate.cfg.xml");
-		SessionFactory sf = config.buildSessionFactory();
-		try {
-			sf.getCurrentSession().beginTransaction();
-			IRepaircaseDAO productDao = new RepaircaseDAO(sf);
-			
-//			RepaircaseBean selects = productDao.select(1);
-//			List<RepaircaseBean> selects = productDao.select();
-//			System.out.println("selects="+selects);
-			
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
-			java.util.Date date1 =  new Date();
-			java.util.Date date = null;
-			SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			String time = sdFormat.format(new Date());
-			System.out.println(time);
-			java.sql.Timestamp nowdate = java.sql.Timestamp.valueOf(time);
-			try {
-				date = sdf.parse("2017.8.15");
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			CustomerBean a = sf.getCurrentSession().get(CustomerBean.class, "eeit9410");
-			RepaircaseBean bean = new RepaircaseBean();
-			bean.setRepaircase_budget("100");
-			bean.setRepaircase_type("水電維修");
-			bean.setRepaircase_title("水電師傅 須懂");
-			bean.setRepaircase_area("中正區");
-			bean.setRepaircase_address("台北市中正區林森南路");
-			bean.setRepaircase_place("須定期至指定公司");
-			bean.setRepaircase_repairdate(date);
-			bean.setRepaircase_context("123");
-			bean.setRepaircase_createdate(nowdate);
-			bean.setRepaircase_status("未處理");
-			bean.setRepaircase_score(3);
-//			bean.setCustomer_RepairCase(a);
-			System.out.println(productDao.insert(bean));
+	
 
 //	public static void main(String[] args) {
 //		Configuration config = new Configuration().configure("hibernate.cfg.xml");
