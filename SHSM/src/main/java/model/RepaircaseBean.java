@@ -98,10 +98,13 @@ public class RepaircaseBean implements Serializable{
 	}
 	
 
-//	@Override
-//	public String toString() {
-//		return "RepaircaseBean ["+ repaircase_id+", "+repaircase_type+", "+ repaircase_budget + "]";
-//	}
+	@Override
+	public String toString() {
+		return "RepaircaseBean ["+ repaircase_id+", "+repaircase_type+", "+ repaircase_budget + repaircase_title + ", " +
+				    repaircase_area + ", " +  repaircase_address + ", " + repaircase_place + ", " + repaircase_repairdate + ", " +
+				    repaircase_context + ", " + repaircase_img1 + ", " + repaircase_img2 + ", " + repaircase_img3 + ", " +
+				    repaircase_media + ", " + repaircase_createdate + ", " + repaircase_status + ", " + repaircase_finday + ", " +
+				    repaircase_score + ", " + customerbean + ", "  + biddingBean + "]"; }
 
 	public Integer getRepaircase_id() {
 		return repaircase_id;

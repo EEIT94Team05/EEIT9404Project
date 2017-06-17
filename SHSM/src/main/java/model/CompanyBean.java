@@ -67,7 +67,7 @@ public class CompanyBean implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "CompanyBean ["+ com_id+", "+com_password+", "+ com_name + "]";
+		return "CompanyBean ["+ com_id+", "+com_password+", "+ com_name + biddingBean + "]";
 	}
 	public String getCom_id() {
 		return com_id;

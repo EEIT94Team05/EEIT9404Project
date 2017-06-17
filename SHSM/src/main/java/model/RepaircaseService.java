@@ -29,23 +29,23 @@ public class RepaircaseService {
 		return result;
 	}
 	
-//	public static void main(String[] args) {
-//		
-//		try {
-//			HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
-//		
-//			RepaircaseService service = new RepaircaseService(
-//					new RepaircaseDAO(HibernateUtil.getSessionFactory()));
-//			RepaircaseBean a = new RepaircaseBean();
-//			List<RepaircaseBean> beans = service.select(a);
-//			System.out.println("beans="+beans);		
-//		
-//			HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
-//			HibernateUtil.getSessionFactory().getCurrentSession().close();
-//		} finally {
-//			HibernateUtil.closeSessionFactory();
-//		}
-//	}
+	public static void main(String[] args) {
+		
+		try {
+			HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
+		
+			RepaircaseService service = new RepaircaseService(
+					new RepaircaseDAO(HibernateUtil.getSessionFactory()));
+			RepaircaseBean a = new RepaircaseBean();
+			List<RepaircaseBean> beans = service.select(a);
+			System.out.println("beans="+beans);		
+		
+			HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
+			HibernateUtil.getSessionFactory().getCurrentSession().close();
+		} finally {
+			HibernateUtil.closeSessionFactory();
+		}
+	}
 	
 	public RepaircaseBean insert(RepaircaseBean bean){
 		RepaircaseBean result = null;
@@ -89,14 +89,9 @@ public class RepaircaseService {
 	
 	public RepaircaseBean selectBidding(Integer id){
 		RepaircaseBean result = null;
-		BiddingBean bid = null;
+		
 		if(id!=null && id!=0){
 			result = repaircasedao.select(id);
-			
-			if(result!=null) {
-//				bid = biddingdao.select();
-				
-			}
 		}
 		return result;
 	}

@@ -31,7 +31,7 @@ public class CompanyALLServlet extends HttpServlet {
 		
 		response.setContentType("text/plain; charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		out.write(companyDao.selectAll());
+		out.write(companyDao.selectJson());
 	}
 
 	

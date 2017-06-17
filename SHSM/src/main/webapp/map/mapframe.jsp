@@ -19,7 +19,6 @@
             myMap.addControl(new GMapTypeControl());
     	}
     	$.getJSON("casesearch.controller",function(data){  
-    		console.log(data[2].repaircase_address);
     	var i=0;	
    		 while(i<data.length){
    		 addresstolatlng(data[i].repaircase_address);
@@ -53,8 +52,7 @@
 	            'address': address
 	        }, function(results, status) {
 	            if (status == google.maps.GeocoderStatus.OK) {
-	            	console.log(results[0].geometry.location.lat()+","+results[0].geometry.location.lng()+" "+status);
-	            	console.log(results);
+
 	            	lat=results[0].geometry.location.lat();
 	            	lng=results[0].geometry.location.lng();
 	            	
@@ -89,8 +87,7 @@
 	                    
 	                    GEvent.addListener(myMap, "click", function(overlay, point) {
 	                        if (point) {
-
-	                            //設定標註座標 把point 轉成 字串 存放到 id = inLatLng  的 input/text 內
+								//設定標註座標 把point 轉成 字串 存放到 id = inLatLng  的 input/text 內
 	                            myMarker.setLatLng(point);
 	                            document.getElementById('inLatLng').value = point.toString();
 	                            
@@ -98,9 +95,19 @@
 
 	                            myGeocoder.getLocations(point, function(addresses) {
 	                                if (addresses.Status.code != 200) {
-	                                    alert("此處為機密地段" + point.toUrlValue());
+// 	                                    alert("此處為機密地段" + point.toUrlValue());
 	                                } else {
 	                                    var result = addresses.Placemark[0];
+	                                    var add = result.address;
+	                                    //
+	                                    console.log(result.address);
+	                                    var contextPath = "${pageContext.request.contextPath}";
+	                                    var request = new XMLHttpRequest();
+	                                    request.open("POST", contextPath+"/map/mapframe.jsp");
+	                                    request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+	                                    request.send(add);
+	                                    //
+	                                    
 	                                    myMarker.openInfoWindowHtml(result.address);
 	                                    document.getElementById('inLatLng').value = result.address;
 	                                }

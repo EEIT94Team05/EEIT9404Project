@@ -94,7 +94,10 @@
                                     <h6 align="right"><strong>案件種類</strong>：</h6>
                                 </div>
                                 <div class="col-md-6">
-                                    <input class="form-control input-lg" name="casetype" type="text" class="normalinput" id="#" value="ex:水電">
+                                    <select class="form-control input-lg" name="casetype" type="text" class="normalinput" id="#" value="ex:水電">
+                                    	<option>a</option>
+                                    	<option>b</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="row marginbot-20">

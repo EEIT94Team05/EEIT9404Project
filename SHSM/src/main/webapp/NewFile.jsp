@@ -62,7 +62,7 @@
 		<td>${selectBidding.repaircase_finday}</td>
 		<td>${selectBidding.repaircase_score}</td>
 		<td>${selectBidding.customerbean}</td>
-		<td>${selectBidding.companybean}</td>
+		<td>${selectBidding.biddingBean}</td>
 	</tr>
 	</tbody>
 </table>

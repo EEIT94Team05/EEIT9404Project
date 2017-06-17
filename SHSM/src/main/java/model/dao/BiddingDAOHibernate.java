@@ -46,7 +46,7 @@ public class BiddingDAOHibernate implements BiddingDAO {
 	public List<BiddingBean> select(Integer repaircase_id) {
 		List<BiddingBean> result = null;
 		if(repaircase_id!=null && repaircase_id!=0){
-			Query query = this.getSession().createQuery("select * from BiddingBean where repaircase_id = ? ",BiddingBean.class);
+			Query query = this.getSession().createQuery("from BiddingBean where repaircase_id = ? ",BiddingBean.class);
 			query.setParameter(0, repaircase_id);
 			result = query.list();
 		}
