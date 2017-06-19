@@ -41,7 +41,7 @@ public class CustomerALLServlet extends HttpServlet {
 		response.setContentType("text/plain; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 
-		 String result = customerDao.selectAll();
+		String result = customerDao.selectAll();
 //		ReportDAOHibernate reportDao = new ReportDAOHibernate(HibernateUtil.getSessionFactory());
 //		JSONArray result1 = reportDao.select();
 

@@ -88,7 +88,7 @@
             <div class="row marginbot-80">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="regbox">
-                        <form id="form1" class="wow bounceInUp" action="<c:url value="/map/createcase.controller" />"  data-wow-offset="10" data-wow-delay="0.2s" method="post" data-ajax="false">
+                        <form enctype="multipart/form-data" id="form1" class="wow bounceInUp" action="<c:url value="/map/createcase.controller" />"  data-wow-offset="10" data-wow-delay="0.2s" method="post" data-ajax="false">
                             <div class="row marginbot-20">
                                 <div class="col-md-6 xs-marginbot-20">
                                     <h6 align="right"><strong>案件種類</strong>：</h6>
@@ -148,7 +148,7 @@
                                     <h6 align="right"><strong>照片上傳</strong>：</h6>
                                 </div>
                                 <div class="col-md-6">
-                                    <input class="form-control input-lg" name="img1" type="file" class="normalinput" id="m_em_sta" value="">
+                                    <input class="form-control input-lg" name="img1" type="file" class="normalinput" id="m_em_sta" value="" multiple>
                                 </div>
                             </div>
                             <div class="row marginbot-20">

@@ -1,17 +1,13 @@
 package model.dao;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.sql.Blob;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 
 import model.CompanyBean;
-import model.CustomerBean;
 import model.IRepaircaseDAO;
 import model.RepaircaseBean;
 
@@ -107,8 +103,8 @@ public class RepaircaseDAO implements IRepaircaseDAO {
 	@Override
 	public RepaircaseBean update(Integer repaircase_id, String repaircase_budget, String repaircase_type,
 			String repaircase_title, String repaircase_area, String repaircase_address, String repaircase_place,
-			Date repaircase_repairdate, String repaircase_context, byte[] repaircase_img1,	byte[] repaircase_img2,
-			byte[] repaircase_img3, byte[] repaircase_media, String repaircase_status, Date repaircase_finday, Integer repaircase_score, CompanyBean companybean) {
+			Date repaircase_repairdate, String repaircase_context, Blob repaircase_img1,	Blob repaircase_img2,
+			Blob repaircase_img3, byte[] repaircase_media, String repaircase_status, Date repaircase_finday, Integer repaircase_score, CompanyBean companybean) {
 		
 		RepaircaseBean bean = this.select(repaircase_id);
 		if(bean!=null) {

@@ -12,7 +12,7 @@
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
     <!--分頁-->
-    <script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" />
 </head>
 <body>
@@ -48,7 +48,8 @@
         <script>
 			$(function(){
 				$('#tb').DataTable({
-						"ajax":"CompanyALLServlet"
+						"ajax":"CompanyALLServlet",
+						"info":false
 					});
 				});
         </script>

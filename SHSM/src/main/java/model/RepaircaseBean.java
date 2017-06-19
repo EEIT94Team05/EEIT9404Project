@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.sql.Blob;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,9 +33,7 @@ public class RepaircaseBean implements Serializable{
 	private String repaircase_place;
 	private java.util.Date repaircase_repairdate;
 	private String repaircase_context;
-	private byte[] repaircase_img1;
-	private byte[] repaircase_img2;
-	private byte[] repaircase_img3;
+	private Blob repaircase_img1;
 	private byte[] repaircase_media;
 	private java.sql.Timestamp repaircase_createdate;
 	private String repaircase_status;
@@ -166,29 +165,30 @@ public class RepaircaseBean implements Serializable{
 		this.repaircase_context = repaircase_context;
 	}
 
-	public byte[] getRepaircase_img1() {
+	public Blob getRepaircase_img1() {
 		return repaircase_img1;
 	}
 
-	public void setRepaircase_img1(byte[] repaircase_img1) {
+	public void setRepaircase_img1(Blob repaircase_img1) {
 		this.repaircase_img1 = repaircase_img1;
 	}
 
-	public byte[] getRepaircase_img2() {
+	public Blob getRepaircase_img2() {
 		return repaircase_img2;
 	}
 
-	public void setRepaircase_img2(byte[] repaircase_img2) {
+	public void setRepaircase_img2(Blob repaircase_img2) {
 		this.repaircase_img2 = repaircase_img2;
 	}
 
-	public byte[] getRepaircase_img3() {
+	public Blob getRepaircase_img3() {
 		return repaircase_img3;
 	}
 
-	public void setRepaircase_img3(byte[] repaircase_img3) {
+	public void setRepaircase_img3(Blob repaircase_img3) {
 		this.repaircase_img3 = repaircase_img3;
 	}
+
 
 	public byte[] getRepaircase_media() {
 		return repaircase_media;

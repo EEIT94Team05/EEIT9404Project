@@ -12,7 +12,7 @@
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
     <!--分頁-->
-    <script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" />
 </head>
 <style>
@@ -21,8 +21,8 @@
 <body>
   <h2 class="sub-header">檢舉清單</h2>
     <hr/>
-    <input type="button" id="button" value="刪除所選資料" >
-    <div class="table-responsive">
+    
+    <div class="table-responsive" >
         <table class="table table-striped" id="tb">
             <thead>
                 <tr>
@@ -40,11 +40,11 @@
         <!--</div>-->
         <span id='table_page'></span>
         <script>
-
         $(function() {
-            var table = $('#tb').DataTable({"ajax":"ReportALLServlet"});
-         
+            var table = $('#tb').DataTable({"ajax":"ReportALLServlet","info":false});
+            var id;
             $('#tb tbody').on( 'click', 'tr', function () {
+                id = $(this).find('td:eq(0)').text();
                 if ( $(this).hasClass('selected') ) {
                     $(this).removeClass('selected');
                 }
@@ -57,13 +57,23 @@
          
             $('#button').click( function () {
                 table.row('.selected').remove().draw( false );
+                $.ajax({
+					"url":"ReportDeleteServlet",
+					"data":{"ReportId":id},
+					"type":"get"
+                }).done(function(data){
+                    
+                	$('#tb').DataTable({destroy:true, "ajax":"ReportALLServlet","info":false});
+                    })
             } );
         } );
 
         </script>
+        <input type="button" id="button" value="刪除所選資料" >
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
         <script src="../js/docs.min.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+        
 </body>
 </html>
