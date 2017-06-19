@@ -49,7 +49,7 @@ public class CaseSearchServlet extends HttpServlet {
 		List<RepaircaseBean> result = new ArrayList<RepaircaseBean>();
 		RepaircaseBean bean = new RepaircaseBean();
 		result = repaircaseservice.select(bean);
-		System.out.println(result);
+//		System.out.println(result);
 		int i = 0;
 		JSONObject obj2;
 		JSONArray jsonArray = new JSONArray();
@@ -73,11 +73,11 @@ public class CaseSearchServlet extends HttpServlet {
 			obj2.put("repaircase_status", data.getRepaircase_status());
 			obj2.put("repaircase_finday", data.getRepaircase_finday());
 			obj2.put("repaircase_score", data.getRepaircase_score());
-			obj2.put("companybean", data.getCompanybean());
+			obj2.put("BiddingBean", data.getBiddingBean());
 			jsonArray.put(obj2);
 			i++;
 		}
-		System.out.println(jsonArray);
+//		System.out.println(jsonArray);
 		out.println(jsonArray.toString());
 		
 

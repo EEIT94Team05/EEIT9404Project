@@ -16,7 +16,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 @Entity
-@Table(name="bidding")
+@Table(name="Bidding")
 public class BiddingBean implements Serializable{
 	
 	private BiddingPk biddingPk;
@@ -29,7 +29,7 @@ public class BiddingBean implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "BiddingBean [biddingPk=" + biddingPk + ", bidding_amount=" + bidding_amount + ", bidding_date="
+		return "BiddingBean [biddingCase_Id=" + biddingPk.getRepaircase_Id() + ", biddingCom_Id=" + biddingPk.getCom_id() + ", bidding_amount=" + bidding_amount + ", bidding_date="
 				+ bidding_date + ", bidding_context=" + bidding_context + ", bidding_img="
 				+ Arrays.toString(bidding_img) + "]";
 	}
@@ -76,7 +76,7 @@ public class BiddingBean implements Serializable{
 
 			BiddingPk biddingPk=new BiddingPk();
 			biddingPk.setRepaircase_Id(2);
-			biddingPk.setCom_id("eeit9457");
+			biddingPk.setCom_id("eeit9458");
 			BiddingBean select = session.get(BiddingBean.class, biddingPk);
 			System.out.println("select=" + select);
 

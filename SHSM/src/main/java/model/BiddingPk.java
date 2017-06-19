@@ -6,6 +6,7 @@ import javax.persistence.Embeddable;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -18,7 +19,7 @@ public class BiddingPk implements Serializable{
 //	@JoinColumn(name="repaircase_Id")
 	private Integer repaircase_Id;
 //	@Id
-//	@ManyToOne
+//	@OneToOne
 //	@JoinColumn(name="com_id")
 	private String com_id;
 	

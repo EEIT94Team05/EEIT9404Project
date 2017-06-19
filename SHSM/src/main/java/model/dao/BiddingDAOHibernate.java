@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
 import model.BiddingBean;
@@ -18,11 +19,40 @@ public class BiddingDAOHibernate implements BiddingDAO {
 	public Session getSession(){
 		return sessionFactory.getCurrentSession();
 	}
+	
+	public static void main(String[] args) {
+		Configuration config = new Configuration().configure("hibernate.cfg.xml");
+		SessionFactory sf = config.buildSessionFactory();
+		try {
+			sf.getCurrentSession().beginTransaction();
+			BiddingDAO productDao = new BiddingDAOHibernate(sf);
+
+			System.out.println(productDao.select(1));
+			
+			
+			sf.getCurrentSession().getTransaction().commit();
+			sf.getCurrentSession().close();
+		} finally {
+			sf.close();
+		}
+	}
+	
 	@Override
 	public BiddingBean select(BiddingPk biddingPk) {
 		return this.getSession().get(BiddingBean.class,biddingPk);
 	}
-
+	
+	@Override
+	public List<BiddingBean> select(Integer repaircase_id) {
+		List<BiddingBean> result = null;
+		if(repaircase_id!=null && repaircase_id!=0){
+			Query query = this.getSession().createQuery("from BiddingBean where repaircase_id = ? ",BiddingBean.class);
+			query.setParameter(0, repaircase_id);
+			result = query.list();
+		}
+		return result;
+	}
+	
 	@Override
 	public List<BiddingBean> select() {
 		Query query = this.getSession().createQuery("from BiddingBean",BiddingBean.class);

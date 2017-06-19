@@ -7,7 +7,11 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+
 import model.CompanyBean;
+
+import model.CustomerBean;
+
 import model.IRepaircaseDAO;
 import model.RepaircaseBean;
 
@@ -28,49 +32,44 @@ public class RepaircaseDAO implements IRepaircaseDAO {
 //		try {
 //			sf.getCurrentSession().beginTransaction();
 //			IRepaircaseDAO productDao = new RepaircaseDAO(sf);
-
-//			
-////			RepaircaseBean selects = productDao.select(1);
-////			List<RepaircaseBean> selects = productDao.select();
-////			System.out.println("selects="+selects);
-//			
-//			SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
-//			java.util.Date date1 =  new Date();
-//			java.util.Date date = null;
-//			SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//			String time = sdFormat.format(new Date());
-//			System.out.println(time);
-//			java.sql.Timestamp nowdate = java.sql.Timestamp.valueOf(time);
-//			try {
-//				date = sdf.parse("2017.8.15");
-//			} catch (ParseException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			CustomerBean a = sf.getCurrentSession().get(CustomerBean.class, "eeit9410");
-//			RepaircaseBean bean = new RepaircaseBean();
-//			bean.setRepaircase_budget("100");
-//			bean.setRepaircase_type("水電維修");
-//			bean.setRepaircase_title("水電師傅 須懂");
-//			bean.setRepaircase_area("中正區");
-//			bean.setRepaircase_address("台北市中正區林森南路");
-//			bean.setRepaircase_place("須定期至指定公司");
-//			bean.setRepaircase_repairdate(date);
-//			bean.setRepaircase_context("123");
-//			bean.setRepaircase_createdate(nowdate);
-//			bean.setRepaircase_status("未處理");
-//			bean.setRepaircase_score(3);
-//			bean.setCustomerbean(a);
-//			System.out.println(productDao.insert(bean));
-////			
-////			RepaircaseBean selects = productDao.select(9);
-////			CompanyBean companybean = sf.getCurrentSession().get(CompanyBean.class, 3);
-////			productDao.update(selects.getRepaircase_id(), "100", "水電維修", "水電師傅 須懂", "中正區", "台北市中正區林森南路", "須定期至指定公司", date, "22354s67", null, null, null, null,  "未處理", null, 2, null);
 //
+//			
+//			RepaircaseBean selects = productDao.select(1);
+////			List<RepaircaseBean> selects = productDao.select();
+//			System.out.println("selects="+selects);
+//			
+////			SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+////			java.util.Date date1 =  new Date();
+////			java.util.Date date = null;
+////			SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+////			String time = sdFormat.format(new Date());
+////			System.out.println(time);
+////			java.sql.Timestamp nowdate = java.sql.Timestamp.valueOf(time);
+////			try {
+////				date = sdf.parse("2017.8.15");
+////			} catch (ParseException e) {
+////				// TODO Auto-generated catch block
+////				e.printStackTrace();
+////			}
+////			CustomerBean a = sf.getCurrentSession().get(CustomerBean.class, "eeit9410");
+////			RepaircaseBean bean = new RepaircaseBean();
+////			bean.setRepaircase_budget("100");
+////			bean.setRepaircase_type("水電維修");
+////			bean.setRepaircase_title("水電師傅 須懂");
+////			bean.setRepaircase_area("中正區");
+////			bean.setRepaircase_address("台北市中正區林森南路");
+////			bean.setRepaircase_place("須定期至指定公司");
+////			bean.setRepaircase_repairdate(date);
+////			bean.setRepaircase_context("123");
+////			bean.setRepaircase_createdate(nowdate);
+////			bean.setRepaircase_status("未處理");
+////			bean.setRepaircase_score(3);
+////			bean.setCustomerbean(a);
+////			System.out.println(productDao.insert(bean));
+////			
+////			RepaircaseBean selects = productDao.select(8);
+////			productDao.update(selects.getRepaircase_id(), "1000", "水電維修", "水電師傅 須懂", "中正區", "台北市中正區林森南路", "須定期至指定公司", date, "22354s67", null, null, null, null,  "未處理", null, 2);
 ////			productDao.delete(8);
-//			
-//			
-//			
 //			
 //			sf.getCurrentSession().getTransaction().commit();
 //			sf.getCurrentSession().close();
@@ -103,8 +102,13 @@ public class RepaircaseDAO implements IRepaircaseDAO {
 	@Override
 	public RepaircaseBean update(Integer repaircase_id, String repaircase_budget, String repaircase_type,
 			String repaircase_title, String repaircase_area, String repaircase_address, String repaircase_place,
+<<<<<<< HEAD
 			Date repaircase_repairdate, String repaircase_context, Blob repaircase_img1,	Blob repaircase_img2,
 			Blob repaircase_img3, byte[] repaircase_media, String repaircase_status, Date repaircase_finday, Integer repaircase_score, CompanyBean companybean) {
+=======
+			Date repaircase_repairdate, String repaircase_context, byte[] repaircase_img1,	byte[] repaircase_img2,
+			byte[] repaircase_img3, byte[] repaircase_media, String repaircase_status, Date repaircase_finday, Integer repaircase_score) {
+>>>>>>> branch 'master' of https://github.com/EEIT94Team05/EEIT9404Project.git
 		
 		RepaircaseBean bean = this.select(repaircase_id);
 		if(bean!=null) {
@@ -124,7 +128,6 @@ public class RepaircaseDAO implements IRepaircaseDAO {
 			bean.setRepaircase_status(repaircase_status); 
 			bean.setRepaircase_finday(repaircase_finday); 
 			bean.setRepaircase_score(repaircase_score);
-			bean.setCompanybean(companybean);
 		}
 		return bean;
 	}

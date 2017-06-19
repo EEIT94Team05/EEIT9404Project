@@ -192,7 +192,7 @@ public class CaseServlet extends HttpServlet {
 		bean.setRepaircase_status(repaircase_status);
 		bean.setRepaircase_finday(repaircase_finday);
 		bean.setRepaircase_score(repaircase_score);
-//		bean.setCustomer_RepairCase(custbean);
+		bean.setCustomerbean(custbean);
 		
 //根據Model執行結果呼叫View
 		RepaircaseBean result = repaircaseservice.insert(bean);

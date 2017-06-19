@@ -32,10 +32,11 @@ public class CompanyDAO implements ICompanyDAO {
 			sf.getCurrentSession().beginTransaction();
 			
 			CompanyDAO companyDao = new CompanyDAO(sf);
-//			CompanyBean select = companyDao.select("eeit9450");
-//			System.out.println("select="+select);
+//			CompanyBean select = companyDao.select("eeit9458");
+			List<CompanyBean> select = companyDao.select();
+			System.out.println("select="+select);
 			
-			System.out.println(companyDao.selectAll());
+//			System.out.println(companyDao.selectJson());
 			
 			sf.getCurrentSession().getTransaction().commit();
 			sf.getCurrentSession().close();
@@ -49,7 +50,7 @@ public class CompanyDAO implements ICompanyDAO {
 	}
 
 	
-	public String selectAll(){
+	public String selectJson(){
 		int i = 0;
 		List<CompanyBean> list = this.getSession().createQuery("from CompanyBean",CompanyBean.class).getResultList();
 		String date=null;
