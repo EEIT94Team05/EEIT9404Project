@@ -48,6 +48,7 @@ public class CaseDetailServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("1231542132");
 		request.setCharacterEncoding("UTF-8");
 		//接收資料
 		String id = request.getParameter("id");
