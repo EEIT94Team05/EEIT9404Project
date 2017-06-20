@@ -64,6 +64,33 @@ public class CaseDetailServlet extends HttpServlet {
 			}
 		}
 		//呼叫Model
+		System.out.println("123456");
+		System.out.println("123456");
+		System.out.println("123456");
+		System.out.println("123456");
+		System.out.println("123456");
+		System.out.println("123456");
+		System.out.println("123456");
+		System.out.println("123456");
+		
+		System.out.println("123456");
+		System.out.println("123456");
+		System.out.println("123456");
+		System.out.println("123456");
+		System.out.println("123456");
+		System.out.println("123456");
+		System.out.println("123456");
+		System.out.println("123456");
+		
+		System.out.println("123456");
+		System.out.println("123456");
+		System.out.println("123456");
+		System.out.println("123456");
+		System.out.println("123456");
+		System.out.println("123456");
+		System.out.println("123456");
+		System.out.println("123456");
+		
 		//根據Model執行結果呼叫View
 		RepaircaseBean result = repaircaseservice.selectBidding(repaircase_id);
 		if(result==null) {
