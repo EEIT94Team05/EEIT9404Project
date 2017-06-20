@@ -74,21 +74,19 @@ public class CaseDetailServlet extends HttpServlet {
 		System.out.println("123456");
 		
 		System.out.println("123456");
-		System.out.println("123456");
-		System.out.println("123456");
-		System.out.println("123456");
-		System.out.println("123456");
-		System.out.println("123456");
-		System.out.println("123456");
+		System.out.println("12asfsfasf6");
+		System.out.println("asfasfaf");
+		System.out.println("asfasf456");
+		System.out.println("1asfasf56");
+		System.out.println("12asfafafs6");
 		System.out.println("123456");
 		
 		System.out.println("123456");
+		System.out.println("12asf56");
 		System.out.println("123456");
-		System.out.println("123456");
-		System.out.println("123456");
-		System.out.println("123456");
-		System.out.println("123456");
-		System.out.println("123456");
+		System.out.println("12asfasfa56");
+		System.out.println("123asfasf6");
+		System.out.println("1afasf456");
 		System.out.println("123456");
 		
 		//根據Model執行結果呼叫View
