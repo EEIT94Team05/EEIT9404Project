@@ -64,32 +64,28 @@ public class CaseDetailServlet extends HttpServlet {
 			}
 		}
 		//呼叫Model
+		System.out.println("sdasdasf");
+		System.out.println("1afdgadfg");
 		System.out.println("123456");
 		System.out.println("123456");
+		System.out.println("12adfadfh6");
+		System.out.println("123456");
+		System.out.println("1adfhadfh56");
+		System.out.println("12adfhdfhe56");
+		
 		System.out.println("123456");
 		System.out.println("123456");
-		System.out.println("123456");
-		System.out.println("123456");
+		System.out.println("12ahadf56");
+		System.out.println("123adfh6");
+		System.out.println("1erha6");
 		System.out.println("123456");
 		System.out.println("123456");
 		
 		System.out.println("123456");
 		System.out.println("123456");
+		System.out.println("12dfha56");
 		System.out.println("123456");
-		System.out.println("123456");
-		System.out.println("123456");
-		System.out.println("123456");
-		System.out.println("123456");
-		System.out.println("123456");
-		
-		System.out.println("123456");
-		System.out.println("123456");
-		System.out.println("123456");
-		System.out.println("123456");
-		System.out.println("123456");
-		System.out.println("123456");
-		System.out.println("123456");
-		System.out.println("123456");
+		System.out.println("12adhfadf456");
 		
 		//根據Model執行結果呼叫View
 		RepaircaseBean result = repaircaseservice.selectBidding(repaircase_id);
