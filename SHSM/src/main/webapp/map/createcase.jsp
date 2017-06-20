@@ -35,9 +35,16 @@
     <script src="http://140.138.170.15/js/owl.carousel.min.js"></script>
     <script src="http://140.138.170.15/js/nivo-lightbox.min.js"></script>
     <script src="http://140.138.170.15/js/custom.js"></script>
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/jquery.session.js"></script>
     <!-- to tune the size of iframe -->
     <script language="javaScript">
-    function autoResize(#themeframe) {
+    $(function(){
+    	var add = $.session.get('add');
+    	console.log(add);
+    	$('input[name="caseaddress"]').val(add);
+    })
+    function autoResize(themeframe) {
         $('#themeframe').height($('#themeframe').contents().height());
         $('#themeframe').width($('#themeframe').contents().width());
     }
