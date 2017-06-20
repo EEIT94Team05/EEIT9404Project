@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>testdata&photo</title>
+<title>testdata&photo123</title>
 </head>
 <body>
 <form action="<c:url value="/controller/selectbidding.controller"/>">
