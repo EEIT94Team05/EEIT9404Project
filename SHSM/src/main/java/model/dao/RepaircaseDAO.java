@@ -1,5 +1,6 @@
 package model.dao;
 
+import java.io.InputStream;
 import java.sql.Blob;
 import java.util.Date;
 import java.util.List;
@@ -100,16 +101,22 @@ public class RepaircaseDAO implements IRepaircaseDAO {
 	}
 
 	@Override
-	public RepaircaseBean update(Integer repaircase_id, String repaircase_budget, String repaircase_type,
-			String repaircase_title, String repaircase_area, String repaircase_address, String repaircase_place,
-<<<<<<< HEAD
-			Date repaircase_repairdate, String repaircase_context, Blob repaircase_img1,	Blob repaircase_img2,
-			Blob repaircase_img3, byte[] repaircase_media, String repaircase_status, Date repaircase_finday, Integer repaircase_score, CompanyBean companybean) {
-=======
-			Date repaircase_repairdate, String repaircase_context, byte[] repaircase_img1,	byte[] repaircase_img2,
-			byte[] repaircase_img3, byte[] repaircase_media, String repaircase_status, Date repaircase_finday, Integer repaircase_score) {
->>>>>>> branch 'master' of https://github.com/EEIT94Team05/EEIT9404Project.git
-		
+	public RepaircaseBean update(Integer repaircase_id,
+			String repaircase_budget,
+			String repaircase_type,
+			String repaircase_title,
+			String repaircase_area,
+			String repaircase_address,
+			String repaircase_place,
+			java.util.Date repaircase_repairdate,
+			String repaircase_context,
+			Blob repaircase_img1,
+			byte[] repaircase_media,
+			
+			String repaircase_status,
+			java.util.Date repaircase_finday,
+			Integer repaircase_score) {
+
 		RepaircaseBean bean = this.select(repaircase_id);
 		if(bean!=null) {
 			bean.setRepaircase_budget(repaircase_budget); 
@@ -121,8 +128,6 @@ public class RepaircaseDAO implements IRepaircaseDAO {
 			bean.setRepaircase_repairdate(repaircase_repairdate);
 			bean.setRepaircase_context(repaircase_context);
 			bean.setRepaircase_img1(repaircase_img1); 
-			bean.setRepaircase_img2(repaircase_img2); 
-			bean.setRepaircase_img3(repaircase_img3); 
 			bean.setRepaircase_media(repaircase_media);
 			
 			bean.setRepaircase_status(repaircase_status); 

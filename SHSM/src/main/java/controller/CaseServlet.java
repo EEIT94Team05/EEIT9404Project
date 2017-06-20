@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -19,6 +20,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+
+import org.hibernate.Hibernate;
 
 import hibernate.HibernateUtil;
 import model.CustomerBean;
@@ -49,6 +52,7 @@ public class CaseServlet extends HttpServlet {
 	
 	public String getFileNameFromPart(Part part) {
 		String header=part.getHeader("content-disposition");//取得檔案名稱
+		System.out.println("header="+header);
 		String fileName = new File(header.substring(header.lastIndexOf("=")+2,header.length()-1)).getName();
 		System.out.println("filename=" + fileName); // 測試用
 		if(fileName.length()!=0){
@@ -75,9 +79,6 @@ public class CaseServlet extends HttpServlet {
 		String temp2 = request.getParameter("repairdate");
 		String repaircase_context = request.getParameter("context");
 		String temp3 = request.getParameter("img1");
-//		String temp4 = request.getParameter("img2");
-//		String temp5 = request.getParameter("img3");
-		String temp6 = request.getParameter("media");
 		String temp7 = request.getParameter("createdate");
 		String repaircase_status = request.getParameter("status");
 		String temp8 = request.getParameter("finday");
@@ -87,6 +88,7 @@ public class CaseServlet extends HttpServlet {
 //驗證資料
 		Map<String, String> errors = new HashMap<String, String>();
 		request.setAttribute("errors", errors);
+		
 
 
 //轉換資料
@@ -112,37 +114,26 @@ public class CaseServlet extends HttpServlet {
 			} 
 		}
 		System.out.println(repaircase_repairdate);
+
 		
+		Blob blobi=null,blobm=null;
 		Collection<Part> parts = request.getParts();
-		
 		if(parts!=null){
 			for(Part part : parts){
-			if("application/octet-stream".equals(part.getContentType()) ){
-//				String filename = getFileNameFromPart(part);
-//				part.write(filename);
+				System.out.println(part.getContentType());
+			if("image/jpeg".equals(part.getContentType()) || "image/png".equals(part.getContentType())){
 				is = part.getInputStream();
-				
+				System.out.println(part.getSize());
+				blobi = HibernateUtil.getSessionFactory().getCurrentSession().getLobHelper().createBlob(is,-1);
+			}
+			if("application/octet-stream".equals(part.getContentType())){
+				is = part.getInputStream();
+				System.out.println(part.getSize());
+				blobm = HibernateUtil.getSessionFactory().getCurrentSession().getLobHelper().createBlob(is,-1);
 			}
 		}
 		}
 		
-		
-//		Blob repaircase_img1 = null;
-//		if(temp3!=null && temp3.length()!=0) {
-//			repaircase_img1 = temp3.getBytes();
-//		}
-//		Blob repaircase_img2 = null;
-//		if(temp4!=null && temp4.length()!=0) {
-//			repaircase_img2 = temp4.getBytes();	
-//		}
-//		Blob repaircase_img3 = null;
-//		if(temp5!=null && temp5.length()!=0) {
-//			repaircase_img3 = temp5.getBytes();	
-//		}
-		byte[] repaircase_media = null;
-		if(temp6!=null && temp6.length()!=0) {
-			repaircase_media = temp6.getBytes();	
-		}
 		
 		SimpleDateFormat cdformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		java.sql.Timestamp repaircase_createdate = null;
@@ -185,14 +176,14 @@ public class CaseServlet extends HttpServlet {
 		bean.setRepaircase_place(repaircase_place);
 		bean.setRepaircase_repairdate(repaircase_repairdate);
 		bean.setRepaircase_context(repaircase_context);
-//		bean.setRepaircase_img1(repaircase_img1);
-//		bean.setRepaircase_img2(repaircase_img2);
-//		bean.setRepaircase_img3(repaircase_img3);
+		bean.setRepaircase_img1(blobi);
 		bean.setRepaircase_createdate(repaircase_createdate);
 		bean.setRepaircase_status(repaircase_status);
 		bean.setRepaircase_finday(repaircase_finday);
 		bean.setRepaircase_score(repaircase_score);
 		bean.setCustomerbean(custbean);
+
+		
 		
 //根據Model執行結果呼叫View
 		RepaircaseBean result = repaircaseservice.insert(bean);

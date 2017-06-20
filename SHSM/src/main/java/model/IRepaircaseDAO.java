@@ -1,5 +1,6 @@
 package model;
 
+import java.io.InputStream;
 import java.sql.Blob;
 import java.util.List;
 
@@ -20,8 +21,6 @@ public interface IRepaircaseDAO {
 			java.util.Date repaircase_repairdate,
 			String repaircase_context,
 			Blob repaircase_img1,
-			Blob repaircase_img2,
-			Blob repaircase_img3,
 			byte[] repaircase_media,
 			
 			String repaircase_status,

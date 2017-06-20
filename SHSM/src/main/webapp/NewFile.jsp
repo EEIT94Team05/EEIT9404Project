@@ -10,7 +10,7 @@
 <body>
 <form action="<c:url value="/selectbidding.controller"/>">
 	 <div action="<c:url value="/selectbidding.controller"/>">
-         <input name="a" >
+         <input name="id" >
      </div>
 	<button type="submit">CHECK</button>
 	
@@ -21,7 +21,7 @@
 <table>
 	<thead>
 	<tr>
-		<th>repaircase_id</th>
+	<th>repaircase_id</th>
 	<th>repaircase_budget</th>
 	<th>repaircase_type</th>
 	<th>repaircase_title</th>
@@ -31,8 +31,8 @@
 	<th>repaircase_repairdate</th>
 	<th>repaircase_context</th>
 	<th>repaircase_img1</th>
-	<th>repaircase_img2</th>
-	<th>repaircase_img3</th>
+<!-- 	<th>repaircase_img2</th> -->
+<!-- 	<th>repaircase_img3</th> -->
 	<th>repaircase_media</th>
 	<th>repaircase_createdate</th>
 	<th>repaircase_status</th>
@@ -53,9 +53,13 @@
 		<td>${selectBidding.repaircase_place}</td>
 		<td>${selectBidding.repaircase_repairdate}</td>
 		<td>${selectBidding.repaircase_context}</td>
-		<td>${selectBidding.repaircase_img1}</td>
-		<td>${selectBidding.repaircase_img2}</td>
-		<td>${selectBidding.repaircase_img3}</td>
+<%-- 		<td>${selectBidding.repaircase_img1}</td> --%>
+		<td>
+		<img width="100" height="100" src="${pageContext.request.contextPath}/controller/GetCaseImageServlet?id=${selectBidding.repaircase_id}"/>
+		</td>
+		
+<%-- 		<td>${selectBidding.repaircase_img2}</td> --%>
+<%-- 		<td>${selectBidding.repaircase_img3}</td> --%>
 		<td>${selectBidding.repaircase_media}</td>
 		<td>${selectBidding.repaircase_createdate}</td>
 		<td>${selectBidding.repaircase_status}</td>

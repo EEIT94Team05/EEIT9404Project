@@ -1,5 +1,6 @@
 package model;
 
+import java.io.InputStream;
 import java.io.Serializable;
 
 import java.sql.Blob;
@@ -74,8 +75,8 @@ public class RepaircaseBean implements Serializable{
 										   select.repaircase_repairdate + ", " +
 										   select.repaircase_context + ", " +
 										   select.repaircase_img1 + ", " +
-										   select.repaircase_img2 + ", " +
-										   select.repaircase_img3 + ", " +
+//										   select.repaircase_img2 + ", " +
+//										   select.repaircase_img3 + ", " +
 										   select.repaircase_media + ", " +
 										   select.repaircase_createdate + ", " +
 										   select.repaircase_status + ", " +
@@ -104,8 +105,7 @@ public class RepaircaseBean implements Serializable{
 	public String toString() {
 		return "RepaircaseBean ["+ repaircase_id+", "+repaircase_type+", "+ repaircase_budget + repaircase_title + ", " +
 				    repaircase_area + ", " +  repaircase_address + ", " + repaircase_place + ", " + repaircase_repairdate + ", " +
-				    repaircase_context + ", " + repaircase_img1 + ", " + repaircase_img2 + ", " + repaircase_img3 + ", " +
-				    repaircase_media + ", " + repaircase_createdate + ", " + repaircase_status + ", " + repaircase_finday + ", " +
+				    repaircase_context + ", " + repaircase_img1 + ", " + repaircase_media + ", " + repaircase_createdate + ", " + repaircase_status + ", " + repaircase_finday + ", " +
 				    repaircase_score + ", " + customerbean + ", "  + biddingBean + "]"; }
 
 	public Integer getRepaircase_id() {
@@ -186,22 +186,6 @@ public class RepaircaseBean implements Serializable{
 
 	public void setRepaircase_img1(Blob repaircase_img1) {
 		this.repaircase_img1 = repaircase_img1;
-	}
-
-	public Blob getRepaircase_img2() {
-		return repaircase_img2;
-	}
-
-	public void setRepaircase_img2(Blob repaircase_img2) {
-		this.repaircase_img2 = repaircase_img2;
-	}
-
-	public Blob getRepaircase_img3() {
-		return repaircase_img3;
-	}
-
-	public void setRepaircase_img3(Blob repaircase_img3) {
-		this.repaircase_img3 = repaircase_img3;
 	}
 
 

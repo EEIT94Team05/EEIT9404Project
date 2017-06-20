@@ -105,7 +105,7 @@
                                     <h6 align="right"><strong><font color="#FF0000">*</font>案件標題</strong>：</h6>
                                 </div>
                                 <div class="col-md-6">
-                                    <textarea placeholder="請輸入標題" id="comment" name="casetitle" cols="45" rows="1" maxlength="10" aria-required="true" required="required"></textarea>
+                                    <textarea placeholder="請輸入標題" id="comment" name="casetitle" cols="45" rows="1" maxlength="20" aria-required="true" required="required"></textarea>
                                 </div>
                             </div>
                             <div class="row marginbot-20">

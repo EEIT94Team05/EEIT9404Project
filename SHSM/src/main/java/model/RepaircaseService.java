@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -64,7 +65,6 @@ public class RepaircaseService {
 										  bean.getRepaircase_area(), bean.getRepaircase_address(), 
 										  bean.getRepaircase_place(), bean.getRepaircase_repairdate(), 
 										  bean.getRepaircase_context(), bean.getRepaircase_img1(), 
-										  bean.getRepaircase_img2(), bean.getRepaircase_img3(), 
 										  bean.getRepaircase_media(), bean.getRepaircase_status(), 
 										  bean.getRepaircase_finday(), bean.getRepaircase_score());
 		}
@@ -92,6 +92,7 @@ public class RepaircaseService {
 		
 		if(id!=null && id!=0){
 			result = repaircasedao.select(id);
+
 		}
 		return result;
 	}
