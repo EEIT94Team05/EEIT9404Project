@@ -66,7 +66,7 @@ public class CaseDetailServlet extends HttpServlet {
 		//根據Model執行結果呼叫View
 		RepaircaseBean result = repaircaseservice.selectBidding(repaircase_id);
 		if(result==null) {
-			System.out.println("NO");
+			System.out.println("NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
 		} else {
 
 //			byte[] buf = null;
