@@ -1,6 +1,14 @@
 /target/
+<<<<<<< HEAD
 /.settings/
 /.classpath
 /.project
 
 
+=======
+/.classpath
+/.project
+/.settings/
+>>>>>>> branch 'master' of https://github.com/EEIT94Team05/EEIT9404Project.git
+/.gitignore
+/pom.xml
