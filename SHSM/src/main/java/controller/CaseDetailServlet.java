@@ -33,7 +33,7 @@ import model.RepaircaseService;
 import model.dao.RepaircaseDAO;
 
 @WebServlet(
-		urlPatterns={"/selectbidding.controller"}
+		urlPatterns={"/controller/selectbidding.controller"}
 )
 public class CaseDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

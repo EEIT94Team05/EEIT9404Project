@@ -8,8 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="<c:url value="/selectbidding.controller"/>">
-	 <div action="<c:url value="/selectbidding.controller"/>">
+<form action="<c:url value="/controller/selectbidding.controller"/>">
+	 <div action="<c:url value="/controller/selectbidding.controller"/>">
          <input name="id" >
      </div>
 	<button type="submit">CHECK</button>
