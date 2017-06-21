@@ -19,7 +19,7 @@ import model.CustomerService;
 import model.dao.CustomerDAO;
 
 @WebServlet(
-		urlPatterns={"/secure/Customerlogin.controller"}
+		urlPatterns={"/Customerlogin.controller"}
 )
 public class CustomerLoginServlet extends HttpServlet {
 	private CustomerService customerService;
@@ -77,8 +77,7 @@ public class CustomerLoginServlet extends HttpServlet {
 			session.setAttribute("custuser", bean);
 			
 			String path = request.getContextPath();
-//			response.sendRedirect(path+"/member.jsp");
-			response.sendRedirect(path+"/map/mapframe.jsp");
+			response.sendRedirect(path+"/Tinymap/click.jsp");
 		}
 	}
 	@Override
