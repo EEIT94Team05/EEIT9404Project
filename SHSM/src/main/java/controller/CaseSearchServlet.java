@@ -28,7 +28,7 @@ import model.RepaircaseService;
 import model.dao.RepaircaseDAO;
 
 @WebServlet(
-		urlPatterns={"/map/casesearch.controller"}
+		urlPatterns={"/Tinymap/casesearch.controller"}
 )
 public class CaseSearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
