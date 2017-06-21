@@ -6,7 +6,6 @@
     <title>Google Maps JavaScript API Example</title>
     <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyAANfy7yVHE2MHmM2z_Rxm3YmXosQAT6b8" type="text/javascript"></script>
     <script src="../js/jquery-3.2.1.min.js"></script>
-    <script src="../js/jquery.session.js"></script>
     <script type="text/javascript">
     $(function () {
     	if (GBrowserIsCompatible()) {
@@ -100,9 +99,14 @@
 	                                } else {
 	                                    var result = addresses.Placemark[0];
 	                                    var add = result.address;
-	                                    
+	                                    //
 	                                    console.log(result.address);
-	                                    $.session.set('add', add);
+	                                    var contextPath = "${pageContext.request.contextPath}";
+	                                    var request = new XMLHttpRequest();
+	                                    request.open("POST", contextPath+"/map/mapframe.jsp");
+	                                    request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+	                                    request.send(add);
+	                                    //
 	                                    
 	                                    myMarker.openInfoWindowHtml(result.address);
 	                                    document.getElementById('inLatLng').value = result.address;

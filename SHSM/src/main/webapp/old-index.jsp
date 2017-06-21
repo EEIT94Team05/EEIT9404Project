@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 
 <head>
 <title>SHOW HOW SHOW MAP</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript">
-	
 	
     addEventListener("load", function() {
         setTimeout(hideURLbar, 0);
@@ -17,7 +16,6 @@
         window.scrollTo(0, 1);
     }
     
-
 </script>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <link href="css/style.css" rel='stylesheet' type='text/css' />
@@ -39,7 +37,8 @@
 			<div class="container">
 				<div class="navigation">
 					<div class="logo">
-						<h1>ass="navbar-brand link link--yaku" href="index.html"><span>S</span><span>H</span><span>S</span><span>M</span></a>
+						<h1>
+							<a class="navbar-brand link link--yaku" href="index.html"><span>S</span><span>H</span><span>S</span><span>M</span></a>
 						</h1>
 					</div>
 					<div class="top-nav">

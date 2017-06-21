@@ -1,7 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -78,7 +75,6 @@
                     <div class="wow flipInY" data-wow-offset="0" data-wow-delay="0.4s">
                         <div class="section-heading text-center">
                             <h3 class="h-bold">新建立案件</h3>
-                          
                         </div>
                     </div>
                 </div>
@@ -88,16 +84,13 @@
             <div class="row marginbot-80">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="regbox">
-                        <form enctype="multipart/form-data" id="form1" class="wow bounceInUp" action="<c:url value="/map/createcase.controller" />"  data-wow-offset="10" data-wow-delay="0.2s" method="post" data-ajax="false">
+                        <form id="form1" class="wow bounceInUp" data-wow-offset="10" data-wow-delay="0.2s" method="post" data-ajax="false">
                             <div class="row marginbot-20">
                                 <div class="col-md-6 xs-marginbot-20">
                                     <h6 align="right"><strong>案件種類</strong>：</h6>
                                 </div>
                                 <div class="col-md-6">
-                                    <select class="form-control input-lg" name="casetype" type="text" class="normalinput" id="#" value="ex:水電">
-                                    	<option>a</option>
-                                    	<option>b</option>
-                                    </select>
+                                    <input class="form-control input-lg" name="m_passwdrecheck" type="text" class="normalinput" id="#" value="ex:水電">
                                 </div>
                             </div>
                             <div class="row marginbot-20">
@@ -105,7 +98,7 @@
                                     <h6 align="right"><strong><font color="#FF0000">*</font>案件標題</strong>：</h6>
                                 </div>
                                 <div class="col-md-6">
-                                    <textarea placeholder="請輸入標題" id="comment" name="casetitle" cols="45" rows="1" maxlength="10" aria-required="true" required="required"></textarea>
+                                    <textarea placeholder="請輸入標題" id="comment" name="comment" cols="45" rows="1" maxlength="10" aria-required="true" required="required"></textarea>
                                 </div>
                             </div>
                             <div class="row marginbot-20">
@@ -113,7 +106,7 @@
                                     <h6 align="right"><strong><font color="#FF0000">*</font>區域</strong>：</h6>
                                 </div>
                                 <div class="col-md-6">
-                                    <input class="form-control input-lg" name="casearea" type="text" class="normalinput" id="m_div" value="台北市">
+                                    <input class="form-control input-lg" name="m_div" type="text" class="normalinput" id="m_div" value="台北市">
                                 </div>
                             </div>
                             <div class="row marginbot-20">
@@ -121,7 +114,7 @@
                                     <h6 align="right"><strong><font color="#FF0000">*</font>地址</strong>：</h6>
                                 </div>
                                 <div class="col-md-6">
-                                    <input class="form-control input-lg" name="caseaddress" type="text" class="normalinput" id="m_dep" value="請填入住址                      ">
+                                    <input class="form-control input-lg" name="m_dep" type="text" class="normalinput" id="m_dep" value="請填入住址                      ">
                                 </div>
                             </div>
                             <div class="row marginbot-20">
@@ -129,7 +122,7 @@
                                     <h6 align="right"><strong><font color="#FF0000">*</font>期望維修日期</strong>：</h6>
                                 </div>
                                 <div class="col-md-6">
-                                    <input class="form-control input-lg" name="repairdate" type="date" class="normalinput" id="m_gra_year" value="93">
+                                    <input class="form-control input-lg" name="m_gra_year" type="date" class="normalinput" id="m_gra_year" value="93">
                                 </div>
                             </div>
                             <div class="row marginbot-20">
@@ -137,21 +130,21 @@
                                     <h6 align="right"><strong><font color="#FF0000">*</font>維修地點</strong>：</h6>
                                 </div>
                                 <div class="col-md-6">
-                                    <input class="form-control input-lg" name="caseplace" type="text" class="normalinput" id="m_email_one" value="">
+                                    <input class="form-control input-lg" name="m_email_one" type="text" class="normalinput" id="m_email_one" value="">
                                 </div>
                             </div>
                             <div class="row marginbot-20" id="">
                                 <div class="col-md-6 xs-marginbot-20">
                                     <h6 align="right"><strong >內文</strong>：</h6>
                                 </div>
-                                <textarea placeholder="請輸入詳細說明" id="comment" name="context" cols="45" rows="3" maxlength="65525" aria-required="true" required="required"></textarea>
+                                <textarea placeholder="請輸入詳細說明" id="comment" name="comment" cols="45" rows="3" maxlength="65525" aria-required="true" required="required"></textarea>
                             </div>
                             <div class="row marginbot-20">
                                 <div class="col-md-6 xs-marginbot-20">
                                     <h6 align="right"><strong>照片上傳</strong>：</h6>
                                 </div>
                                 <div class="col-md-6">
-                                    <input class="form-control input-lg" name="img1" type="file" class="normalinput" id="m_em_sta" value="" multiple>
+                                    <input class="form-control input-lg" name="m_em_sta" type="file" class="normalinput" id="m_em_sta" value="">
                                 </div>
                             </div>
                             <div class="row marginbot-20">
@@ -159,7 +152,7 @@
                                     <h6 align="right"><strong>影片上傳</strong>：</h6>
                                 </div>
                                 <div class="col-md-6">
-                                    <input class="form-control input-lg" name="media" type="file" class="normalinput" id="m_em_un" value="">
+                                    <input class="form-control input-lg" name="m_em_un" type="file" class="normalinput" id="m_em_un" value="">
                                 </div>
                             </div>
                             <div class="row marginbot-20">
@@ -169,15 +162,16 @@
                             </div>
                             <div class="row">
                                 <input name="m_id" type="hidden" id="m_id" value="2">
-                                <input name="action" type="hidden" id="action" value="update">
+                                <input name="action" type="hidden" id="action" value="update">                              
                                 <div class="col-md-4">
+                                    <button class="btn btn-skin btn-lg btn-block" type="reset" name="Submit" onClick="window.history.back();">回到地圖</button>
+                                </div>
+                                  <div class="col-md-4">
                                     <button class="btn btn-skin btn-lg btn-block" type="submit" name="Submit2">確定新增</button>
                                 </div>
                                 <div class="col-md-4">
-                                    <button class="btn btn-skin btn-lg btn-block" type="reset" name="Submit3">取消</button>
-                                </div>
-                                <div class="col-md-4">
-                                    <button class="btn btn-skin btn-lg btn-block" type="reset" name="Submit" onClick="window.history.back();">回到地圖</button>
+                                    <button class="btn btn-skin btn-lg btn-block" type="reset" >清除</button>
+                                   
                                 </div>
                             </div>
                         </form>
@@ -186,7 +180,6 @@
             </div>
         </div>
     </section>
-    <!-- /Section: Update -->
 </body>
 
 </html>
