@@ -116,26 +116,38 @@
 									</h4>
 								</div>
 								<!--客戶基本資料  傳送接收 這邊噢 -->
-								<div id="collapse-one" class="panel-collapse collapse in">
-									<div class="panel-body"></div>
-									<form action="">
-										<input type="text" value="姓名:xxx"
-											style="border: 0px; margin: 0 0 10px 10px"
-											readonly="readonly"> <br /> <input type="text"
-											value="會員編號:A0000000009"
-											style="border: 0px; margin: 0 0 10px 10px"
-											readonly="readonly"> <br /> <input type="text"
-											value="信箱:wiewe@gmail.com"
-											style="border: 0px; margin: 0 0 10px 10px"
-											readonly="readonly"> <br /> <input type="text"
-											value="地址:台北市大安區信義路三段118號"
-											style="border: 0px; margin: 0 0 10px 10px"
-											readonly="readonly"> <br /> <input type="text"
-											value="電話:0952413687"
-											style="border: 0px; margin: 0 0 10px 10px"
-											readonly="readonly"> <br />
-									</form>
+								<h2 class="sub-header">會員列表</h2>
+								<hr />
+								<div class="table-responsive">
+									<table class="table table-striped" id="tb">
+										<thead>
+											<tr>
+												<th>帳號</th>
+												<th>密碼</th>
+												<th>名稱</th>
+												<th>住址</th>
+												<th>電話</th>
+												<th>註冊日期</th>
+												<th>信箱</th>
+												<th>性別</th>
+											</tr>
+										</thead>
+										<tbody>
+
+
+										</tbody>
+									</table>
 								</div>
+								<script>
+									$(function() {
+
+										$('#tb').DataTable({
+											"ajax" : "CustomerALLServlet",
+											"info" : false
+										});
+
+									});
+								</script>
 							</div>
 							<!-- End Accordion 1 -->
 						</div>
@@ -236,10 +248,10 @@
 					</div>
 				</div>
 				<!--編輯資訊欄位這邊結束-->
-				
-				
-				
-				
+
+
+
+
 				<!-- 下方導覽 -->
 				<div class="hr1" style="margin-bottom: 25px;"></div>
 				<div class="row">

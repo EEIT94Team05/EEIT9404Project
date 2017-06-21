@@ -63,12 +63,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="top-nav">
                     <span class="menu"><img src="images/menu.png" alt=" " /></span>
                     <ul class="nav1 nav nav-wil cl-effect-11" id="cl-effect-11">
-                        <li><a class="active" data-hover="" href="index.html">首頁 <span class="sr-only">(current)</span></a></li>
-                        <li><a data-hover="" href="changlogin.html">會員專區</a></li>
-                        <li><a data-hover="" href="changlogin.html">廠商專區</a></li>
+                        <li><a class="active" data-hover="" href="index.jsp">首頁 <span class="sr-only">(current)</span></a></li>
+                        <li><a data-hover="" href="changlogin.jsp">會員專區</a></li>
+                        <li><a data-hover="" href="changlogin.jsp">廠商專區</a></li>
                         <li><a data-hover="" href="
 Mall.html">購物商城</a></li>
-                        <li><a data-hover="" href="About.html">關於我們</a></li>
+                        <li><a data-hover="" href="About.jsp">關於我們</a></li>
                         <li><a href="register.html">註冊</a></li>
                     </ul>
                     <!--轉跳頁面內容開始-->
