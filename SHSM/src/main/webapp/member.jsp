@@ -33,7 +33,7 @@
         </div>
     </div>
     <div>  
-        <iframe src="file:///C:/Users/liu/Desktop/%E5%B0%88%E9%A1%8C%E5%B0%88%E5%8D%80/web/bootstarptest.html" frameborder="0" width="1550" height="900"  scrolling="no"></iframe>
+        <iframe src="bootstarptest.jsp" frameborder="0" width="1550" height="900"  scrolling="no"></iframe>
     </div>
     <script src="js/bootstrap.js"></script>
 </body>

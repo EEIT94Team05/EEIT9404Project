@@ -23,7 +23,7 @@
         </ul>
     </div>
     <div>
-        <iframe src="file:///C:/Users/liu/Desktop/%E5%B0%88%E9%A1%8C%E5%B0%88%E5%8D%80/web/casepage/services.html" frameborder="0" width="1550" height="1000" scrolling="no"></iframe>
+        <iframe src="caepage/services.jsp" frameborder="0" width="1550" height="1000" scrolling="no"></iframe>
     </div>
 </body>
 
