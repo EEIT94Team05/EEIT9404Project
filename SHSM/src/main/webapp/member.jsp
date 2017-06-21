@@ -17,13 +17,13 @@
             <div class="navigation">
                 <div class="logo">
                     <h1>
-                            <a class="navbar-brand link link--yaku" href="member.html"><span>會</span><span>員</span><span>專</span><span>區</span></a>
+                            <a class="navbar-brand link link--yaku" href="member.jsp"><span>會</span><span>員</span><span>專</span><span>區</span></a>
                     </h1>
                 </div>
                 <div class="top-nav">
                     <span class="menu"><img src="images/menu.png" alt=" " /></span>
                     <ul class="nav1 nav nav-wil cl-effect-11" id="cl-effect-11">
-                        <li><a class="active" data-hover="" href="irikuji/index.html">首頁 <span class="sr-only">(current)</span></a></li>
+                        <li><a class="active" data-hover="" href="irikuji/index.jsp">首頁 <span class="sr-only">(current)</span></a></li>
                         <li><a href="#">welcome xxxx</a></li>
                         <li><a href="#">登出</a></li>
                     </ul>

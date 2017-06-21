@@ -1,4 +1,4 @@
-/*�u�@�D�����]�w��*/
+/*工作主介面設定檔*/
 body {
     margin: 0;
     padding: 0;
@@ -785,7 +785,7 @@ ul.nav-wil li:nth-child(6) a:hover {
 /*-- about --*/
 
 .page-head {
-    background: url(video/training.jpg) no-repeat 0px 0px;
+    background: url(../video/training.jpg) no-repeat 0px 0px;
     background-size: cover;
     -webkit-background-size: cover;
     -o-background-size: cover;
