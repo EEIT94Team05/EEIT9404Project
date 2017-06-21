@@ -204,6 +204,15 @@ a, a:focus {
 								</div>
 								<div class="form-group">
 									<label class="col-sm-4 control-label"> <font
+										color="#FF0000">*</font>金額
+									</label>
+									<div class="col-sm-6">
+										<input type="text" class="form-control" id="firstname"
+											placeholder="請輸入金額">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-4 control-label"> <font
 										color="#FF0000">*</font>地址
 									</label>
 									<div class="col-sm-6">
@@ -216,7 +225,7 @@ a, a:focus {
 										color="#FF0000">*</font>維修日期
 									</label>
 									<div class="col-sm-6">
-										<input type="text" class="form-control" id="firstname"
+										<input type="date" class="form-control" id="firstname"
 											placeholder="请輸入日期">
 									</div>
 								</div>
@@ -232,21 +241,21 @@ a, a:focus {
 								<div class="form-group">
 									<label class="col-sm-4 control-label">照片上傳</label>
 									<div class="col-sm-6">
-										<input type="text" class="form-control" id="firstname"
+										<input type="file" class="form-control" id="firstname"
 											placeholder="照片上傳">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-4 control-label">影片上傳</label>
 									<div class="col-sm-6">
-										<input type="text" class="form-control" id="firstname"
+										<input type="file" class="form-control" id="firstname"
 											placeholder="影片上傳">
 									</div>
 								</div>
 								<div class="input-group" style="margin: 0 0 0 30px">
 									<textarea placeholder="請輸入詳細說明" id="comment" name="comment"
 										cols="45" rows="3" maxlength="65525" aria-required="true"
-										required="required"></textarea>
+										required="required" style="resize: none;"></textarea>
 								</div>
 								<div class="form-group">
 									<div class="col-sm-offset-8 col-sm-10">
@@ -270,30 +279,7 @@ a, a:focus {
 						src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.min.js'></script>
 					<script
 						src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.ui.min.js'></script>
-					<script type="text/javascript">
-						// add the animation to the modal
-// 						$(".modal").each(function(index){$(this)}.on('show.bs.modal',function(e) {
-// 								var open = $(this).attr('data-easein');
-// 								if (open == 'shake') {
-// 									$('.modal-dialog').velocity('callout.'+ open);
-// 								} else if (open == 'pulse') {
-// 									$('.modal-dialog').velocity('callout.'+ open);
-// 								} else if (open == 'tada') {
-// 									$('.modal-dialog').velocity('callout.'+ open);
-// 								} else if (open == 'flash') {
-// 									$('.modal-dialog').velocity('callout.'+ open);
-// 								} else if (open == 'bounce') {
-// 									$('.modal-dialog').velocity('callout.'+ open);
-// 								} else if (open == 'swing') {
-// 									$('.modal-dialog').velocity('callout.'+ open);
-// 								} else {
-// 									$('.modal-dialog').velocity('transition.'+ open);
-// 								}
 
-// 							})
-						
-// 						);
-					</script>
 </body>
 
 </html>
