@@ -37,7 +37,7 @@ import model.dao.RepaircaseDAO;
 		)
 
 @WebServlet(
-		urlPatterns={"/map/createcase.controller"}
+		urlPatterns={"/Tinymap/createcase.controller"}
 )
 public class CaseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -70,7 +70,7 @@ public class CaseServlet extends HttpServlet {
 	
 //接收資料
 		String temp1 = request.getParameter("id");
-		String repaircase_budget = request.getParameter("budget");
+		String repaircase_budget = request.getParameter("casebudget");
 		String repaircase_type = request.getParameter("casetype");
 		String repaircase_title = request.getParameter("casetitle");
 		String repaircase_area = request.getParameter("casearea");
@@ -193,7 +193,7 @@ public class CaseServlet extends HttpServlet {
 			request.setAttribute("insert", result);
 		}
 		request.getRequestDispatcher(
-				"/map/Case.jsp").forward(request, response);
+				"/Tinymap/click.jsp").forward(request, response);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req,
