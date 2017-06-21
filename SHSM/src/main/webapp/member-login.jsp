@@ -48,11 +48,11 @@
 				<div class="top-nav">
 					<span class="menu"><img src="images/menu.png" alt=" " /></span>
 					<ul class="nav1 nav nav-wil cl-effect-11" id="cl-effect-11">
-						<li><a class="active" data-hover="" href="index.html">首頁
+						<li><a class="active" data-hover="" href="index.jsp">首頁
 								<span class="sr-only">(current)</span>
 						</a></li>
-						<li><a data-hover="" href="member-register.html">會員專區</a></li>
-						<li><a data-hover="" href="Manufacturers-register.html">廠商專區</a></li>
+						<li><a data-hover="" href="member-register.jsp">會員專區</a></li>
+						<li><a data-hover="" href="Manufacturers-register.jsp">廠商專區</a></li>
 					</ul>
 				</div>
 				<div class="clearfix"></div>
@@ -68,21 +68,19 @@
 				<div class="registration-grids">
 					<div class="reg-form">
 						<div class="reg">
-							<form>
+							<form action="<c:url value="/Customerlogin.controller" />" method="get">
 								<ul>
 									<li class="text-info">帳號:</li>
-									<li><input type="text" value="" style="margin: 0 -150px"></li>
+									<li><input type="text" value="" style="margin: 0 -150px" name="username"></li>
 								</ul>
 								<ul>
 									<li class="text-info">密碼:</li>
-									<li><input type="text" value="" style="margin: 0 -150px"></li>
+									<li><input type="text" value="" style="margin: 0 -150px" name="password"></li>
 								</ul>
 								<div style="margin: -20px 0 0 30px">
 									<a href="member-register.html" style="margin: 0 0 0 250px">尚未擁有帳號?</a>
 									<input type="submit" value="登入" style="margin: 0 0 0 240px">
 								</div>
-
-
 							</form>
 						</div>
 					</div>
