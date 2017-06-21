@@ -214,6 +214,15 @@ a, a:focus {
 								</div>
 								<div class="form-group">
 									<label class="col-sm-4 control-label"> <font
+										color="#FF0000">*</font>金額
+									</label>
+									<div class="col-sm-6">
+										<input type="text" class="form-control" id="firstname"
+											placeholder="請輸入金額">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-4 control-label"> <font
 										color="#FF0000">*</font>地址
 									</label>
 									<div class="col-sm-6">
@@ -227,6 +236,7 @@ a, a:focus {
 									</label>
 									<div class="col-sm-6">
 										<input type="date" class="form-control" name="repairdate" id="firstname"
+
 											placeholder="请輸入日期">
 									</div>
 								</div>

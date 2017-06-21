@@ -63,9 +63,9 @@
                 <div class="top-nav">
                     <span class="menu"><img src="images/menu.png" alt=" " /></span>
                     <ul class="nav1 nav nav-wil cl-effect-11" id="cl-effect-11">
-                        <li><a class="active" data-hover="" href="index.html">首頁 <span class="sr-only">(current)</span></a></li>
-                        <li><a data-hover="" href="member-register.html">會員專區</a></li>
-                        <li><a data-hover="" href="Manufacturers-register.html">廠商專區</a></li>
+                        <li><a class="active" data-hover="" href="index.jsp">首頁 <span class="sr-only">(current)</span></a></li>
+                        <li><a data-hover="" href="member-register.jsp">會員專區</a></li>
+                        <li><a data-hover="" href="Manufacturers-register.jsp">廠商專區</a></li>
                     </ul>
                 </div>
                 <div class="clearfix"></div>

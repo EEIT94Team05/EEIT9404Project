@@ -7,17 +7,13 @@
 <title>SHOW HOW SHOW MAP</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript">
-	
-	
     addEventListener("load", function() {
         setTimeout(hideURLbar, 0);
     }, false);
 
     function hideURLbar() {
         window.scrollTo(0, 1);
-    }
-    
-
+    } 
 </script>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <link href="css/style.css" rel='stylesheet' type='text/css' />
@@ -32,14 +28,13 @@
 }
 </style>
 </head>
-
 <body>
 	<div data-vide-bg="video/training">
 		<div class="center-container">
 			<div class="container">
 				<div class="navigation">
 					<div class="logo">
-						<h1>ass="navbar-brand link link--yaku" href="index.html"><span>S</span><span>H</span><span>S</span><span>M</span></a>
+						<h1 class="navbar-brand link link--yaku" href="index.html"><span>S</span><span>H</span><span>S</span><span>M</span></a>
 						</h1>
 					</div>
 					<div class="top-nav">
