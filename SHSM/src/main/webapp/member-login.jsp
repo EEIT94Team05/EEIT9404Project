@@ -19,21 +19,12 @@
     }
     
 </script>
-
 <link href="css/style.css" rel='stylesheet' type='text/css' />
 <script src="js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
-<script type="text/javascript">
-	jQuery(document).ready(function($) {
-		$(".scroll").click(function(event) {
-			event.preventDefault();
-			$('html,body').animate({
-				scrollTop : $(this.hash).offset().top
-			}, 1000);
-		});
-	});
-</script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
 </head>
 
 <body>
@@ -69,7 +60,7 @@
 					<div class="reg-form">
 						<div class="reg">
 
-							<form action="<c:url value="/controller/Customerlogin.controller" />" method="get">
+							<form action="<c:url value="/Customerlogin.controller" />" method="get">
 
 								<ul>
 									<li class="text-info">帳號:</li>
@@ -106,7 +97,6 @@
 					<div class="clearfix"></div>
 
 				</div>
-				<!-- registration-form -->
 
 </body>
 

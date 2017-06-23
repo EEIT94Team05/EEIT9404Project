@@ -17,7 +17,7 @@ import model.CompanyService;
 import model.dao.CompanyDAO;
 
 @WebServlet(
-		urlPatterns={"/secure/Companylogin.controller"}
+		urlPatterns={"/Companylogin.controller"}
 )
 public class CompanyLoginServlet extends HttpServlet {
 	private CompanyService companyservice;
@@ -69,7 +69,7 @@ public class CompanyLoginServlet extends HttpServlet {
 		if(bean==null) {
 			errors.put("psderror", "登入失敗，請再次輸入帳號密碼");
 			request.getRequestDispatcher(
-					"/secure/company-logning.jsp").forward(request, response);
+					"/Manufacturers-logning.jsp").forward(request, response);
 		} else {
 			
 			session.setAttribute("company", bean);

@@ -41,8 +41,10 @@ public class GetCompanyImageServlet extends HttpServlet {
 		 }else{
 			 byte[] buf=null;
 			 try {
-				int blob = (int) companyBean.getCom_img().length();
-				buf = companyBean.getCom_img().getBytes(1, blob);
+				 if(companyBean.getCom_img()!=null){
+					int blob = (int) companyBean.getCom_img().length();
+					buf = companyBean.getCom_img().getBytes(1, blob);
+				 }
 			} catch (SQLException e) {
 			
 				e.printStackTrace();
