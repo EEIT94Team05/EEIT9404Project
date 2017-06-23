@@ -8,6 +8,12 @@
 <title>testdata&photo</title>
 </head>
 <body>
+
+<%   int  n = 0 ;
+session.invalidate();
+response.setHeader("Refresh",  n +";URL=http://localhost:8080/SHSM/index.jsp"); 
+%>
+
 <form action="<c:url value="/controller/selectbidding.controller"/>">
 	 <div >
          <input name="id" >

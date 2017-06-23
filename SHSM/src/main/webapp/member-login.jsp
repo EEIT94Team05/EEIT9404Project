@@ -1,11 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+
+
 <html>
 
 <head>
-<title>會員登入與註冊</title>
+<title>會員登入</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript">
@@ -51,7 +55,7 @@
 						<li><a class="active" data-hover="" href="index.jsp">首頁
 								<span class="sr-only">(current)</span>
 						</a></li>
-						<li><a data-hover="" href="member-register.jsp">會員專區</a></li>
+						<li><a data-hover="" href="member.jsp">會員專區</a></li>
 						<li><a data-hover="" href="Manufacturers-register.jsp">廠商專區</a></li>
 					</ul>
 				</div>
@@ -69,6 +73,7 @@
 					<div class="reg-form">
 						<div class="reg">
 
+
 							<form action="<c:url value="/controller/Customerlogin.controller" />" method="get">
 
 								<ul>
@@ -83,6 +88,8 @@
 									<a href="member-register.html" style="margin: 0 0 0 250px">尚未擁有帳號?</a>
 									<input type="submit" value="登入" style="margin: 0 0 0 240px">
 								</div>
+
+
 							</form>
 						</div>
 					</div>

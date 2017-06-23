@@ -1,39 +1,20 @@
 package controller;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TimeZone;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import hibernate.HibernateUtil;
-import model.CustomerBean;
 import model.RepaircaseBean;
 import model.RepaircaseService;
 import model.dao.RepaircaseDAO;
 
 @WebServlet(
-		urlPatterns={"/controller/selectbidding.controller","/TinymapManufactory/selectbidding.controller"}
+		urlPatterns={"/controller/selectbidding.controller"}
 )
 public class CaseDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -49,10 +30,8 @@ public class CaseDetailServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		HttpSession session = request.getSession();
 		//接收資料
 		String id = request.getParameter("id");
-		System.out.println(id);
 		//驗證資料
 		//轉換資料
 		Integer repaircase_id = 0;
@@ -85,13 +64,10 @@ public class CaseDetailServlet extends HttpServlet {
 //            		out.write(buf[i]);
 //             }     
 
-			session.setAttribute("selectBidding", result);
-			String path = request.getContextPath();
-			response.sendRedirect(path+"/TinymapManufactory/click.jsp");
-			System.out.println(result);
+			request.setAttribute("selectBidding", result);
 		}
-//		request.getRequestDispatcher(
-//				"/TinymapManufactory/click.jsp").forward(request, response);
+		request.getRequestDispatcher(
+				"/NewFile.jsp").forward(request, response);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req,

@@ -7,6 +7,7 @@
 <title>SHOW HOW SHOW MAP</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript">
+	
     addEventListener("load", function() {
         setTimeout(hideURLbar, 0);
     }, false);
@@ -14,6 +15,7 @@
     function hideURLbar() {
         window.scrollTo(0, 1);
     } 
+
 </script>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <link href="css/style.css" rel='stylesheet' type='text/css' />
@@ -34,7 +36,8 @@
 			<div class="container">
 				<div class="navigation">
 					<div class="logo">
-						<h1 class="navbar-brand link link--yaku" href="index.html"><span>S</span><span>H</span><span>S</span><span>M</span></a>
+						<h1 class="navbar-brand link link--yaku" href="index.html">
+							<span>S</span><span>H</span><span>S</span><span>M</span></a>
 						</h1>
 					</div>
 					<div class="top-nav">
@@ -44,9 +47,8 @@
 									<span class="sr-only">(current)</span>
 							</a></li>
 							<li><a data-hover="" href="member-login.jsp">會員專區</a></li>
-							<li><a data-hover="" href="Manufacturers-register.jsp">廠商專區</a></li>
-							<li><a data-hover="" href="
-Mall.jsp">購物商城</a></li>
+							<li><a data-hover="" href="Manufacturers-logning.jsp">廠商專區</a></li>
+							<li><a data-hover="" href="Mall.jsp">購物商城</a></li>
 							<li><a data-hover="" href="contact.jsp">關於我們</a></li>
 							<li><a href="changlogin.jsp">註冊</a></li>
 						</ul>

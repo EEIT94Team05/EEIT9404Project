@@ -9,15 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.hibernate.mapping.Map;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-
 import hibernate.HibernateUtil;
-import model.CustomerBean;
 import model.dao.CustomerDAO;
-import model.dao.ReportDAOHibernate;
 
 @WebServlet("/administrator/CustomerALLServlet")
 public class CustomerALLServlet extends HttpServlet {

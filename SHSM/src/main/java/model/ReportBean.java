@@ -33,13 +33,13 @@ public class ReportBean implements Serializable{
 //			ReportBean bean = session.get(ReportBean.class, "1");
 //			System.out.println(bean);
 			
-//			ReportBean insert = new ReportBean();
-//			insert.setReport_id("2");
-//			insert.setReport_case("根本沒修好");
-//			insert.setReport_date(new java.util.Date());
-//			insert.setReporter("洪韌康");
-//			insert.setCase_id("2");
-//			session.save(insert);
+			ReportBean insert = new ReportBean();
+			insert.setReport_id(2);
+			insert.setReport_case("根本沒修好");
+			insert.setReport_date(new java.util.Date());
+			insert.setReporter("洪韌康");
+			insert.setCase_id("2");
+			session.save(insert);
 			
 			
 			ReportDAOHibernate reportDao = new ReportDAOHibernate(sessionFactory);

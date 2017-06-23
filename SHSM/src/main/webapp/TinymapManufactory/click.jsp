@@ -55,6 +55,47 @@ a, a:focus {
 	height: 600px;
 	margin: 0 0 100px -50px;
 }
+
+.button {
+	display: inline-block;
+	border-radius: 4px;
+	background-color: #f4511e;
+	border: none;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 16px;
+	padding: 15px;
+	width: 200px;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 4px;
+}
+
+.button span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+.button span:after {
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
+}
+
+.button:hover span {
+	padding-right: 30px;
+}
+
+.button:hover span:after {
+	opacity: 1;
+	right: 0;
+}
+</style>
 </style>
 <script src="../js/jquery-3.2.1.min.js"></script>
 <script src="../js/jquery.session.js"></script>
@@ -124,22 +165,23 @@ a, a:focus {
 										});
 										var id = $('#caseid').text();
 										console.log(data.repaircase_title);
-										$('td[name="casetitle').text(
+										$('td[name="casetitle"]').text(
 												data.repaircase_title);
-										$('td[name="area').text(
+										$('td[name="area"]').text(
 												data.repaircase_area);
-										$('td[name="place').text(
+										$('td[name="place"]').text(
 												data.repaircase_place);
-										$('td[name="budget').text(
+										$('td[name="budget"]').text(
 												data.repaircase_budget);
-										$('td[name="context').text(
+										$('td[name="context"]').text(
 												data.repaircase_context);
-										$('td[name="img1').text(
-												data.repaircase_img1);
-										// 								$.ajax({
-										// 									'url':'selectbidding.controller',
-										// 									'type' : 'GET',
-										// 									'data':{id:id}})
+// 										$.get('GetCaseImageServlet', {
+// 											'id' : data.repaircase_id
+// 										}, function(img) {
+// 											console.log(img);
+// 											$('td[name="img1"]').attr(img);
+// 										});
+
 										//					$("#divId").mouseleave(function() {
 										//						$("#divId").hide();
 										//					});
@@ -188,10 +230,11 @@ a, a:focus {
 	}
 </script>
 <script>
-	$(document).ready(function() {
-		$("a").click(function() {
-			$("td").prepend("<b>Prepended text</b>. ");
-		});
+	$(function() {
+		$("#showdata").hide();
+		$("#clickdata").click(function() {
+			$("#showdata").toggle();
+		})
 	});
 </script>
 </head>
@@ -210,7 +253,8 @@ a, a:focus {
 							<center>
 								<button type="button" class="close" data-dismiss="modal"
 									aria-hidden="true">×</button>
-								<h4 class="title" id="myModalLabel" style="color: black; background-color:#d9d9d9;">案件詳情</h4>
+								<h4 class="title" id="myModalLabel"
+									style="color: black; background-color: #d9d9d9;">案件詳情</h4>
 							</center>
 						</div>
 						<div class="modal-body">
@@ -218,40 +262,83 @@ a, a:focus {
 								<div class="col-md-12">
 									<table id="tablestyle" style="color: black; font-size: 12px;">
 										<tr>
-											<td style="text-align:center; padding:4px; font-size:14px; background-color:#FFEFD5;">案件標題</td>
+											<td
+												style="text-align: center; padding: 4px; font-size: 14px; background-color: #FFEFD5;">案件標題</td>
 										</tr>
 										<tr>
-											<td name="casetitle" align="center" style="padding:6px;"></td>
+											<td name="casetitle" align="center" style="padding: 6px;"></td>
 										</tr>
 										<tr>
-											<td style="text-align:center; padding:4px; font-size:14px;background-color:#FFEFD5;">區域:</td>
+											<td
+												style="text-align: center; padding: 4px; font-size: 14px; background-color: #FFEFD5;">區域:</td>
 										</tr>
 										<tr>
-											<td name="area" align="center" style="padding:6px;"></td>
+											<td name="area" align="center" style="padding: 6px;"></td>
 										</tr>
 										<tr>
-											<td style="text-align:center; padding:4px; font-size:14px;background-color:#FFEFD5;">注意事項:</td>
+											<td
+												style="text-align: center; padding: 4px; font-size: 14px; background-color: #FFEFD5;">注意事項:</td>
 										</tr>
 										<tr>
-											<td name="place" align="center" style="padding:6px;"></td>
+											<td name="place" align="center" style="padding: 6px;"></td>
 										</tr>
 										<tr>
-											<td style="text-align:center; padding:4px; font-size:14px;background-color:#FFEFD5;">金額:</td>
+											<td
+												style="text-align: center; padding: 4px; font-size: 14px; background-color: #FFEFD5;">金額:</td>
 										</tr>
 										<tr>
-											<td name="budget" align="center" style="padding:6px;"></td>
+											<td name="budget" align="center" style="padding: 6px;"></td>
 										</tr>
 										<tr>
-											<td style="text-align:center; padding:4px; font-size:14px;background-color:#FFEFD5;">內容:</td>
-										</tr>
-										<tr>
-											<td name="context" align="center" style="padding:6px;"></td>			
+											<td
+												style="text-align: center; padding: 4px; font-size: 14px; background-color: #FFEFD5;">內容:</td>
 										</tr>
 
 
-
-
+										<tr>
+											<td name="context" align="center" style="padding: 6px;"></td>
+										</tr>
+										<td><img width='100' height='100'
+											src="${pageContext.request.contextPath}/controller/GetCaseImageServlet?id=${repaircase.repaircase_id}" />
+										</td>
 									</table>
+									<div>
+										<center>
+											<div>
+												<button class="button" style="vertical-align: middle"
+													id="clickdata">
+													<span>我要投標</span>
+												</button>
+											</div>
+											<div id="showdata">
+												點擊顯示投標/隱藏
+
+												<form class="form-horizontal" role="form">
+													<div class="form-group">
+														<label class="col-sm-2 control-label">金額:</label>
+														<div class="col-sm-10">
+															<input class="form-control" id="focusedInput" type="text"
+																value="請輸入金額">
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-2 control-label">內文:</label>
+														<div class="col-sm-10">
+															<input class="form-control" id="focusedInput" type="text"
+																value="請輸入內文">
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-2 control-label">照片:</label>
+														<div class="col-sm-10">
+															<input class="form-control" id="focusedInput" type="file"
+																value="請上傳照片">
+														</div>
+													</div>
+												</form>
+											</div>
+										</center>
+									</div>
 								</div>
 							</div>
 						</div>

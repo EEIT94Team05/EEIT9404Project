@@ -18,8 +18,7 @@ $(function() {
 			});
 			$(id).mouseleave(function() {
 				$(id).hide();
-			});
-		
+			});		
 	}
 	
 });
@@ -44,20 +43,11 @@ $(function() {
 
 
 	    <div class="container" >
-	        <ul class="nav nav-tabs">
-	            <li>
-	            	<a href="member-page.jsp">會員專區</a>
-	            </li>
-	            <li>
-	            	<a href="member-case.jsp" >新增案件</a>
-	            </li>
-	            <li class="active">
-	            	<a href="<c:url value='/controller/MemberCaseQuery'/>">查詢案件</a>
-	            </li>
-	            <li>
-	                <a href="member-Manufacturers.jsp">廠商列表</a>
-	            </li>
-	        </ul>
+       <ul class="nav nav-tabs">
+            <li><a href="bootstarptest2.jsp">廠商專區</a></li>
+            <li><a href="Manufacturers-case.jsp">查詢案件</a></li>
+            <li  class="active"><a href="Manufacturers-casequery.jsp">追蹤案件</a></li>
+        </ul>
 	    </div>
 
 <c:if test="${not empty repaircase}">
