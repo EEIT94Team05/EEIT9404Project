@@ -43,6 +43,7 @@
 			<div class="navigation">
 				<div class="logo">
 					<h1>
+
 						<a class="navbar-brand link link--yaku" href="index.html"><span>S</span><span>H</span><span>S</span><span>M</span></a>
 					</h1>
 				</div>
@@ -80,6 +81,7 @@
 								</ul>
 								<div style="margin: -20px 0 0 30px">
 									<a href="member-register.html" style="margin: 0 0 0 250px">尚未擁有帳號?</a>
+
 									<input type="submit" value="登入" style="margin: 0 0 0 240px">
 								</div>
 

@@ -60,6 +60,7 @@ a, a:focus {
             myLatLng = new GLatLng(25.04763902653048, 121.51715755462646);
            //決定你 Google 地圖的中心點位置和縮放大小
            myMap.setCenter(myLatLng, 14);
+          
            //設定要顯示的控制項
            myMap.addControl(new GLargeMapControl());
            myMap.addControl(new GMapTypeControl());
@@ -74,7 +75,7 @@ a, a:focus {
 		//載入後動作
 		$("#divId").hide();
 		$(function() {
-			$("div").on("click", function() {
+			$("div").on("dbclick", function() {
 				$("#divId").show().css({
 					position : "absolute",
 					top : event.pageY,

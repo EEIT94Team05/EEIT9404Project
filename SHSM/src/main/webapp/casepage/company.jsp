@@ -97,7 +97,7 @@
 					<div class="col-md-6 col-xs-6">
 						<!-- 以下為 左邊 會員資料顯示欄位 -->
 						<h4 class="classic-title">
-							<span>會員資訊</span>
+							<span>廠商資訊</span>
 						</h4>
 						<!-- Accordion -->
 						<div class="panel-group" id="accordion">
@@ -117,34 +117,43 @@
 									</h4>
 								</div>
 								<!--客戶基本資料  傳送接收 這邊噢 -->
-								<h2 class="sub-header">會員列表</h2>
+								<h2 class="sub-header">廠商列表</h2>
 								<hr />
 								<div class="table-responsive">
 									<table class="table table-striped" id="tb">
 										<thead>
 											<tr>
-												<th>帳號:${custuser.cus_id}</th>
+												<th>帳號:${company.com_id}</th>
 												</tr>
 												<tr>
-												<th>密碼:${custuser.cus_password}</th>
+												<th>密碼:${company.com_password}</th>
 												</tr>
 												<tr>
-												<th>姓名:${custuser.cus_name}</th>
+												<th>姓名:${company.com_name}</th>
 												</tr>
 												<tr>
-												<th>住址:${custuser.cus_address}</th>
+												<th>住址:${company.com_address}</th>
 												</tr>
 												<tr>
-												<th>電話:${custuser.cus_phone}</th>
+												<th>電話:${company.com_phone}</th>
 												</tr>
 												<tr>
-												<th>註冊日期:${custuser.cus_regist}</th>
+												<th>信箱:${company.com_email}</th>
 												</tr>
 												<tr>
-												<th>信箱:${custuser.cus_email}</th>
+												<th>自我介紹:${company.com_intr}</th>
 												</tr>
 												<tr>
-												<th>性別:${custuser.sex}</th>
+												<th>圖片:${company.com_img}</th>
+												</tr>
+												<tr>
+												<th>聯絡人:${company.com_contact}</th>
+												</tr>
+												<tr>
+												<th>傳真:${company.fax}</th>
+												</tr>
+												<tr>
+												<th>註冊日期:${company.com_regist}</th>
 												</tr>
 										</thead>
 										<tbody>

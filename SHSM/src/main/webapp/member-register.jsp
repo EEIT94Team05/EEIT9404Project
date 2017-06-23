@@ -4,7 +4,7 @@
 <html>
 
 <head>
-    <title>會員登入與註冊</title>
+    <title>會員註冊</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="application/x-javascript">
@@ -35,19 +35,19 @@
             }, 1000);
         });
     });
-     // 信箱驗證
-    function b_email() {
-        var reg = /w+@w+.w+/;
-        var c_email = document.getElementById("email").value;
-        var c_span_email = document.getElementById("span_email");
-        if (reg.test(c_email)) {
-            c_span_email.innerHTML = "√";
-            return true;
-        } else {
-            c_span_email.innerHTML = "信箱格式錯誤，必須包含 @ ";
-            return false;
-        }
-    }
+//      // 信箱驗證
+//     function b_email() {
+//         var reg = /w+@w+.w+/;
+//         var c_email = document.getElementById("email").value;
+//         var c_span_email = document.getElementById("span_email");
+//         if (reg.test(c_email)) {
+//             c_span_email.innerHTML = "√";
+//             return true;
+//         } else {
+//             c_span_email.innerHTML = "信箱格式錯誤，必須包含 @ ";
+//             return false;
+//         }
+//     }
     </script>
 </head>
 
@@ -95,14 +95,14 @@
                              <li><input type="text" value="" style="margin: 0 -120px"></li>
                                <li><span id="" style="margin: 0px 0 15px 100px"></span></li>
                          </ul>
-                         <ul id="ul">
-                             <li class="text-info">確認密碼: </li>
-                             <li><input type="password" value="" style="margin: 0 -120px"></li>
-                               <li><span id="" style="margin: 0px 0 15px 100px"></span></li>
-                         </ul>
+<!--                          <ul id="ul"> -->
+<!--                              <li class="text-info">確認密碼: </li> -->
+<!--                              <li><input type="password" value="" style="margin: 0 -120px"></li> -->
+<!--                                <li><span id="" style="margin: 0px 0 15px 100px"></span></li> -->
+<!--                          </ul> -->
                          <ul id="ul">
                              <li class="text-info">地址:</li>
-                             <li><input type="password" value="" style="margin: 0 -120px"></li>
+                             <li><input type="text" value="" style="margin: 0 -120px"></li>
                                <li><span id="" style="margin: 0px 0 15px 100px"></span></li>
                          </ul>
                          <ul id="ul">

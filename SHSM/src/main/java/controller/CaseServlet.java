@@ -1,10 +1,8 @@
 package controller;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintWriter;
 import java.sql.Blob;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,8 +18,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
-
-import org.hibernate.Hibernate;
 
 import hibernate.HibernateUtil;
 import model.CustomerBean;
@@ -176,7 +172,6 @@ public class CaseServlet extends HttpServlet {
 		bean.setRepaircase_place(repaircase_place);
 		bean.setRepaircase_repairdate(repaircase_repairdate);
 		bean.setRepaircase_context(repaircase_context);
-		bean.setRepaircase_img1(blobi);
 		bean.setRepaircase_createdate(repaircase_createdate);
 		bean.setRepaircase_status(repaircase_status);
 		bean.setRepaircase_finday(repaircase_finday);
