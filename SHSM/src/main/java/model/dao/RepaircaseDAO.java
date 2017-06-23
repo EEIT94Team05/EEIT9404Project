@@ -7,8 +7,9 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 
-
+import hibernate.HibernateUtil;
 import model.CompanyBean;
 
 import model.CustomerBean;
@@ -24,8 +25,6 @@ public class RepaircaseDAO implements IRepaircaseDAO {
 	public Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
-
-	
 
 //	public static void main(String[] args) {
 //		Configuration config = new Configuration().configure("hibernate.cfg.xml");
@@ -87,6 +86,15 @@ public class RepaircaseDAO implements IRepaircaseDAO {
 	@Override
 	public List<RepaircaseBean> select() {
 		return this.getSession().createQuery("FROM RepaircaseBean", RepaircaseBean.class).getResultList();
+	}
+	
+	public List<RepaircaseBean> selectUserRepaircase(String cus_id){
+		
+		Query query = this.getSession().createQuery("from RepaircaseBean where cus_id=?",RepaircaseBean.class);
+		query.setParameter(0, cus_id);
+		List<RepaircaseBean> list = query.list();
+		return list;
+		
 	}
 
 	@Override
