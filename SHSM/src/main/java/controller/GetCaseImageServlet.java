@@ -35,6 +35,7 @@ public class GetCaseImageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		response.setContentType("image/jpeg;charset=utf-8");
 		System.out.println("連接contrlloer");
 		String id = request.getParameter("id");
 

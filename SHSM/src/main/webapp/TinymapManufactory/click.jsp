@@ -175,12 +175,13 @@ a, a:focus {
 												data.repaircase_budget);
 										$('td[name="context"]').text(
 												data.repaircase_context);
-// 										$.get('GetCaseImageServlet', {
-// 											'id' : data.repaircase_id
-// 										}, function(img) {
-// 											console.log(img);
-// 											$('td[name="img1"]').attr(img);
-// 										});
+										$.get('GetCaseImageServlet', {
+											'id' : data.repaircase_id
+										}, function(img) {
+											
+											console.log(img.responseText);
+											$('#tablestyle > tbody > tr:nth-child(11) > td > img').val(img);
+										});
 
 										//					$("#divId").mouseleave(function() {
 										//						$("#divId").hide();
@@ -299,7 +300,7 @@ a, a:focus {
 											<td name="context" align="center" style="padding: 6px;"></td>
 										</tr>
 										<td><img width='100' height='100'
-											src="${pageContext.request.contextPath}/controller/GetCaseImageServlet?id=${repaircase.repaircase_id}" />
+											 />
 										</td>
 									</table>
 									<div>
