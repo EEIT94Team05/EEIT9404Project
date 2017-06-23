@@ -50,6 +50,12 @@ public class CompanyService {
 //		}
 //		return companydao.insert(bean);
 //	}
+	
+	public CompanyBean select(String com_id){
+	CompanyBean companyBean = companydao.select(com_id);
+		return companyBean;
+	}
+	
 	public CompanyService update(){
 		return null;
 	}

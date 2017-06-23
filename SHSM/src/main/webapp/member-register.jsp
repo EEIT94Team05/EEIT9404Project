@@ -44,7 +44,7 @@
             c_span_email.innerHTML = "√";
             return true;
         } else {
-            c_span_email.innerHTML = "信箱格是錯誤，必須包含 @ ";
+            c_span_email.innerHTML = "信箱格式錯誤，必須包含 @ ";
             return false;
         }
     }
