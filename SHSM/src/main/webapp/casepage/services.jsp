@@ -123,19 +123,30 @@
 										<thead>
 											<tr>
 												<th>帳號</th>
+												</tr>
+												<tr>
 												<th>密碼</th>
+												</tr>
+												<tr>
 												<th>名稱</th>
+												</tr>
+												<tr>
 												<th>住址</th>
+												</tr>
+												<tr>
 												<th>電話</th>
+												</tr>
+												<tr>
 												<th>註冊日期</th>
+												</tr>
+												<tr>
 												<th>信箱</th>
+												</tr>
+												<tr>
 												<th>性別</th>
-											</tr>
+												</tr>
+											
 										</thead>
-										<tbody>
-
-
-										</tbody>
 									</table>
 								</div>
 								<script>
