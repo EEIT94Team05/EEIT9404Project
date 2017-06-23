@@ -3,9 +3,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript">
-$("#divId").hide();
+
 $(function() {
+	$("#divId").hide();
 	function abc(data){
 		var id = data.repaircase_id;
 		console.log(id);
@@ -22,21 +24,35 @@ $(function() {
 		
 	}
 	
+	
+	
 });
+function bid(com_id,repaircase_Id){
+	console.log(com_id,repaircase_Id);
+		$.get('SearchBidding.controller',{'repaircase_Id':repaircase_Id,'com_id':com_id},function(data){
+			$('#searchbidding > tbody > tr:nth-child(2) > td').text(data.bidding_amount);
+			$('#searchbidding > tbody > tr:nth-child(4) > td').text(data.bidding_date);
+			$('#searchbidding > tbody > tr:nth-child(6) > td').text(data.bidding_context);
+				console.log(data.bidding_context)
+				
+		
+			
+		})
+}
+
 </script>
 <head>
     <title>案件查詢</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
-    <!-- (Optional) Latest compiled and minified JavaScript translation files -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-*.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" />
 </head>
 
@@ -105,7 +121,7 @@ $(function() {
 					<c:if test="${repaircase.repaircase_status=='招標中'}">
 					<td>
 <div class="modExample">
-			<a href="#myModal1" role="button" onclick="abc(${repaircase})" data-target="#myModal${repaircase.repaircase_id}"
+			<a href="#myModal1" role="button"  data-target="#myModal${repaircase.repaircase_id}"
 				class="btn btn-default" data-toggle="modal" id="${repaircase.repaircase_id}">查詢投標廠商</a>
 		</div>
 			<div id="myModal${repaircase.repaircase_id}" class="modal" data-easein="fadeIn" tabindex="-1"
@@ -128,21 +144,51 @@ $(function() {
 									<h4><font size="4">案件標題  :</font></h4>
 									<h4><font size="4">${repaircase.repaircase_title}</font></h4>
 								</div>
-								<form action="<c:url value=''/>" method="post">
+								<form method="post">
 								<div>
 
 									<h4><font size="4">投標廠商  :</font></h4>
 								<table>
-								<tr>
-								<c:forEach var="biddingbean" items="${repaircase.biddingBean}">
+								<tr><div>
+								<c:forEach var="casebidding" items="${repaircase.biddingBean}">
 									
-									<img width=50 height=50 src="${pageContext.request.contextPath}/controller/GetCompanyImageServlet?id=${biddingbean.biddingPk.com_id}" />
-									<input type="submit" name="com_id_detail" value="${biddingbean.biddingPk.com_id}">
+									<img width=50 height=50 src="${pageContext.request.contextPath}/controller/GetCompanyImageServlet?id=${casebidding.biddingPk.com_id}" />
+									<input type="button" name="${casebidding.biddingPk.com_id}bidding" 
+									onclick="bid('${casebidding.biddingPk.com_id}','${casebidding.biddingPk.repaircase_Id}')" value="${casebidding.biddingPk.com_id}"/>
 								
 								</c:forEach>
+								</div>
 								</tr>
-								
-								
+								<tr>
+									<form>
+										<table id="searchbidding" border="1">
+											<tr>
+												<td>投標金額:</td>
+											</tr>
+											<tr>
+												<td></td>
+											</tr>
+											<tr>
+												<td>建立日期:</td>
+											</tr>
+											<tr>
+												<td></td>
+											</tr>
+											<tr>
+												<td>內文:</td>
+											</tr>
+											<tr>
+												<td></td>
+											</tr>
+											<tr>
+												<td>圖片:</td>
+											</tr>
+											<tr>
+												<td></td>
+											</tr>
+										</table>
+								</form>
+								</tr>
 								</table>
 								</div>
 								</form>
@@ -161,7 +207,7 @@ $(function() {
 
 		
 		<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-    	<script src="js/bootstrap.js"></script>
+
     	
 
 </body>
