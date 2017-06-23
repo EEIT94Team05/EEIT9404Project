@@ -6,8 +6,7 @@
 <head>
 <title>SHOW HOW SHOW MAP</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script type="application/x-javascript">
-	
+<script type="application/x-javascript">	
     addEventListener("load", function() {
         setTimeout(hideURLbar, 0);
     }, false);

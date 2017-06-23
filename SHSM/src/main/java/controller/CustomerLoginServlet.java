@@ -74,15 +74,10 @@ public class CustomerLoginServlet extends HttpServlet {
 			request.getRequestDispatcher(
 					"/member-login.jsp").forward(request, response);
 		} else {
-			
 			session.setAttribute("custuser", bean);
-			
 			String path = request.getContextPath();
-
-
 //			response.sendRedirect(path+"/member.jsp");
-			response.sendRedirect(path+"/member-casequery.jsp");
-
+			response.sendRedirect(path+"/member.jsp");
 		}
 	}
 	@Override
