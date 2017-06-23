@@ -68,7 +68,9 @@
 				<div class="registration-grids">
 					<div class="reg-form">
 						<div class="reg">
+
 							<form action="<c:url value="/controller/Customerlogin.controller" />" method="get">
+
 								<ul>
 									<li class="text-info">帳號:</li>
 									<li><input type="text" value="" style="margin: 0 -150px" name="username"></li>

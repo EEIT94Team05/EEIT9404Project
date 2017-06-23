@@ -10,7 +10,6 @@
     addEventListener("load", function() {
         setTimeout(hideURLbar, 0);
     }, false);
-
     function hideURLbar() {
         window.scrollTo(0, 1);
     }
@@ -39,15 +38,15 @@
             <div class="navigation">
                 <div class="logo">
                     <h1>
-						<a class="navbar-brand link link--yaku" href="index.html"><span>S</span><span>H</span><span>S</span><span>M</span></a>
+						<a class="navbar-brand link link--yaku" href="index.jsp"><span>S</span><span>H</span><span>S</span><span>M</span></a>
 					</h1>
                 </div>
                 <div class="top-nav">
                     <span class="menu"><img src="images/menu.png" alt=" " /></span>
                     <ul class="nav1 nav nav-wil cl-effect-11" id="cl-effect-11">
-                        <li><a class="active" data-hover="" href="index.html">首頁 <span class="sr-only">(current)</span></a></li>
-                        <li><a data-hover="" href="member-register.html">會員專區</a></li>
-                        <li><a data-hover="" href="Manufacturers-register.html">廠商專區</a></li>
+                        <li><a class="active" data-hover="" href="index.jsp">首頁 <span class="sr-only">(current)</span></a></li>
+                        <li><a data-hover="" href="member-register.jsp">會員專區</a></li>
+                        <li><a data-hover="" href="Manufacturers-register.jsp">廠商專區</a></li>
                         <li><a data-hover="" href="
 Mall.html">購物商城</a></li>
                         <li><a data-hover="" href="contact.html">關於我們</a></li>

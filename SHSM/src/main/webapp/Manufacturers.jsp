@@ -23,7 +23,7 @@
                 <div class="top-nav">
                     <span class="menu"><img src="images/menu.png" alt=" " /></span>
                     <ul class="nav1 nav nav-wil cl-effect-11" id="cl-effect-11">
-                     <li><a class="active" data-hover="" href="irikuji/index.html">首頁 <span class="sr-only">(current)</span></a></li>
+                     <li><a class="active" data-hover="" href="irikuji/index.jsp">首頁 <span class="sr-only">(current)</span></a></li>
                      <li><a href="#">welcome xxxx</a></li>
                         <li><a href="#">登出</a></li>
                     </ul>
@@ -33,7 +33,7 @@
         </div>
     </div>
     <div>
-        <iframe src="file:///C:/Users/liu/Desktop/%E5%B0%88%E9%A1%8C%E5%B0%88%E5%8D%80/web/casepage/services-for%20Manufacturerscahck.html" frameborder="0" width="100%" height="1200"></iframe>
+        <iframe src="casepage/services-for%20Manufacturerscahck.jsp" frameborder="0" width="100%" height="1200"></iframe>
     </div>
     <script src="js/bootstrap.js"></script>
 </body>

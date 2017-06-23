@@ -8,9 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>Signin管理員</title>
-
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
     <link href="css/signin.css" rel="stylesheet">
@@ -34,7 +32,7 @@
             <input type="checkbox" value="remember-me"> 記得帳號密碼?
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit" >登入</button>
-        <a href="webcontrol.html">測試用進入點</a>
+        <a href="webcontrol.jsp">測試用進入點</a>
 
       </form>
 

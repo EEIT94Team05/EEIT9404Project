@@ -42,6 +42,7 @@ $(function() {
 
 <body>
 
+
 	    <div class="container" >
 	        <ul class="nav nav-tabs">
 	            <li>
@@ -162,6 +163,7 @@ $(function() {
 		<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     	<script src="js/bootstrap.js"></script>
     	
+
 </body>
 
 </html>

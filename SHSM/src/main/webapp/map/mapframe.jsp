@@ -4,7 +4,7 @@
 <html>
  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>Google Maps JavaScript API Example</title>
-    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyAANfy7yVHE2MHmM2z_Rxm3YmXosQAT6b8" type="text/javascript"></script>
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyDyRk2QLNN4DSoTEnn2jrn8iFhsC6R9nlw" type="text/javascript"></script>
     <script src="../js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript">
     $(function () {
