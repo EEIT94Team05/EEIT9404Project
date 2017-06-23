@@ -9,6 +9,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
@@ -33,8 +34,10 @@ public class CompanyDAO implements ICompanyDAO {
 			
 			CompanyDAO companyDao = new CompanyDAO(sf);
 //			CompanyBean select = companyDao.select("eeit9458");
-			List<CompanyBean> select = companyDao.select();
-			System.out.println("select="+select);
+//			List<CompanyBean> select = companyDao.select();
+//			System.out.println("select="+select);
+			
+			companyDao.select("eeit9458");
 			
 //			System.out.println(companyDao.selectJson());
 			
@@ -86,6 +89,9 @@ public class CompanyDAO implements ICompanyDAO {
 	public List<CompanyBean> select() {
 		return this.getSession().createQuery("FROM CompanyBean", CompanyBean.class).getResultList();
 	}
+
+	
+	
 	
 
 }

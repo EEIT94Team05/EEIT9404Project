@@ -20,22 +20,22 @@ public class BiddingDAOHibernate implements BiddingDAO {
 		return sessionFactory.getCurrentSession();
 	}
 	
-	public static void main(String[] args) {
-		Configuration config = new Configuration().configure("hibernate.cfg.xml");
-		SessionFactory sf = config.buildSessionFactory();
-		try {
-			sf.getCurrentSession().beginTransaction();
-			BiddingDAO productDao = new BiddingDAOHibernate(sf);
-
-			System.out.println(productDao.select(1));
-			
-			
-			sf.getCurrentSession().getTransaction().commit();
-			sf.getCurrentSession().close();
-		} finally {
-			sf.close();
-		}
-	}
+//	public static void main(String[] args) {
+//		Configuration config = new Configuration().configure("hibernate.cfg.xml");
+//		SessionFactory sf = config.buildSessionFactory();
+//		try {
+//			sf.getCurrentSession().beginTransaction();
+//			BiddingDAO productDao = new BiddingDAOHibernate(sf);
+//
+//			System.out.println(productDao.select(1));
+//			
+//			
+//			sf.getCurrentSession().getTransaction().commit();
+//			sf.getCurrentSession().close();
+//		} finally {
+//			sf.close();
+//		}
+//	}
 	
 	@Override
 	public BiddingBean select(BiddingPk biddingPk) {

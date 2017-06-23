@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.sql.Blob;
 import java.util.Arrays;
 
 import javax.persistence.EmbeddedId;
@@ -24,14 +25,13 @@ public class BiddingBean implements Serializable{
 	private String bidding_amount;
 	private java.sql.Timestamp bidding_date;
 	private String bidding_context;
-	private byte[] bidding_img;
+	private Blob bidding_img;
 	
 	
 	@Override
 	public String toString() {
 		return "BiddingBean [biddingCase_Id=" + biddingPk.getRepaircase_Id() + ", biddingCom_Id=" + biddingPk.getCom_id() + ", bidding_amount=" + bidding_amount + ", bidding_date="
-				+ bidding_date + ", bidding_context=" + bidding_context + ", bidding_img="
-				+ Arrays.toString(bidding_img) + "]";
+				+ bidding_date + ", bidding_context=" + bidding_context + "]";
 	}
 	@EmbeddedId
 	public BiddingPk getBiddingPk() {
@@ -58,10 +58,10 @@ public class BiddingBean implements Serializable{
 	public void setBidding_context(String bidding_context) {
 		this.bidding_context = bidding_context;
 	}
-	public byte[] getBidding_img() {
+	public Blob getBidding_img() {
 		return bidding_img;
 	}
-	public void setBidding_img(byte[] bidding_img) {
+	public void setBidding_img(Blob bidding_img) {
 		this.bidding_img = bidding_img;
 	}
 	

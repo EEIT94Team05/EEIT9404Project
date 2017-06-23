@@ -1,6 +1,7 @@
  package model;
 
 import java.io.Serializable;
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class CompanyBean implements Serializable{
 	private String com_phone;
 	private String com_email;
 	private String com_intr;
-	private byte[] com_img;
+	private Blob com_img;
 	private String com_contact;
 	private String fax;
 	private java.sql.Timestamp com_regist;
@@ -111,10 +112,10 @@ public class CompanyBean implements Serializable{
 	public void setCom_intr(String com_intr) {
 		this.com_intr = com_intr;
 	}
-	public byte[] getCom_img() {
+	public Blob getCom_img() {
 		return com_img;
 	}
-	public void setCom_img(byte[] com_img) {
+	public void setCom_img(Blob com_img) {
 		this.com_img = com_img;
 	}
 	public String getCom_contact() {

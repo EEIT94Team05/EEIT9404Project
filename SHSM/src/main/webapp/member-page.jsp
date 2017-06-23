@@ -20,6 +20,7 @@
 <body>
     <div class="container">
         <ul class="nav nav-tabs">
+
             <li class="active"><a href="member-page.jsp">會員專區</a></li>
             <li><a href="member-case.jsp">新增案件</a></li>
             <li><a href="member-casequery.jsp">查詢案件</a></li>
@@ -30,6 +31,7 @@
     </div>
     <div>
         <iframe src="casepage/services.jsp" frameborder="0" width="1550" height="700" scrolling="no"></iframe>
+
     </div>
     <script src="js/bootstrap.js"></script>
 </body>

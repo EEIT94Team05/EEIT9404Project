@@ -19,7 +19,7 @@ import model.CustomerService;
 import model.dao.CustomerDAO;
 
 @WebServlet(
-		urlPatterns={"/Customerlogin.controller"}
+		urlPatterns={"/controller/Customerlogin.controller"}
 )
 public class CustomerLoginServlet extends HttpServlet {
 	private CustomerService customerService;
@@ -33,6 +33,7 @@ public class CustomerLoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+
 		HttpSession session = request.getSession();
 //接收資料
 		String username = request.getParameter("username");
@@ -52,7 +53,7 @@ public class CustomerLoginServlet extends HttpServlet {
 		
 		if(errors!=null && !errors.isEmpty()) {
 			request.getRequestDispatcher(
-					"/secure/member-logning.jsp").forward(request, response);
+					"/member-login.jsp").forward(request, response);
 			return;
 		}
 
@@ -71,13 +72,16 @@ public class CustomerLoginServlet extends HttpServlet {
 		if(bean==null) {
 			errors.put("psderror", "登入失敗，請再次輸入帳號密碼");
 			request.getRequestDispatcher(
-					"/secure/member-logning.jsp").forward(request, response);
+					"/member-login.jsp").forward(request, response);
 		} else {
 			
 			session.setAttribute("custuser", bean);
 			
 			String path = request.getContextPath();
-			response.sendRedirect(path+"/Tinymap/click.jsp");
+
+//			response.sendRedirect(path+"/member.jsp");
+			response.sendRedirect(path+"/member-casequery.jsp");
+
 		}
 	}
 	@Override
