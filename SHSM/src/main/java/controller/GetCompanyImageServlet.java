@@ -49,6 +49,7 @@ public class GetCompanyImageServlet extends HttpServlet {
 			}
 			 response.setContentType("image/jpeg");
 			 OutputStream out = response.getOutputStream();
+			 if(buf!=null)
 			 for(int i=0;i<buf.length;i++){
 				 out.write(buf[i]);
 			 }

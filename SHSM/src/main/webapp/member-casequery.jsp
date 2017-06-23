@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 $("#divId").hide();
 $(function() {
@@ -35,8 +36,6 @@ $(function() {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
-    <!-- (Optional) Latest compiled and minified JavaScript translation files -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-*.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" />
 </head>
 
@@ -125,24 +124,24 @@ $(function() {
 									<h4><font size="4">案件標題  :</font></h4>
 									<h4><font size="4">${repaircase.repaircase_title}</font></h4>
 								</div>
-								<form action="<c:url value=''/>" method="post">
+								
 								<div>
 
 									<h4><font size="4">投標廠商  :</font></h4>
 								<table>
 								<tr>
 								<c:forEach var="biddingbean" items="${repaircase.biddingBean}">
-									
-									<img width=50 height=50 src="${pageContext.request.contextPath}/controller/GetCompanyImageServlet?id=${biddingbean.biddingPk.com_id}" />
-									<input type="submit" name="com_id_detail" value="${biddingbean.biddingPk.com_id}">
-								
+							
+								<img width=80 height=80 src="${pageContext.request.contextPath}/controller/GetCompanyImageServlet?id=${biddingbean.biddingPk.com_id}" />
+								<input type="submit" name="com_id_detail" value="投標內容" href="" >
 								</c:forEach>
+								
 								</tr>
 								
 								
 								</table>
 								</div>
-								</form>
+								
 							</div>
 							
 						</div>
@@ -158,7 +157,7 @@ $(function() {
 
 		
 		<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-    	<script src="js/bootstrap.js"></script>
+
     	
 
 </body>

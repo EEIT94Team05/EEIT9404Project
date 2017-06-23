@@ -55,8 +55,10 @@ public class GetCaseImageServlet extends HttpServlet {
 			byte[] buf = null;
 
 			try {
+				if(result.getRepaircase_img1()!=null){
 				int blob = (int)result.getRepaircase_img1().length();
 				buf = result.getRepaircase_img1().getBytes(1, blob);
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -65,8 +67,8 @@ public class GetCaseImageServlet extends HttpServlet {
 			if(buf!=null)
             for (int i = 0; i < buf.length; i++) {
             		out.write(buf[i]);
-            		
-             } 
+
+             }     
 
 		}
 		

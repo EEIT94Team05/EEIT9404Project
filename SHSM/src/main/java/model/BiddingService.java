@@ -1,5 +1,8 @@
 package model;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -24,11 +27,12 @@ public class BiddingService {
 	public BiddingBean insert(BiddingBean bean){
 		BiddingBean result=null;
 		if(bean!=null){
+			bean.setBidding_date(getTime());
 			result=biddingDao.insert(bean);
 		}
 		return result;
 	}
-	
+
 	public boolean delete(BiddingPk biddingPk){
 		if(biddingPk!=null){
 			biddingDao.delete(biddingPk);
@@ -37,6 +41,13 @@ public class BiddingService {
 		return false;
 	}
 	
+	public java.sql.Timestamp getTime(){
+		SimpleDateFormat cdformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		java.sql.Timestamp date = null;
+		String time = cdformat.format(new Date());
+		date = java.sql.Timestamp.valueOf(time);
+		return date;
+	}
 	public static void main(String[] args){
 		Configuration config = new Configuration().configure();
 		SessionFactory sessionFactory = config.buildSessionFactory();
