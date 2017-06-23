@@ -30,10 +30,13 @@ public class OpenSession implements Filter {
 		
 		try {
 			HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
+			
 			chain.doFilter(request, response);
+			
 			HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
 		} catch (HibernateException e) {
 			e.printStackTrace();
+			
 			HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().rollback();
 			chain.doFilter(request, response);
 		}

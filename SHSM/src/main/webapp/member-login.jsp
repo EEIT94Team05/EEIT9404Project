@@ -19,7 +19,7 @@
     }
     
 </script>
-<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+
 <link href="css/style.css" rel='stylesheet' type='text/css' />
 <script src="js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="js/move-top.js"></script>
@@ -107,7 +107,7 @@
 
 				</div>
 				<!-- registration-form -->
-				<script src="js/bootstrap.js"></script>
+
 </body>
 
 </html>
