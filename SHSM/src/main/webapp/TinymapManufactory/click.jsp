@@ -67,35 +67,46 @@ a, a:focus {
 		$.getJSON("casesearch.controller",function(data){  
 	    	var i=0;	
 	   		 while(i<data.length){
-	   		 addresstolatlng(data[i].repaircase_address);
+	   		 addresstolatlng(data[i]);
 	   		 i++;
 	   		 }
 	    })
 		//載入後動作
 		$("#divId").hide();
-		$(function() {
-			$("div").on("click", function() {
-				$("#divId").show().css({
-					position : "absolute",
-					top : event.pageY,
-					left : event.pageX
-				});
-				$("#divId").mouseleave(function() {
-					$("#divId").hide();
-				});
-			});
-		});
+// 		$(function() {
+// 			$("div").on("click", function() {
+// 				$("#divId").show().css({
+// 					position : "absolute",
+// 					top : event.pageY,
+// 					left : event.pageX
+// 				});
+// 				$("#divId").mouseleave(function() {
+// 					$("#divId").hide();
+// 				});
+// 			});
+// 		});
 		})
-		function createNode(lat,lng,myMap){
+		function createNode(lat,lng,myMap,data){
 			var point = new GPoint(lng, lat);
             var marker = new GMarker(point);
-            
+            GEvent.addListener(marker, 'click', function() {
+            	  // When clicked, open an Info Window
+            	  marker.openInfoWindowHtml(data.repaircase_title+'<button>'+'OK'+'</button>');
+            	});
             myMap.addOverlay(marker);
+            
+//             var infowindow = new google.maps.InfoWindow({
+//                 content: contentString
+//               });
+//             marker.addListener('click', function() {
+//                 infowindow.open(map, marker);
+//               });
 		}
 		/*<!--地圖標點-->*/
-		function addresstolatlng(address){
+		function addresstolatlng(data){
     	var lat;
     	var lng;
+    	var address = data.repaircase_address
 		var geocoder = new google.maps.Geocoder();
 		 geocoder.geocode({'address': address}, function(results, status) {
 	            if (status == google.maps.GeocoderStatus.OK) {
@@ -115,39 +126,14 @@ a, a:focus {
 			var myMarker = new GMarker(myLatLng);
 			//在地圖上放置標點 :myMap.addOverlay( 45 行 );
 			myMap.addOverlay(myMarker);
-			createNode(lat,lng,myMap);
+			createNode(lat,lng,myMap, data);
 
-			GEvent.addListener(	myMap,"click",
-				function(overlay, point) {
-					if (point) {
-						//設定標註座標 把point 轉成 字串 存放到 id = inLatLng  的 input/text 內
-						myMarker.setLatLng(point);
-						document.getElementById('inLatLng','getpoint').value = point.toString();
-						var myGeocoder = new GClientGeocoder();
-
-						myGeocoder.getLocations(point,function(addresses) {
-									if (addresses.Status.code != 200) {
-// 										alert("此處為機密地段"+ point.toUrlValue());
-								
-									} else {
-										var result = addresses.Placemark[0];
-	                                    var add = result.address;
-	                                    
-	                                    console.log(add);
-	                                    $('input[name="caseaddress"]').val(add);
-	                                    
-										myMarker.openInfoWindowHtml(result.address);
-										document.getElementById(
-											'inLatLng','getpoint').value = result.address;
-									}
-						})
-					}
-				})
+			
 	           		 }
 				 }
 			 )
 		 }
-		 
+		
 	
 </script>
 </head>
@@ -176,7 +162,7 @@ a, a:focus {
 							</center>
 						</div>
 						<div class="modal-body">
-							<!--內文-->
+							內文
 							<form class="form-horizontal" action='<c:url value="/Tinymap/createcase.controller" />' role="form" method="post" enctype="multipart/form-data">
 								<div class="form-group">
 									<label for="name" class="col-sm-4 control-label"> <font
