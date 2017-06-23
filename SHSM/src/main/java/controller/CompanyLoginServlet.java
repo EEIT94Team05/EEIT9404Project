@@ -18,7 +18,8 @@ import model.dao.CompanyDAO;
 
 @WebServlet(
 		urlPatterns={"/Companylogin.controller"}
-)					
+
+)
 public class CompanyLoginServlet extends HttpServlet {
 	private CompanyService companyservice;
 	

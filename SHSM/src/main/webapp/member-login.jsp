@@ -24,16 +24,8 @@
 <script src="js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
-<script type="text/javascript">
-	jQuery(document).ready(function($) {
-		$(".scroll").click(function(event) {
-			event.preventDefault();
-			$('html,body').animate({
-				scrollTop : $(this.hash).offset().top
-			}, 1000);
-		});
-	});
-</script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
 </head>
 
 <body>
@@ -68,7 +60,13 @@
 				<div class="registration-grids">
 					<div class="reg-form">
 						<div class="reg">
+<<<<<<< HEAD
 							<form>
+=======
+
+							<form action="<c:url value="/Customerlogin.controller" />" method="get">
+
+>>>>>>> branch 'master' of https://github.com/EEIT94Team05/EEIT9404Project.git
 								<ul>
 									<li class="text-info">帳號:</li>
 									<li><input type="text" value="" style="margin: 0 -150px"></li>
@@ -104,8 +102,12 @@
 					<div class="clearfix"></div>
 
 				</div>
+<<<<<<< HEAD
 				<!-- registration-form -->
 				<script src="js/bootstrap.js"></script>
+=======
+
+>>>>>>> branch 'master' of https://github.com/EEIT94Team05/EEIT9404Project.git
 </body>
 
 </html>

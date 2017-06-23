@@ -18,7 +18,7 @@ import model.dao.CustomerDAO;
 
 
 @WebServlet(
-		urlPatterns={"/controller/Customerlogin.controller"}
+		urlPatterns={"/Customerlogin.controller"}
 )
 public class CustomerLoginServlet extends HttpServlet {
 	private CustomerService customerService;
