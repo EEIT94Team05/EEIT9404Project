@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,33 +47,37 @@ public class regisercustomerservlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		// 接收資料
 		String member_user = request.getParameter("member_user");
+		String member_password = request.getParameter("member_password");
 		String member_name = request.getParameter("member_name");
 		String member_mail = request.getParameter("member_mail");
-		String member_password = request.getParameter("member_password");
 		String member_adress = request.getParameter("member_adress");
 		String member_phone = request.getParameter("member_phone");
 		String member_chackbox = request.getParameter("member_chackbox");
-		String member_date = request.getParameter("member_date");
+//		String member_date = request.getParameter("member_date");
+		System.out.println(member_user);
+		System.out.println(member_password);
 		System.out.println(member_name);
 		System.out.println(member_mail);
-		System.out.println(member_password);
 		System.out.println(member_adress);
 		System.out.println(member_phone);
+		System.out.println(member_chackbox);
+//		System.out.println(member_date);
 
 		// 驗證資料
 		Map<String, String> errors = new HashMap<String, String>();
 		request.setAttribute("errors", errors);
 
 		// 轉換資料
-		if (member_date != null && member_date.trim().length() != 0) {
-			errors.put("member_date", "請輸入日期");
-		}
+//		if (member_date != null && member_date.trim().length() != 0) {
+//			errors.put("member_date", "請輸入日期");
+//		}
 		if (member_chackbox != null && member_chackbox.trim().length() != 0) {
 			errors.put("member_chackbox", "請輸入性別");
 		}
 		if (member_name != null && member_name.trim().length() != 0) {
 			errors.put("member_name", "請輸入名稱");
 		}
+		
 		
 		if (member_name != null && member_name.trim().length() != 0) {
 			errors.put("member_name", "請輸入名稱");
@@ -92,12 +98,14 @@ public class regisercustomerservlet extends HttpServlet {
 		// 呼叫Model
 		CustomerBean custbean = (CustomerBean) session.getAttribute("custuser");
 		CustomerBean bean = new CustomerBean();
-		bean.setCus_id(cus_id);
-		bean.setCus_name(member_name);
-		bean.setCus_email(member_mail);
+		bean.setCus_id(member_user);
 		bean.setCus_password(member_password);
+		bean.setCus_name(member_name);
+		bean.setCus_email(member_mail);	
 		bean.setCus_address(member_adress);
 		bean.setCus_phone(member_phone);
+		bean.setSex(member_chackbox);		
+//		bean.getCus_regist();
 		System.out.println(bean);
 
 		// 根據Model執行結果呼叫View

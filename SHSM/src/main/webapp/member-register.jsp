@@ -14,9 +14,6 @@
 	
 	
 	
-	
-	
-	
     addEventListener("load", function() {
         setTimeout(hideURLbar, 0);
     }, false);
@@ -24,8 +21,6 @@
     function hideURLbar() {
         window.scrollTo(0, 1);
     }
-    
-
 
 
 
@@ -52,18 +47,12 @@
 		});
 	});
 </script>
-<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
-
-<!-- Latest compiled and minified JavaScript -->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
-
-<!-- (Optional) Latest compiled and minified JavaScript translation files -->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-*.min.js"></script>
-
 </head>
 
 <body>
@@ -96,7 +85,56 @@
 				</h3>
 				<div class="registration-grids">
 					<div class="reg-form">
-						<div class="reg"></div>
+						<div class="reg">
+							<form role="form">
+								<div class="form-group">
+									<label>帳號</label> <input type="text" class="form-control" id=""
+										placeholder="輸入帳號" name="member_user">
+								</div>
+								<div class="form-group">
+									<label for="exampleInputPassword1">密碼</label> <input
+										type="Password" class="form-control"
+										id="exampleInputPassword1" placeholder="輸入密碼"
+										name="member_password">
+								</div>
+								<div class="form-group">
+									<label>姓名</label> <input type="text" class="form-control"
+										id="" placeholder="輸入姓名" name="member_name">
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1">電子郵件</label> <input
+										type="email" class="form-control" id="exampleInputEmail1"
+										placeholder="輸入電子郵件" name="member_mail">
+								</div>
+								<div class="form-group">
+									<label for="">地址</label> <input
+										type="text" class="form-control" id=""
+										placeholder="輸入地址" name="member_adress">
+								</div>
+									<div class="form-group">
+									<label for="">電話</label> <input
+										type="text" class="form-control" id=""
+										placeholder="輸入電話" name="member_phone">
+								</div>
+								<div>
+									<label class="check-inline">性別:</label> <label
+										class="check-inline"> <input type="checkbox"
+										id="inlineCheckbox1" value="option1" name="member_chackbox">男
+									</label> <label class="check-inline"> <input type="checkbox"
+										id="inlineCheckbox1" value="option1" name="member_chackbox">女
+									</label>
+								</div>
+								<div class="form-group">
+									<label >生日</label> <input
+										type="date" class="form-control"
+										id="" placeholder="輸入生日">
+								</div>
+								<div>
+									<button type="button" class="btn btn-info">info</button>
+								</div>
+							</form>
+
+						</div>
 					</div>
 					<!-- /container -->
 					<div class="reg-right">
