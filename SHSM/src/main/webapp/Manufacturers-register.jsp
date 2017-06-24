@@ -4,12 +4,14 @@
 <html>
 
 <head>
-    <title>廠商登入與註冊</title>
+    <title>廠商註冊</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="application/x-javascript">
     addEventListener("load", function() {
         setTimeout(hideURLbar, 0);
     }, false);
+
     function hideURLbar() {
         window.scrollTo(0, 1);
     }
@@ -19,6 +21,11 @@
     <script src="js/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="js/move-top.js"></script>
     <script type="text/javascript" src="js/easing.js"></script>
+    <style>
+        #ul{
+            margin: 0 0 -2px 0 ;
+        }
+    </style>
     <script type="text/javascript">
     jQuery(document).ready(function($) {
         $(".scroll").click(function(event) {
@@ -28,8 +35,20 @@
             }, 1000);
         });
     });
+     // 信箱驗證
+    function b_email() {
+        var reg = /w+@w+.w+/;
+        var c_email = document.getElementById("email").value;
+        var c_span_email = document.getElementById("span_email");
+        if (reg.test(c_email)) {
+            c_span_email.innerHTML = "√";
+            return true;
+        } else {
+            c_span_email.innerHTML = "信箱格是錯誤，必須包含 @ ";
+            return false;
+        }
+    }
     </script>
-    <!-- start-smoth-scrolling -->
 </head>
 
 <body>
@@ -38,8 +57,8 @@
             <div class="navigation">
                 <div class="logo">
                     <h1>
-						<a class="navbar-brand link link--yaku" href="index.jsp"><span>S</span><span>H</span><span>S</span><span>M</span></a>
-					</h1>
+                        <a class="navbar-brand link link--yaku" href="index.html"><span>S</span><span>H</span><span>S</span><span>M</span></a>
+                    </h1>
                 </div>
                 <div class="top-nav">
                     <span class="menu"><img src="images/menu.png" alt=" " /></span>
@@ -47,11 +66,7 @@
                         <li><a class="active" data-hover="" href="index.jsp">首頁 <span class="sr-only">(current)</span></a></li>
                         <li><a data-hover="" href="member-register.jsp">會員專區</a></li>
                         <li><a data-hover="" href="Manufacturers-register.jsp">廠商專區</a></li>
-                        <li><a data-hover="" href="
-Mall.html">購物商城</a></li>
-                        <li><a data-hover="" href="contact.html">關於我們</a></li>
-                        <li><a href="changlogin.html">註冊</a></li>
-                    </ul>                 
+                    </ul>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -61,48 +76,58 @@ Mall.html">購物商城</a></li>
     <div class="registration-form">
         <div class="container">
             <h2 class="tittle">廠商註冊</h3>
-		<div class="registration-grids">
-			<div class="reg-form">
-				<div class="reg">
-					 <form>
-						 <ul>
-							 <li class="text-info">姓名: </li>
-							 <li><input type="text" value=""></li>
-						 </ul>
-						 <ul>
-							 <li class="text-info">信箱: </li>
-							 <li><input type="text" value=""></li>
-						 </ul>				 
-						<ul>
-							 <li class="text-info">密碼: </li>
-							 <li><input type="text" value=""></li>
-						 </ul>
-						 <ul>
-							 <li class="text-info">再次確認密碼: </li>
-							 <li><input type="password" value=""></li>
-						 </ul>
-						 <ul>
-							 <li class="text-info">地址:</li>
-							 <li><input type="password" value=""></li>
-						 </ul>
-						 <ul>
-							 <li class="text-info">電話:</li>
-							 <li><input type="text" value=""></li>
-						 </ul>						
-						 <input type="submit" value="註冊廠商">
-						 <p class="click">已經擁有帳號? <a href="Manufacturers-logning.html"> 登入請按這</a></p> 
-					 </form>
-				 </div>
-			</div>
+        <div class="registration-grids">
+            <div class="reg-form">
+                <div class="reg">
+                     <form>
+                         <ul id="ul">
+                             <li class="text-info">姓名: </li>
+                             <li><input type="text" value="" style="margin: 0 -120px"></li>
+                               <li><span id="" style="margin: 0px 0 15px 100px"></span></li>
+                         </ul>
+                         <ul id="ul">
+                             <li class="text-info">信箱: </li>
+                             <li><input type="text" value="" style="margin: 0 -120px" onblur="b_email()" id="email"></li>
+                            <li><span id="span_email" style="margin: 0px 0 15px 100px"></span></li>
+                         </ul>               
+                        <ul id="ul">
+                             <li class="text-info">密碼: </li>
+                             <li><input type="text" value="" style="margin: 0 -120px"></li>
+                               <li><span id="" style="margin: 0px 0 15px 100px"></span></li>
+                         </ul>
+                         <ul id="ul">
+                             <li class="text-info">確認密碼: </li>
+                             <li><input type="password" value="" style="margin: 0 -120px"></li>
+                               <li><span id="" style="margin: 0px 0 15px 100px"></span></li>
+                         </ul>
+                         <ul id="ul">
+                             <li class="text-info">地址:</li>
+                             <li><input type="password" value="" style="margin: 0 -120px"></li>
+                               <li><span id="" style="margin: 0px 0 15px 100px"></span></li>
+                         </ul>
+                         <ul id="ul">
+                             <li class="text-info">電話:</li>
+                             <li><input type="text" value="" style="margin: 0 -120px"></li>
+                               <li><span id="" style="margin: 0px 0 15px 100px"></span></li>
+                         </ul>                      
+                         <input type="submit" value="註冊會員" style="margin: -30px 0 0 260px">
+                         <a href="member.html">測試進入點</a>
+                     </form>
+                 </div>
+            </div>
         <!-- /container -->
         <div class="reg-right">
-            <h3>Completely Free Account</h3>
-            <p>Pellentesque neque leo, dictum sit amet accumsan non, dignissim ac mauris. Mauris rhoncus, lectus tincidunt tempus aliquam, odio libero tincidunt metus, sed euismod elit enim ut mi. Nulla porttitor et dolor sed condimentum. Praesent porttitor lorem dui, in pulvinar enim rhoncus vitae. Curabitur tincidunt, turpis ac lobortis hendrerit, ex elit vestibulum est, at faucibus erat ligula non neque.</p>
-            <h3 class="lorem">Lorem ipsum dolor sit amet elit.</h3>
+            <h3>會員見證</h3>
+            <img src="images/atama6.png" alt="">
+            <img src="images/atama4.png" alt="">
+            <img src="images/atama2.png" alt="">
+            <img src="images/atama1.png" alt="">
+            <hr/>
+            <h3 class="lorem">3天發包,7天維修完成</h3>
             <p>Tincidunt metus, sed euismod elit enim ut mi. Nulla porttitor et dolor sed condimentum. Praesent porttitor lorem dui, in pulvinar enim rhoncus vitae. Curabitur tincidunt, turpis ac lobortis hendrerit, ex elit vestibulum est, at faucibus erat ligula non neque.</p>
         </div>
 
-	
+    
         <div class="clearfix"></div>
     </div>
     </div>
@@ -119,52 +144,6 @@ Mall.html">購物商城</a></li>
         </div>
     </div>
     <!-- //login -->
-    <!--footer-top-->
-    <div class="footer-top">
-        <div class="container">
-            <div class="footer-left">
-                <h3>網站導覽</h3>
-                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
-                <ul>
-                    <li>公司地址<span>台北市大安區</span>信義路三段118號 </li>
-                    <li>+886-6631-6666 </li>
-                    <li><a href="mailto:info@example.com">iiiorg@example.com</a> </li>
-                </ul>
-            </div>
-            <div class="footer-middle">
-                <h3>推薦廠商</h3>
-                <div class="foo-grids">
-                    <a href="#"><img class="img-responsive" src="images/blog1.jpg" alt="" /></a>
-                    <p><a href="#">Accusamus et iusto 
-				odio dignissimos ducimus et iusto odio qui blanditiis dignissimos</a></p>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="foo-grids">
-                    <a href="#"><img class="img-responsive" src="images/blog2.jpg" alt="" /></a>
-                    <p><a href="#">Odio dignissimos ducimus qui blanditiis
-				praesentium voluptatum Accusamus et iusto</a></p>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="foo-grids">
-                    <a href="#"><img class="img-responsive" src="images/blog3.jpg" alt="" /></a>
-                    <p><a href="#">Dignissimos ducimus qui blanditiis
-				praesentium voluptatum. Odio dignissimos ducimus</a></p>
-                    <div class="clearfix"></div>
-                </div>
-            </div>
-            <div class="footer-right">
-                <h3>聯絡我們</h3>
-                <p>Sed ut perspiciatis odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias</p>
-                <form>
-                    <input type="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
-                    <input type="submit" value=" ">
-                </form>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-    <!--//footer-top-->
-    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
     <script src="js/bootstrap.js"></script>
 </body>
 

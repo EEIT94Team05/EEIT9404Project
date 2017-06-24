@@ -1,20 +1,17 @@
 package model.dao;
 
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.query.Query;
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
+import hibernate.HibernateUtil;
 import model.CustomerBean;
 import model.ICustomerDAO;
 
@@ -51,6 +48,21 @@ public class CustomerDAO implements ICustomerDAO {
 	public CustomerBean select(String custid) {
 		return getSession().get(CustomerBean.class, custid);
 	}
+	
+	
+	
+	public void create(CustomerBean customerBean){
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		try {
+			session.saveOrUpdate(customerBean);
+			session.getTransaction().commit();						
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+		}
+		
+	}
+	
 	
 	public  String selectAll(){
 		int i=0;

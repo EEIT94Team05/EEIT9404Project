@@ -17,7 +17,8 @@ import model.CompanyService;
 import model.dao.CompanyDAO;
 
 @WebServlet(
-		urlPatterns={"/secure/Companylogin.controller"}
+		urlPatterns={"/Companylogin.controller"}
+
 )
 public class CompanyLoginServlet extends HttpServlet {
 	private CompanyService companyservice;
@@ -32,10 +33,14 @@ public class CompanyLoginServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
+		
+		
+		
 //接收資料
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-
+				
+		
 //驗證資料
 //轉換資料
 		Map<String, String> errors = new HashMap<String, String>();
@@ -50,10 +55,9 @@ public class CompanyLoginServlet extends HttpServlet {
 		
 		if(errors!=null && !errors.isEmpty()) {
 			request.getRequestDispatcher(
-					"/secure/company-logning.jsp").forward(request, response);
-			return;
-		}
-
+					"/Manufacturers-logning.jsp").forward(request, response);
+			return;		
+		}		 	
 //呼叫Model
 		CompanyBean bean = companyservice.login(username, password);
 //		if (bean != null) {
@@ -69,14 +73,14 @@ public class CompanyLoginServlet extends HttpServlet {
 		if(bean==null) {
 			errors.put("psderror", "登入失敗，請再次輸入帳號密碼");
 			request.getRequestDispatcher(
-					"/secure/company-logning.jsp").forward(request, response);
+					"/Manufacturers-logning.jsp").forward(request, response);
 		} else {
-			
+
 			session.setAttribute("compuser", bean);
-			
+			session.setAttribute("company", bean);
 			String path = request.getContextPath();
 //			response.sendRedirect(path+"/member.jsp");
-			response.sendRedirect(path+"/map/createcase.jsp");
+			response.sendRedirect(path+"/Manufacturers.jsp");//重新導向回首頁
 		}
 	}
 	@Override

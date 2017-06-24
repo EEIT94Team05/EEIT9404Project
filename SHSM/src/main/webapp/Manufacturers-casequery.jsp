@@ -3,12 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
-
+$("#divId").hide();
 $(function() {
-	$("#divId").hide();
 	function abc(data){
 		var id = data.repaircase_id;
 		console.log(id);
@@ -21,39 +18,24 @@ $(function() {
 			});
 			$(id).mouseleave(function() {
 				$(id).hide();
-			});
-		
+			});		
 	}
 	
-	
-	
 });
-function bid(com_id,repaircase_Id){
-	console.log(com_id,repaircase_Id);
-		$.get('SearchBidding.controller',{'repaircase_Id':repaircase_Id,'com_id':com_id},function(data){
-			$('#searchbidding > tbody > tr:nth-child(2) > td').text(data.bidding_amount);
-			$('#searchbidding > tbody > tr:nth-child(4) > td').text(data.bidding_date);
-			$('#searchbidding > tbody > tr:nth-child(6) > td').text(data.bidding_context);
-				console.log(data.bidding_context)
-				
-		
-			
-		})
-}
-
 </script>
 <head>
     <title>案件查詢</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
-
+    <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-*.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" />
 </head>
 
@@ -61,20 +43,11 @@ function bid(com_id,repaircase_Id){
 
 
 	    <div class="container" >
-	        <ul class="nav nav-tabs">
-	            <li>
-	            	<a href="member-page.jsp">會員專區</a>
-	            </li>
-	            <li>
-	            	<a href="member-case.jsp" >新增案件</a>
-	            </li>
-	            <li class="active">
-	            	<a href="<c:url value='/controller/MemberCaseQuery'/>">查詢案件</a>
-	            </li>
-	            <li>
-	                <a href="member-Manufacturers.jsp">廠商列表</a>
-	            </li>
-	        </ul>
+       <ul class="nav nav-tabs">
+            <li><a href="bootstarptest2.jsp">廠商專區</a></li>
+            <li><a href="Manufacturers-case.jsp">查詢案件</a></li>
+            <li  class="active"><a href="Manufacturers-casequery.jsp">追蹤案件</a></li>
+        </ul>
 	    </div>
 
 <c:if test="${not empty repaircase}">
@@ -119,7 +92,7 @@ function bid(com_id,repaircase_Id){
 					<c:if test="${repaircase.repaircase_status=='招標中'}">
 					<td>
 <div class="modExample">
-			<a href="#myModal1" role="button"  data-target="#myModal${repaircase.repaircase_id}"
+			<a href="#myModal1" role="button" onclick="abc(${repaircase})" data-target="#myModal${repaircase.repaircase_id}"
 				class="btn btn-default" data-toggle="modal" id="${repaircase.repaircase_id}">查詢投標廠商</a>
 		</div>
 			<div id="myModal${repaircase.repaircase_id}" class="modal" data-easein="fadeIn" tabindex="-1"
@@ -142,55 +115,24 @@ function bid(com_id,repaircase_Id){
 									<h4><font size="4">案件標題  :</font></h4>
 									<h4><font size="4">${repaircase.repaircase_title}</font></h4>
 								</div>
-
-								
+								<form action="<c:url value=''/>" method="post">
 								<div>
 
 									<h4><font size="4">投標廠商  :</font></h4>
 								<table>
-
 								<tr>
 								<c:forEach var="biddingbean" items="${repaircase.biddingBean}">
-							
-								<img width=80 height=80 src="${pageContext.request.contextPath}/controller/GetCompanyImageServlet?id=${biddingbean.biddingPk.com_id}" />
-								<input type="submit" name="com_id_detail" value="投標內容" href="" >
-								</c:forEach>
-
+									
+									<img width=50 height=50 src="${pageContext.request.contextPath}/controller/GetCompanyImageServlet?id=${biddingbean.biddingPk.com_id}" />
+									<input type="submit" name="com_id_detail" value="${biddingbean.biddingPk.com_id}">
 								
+								</c:forEach>
 								</tr>
-								<tr>
-									<form>
-										<table id="searchbidding" border="1">
-											<tr>
-												<td>投標金額:</td>
-											</tr>
-											<tr>
-												<td></td>
-											</tr>
-											<tr>
-												<td>建立日期:</td>
-											</tr>
-											<tr>
-												<td></td>
-											</tr>
-											<tr>
-												<td>內文:</td>
-											</tr>
-											<tr>
-												<td></td>
-											</tr>
-											<tr>
-												<td>圖片:</td>
-											</tr>
-											<tr>
-												<td></td>
-											</tr>
-										</table>
-								</form>
-								</tr>
+								
+								
 								</table>
 								</div>
-								
+								</form>
 							</div>
 							
 						</div>
@@ -206,7 +148,7 @@ function bid(com_id,repaircase_Id){
 
 		
 		<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-
+    	<script src="js/bootstrap.js"></script>
     	
 
 </body>

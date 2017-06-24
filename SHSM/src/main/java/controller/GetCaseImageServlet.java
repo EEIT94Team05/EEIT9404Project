@@ -15,7 +15,8 @@ import model.RepaircaseBean;
 import model.RepaircaseService;
 import model.dao.RepaircaseDAO;
 
-@WebServlet("/controller/GetCaseImageServlet")
+@WebServlet(
+		urlPatterns={"/controller/GetCaseImageServlet","/TinymapManufactory/GetCaseImageServlet"})
 public class GetCaseImageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private RepaircaseService repaircaseservice;
@@ -34,9 +35,10 @@ public class GetCaseImageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-
+		
+		System.out.println("連接contrlloer");
 		String id = request.getParameter("id");
-
+		System.out.println(id);
 		Integer repaircase_id = 0;
 		if (id!=null && id.length()!=0) {
 			try {
@@ -66,9 +68,10 @@ public class GetCaseImageServlet extends HttpServlet {
 			if(buf!=null)
             for (int i = 0; i < buf.length; i++) {
             		out.write(buf[i]);
-             }     
-            
 
+             }     
+
+			
 		}
 		
 	}

@@ -18,22 +18,15 @@
         window.scrollTo(0, 1);
     }
     
+
 </script>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <link href="css/style.css" rel='stylesheet' type='text/css' />
 <script src="js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
-<script type="text/javascript">
-	jQuery(document).ready(function($) {
-		$(".scroll").click(function(event) {
-			event.preventDefault();
-			$('html,body').animate({
-				scrollTop : $(this.hash).offset().top
-			}, 1000);
-		});
-	});
-</script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
 </head>
 
 <body>
@@ -69,15 +62,17 @@
 					<div class="reg-form">
 						<div class="reg">
 
-							<form action="<c:url value="/controller/Customerlogin.controller" />" method="get">
+							<form action="<c:url value="/Customerlogin.controller" />" method="get">
 
 								<ul>
 									<li class="text-info">帳號:</li>
-									<li><input type="text" value="eeit9410" style="margin: 0 -150px" name="username"></li>
+
+									<li><input type="text" value="" style="margin: 0 -150px"></li>
 								</ul>
 								<ul>
 									<li class="text-info">密碼:</li>
-									<li><input type="text" value="a87654321" style="margin: 0 -150px" name="password"></li>
+
+									<li><input type="text" value="" style="margin: 0 -150px"></li>
 								</ul>
 								<div style="margin: -20px 0 0 30px">
 									<a href="member-register.html" style="margin: 0 0 0 250px">尚未擁有帳號?</a>
@@ -107,6 +102,8 @@
 
 				</div>
 				<!-- registration-form -->
+
+				<script src="js/bootstrap.js"></script>
 
 </body>
 

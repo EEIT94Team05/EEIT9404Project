@@ -41,11 +41,11 @@ public class GetCompanyImageServlet extends HttpServlet {
 		 }else{
 			 byte[] buf=null;
 			 try {
-				 if( companyBean.getCom_img()!=null){
-					 int blob = (int) companyBean.getCom_img().length();
+
+				 if(companyBean.getCom_img()!=null){
+					int blob = (int) companyBean.getCom_img().length();
 					buf = companyBean.getCom_img().getBytes(1, blob);
-					}
-				
+				 }
 			} catch (SQLException e) {
 			
 				e.printStackTrace();

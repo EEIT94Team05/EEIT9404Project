@@ -20,17 +20,14 @@
 
 <body>
     <div class="container">
-        <ul class="nav nav-tabs">
-            <li><a href="member-page.jsp">會員專區</a></li>
-            <li><a href="member-case.jsp">新增案件</a></li>
-            <li><a href="member-casequery.jsp">查詢案件</a></li>
-            <li class="active">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" href="#">廠商列表</a>
-            </li>
+       <ul class="nav nav-tabs">
+            <li><a href="bootstarptest2.jsp">廠商專區</a></li>
+            <li  class="active"><a href="Manufacturers-case.jsp">查詢案件</a></li>
+            <li><a href="Manufacturers-casequery.jsp">追蹤案件</a></li>
         </ul>
         <div class="row">
             <div class="col-md-12">
-                <iframe src="casepage/services-forManufacturerscahck.jsp" frameborder="0" width="1200" height="900" scrolling="no"></iframe>
+                <iframe src="TinymapManufactory/click.jsp" frameborder="0" width="1150" height="650" scrolling="no"></iframe>
             </div>
         </div>
     </div>

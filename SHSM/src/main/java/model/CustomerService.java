@@ -20,6 +20,16 @@ public class CustomerService {
 		return null;
 	}
 	
+
+	public CustomerBean insert(CustomerBean bean) {
+		CustomerBean result = null;
+		if(bean!=null){
+			result = bean;
+			return result;
+		}
+		return null;
+	}
+	
 //	public static void main(String[] args) {
 //		Configuration config = new Configuration().configure("hibernate.cfg.xml");
 //		SessionFactory sf = config.buildSessionFactory();
