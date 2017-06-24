@@ -64,8 +64,8 @@
                         <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-                                    <th>廠商編號</th>
-                                    <th>廠商名稱</th>
+                                    <th>案件編號</th>
+                                    <th>案件名稱</th>
                                     <th>服務類型</th>
                                     <th>報價金額</th>
                                     <th>詳細資訊</th>
@@ -75,7 +75,7 @@
                             <tbody>
                                 <tr>
                                     <td><a href="#">B0000000001</a></td>
-                                    <td>進雄建設</td>
+                                    <td>水電維修</td>
                                     <td>外牆翻修</td>
                                     <td>19,999</td>
                                     <td>
@@ -116,6 +116,7 @@
             </div>
         </div>
     </div>
+    
     <!-- 跳出廠商詳細訊息-->
     <div class="modal fade" id="look" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">

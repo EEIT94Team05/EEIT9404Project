@@ -8,9 +8,10 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>Google Maps JavaScript API Example</title>
 <script
+	src="http://hayageek.github.io/jQuery-Upload-File/jquery.uploadfile.min.js"></script>
+<script
 	src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyDyRk2QLNN4DSoTEnn2jrn8iFhsC6R9nlw"
 	type="text/javascript"></script>
-
 
 <link href="css/pushy-buttons.min.css" rel="stylesheet">
 <link
@@ -26,8 +27,7 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
 <!-- (Optional) Latest compiled and minified JavaScript translation files -->
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-*.min.js"></script>
+
 <style>
 .title {
 	height: 25px;
@@ -102,8 +102,8 @@ a, a:focus {
 <script type="text/javascript">
 	$(function() {
 		$("#divid").hide();
-		if (GBrowserIsCompatible()) {
 
+		if (GBrowserIsCompatible()) {
 			myMap = new GMap2(document.getElementById("my_map"));
 			//搭配下方setcenter使用
 			myLatLng = new GLatLng(25.04763902653048, 121.51715755462646);
@@ -113,14 +113,14 @@ a, a:focus {
 			//設定要顯示的控制項
 			myMap.addControl(new GLargeMapControl());
 			myMap.addControl(new GMapTypeControl());
-			}
-
+		}
 		$.getJSON("casesearch.controller", function(data) {
 			var i = 0;
 			while (i < data.length) {
 				addresstolatlng(data[i]);
 				i++;
 			}
+
 		})
 		//載入後動作
 
@@ -134,7 +134,6 @@ a, a:focus {
 						marker,
 						'mouseover',
 						function() {
-							// When clicked, open an Info Window
 							marker
 									.openInfoWindowHtml('<center>'
 											+ '<h4 style='+'color:'+'black'+'>'
@@ -154,7 +153,8 @@ a, a:focus {
 											+ '</h4>'
 											+ '<hr/>'
 											+ '<a href='+'\"#myModal1\"'+' role='+'\"button\"'+' data-target='+'\"#myModal1\"'
-						+' class='+'\"btn btn-default\"'+' data-toggle='+'\"modal\"'+' id='+'\"divId\"'+' scrolling='+'\"no\"'+'>'
+						                    +' class='+'\"btn btn-default\"'+' data-toggle='+'\"modal\"'+' id='+'\"divId\"'
+						                    +' scrolling='+'\"no\"'+'>'
 											+ '詳細資訊' + '</a>' + '</center>');
 
 							$("a")
@@ -166,8 +166,9 @@ a, a:focus {
 													top : event.pageY,
 													left : event.pageX
 												});
-												var id = $('#caseid').text();
 
+												console
+														.log(data.repaircase_title);
 												$('td[name="casetitle"]').text(
 														data.repaircase_title);
 												$('td[name="area"]').text(
@@ -179,30 +180,77 @@ a, a:focus {
 												$('td[name="context"]')
 														.text(
 																data.repaircase_context);
+												$
+														.get(
+																'GetCaseImageServlet',
+																{
+																	'id' : data.repaircase_id
+																},
+																function(img) {
+																	$(
+																			'#tablestyle > tbody > tr:nth-child(11) > td > img')
+																			.val(
+																					img);
+																});
 
-												var url = '${pageContext.request.contextPath}/controller/GetCaseImageServlet?id='
-														+ data.repaircase_id;
+												$('input[name="enter"]')
+														.click(
+																function() {
+																	var amount = $(
+																			'#focusedInput')
+																			.val();
+																	var context = $(
+																			'input[name="context"]')
+																			.val();
+																	var img = $(
+																			'input[name="img"]')
+																			.val();
+																	console
+																			.log(amount);
+																	console
+																			.log(context);
+																	console
+																			.log(img);
+																	$
+																			.ajax(
+																					{
+																						"url" : "CreateBiddingServlet",
+																						"type" : "post",
+																						"cache" : false,
+																						"data" : {
+																							"id" : data.repaircase_id,
+																							"amount" : amount,
+																							"context" : context,
+																							"img" : img
 
+																						}
+																					})
+																			.done(
+																					function() {
+																					});
+
+																});
+
+											});
+							$(
+									"#my_map > div:nth-child(1) > div > div:nth-child(1) > div:nth-child(4) > div:nth-child(4) > div:nth-child(2)")
+									.mouseleave(
+											function() {
 												$(
-														'#tablestyle > tbody > tr:nth-child(11) > td > img')
-														.attr('src', url);
-												// 										
-
-												//					$("#divId").mouseleave(function() {
-												//						$("#divId").hide();
-												//					});
+														"#my_map > div:nth-child(1) > div > div:nth-child(1) > div:nth-child(4) > div:nth-child(4) > div:nth-child(2)")
+														.hide();
 											});
 						});
 
 		myMap.addOverlay(marker);
 
 	}
+
 	/*<!--地圖標點-->*/
 	function addresstolatlng(data) {
 		var lat;
 		var lng;
 		var address = data.repaircase_address
-
 		var geocoder = new google.maps.Geocoder();
 		geocoder.geocode({
 			'address' : address
@@ -212,8 +260,14 @@ a, a:focus {
 				lat = results[0].geometry.location.lat();
 				lng = results[0].geometry.location.lng();
 
+				/*
+				Google Maps API 內建四種控制項：
 
-
+				GLargeMapControl : 適合給大型地圖的控制項。
+				GSmallMapControl : 適合給小型地圖的控制項。
+				GSmallZoomControl : 只有 Zoom Level 的調整，沒有地圖移動控制。
+				GMapTypeControl : 顯示地圖型態切換的控制項。
+				 */
 				//設定座標值：var myMarker = new GMarker( 30 行 );
 				var myMarker = new GMarker(myLatLng);
 				//在地圖上放置標點 :myMap.addOverlay( 45 行 );
@@ -231,7 +285,6 @@ a, a:focus {
 			$("#showdata").toggle();
 		})
 	});
-
 </script>
 </head>
 
@@ -294,11 +347,7 @@ a, a:focus {
 										<tr>
 											<td name="context" align="center" style="padding: 6px;"></td>
 										</tr>
-										<td>
-												<img width='100' height='100' />
-												<img width='100' height='100' />
-												<img width='100' height='100' />
-										</td>
+										<td><img width='100' height='100' /></td>
 									</table>
 									<div>
 										<center>
@@ -311,32 +360,39 @@ a, a:focus {
 											<div id="showdata">
 												點擊顯示投標/隱藏
 
-												<form class="form-horizontal" role="form">
+												<form class="form-horizontal" role="form"
+													enctype="mutiple/form-data" method="post">
 													<div class="form-group">
 														<label class="col-sm-2 control-label">金額:</label>
 														<div class="col-sm-10">
-															<input class="form-control" id="focusedInput" type="text"
-																value="請輸入金額">
+															<input name="amount" class="form-control"
+																id="focusedInput" type="text" placeholder="請輸入金額">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-2 control-label">內文:</label>
 														<div class="col-sm-10">
-															<input class="form-control" id="focusedInput" type="text"
-																value="請輸入內文">
+															<input name="context" class="form-control"
+																id="focusedInput" type="text" placeholder="請輸入說明內容">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-2 control-label">照片:</label>
 														<div class="col-sm-10">
-															<input class="form-control" id="focusedInput" type="file"
-																value="請上傳照片">
+															<input name="img" class="form-control" id="focusedInput"
+																type="file" placeholder="請上傳照片">
+														</div>
+														<div>
+															<center>
+																<button class="button" style="vertical-align: middle">
+																	<span>確定投標</span>
+																</button>
+															</center>
 														</div>
 													</div>
 												</form>
 											</div>
 										</center>
-
 									</div>
 								</div>
 							</div>

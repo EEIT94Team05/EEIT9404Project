@@ -21,7 +21,7 @@
 <body>
     <div class="container">
         <ul class="nav nav-tabs">
-            <li><a href="member-page.jsp">會員專區</a></li>
+            <li><a href="casepage/services.jsp">會員專區</a></li>
             <li><a href="member-case.jsp">新增案件</a></li>
             <li><a href="member-casequery.jsp">查詢案件</a></li>
             <li class="active">
@@ -30,7 +30,7 @@
         </ul>
         <div class="row">
             <div class="col-md-12">
-                <iframe src="casepage/services-forManufacturerscahck.jsp" frameborder="0" width="1200" height="900" scrolling="no"></iframe>
+                <iframe src="casepage/services-forManufacturerscahck.jsp" frameborder="0" width="1200" height="500" scrolling="no"></iframe>
             </div>
         </div>
     </div>
