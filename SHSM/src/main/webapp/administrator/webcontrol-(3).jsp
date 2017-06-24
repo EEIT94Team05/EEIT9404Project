@@ -57,7 +57,7 @@
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <!--廠商資料-->
                 <div id="Manufacturers-dataresource">
-                    <iframe src="Manufacturers-dataresource.jsp" frameborder="0" width="1200" height="800" scrolling="no" style="margin: 30px 0 0 0 "></iframe>
+                    <iframe src="Manufacturers-dataresource.jsp" frameborder="0" width="1200" height="800" scrolling="yes" style="margin: 30px 0 0 0 "></iframe>
                 </div>
                 <!--廠商資料 end-->
             </div>

@@ -5,6 +5,7 @@
 <head>
     <title>案件進度</title>
     <meta charset="utf-8">
+     <meta charset="utf-8">
     <link rel="stylesheet" href="asset/css/bootstrap.min.css" type="text/css" media="screen">
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="screen">
     <link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
@@ -38,7 +39,9 @@
     <script type="text/javascript" src="js/jquery.parallax.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
     <!--jquery datatable-->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
+    <script src="http://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
     <script>
@@ -61,70 +64,19 @@
                         <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-								<th>repaircase_title</th>
-								<th>repaircase_type</th>
-								<th>repaircase_repairdate</th>
-								<th>repaircase_budget</th>
-								<th>repaircase_address</th>
-								<th>repaircase_place</th>
-								<th>repaircase_status</th>
-								<th>repaircase_createdate</th>
-								<th>repaircase_finday</th>
-								<th>repaircase_score</th>
+								<th>案件標題</th>
+								<th>案件種類</th>
+								<th>維修日期</th>
+								<th>金額</th>
+								<th>地址</th>
+								<th>場所</th>
+								<th>內文</th>
+								<th>建立日期</th>
+								<th>結束日期</th>
+								<th>評分</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                
-                            </tbody>
                         </table>
-                        <div class="col-md-4">
-                            <!-- 會員TITLE -->
-                            <h4 class="classic-title"><span>案件內容</span></h4>
-                            <!-- Some Text -->
-                            <p>會員帳號:
-                                <input type="text" value="A0000000001" style="border:0px" readonly="readonly">
-                            </p>
-                            <img src="" alt="">
-                            <p>近期案件:
-                                <input type="text" value="A0000000001" style="border:0px" readonly="readonly">
-                            </p>
-                            <p>完修日期:
-                                <input type="text" value="2017/7/1" style="border:0px" readonly="readonly">
-                            </p>
-                            <p>服務廠商:
-                                <input type="text" value="B0000000001" style="border:0px" readonly="readonly">
-                            </p>
-                        </div>
-                        <div class="col-md-6">
-                            <!-- Classic Heading <-->
-                            <h4 class="classic-title"><span>案件進度(A00000000054)<a href="#" style="margin: 0 0 0 335px">編輯</a></span></h4>
-                            <div class="skill-shortcode">
-                                <div class="skill">
-                                    <p>
-                                        <input type="text" value="新建案件(new)" style="border:0px" readonly="readonly">
-                                    </p>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" data-percentage="25">
-                                            <span class="progress-bar-span">25%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Classic Heading -->
-                            <h4 class="classic-title"><span>案件進度(A00000000032)<a href="#" style="margin: 0 0 0 335px">編輯</a></span></h4>
-                            <div class="skill-shortcode">
-                                <div class="skill">
-                                    <p>
-                                        <input type="text" value="維修中..." style="border:0px" readonly="readonly">
-                                    </p>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" data-percentage="75">
-                                            <span class="progress-bar-span">75%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                        <script src="js/docs.min.js"></script>

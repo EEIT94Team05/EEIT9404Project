@@ -67,12 +67,12 @@
 								<ul>
 									<li class="text-info">帳號:</li>
 
-									<li><input type="text" name="username" value="" style="margin: 0 -150px"></li>
+									<li><input type="text" name="username" value="eeit9410" style="margin: 0 -150px"></li>
 								</ul>
 								<ul>
 									<li class="text-info">密碼:</li>
 
-									<li><input type="text" name="password" value="" style="margin: 0 -150px"></li>
+									<li><input type="password" name="password" value="a87654321" style="margin: 0 -150px"></li>
 								</ul>
 								<div style="margin: -20px 0 0 30px">
 									<a href="member-register.html" style="margin: 0 0 0 250px">尚未擁有帳號?</a>
