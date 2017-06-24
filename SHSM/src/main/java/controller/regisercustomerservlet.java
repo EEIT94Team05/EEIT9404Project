@@ -98,7 +98,10 @@ public class regisercustomerservlet extends HttpServlet {
 		// 呼叫Model
 		CustomerBean custbean = (CustomerBean) session.getAttribute("custuser");
 		CustomerBean bean = new CustomerBean();
-		bean.setCus_id(member_user);
+		bean.setCus_id(custbean.getCus_id());
+		bean.setCus_name(member_name);
+		bean.setCus_email(member_mail);
+
 		bean.setCus_password(member_password);
 		bean.setCus_name(member_name);
 		bean.setCus_email(member_mail);	

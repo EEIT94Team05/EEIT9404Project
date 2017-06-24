@@ -35,7 +35,9 @@
         </div>
     </div>
     <div>
+
         <iframe src="bootstarptest2.jsp" frameborder="0" width="100%" height="1200"></iframe>
+
     </div>
     <script src="js/bootstrap.js"></script>
 </body>

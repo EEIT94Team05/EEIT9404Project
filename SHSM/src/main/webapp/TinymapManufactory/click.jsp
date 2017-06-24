@@ -103,6 +103,7 @@ a, a:focus {
 	$(function() {
 		$("#divid").hide();
 		if (GBrowserIsCompatible()) {
+
 			myMap = new GMap2(document.getElementById("my_map"));
 			//搭配下方setcenter使用
 			myLatLng = new GLatLng(25.04763902653048, 121.51715755462646);
@@ -112,7 +113,8 @@ a, a:focus {
 			//設定要顯示的控制項
 			myMap.addControl(new GLargeMapControl());
 			myMap.addControl(new GMapTypeControl());
-		}
+			}
+
 		$.getJSON("casesearch.controller", function(data) {
 			var i = 0;
 			while (i < data.length) {
@@ -200,6 +202,7 @@ a, a:focus {
 		var lat;
 		var lng;
 		var address = data.repaircase_address
+
 		var geocoder = new google.maps.Geocoder();
 		geocoder.geocode({
 			'address' : address
@@ -209,14 +212,8 @@ a, a:focus {
 				lat = results[0].geometry.location.lat();
 				lng = results[0].geometry.location.lng();
 
-				/*
-				Google Maps API 內建四種控制項：
 
-				GLargeMapControl : 適合給大型地圖的控制項。
-				GSmallMapControl : 適合給小型地圖的控制項。
-				GSmallZoomControl : 只有 Zoom Level 的調整，沒有地圖移動控制。
-				GMapTypeControl : 顯示地圖型態切換的控制項。
-				 */
+
 				//設定座標值：var myMarker = new GMarker( 30 行 );
 				var myMarker = new GMarker(myLatLng);
 				//在地圖上放置標點 :myMap.addOverlay( 45 行 );
@@ -234,6 +231,7 @@ a, a:focus {
 			$("#showdata").toggle();
 		})
 	});
+
 </script>
 </head>
 
@@ -338,6 +336,7 @@ a, a:focus {
 												</form>
 											</div>
 										</center>
+
 									</div>
 								</div>
 							</div>

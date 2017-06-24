@@ -70,6 +70,7 @@ public class GetCaseImageServlet extends HttpServlet {
             		out.write(buf[i]);
 
              }     
+
 			
 		}
 		

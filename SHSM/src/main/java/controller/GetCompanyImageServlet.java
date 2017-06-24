@@ -41,6 +41,7 @@ public class GetCompanyImageServlet extends HttpServlet {
 		 }else{
 			 byte[] buf=null;
 			 try {
+
 				 if(companyBean.getCom_img()!=null){
 					int blob = (int) companyBean.getCom_img().length();
 					buf = companyBean.getCom_img().getBytes(1, blob);
@@ -55,6 +56,7 @@ public class GetCompanyImageServlet extends HttpServlet {
 			 for(int i=0;i<buf.length;i++){
 				 out.write(buf[i]);
 			 }
+			 
 		 }
 
 	}
