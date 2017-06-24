@@ -18,6 +18,7 @@
         window.scrollTo(0, 1);
     }
     
+
 </script>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <link href="css/style.css" rel='stylesheet' type='text/css' />
@@ -60,13 +61,9 @@
 				<div class="registration-grids">
 					<div class="reg-form">
 						<div class="reg">
-<<<<<<< HEAD
-							<form>
-=======
 
 							<form action="<c:url value="/Customerlogin.controller" />" method="get">
 
->>>>>>> branch 'master' of https://github.com/EEIT94Team05/EEIT9404Project.git
 								<ul>
 									<li class="text-info">帳號:</li>
 									<li><input type="text" value="" style="margin: 0 -150px"></li>
@@ -102,12 +99,9 @@
 					<div class="clearfix"></div>
 
 				</div>
-<<<<<<< HEAD
 				<!-- registration-form -->
 				<script src="js/bootstrap.js"></script>
-=======
 
->>>>>>> branch 'master' of https://github.com/EEIT94Team05/EEIT9404Project.git
 </body>
 
 </html>
