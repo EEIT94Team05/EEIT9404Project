@@ -155,48 +155,45 @@ a, a:focus {
 						+' class='+'\"btn btn-default\"'+' data-toggle='+'\"modal\"'+' id='+'\"divId\"'+' scrolling='+'\"no\"'+'>'
 											+ '詳細資訊' + '</a>' + '</center>');
 
-							$("a").on(
-									"click",
-									function() {
-										$("#divid").show().css({
-											position : "absolute",
-											top : event.pageY,
-											left : event.pageX
-										});
-										var id = $('#caseid').text();
-										console.log(data.repaircase_title);
-										$('td[name="casetitle"]').text(
-												data.repaircase_title);
-										$('td[name="area"]').text(
-												data.repaircase_area);
-										$('td[name="place"]').text(
-												data.repaircase_place);
-										$('td[name="budget"]').text(
-												data.repaircase_budget);
-										$('td[name="context"]').text(
-												data.repaircase_context);
-										$.get('GetCaseImageServlet', {
-											'id' : data.repaircase_id
-										}, function(img) {
-											
-											console.log(img.responseText);
-											$('#tablestyle > tbody > tr:nth-child(11) > td > img').val(img);
-										});
+							$("a")
+									.on(
+											"click",
+											function() {
+												$("#divid").show().css({
+													position : "absolute",
+													top : event.pageY,
+													left : event.pageX
+												});
+												var id = $('#caseid').text();
 
-										//					$("#divId").mouseleave(function() {
-										//						$("#divId").hide();
-										//					});
-									});
+												$('td[name="casetitle"]').text(
+														data.repaircase_title);
+												$('td[name="area"]').text(
+														data.repaircase_area);
+												$('td[name="place"]').text(
+														data.repaircase_place);
+												$('td[name="budget"]').text(
+														data.repaircase_budget);
+												$('td[name="context"]')
+														.text(
+																data.repaircase_context);
+
+												var url = '${pageContext.request.contextPath}/controller/GetCaseImageServlet?id='
+														+ data.repaircase_id;
+
+												$(
+														'#tablestyle > tbody > tr:nth-child(11) > td > img')
+														.attr('src', url);
+												// 										
+
+												//					$("#divId").mouseleave(function() {
+												//						$("#divId").hide();
+												//					});
+											});
 						});
 
 		myMap.addOverlay(marker);
 
-		//             var infowindow = new google.maps.InfoWindow({
-		//                 content: contentString
-		//               });
-		//             marker.addListener('click', function() {
-		//                 infowindow.open(map, marker);
-		//               });
 	}
 	/*<!--地圖標點-->*/
 	function addresstolatlng(data) {
@@ -299,8 +296,10 @@ a, a:focus {
 										<tr>
 											<td name="context" align="center" style="padding: 6px;"></td>
 										</tr>
-										<td><img width='100' height='100'
-											 />
+										<td>
+												<img width='100' height='100' />
+												<img width='100' height='100' />
+												<img width='100' height='100' />
 										</td>
 									</table>
 									<div>
