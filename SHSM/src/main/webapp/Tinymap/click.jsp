@@ -205,11 +205,11 @@ a, a:focus {
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-4 control-label"> <font
+									<label class="col-sm-4 control-label" > <font
 										color="#FF0000">*</font>金額
 									</label>
 									<div class="col-sm-6">
-										<input type="text" class="form-control" id="firstname"
+										<input type="text" class="form-control" id="firstname" name="casebudget"
 											placeholder="請輸入金額">
 									</div>
 								</div>

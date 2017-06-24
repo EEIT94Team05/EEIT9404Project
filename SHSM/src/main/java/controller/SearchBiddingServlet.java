@@ -10,6 +10,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -44,17 +45,16 @@ import model.dao.RepaircaseDAO;
 		)
 
 @WebServlet(
-		urlPatterns={"/controller/SearchBidding.controller"}
+		urlPatterns={"/casepage/SearchBidding.controller"}
 )
 public class SearchBiddingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private SimpleDateFormat sdFormat;
-	private BiddingService biddingservice;
+	private BiddingDAO biddingdao;
 	private InputStream is=null;
 	@Override
 	public void init() throws ServletException {
-		biddingservice = new BiddingService(
-				new BiddingDAOHibernate(HibernateUtil.getSessionFactory()));
+		biddingdao = new BiddingDAOHibernate(HibernateUtil.getSessionFactory());
 	}
 	
 	@Override
@@ -67,7 +67,7 @@ public class SearchBiddingServlet extends HttpServlet {
 	
 //接收資料
 		String temp1 = request.getParameter("repaircase_Id");
-		String com_id = request.getParameter("com_id");
+//		String com_id = request.getParameter("com_id");
 		System.out.println(temp1);
 
 		
@@ -90,29 +90,39 @@ public class SearchBiddingServlet extends HttpServlet {
 		
 		
 //呼叫Model
-		BiddingPk biddingPk = new BiddingPk();
-		biddingPk.setRepaircase_Id(repaircase_id);
-		biddingPk.setCom_id(com_id);
+//		BiddingPk biddingPk = new BiddingPk();
+//		biddingPk.setRepaircase_Id(repaircase_id);
+//		biddingPk.setCom_id(com_id);
 		
 		
 //根據Model執行結果呼叫View
-		BiddingBean result = biddingservice.select(biddingPk);
-		System.out.println(result.getBidding_context());
+		List<BiddingBean> result = biddingdao.select(repaircase_id);
+		System.out.println(result);
 		if(result==null) {
 			errors.put("action", "Insert失敗");
 		} else {
 //			request.setAttribute("biddingbean", result);
 //			System.out.println(result);
+			int i=0;
 			JSONObject obj2;
-			obj2 = new JSONObject();
-			obj2.put("biddingPk", result.getBiddingPk());
-			obj2.put("bidding_amount", result.getBidding_amount());
-			obj2.put("bidding_date", result.getBidding_date());
-			obj2.put("bidding_img", result.getBidding_img());
-			obj2.put("bidding_context", result.getBidding_context());
+			JSONArray jsonArray = new JSONArray();
+			while(i<result.size()){
+				BiddingBean data = result.get(i);
+				obj2 = new JSONObject();
+				obj2.put("biddingPk", data.getBiddingPk());
+				obj2.put("bidding_amount", data.getBidding_amount());
+				obj2.put("bidding_date", data.getBidding_date());
+				obj2.put("bidding_img", data.getBidding_img());
+				obj2.put("bidding_context", data.getBidding_context());
+				jsonArray.put(obj2);
+				i++;
+			}
+//			System.out.println(jsonArray);
+			out.println(jsonArray.toString());
+			
 			
 //			System.out.println(jsonArray);
-			out.println(obj2.toString());
+			
 		}
 //		request.getRequestDispatcher(
 //				"/Tinymap/click.jsp").forward(request, response);

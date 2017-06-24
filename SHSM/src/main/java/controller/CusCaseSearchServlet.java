@@ -78,6 +78,7 @@ public class CusCaseSearchServlet extends HttpServlet {
 			for(RepaircaseBean repaircase:result){
 				createdate = sdf.format(repaircase.getRepaircase_createdate());
 				repairdate = sdf.format(repaircase.getRepaircase_repairdate());
+				if(findate!=null)
 				findate = sdf.format(repaircase.getRepaircase_finday());
 			}
 			JSONArray array1 = new JSONArray();
@@ -97,6 +98,7 @@ public class CusCaseSearchServlet extends HttpServlet {
 				array.add(createdate);
 				array.add(findate); 
 				array.add(result.get(i).getRepaircase_score());
+				array.add(result.get(i).getRepaircase_id());
 				array1.add(array);
 				i++;
 			}

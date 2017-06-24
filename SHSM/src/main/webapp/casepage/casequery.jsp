@@ -6,74 +6,53 @@
     <title>案件進度</title>
     <meta charset="utf-8">
      <meta charset="utf-8">
-    <link rel="stylesheet" href="asset/css/bootstrap.min.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/responsive.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/colors/red.css" title="red" media="screen" />
-    <link rel="stylesheet" type="text/css" href="css/colors/jade.css" title="jade" media="screen" />
-    <link rel="stylesheet" type="text/css" href="css/colors/blue.css" title="blue" media="screen" />
-    <link rel="stylesheet" type="text/css" href="css/colors/beige.css" title="beige" media="screen" />
-    <link rel="stylesheet" type="text/css" href="css/colors/cyan.css" title="cyan" media="screen" />
-    <link rel="stylesheet" type="text/css" href="css/colors/green.css" title="green" media="screen" />
-    <link rel="stylesheet" type="text/css" href="css/colors/orange.css" title="orange" media="screen" />
-    <link rel="stylesheet" type="text/css" href="css/colors/peach.css" title="peach" media="screen" />
-    <link rel="stylesheet" type="text/css" href="css/colors/pink.css" title="pink" media="screen" />
-    <link rel="stylesheet" type="text/css" href="css/colors/purple.css" title="purple" media="screen" />
-    <link rel="stylesheet" type="text/css" href="css/colors/sky-blue.css" title="sky-blue" media="screen" />
-    <link rel="stylesheet" type="text/css" href="css/colors/yellow.css" title="yellow" media="screen" />
-    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="js/jquery.migrate.js"></script>
-    <script type="text/javascript" src="js/modernizrr.js"></script>
-    <script type="text/javascript" src="asset/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="js/owl.carousel.min.js"></script>
-    <script type="text/javascript" src="js/nivo-lightbox.min.js"></script>
-    <script type="text/javascript" src="js/jquery.isotope.min.js"></script>
-    <script type="text/javascript" src="js/jquery.appear.js"></script>
-    <script type="text/javascript" src="js/count-to.js"></script>
-    <script type="text/javascript" src="js/jquery.textillate.js"></script>
-    <script type="text/javascript" src="js/jquery.lettering.js"></script>
-    <script type="text/javascript" src="js/jquery.easypiechart.min.js"></script>
-    <script type="text/javascript" src="js/jquery.nicescroll.min.js"></script>
-    <script type="text/javascript" src="js/jquery.parallax.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
-    <!--jquery datatable-->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" />
-    <script src="http://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!--分頁-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" />
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
     <script>
     $(document).ready(function() {
+    	$("#divId").hide();
     	var table =  $('#example').DataTable({"ajax":"CusCaseSearchServlet.controller"});
-        
+    	var data  ;
         var id;
+        var title;
         $('#example tbody').on( 'click', 'tr', function () {
-            id = $(this).find('td:eq(0)').text();
+            
             if ( $(this).hasClass('selected') ) {
                 $(this).removeClass('selected');
             }
             else {
                 table.$('tr.selected').removeClass('selected');
                 $(this).addClass('selected');
+                data = table .row(this) .data();
+                id = data[10];
+                console.log(data[10]);
+                title = data[0];
                 
             }
         } );
         
-        $('#button').click( function () {
-            table.row('.selected').remove().draw( false );
-//             $.ajax({
-// 				"url":"ReportDeleteServlet",
-// 				"data":{"ReportId":id},
-// 				"type":"get"
-//             }).done(function(data){
-                
-//             	$('#tb').DataTable({destroy:true, "ajax":"ReportALLServlet","info":false});
-//                 })
-        } );
-    });
+        $('#bidbutton').click( function () {
+          
+            $.ajax({
+				"url":"SearchBidding.controller",
+				"data":{"repaircase_Id":id},
+				"type":"get"
+            }).done(function(data){
+                console.log(data);
+					$('h4[name="casetitle"]').text(title);
+// 					$('td[name="amount"]').text(data.bidding_amount)
+      		  } );
+   		 });
+    })
     </script>
 </head>
 <body>
@@ -105,8 +84,83 @@
                         </table>
                     </div>
                 </div>
-                <input type="button" id="button" value="刪除所選資料" >
-                       <script src="js/docs.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>       
+
+<div class="modExample"><a href="#myModal1" role="button"  data-target="#myModal1"
+		class="btn btn-default" data-toggle="modal" id="bidbutton">查詢投標廠商</a></div>
+                      
+<div id="myModal1" class="modal" data-easein="fadeIn" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<center>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true">×</button>
+								<h4 class="title" id="myModalLabel">投標廠商</h4>
+							</center>
+
+							
+
+						<div class="modal-body">
+							<div>
+								
+								<div>
+									<h4><font size="4">案件標題  :</font></h4>
+									<h4 name="casetitle"><font size="4"></font></h4>
+								</div>
+								<form method="post">
+								<div>
+
+									<h4><font size="4">投標廠商  :</font></h4>
+								<table>
+								<tr><div>
+								<c:forEach var="casebidding" items="${repaircase.biddingBean}">
+									
+									<img width=50 height=50 src="${pageContext.request.contextPath}/controller/GetCompanyImageServlet?id=${casebidding.biddingPk.com_id}" />
+									<input type="button" name="${casebidding.biddingPk.com_id}bidding" 
+									onclick="bid('${casebidding.biddingPk.com_id}','${casebidding.biddingPk.repaircase_Id}')" value="${casebidding.biddingPk.com_id}"/>
+								
+								</c:forEach>
+								</div>
+								</tr>
+								<tr>
+									<form>
+										<table id="searchbidding" border="1">
+											<tr>
+												<td>投標金額:</td>
+											</tr>
+											<tr>
+												<td name="amount"></td>
+											</tr>
+											<tr>
+												<td>建立日期:</td>
+											</tr>
+											<tr>
+												<td></td>
+											</tr>
+											<tr>
+												<td>內文:</td>
+											</tr>
+											<tr>
+												<td></td>
+											</tr>
+											<tr>
+												<td>圖片:</td>
+											</tr>
+											<tr>
+												<td></td>
+											</tr>
+										</table>
+								</form>
+								</tr>
+								</table>
+								</div>
+								</form>
+							</div>
+							
+						</div>
+</div></div></div></div>
 </body>
 
 </html>
