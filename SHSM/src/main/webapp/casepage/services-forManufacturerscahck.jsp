@@ -46,7 +46,7 @@
     <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
     <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+        $('#example').DataTable({"ajax":"CusCaseSearchServlet.controller"});
     });
     </script>
 </head>
@@ -64,12 +64,19 @@
                         <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-                                    <th>廠商編號</th>
-                                    <th>廠商名稱</th>
-                                    <th>服務類型</th>
-                                    <th>報價金額</th>
-                                    <th>詳細資訊</th>
-                                    <th>確認</th>
+                                    <th>案件編號</th>
+								<th>預算金額</th>
+								<th>案件種類</th>
+								<th>案件標題</th>
+								<th>案件地址</th>
+								<th>案件場所</th>
+								<th>期望維修日期</th>
+								<th>案件內容</th>
+								<th>案件圖片</th>
+								<th>案件狀態</th>
+								<th>案件完成日期</th>
+								<th>案件評分</th>
+								<th>abc</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -78,6 +85,7 @@
                                     <td>進雄建設</td>
                                     <td>外牆翻修</td>
                                     <td>19,999</td>
+                                    <td><td>
                                     <td>
                                         <button data-toggle="modal" data-target="#look">詳細資料</button>
                                     </td>
@@ -90,6 +98,7 @@
                                     <td>進雄建設</td>
                                     <td>外牆翻修</td>
                                     <td>99,999</td>
+                                    <td><button data-toggle="modal" data-target="#look">詳細資料</button><td>
                                     <td>
                                         <button data-toggle="modal" data-target="#look">詳細資料</button>
                                     </td>
@@ -102,6 +111,7 @@
                                     <td>進雄建設</td>
                                     <td>外牆翻修</td>
                                     <td>19,999</td>
+                                    <td><td>
                                     <td>
                                         <button data-toggle="modal" data-target="#look">詳細資料</button>
                                     </td>

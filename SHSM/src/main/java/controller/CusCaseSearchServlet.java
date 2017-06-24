@@ -90,9 +90,9 @@ public class CusCaseSearchServlet extends HttpServlet {
 				array.add(result.get(i).getRepaircase_budget()); 
 				array.add(result.get(i).getRepaircase_address()); 
 				array.add(result.get(i).getRepaircase_place());
-				array.add(result.get(i).getRepaircase_context());
-				array.add(result.get(i).getRepaircase_img1()); 
-				array.add(result.get(i).getRepaircase_media());
+//				array.add(result.get(i).getRepaircase_context());
+//				array.add(result.get(i).getRepaircase_img1()); 
+//				array.add(result.get(i).getRepaircase_media());
 				array.add(result.get(i).getRepaircase_status());
 				array.add(createdate);
 				array.add(findate); 

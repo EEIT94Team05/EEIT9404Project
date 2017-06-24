@@ -41,13 +41,38 @@
     <!--jquery datatable-->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" />
     <script src="http://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
     <script>
     $(document).ready(function() {
-        $('#example').DataTable({"ajax":"CusCaseSearchServlet.controller"});
+    	var table =  $('#example').DataTable({"ajax":"CusCaseSearchServlet.controller"});
         
+        var id;
+        $('#example tbody').on( 'click', 'tr', function () {
+            id = $(this).find('td:eq(0)').text();
+            if ( $(this).hasClass('selected') ) {
+                $(this).removeClass('selected');
+            }
+            else {
+                table.$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+                
+            }
+        } );
+        
+        $('#button').click( function () {
+            table.row('.selected').remove().draw( false );
+//             $.ajax({
+// 				"url":"ReportDeleteServlet",
+// 				"data":{"ReportId":id},
+// 				"type":"get"
+//             }).done(function(data){
+                
+//             	$('#tb').DataTable({destroy:true, "ajax":"ReportALLServlet","info":false});
+//                 })
+        } );
     });
     </script>
 </head>
@@ -70,7 +95,8 @@
 								<th>金額</th>
 								<th>地址</th>
 								<th>場所</th>
-								<th>內文</th>
+<!-- 								<th>內文</th> -->
+								<th>案件狀態</th>
 								<th>建立日期</th>
 								<th>結束日期</th>
 								<th>評分</th>
@@ -79,6 +105,7 @@
                         </table>
                     </div>
                 </div>
+                <input type="button" id="button" value="刪除所選資料" >
                        <script src="js/docs.min.js"></script>
 </body>
 
