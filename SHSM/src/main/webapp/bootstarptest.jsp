@@ -17,7 +17,7 @@
         <ul class="nav nav-tabs">
             <li class="active"><a href="member-page.jsp">會員專區</a></li>
             <li><a href="member-case.jsp">新增案件</a></li>
-            <li><a href="member-casequery.jsp">查詢案件</a></li>
+            <li><a href="casepage/casequery.jsp">查詢案件</a></li>
             <li><a href="member-Manufacturers.jsp">廠商列表</a>
             </li>
         </ul>

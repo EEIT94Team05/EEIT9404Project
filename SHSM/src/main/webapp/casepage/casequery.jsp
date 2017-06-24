@@ -43,7 +43,8 @@
     <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
     <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+        $('#example').DataTable({"ajax":"CusCaseSearchServlet.controller"});
+        
     });
     </script>
 </head>
@@ -60,91 +61,20 @@
                         <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-                                    <th>案件編號</th>
-                                    <th>建立日期</th>
-                                    <th>接案廠商</th>
-                                    <th>金額</th>
-                                    <th>預定完工日</th>
+								<th>repaircase_title</th>
+								<th>repaircase_type</th>
+								<th>repaircase_repairdate</th>
+								<th>repaircase_budget</th>
+								<th>repaircase_address</th>
+								<th>repaircase_place</th>
+								<th>repaircase_status</th>
+								<th>repaircase_createdate</th>
+								<th>repaircase_finday</th>
+								<th>repaircase_score</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><a href="#">1,001</a></td>
-                                    <td>Lorem</td>
-                                    <td>ipsum</td>
-                                    <td>dolor</td>
-                                    <td>sit</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">1,001</a></td>
-                                    <td>Lorem</td>
-                                    <td>ipsum</td>
-                                    <td>dolor</td>
-                                    <td>sit</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">1,001</a></td>
-                                    <td>Lorem</td>
-                                    <td>ipsum</td>
-                                    <td>dolor</td>
-                                    <td>sit</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">1,001</a></td>
-                                    <td>Lorem</td>
-                                    <td>ipsum</td>
-                                    <td>dolor</td>
-                                    <td>sit</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">1,001</a></td>
-                                    <td>Lorem</td>
-                                    <td>ipsum</td>
-                                    <td>dolor</td>
-                                    <td>sit</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">1,001</a></td>
-                                    <td>Lorem</td>
-                                    <td>ipsum</td>
-                                    <td>dolor</td>
-                                    <td>sit</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">1,001</a></td>
-                                    <td>Lorem</td>
-                                    <td>ipsum</td>
-                                    <td>dolor</td>
-                                    <td>sit</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">1,001</a></td>
-                                    <td>Lorem</td>
-                                    <td>ipsum</td>
-                                    <td>dolor</td>
-                                    <td>sit</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">1,001</a></td>
-                                    <td>Lorem</td>
-                                    <td>ipsum</td>
-                                    <td>dolor</td>
-                                    <td>sit</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">1,001</a></td>
-                                    <td>Lorem</td>
-                                    <td>ipsum</td>
-                                    <td>dolor</td>
-                                    <td>sit</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">1,001</a></td>
-                                    <td>Lorem</td>
-                                    <td>ipsum</td>
-                                    <td>dolor</td>
-                                    <td>sit</td>
-                                </tr>
+                                
                             </tbody>
                         </table>
                         <div class="col-md-4">

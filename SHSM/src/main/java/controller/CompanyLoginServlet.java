@@ -72,7 +72,7 @@ public class CompanyLoginServlet extends HttpServlet {
 					"/secure/company-logning.jsp").forward(request, response);
 		} else {
 			
-			session.setAttribute("company", bean);
+			session.setAttribute("compuser", bean);
 			
 			String path = request.getContextPath();
 //			response.sendRedirect(path+"/member.jsp");

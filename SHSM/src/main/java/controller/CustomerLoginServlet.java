@@ -80,7 +80,7 @@ public class CustomerLoginServlet extends HttpServlet {
 			String path = request.getContextPath();
 
 //			response.sendRedirect(path+"/member.jsp");
-			response.sendRedirect(path+"/member-casequery.jsp");
+			response.sendRedirect(path+"/casepage/casequery.jsp");
 
 		}
 	}
