@@ -77,7 +77,9 @@ public class CustomerLoginServlet extends HttpServlet {
 			session.setAttribute("custuser", bean);
 			String path = request.getContextPath();
 //			response.sendRedirect(path+"/member.jsp");
+
 			response.sendRedirect(path+"/member.jsp");
+
 		}
 	}
 	@Override

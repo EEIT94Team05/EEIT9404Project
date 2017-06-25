@@ -20,7 +20,7 @@
         </ul>
     </div>
     <div>
-        <iframe src="casepage/company.jsp" frameborder="0" width="1550" height="1000" scrolling="no"></iframe>
+        <iframe src="casepage/company.jsp" frameborder="0" width="100%" height="1300" scrolling="no"></iframe>
     </div>
 </body>
 

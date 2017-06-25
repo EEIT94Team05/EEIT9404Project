@@ -9,6 +9,8 @@
 <title>Google Maps JavaScript API Example</title>
 <script src="http://hayageek.github.io/jQuery-Upload-File/jquery.uploadfile.min.js"></script>
 <script
+	src="http://hayageek.github.io/jQuery-Upload-File/jquery.uploadfile.min.js"></script>
+<script
 	src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyDyRk2QLNN4DSoTEnn2jrn8iFhsC6R9nlw"
 	type="text/javascript"></script>
 
@@ -102,7 +104,7 @@ a, a:focus {
       var abc;
 	$(function() {
 		$("#divid").hide();
-	 	
+
 		if (GBrowserIsCompatible()) {
 			myMap = new GMap2(document.getElementById("my_map"));
 			//搭配下方setcenter使用
@@ -121,7 +123,7 @@ a, a:focus {
 				
 				i++;
 			}
-			
+
 		})
 		//載入後動作
 
@@ -129,8 +131,10 @@ a, a:focus {
 	function createNode(lat, lng, myMap, data) {
 		var point = new GPoint(lng, lat);
 		var marker = new GMarker(point);
+
 		
 		GEvent.addListener(marker,'mouseover',function() {marker.openInfoWindowHtml('<center>'
+
 											+ '<h4 style='+'color:'+'black'+'>'
 											+ '提案人'
 											+ '</h4>'
@@ -149,7 +153,10 @@ a, a:focus {
 											+ '<hr/>'
 											+ '<a href='+'\"#myModal1\"'+' role='+'\"button\"'+' data-target='+'\"#myModal1\"'
 						                    +' class='+'\"btn btn-default\"'+' data-toggle='+'\"modal\"'+' id='+'\"divId\"'
+
 						                    +' scrolling='+'\"no\"'+'>'+ '詳細資訊' + '</a>' + '</center>');
+
+
 
 										$("a").on("click",function() {
 											$("#divid").show().css({
@@ -183,10 +190,11 @@ a, a:focus {
 									});
 										$("#my_map > div:nth-child(1) > div > div:nth-child(1) > div:nth-child(4) > div:nth-child(4) > div:nth-child(2)").mouseleave(function() {
 											$("#my_map > div:nth-child(1) > div > div:nth-child(1) > div:nth-child(4) > div:nth-child(4) > div:nth-child(2)").hide();});
+
 						});
 
 		myMap.addOverlay(marker);
-		
+
 	}
 
 	/*<!--地圖標點-->*/
@@ -329,9 +337,7 @@ a, a:focus {
 										<tr>
 											<td name="context" align="center" style="padding: 6px;"></td>
 										</tr>
-										<td><img width='100' height='100'
-											 />
-										</td>
+										<td><img width='100' height='100' /></td>
 									</table>
 									<div id="hide">
 									<div>
@@ -344,22 +350,29 @@ a, a:focus {
 											</div>
 											<div id="showdata">
 												點擊顯示投標/隱藏
+
 																
 												<form class="form-horizontal" role="form" enctype="mutiple/form-data"  method="post">
+
 													<div class="form-group">
 														<label class="col-sm-2 control-label">金額:</label>
 														<div class="col-sm-10">
+
 															<input name="amount" class="form-control" id="focusedInput" type="text"
 																 placeholder="請輸入金額">
+
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-2 control-label">內文:</label>
 														<div class="col-sm-10">
+
 															<input name="context" class="form-control" id="focusedInput" type="text"
 																 placeholder="請輸入說明內容"><td><span>${error.column}</span></td>
+
 														</div>
 													</div>
+
 <!-- 													<div class="form-group"> -->
 <!-- 														<label class="col-sm-2 control-label">照片:</label> -->
 <!-- 														<div class="col-sm-10"> -->
@@ -369,6 +382,7 @@ a, a:focus {
 <!-- 														<div> -->
 															<center>
 																<input type="button" name="enter" value="確定投標" ></input>
+
 															</center>
 														</div>
 													</div>

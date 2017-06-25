@@ -77,6 +77,7 @@ public class CompanyLoginServlet extends HttpServlet {
 		} else {
 
 			session.setAttribute("compuser", bean);
+
 			String path = request.getContextPath();
 
 			response.sendRedirect(path+"/TinymapManufactory/click.jsp");//重新導向回首頁

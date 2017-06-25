@@ -5,46 +5,85 @@
 <head>
     <title>案件進度</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="asset/css/bootstrap.min.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/responsive.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/colors/red.css" title="red" media="screen" />
-    <link rel="stylesheet" type="text/css" href="css/colors/jade.css" title="jade" media="screen" />
-    <link rel="stylesheet" type="text/css" href="css/colors/blue.css" title="blue" media="screen" />
-    <link rel="stylesheet" type="text/css" href="css/colors/beige.css" title="beige" media="screen" />
-    <link rel="stylesheet" type="text/css" href="css/colors/cyan.css" title="cyan" media="screen" />
-    <link rel="stylesheet" type="text/css" href="css/colors/green.css" title="green" media="screen" />
-    <link rel="stylesheet" type="text/css" href="css/colors/orange.css" title="orange" media="screen" />
-    <link rel="stylesheet" type="text/css" href="css/colors/peach.css" title="peach" media="screen" />
-    <link rel="stylesheet" type="text/css" href="css/colors/pink.css" title="pink" media="screen" />
-    <link rel="stylesheet" type="text/css" href="css/colors/purple.css" title="purple" media="screen" />
-    <link rel="stylesheet" type="text/css" href="css/colors/sky-blue.css" title="sky-blue" media="screen" />
-    <link rel="stylesheet" type="text/css" href="css/colors/yellow.css" title="yellow" media="screen" />
-    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="js/jquery.migrate.js"></script>
-    <script type="text/javascript" src="js/modernizrr.js"></script>
-    <script type="text/javascript" src="asset/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="js/owl.carousel.min.js"></script>
-    <script type="text/javascript" src="js/nivo-lightbox.min.js"></script>
-    <script type="text/javascript" src="js/jquery.isotope.min.js"></script>
-    <script type="text/javascript" src="js/jquery.appear.js"></script>
-    <script type="text/javascript" src="js/count-to.js"></script>
-    <script type="text/javascript" src="js/jquery.textillate.js"></script>
-    <script type="text/javascript" src="js/jquery.lettering.js"></script>
-    <script type="text/javascript" src="js/jquery.easypiechart.min.js"></script>
-    <script type="text/javascript" src="js/jquery.nicescroll.min.js"></script>
-    <script type="text/javascript" src="js/jquery.parallax.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
-    <!--jquery datatable-->
-    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
-    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+     <meta charset="utf-8">
+   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!--分頁-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
     <script>
     $(document).ready(function() {
-        $('#example').DataTable();
-    });
+    	$("#divId").hide();
+    	var table =  $('#example').DataTable({"ajax":"CusCaseSearchServlet.controller"});
+    	var data  ;
+        var id;
+        var title;
+        var casebid;
+        $('#example tbody').on( 'click', 'tr', function () {
+            
+            if ( $(this).hasClass('selected') ) {
+                $(this).removeClass('selected');
+            }
+            else {
+                table.$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+                data = table .row(this) .data();
+                id = data[10];
+                console.log(data[10]);
+                title = data[0];
+                
+            }
+        } );
+        
+        $('#bidbutton').on('click', function () {
+        	
+            $.ajax({
+				"url":"SearchBidding.controller",
+				"data":{"repaircase_Id":id},
+				"type":"get"
+            }).done(function(data){
+                
+            	$('h4[name="casetitle"]').text(title);
+            		var i=0;
+            		var j=0;
+					casebid = data;
+					
+						while(i<data.length){
+							
+							
+								var img = '<div style=\"float:left; padding:10px;\"><img width=50 height=50 src=\"${pageContext.request.contextPath}/controller/GetCompanyImageServlet?id='+data[i].com_id+'\" /><br>' +
+								'<input type=\"button\" name=\"'+data[i].com_id+'bidding\" value=\"'+data[i].com_id+'\" /></div>' ;
+								$('#bidcom').after(img)
+														
+							i++;
+						}
+					
+					
+					$('input[name$="bidding"]').on('click',function(biddata){
+						var bid = biddata.currentTarget.defaultValue;
+						console.log(bid)
+						while(j<data.length){
+							if(bid==data[j].com_id){
+								$('td[name="amount"]').text(data[j].bidding_amount)
+								$('td[name="biddate"]').text(data[j].bidding_date)
+								$('td[name="context"]').text(data[j].bidding_context)
+//			 					$('td[name="bidimg"]').text(data[j].bidding_amount)
+							}
+							j++
+						}
+						j=0;
+					})
+					
+      		  } );
+            
+   		 });
+    })
     </script>
 </head>
 <body>
@@ -60,144 +99,95 @@
                         <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-                                    <th>案件編號</th>
-                                    <th>建立日期</th>
-                                    <th>接案廠商</th>
-                                    <th>金額</th>
-                                    <th>預定完工日</th>
+								<th>案件標題</th>
+								<th>案件種類</th>
+								<th>維修日期</th>
+								<th>金額</th>
+								<th>地址</th>
+								<th>場所</th>
+<!-- 								<th>內文</th> -->
+								<th>案件狀態</th>
+								<th>建立日期</th>
+								<th>結束日期</th>
+								<th>評分</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td><a href="#">1,001</a></td>
-                                    <td>Lorem</td>
-                                    <td>ipsum</td>
-                                    <td>dolor</td>
-                                    <td>sit</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">1,001</a></td>
-                                    <td>Lorem</td>
-                                    <td>ipsum</td>
-                                    <td>dolor</td>
-                                    <td>sit</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">1,001</a></td>
-                                    <td>Lorem</td>
-                                    <td>ipsum</td>
-                                    <td>dolor</td>
-                                    <td>sit</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">1,001</a></td>
-                                    <td>Lorem</td>
-                                    <td>ipsum</td>
-                                    <td>dolor</td>
-                                    <td>sit</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">1,001</a></td>
-                                    <td>Lorem</td>
-                                    <td>ipsum</td>
-                                    <td>dolor</td>
-                                    <td>sit</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">1,001</a></td>
-                                    <td>Lorem</td>
-                                    <td>ipsum</td>
-                                    <td>dolor</td>
-                                    <td>sit</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">1,001</a></td>
-                                    <td>Lorem</td>
-                                    <td>ipsum</td>
-                                    <td>dolor</td>
-                                    <td>sit</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">1,001</a></td>
-                                    <td>Lorem</td>
-                                    <td>ipsum</td>
-                                    <td>dolor</td>
-                                    <td>sit</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">1,001</a></td>
-                                    <td>Lorem</td>
-                                    <td>ipsum</td>
-                                    <td>dolor</td>
-                                    <td>sit</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">1,001</a></td>
-                                    <td>Lorem</td>
-                                    <td>ipsum</td>
-                                    <td>dolor</td>
-                                    <td>sit</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">1,001</a></td>
-                                    <td>Lorem</td>
-                                    <td>ipsum</td>
-                                    <td>dolor</td>
-                                    <td>sit</td>
-                                </tr>
-                            </tbody>
                         </table>
-                        <div class="col-md-4">
-                            <!-- 會員TITLE -->
-                            <h4 class="classic-title"><span>案件內容</span></h4>
-                            <!-- Some Text -->
-                            <p>會員帳號:
-                                <input type="text" value="A0000000001" style="border:0px" readonly="readonly">
-                            </p>
-                            <img src="" alt="">
-                            <p>近期案件:
-                                <input type="text" value="A0000000001" style="border:0px" readonly="readonly">
-                            </p>
-                            <p>完修日期:
-                                <input type="text" value="2017/7/1" style="border:0px" readonly="readonly">
-                            </p>
-                            <p>服務廠商:
-                                <input type="text" value="B0000000001" style="border:0px" readonly="readonly">
-                            </p>
-                        </div>
-                        <div class="col-md-6">
-                            <!-- Classic Heading <-->
-                            <h4 class="classic-title"><span>案件進度(A00000000054)<a href="#" style="margin: 0 0 0 335px">編輯</a></span></h4>
-                            <div class="skill-shortcode">
-                                <div class="skill">
-                                    <p>
-                                        <input type="text" value="新建案件(new)" style="border:0px" readonly="readonly">
-                                    </p>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" data-percentage="25">
-                                            <span class="progress-bar-span">25%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Classic Heading -->
-                            <h4 class="classic-title"><span>案件進度(A00000000032)<a href="#" style="margin: 0 0 0 335px">編輯</a></span></h4>
-                            <div class="skill-shortcode">
-                                <div class="skill">
-                                    <p>
-                                        <input type="text" value="維修中..." style="border:0px" readonly="readonly">
-                                    </p>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" data-percentage="75">
-                                            <span class="progress-bar-span">75%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
-                       <script src="js/docs.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>       
+
+<div class="modExample"><a href="#myModal1" role="button"  data-target="#myModal1"
+		class="btn btn-default" data-toggle="modal" id="bidbutton">查詢投標廠商</a></div>
+                      
+<div id="myModal1" class="modal" data-easein="fadeIn" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<center>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true">×</button>
+								<h4 class="title" id="myModalLabel">投標廠商</h4>
+							</center>
+
+							
+
+						<div class="modal-body">
+							<div align="center">
+								
+								<div>
+									<h4><font size="4">案件標題  :</font></h4>
+									<h4 name="casetitle"><font size="4"></font></h4>
+								</div>
+								<form method="post">
+								<div>
+
+									<h4><font size="4">投標廠商  :</font></h4>
+								<table>
+								<tr id="bidcom" >
+								<div >
+								
+								</div>
+								</tr>
+								<tr>
+									<form>
+										<table id="searchbidding" border="1">
+											<tr>
+												<td>投標金額:</td>
+											</tr>
+											<tr>
+												<td name="amount"></td>
+											</tr>
+											<tr>
+												<td>建立日期:</td>
+											</tr>
+											<tr>
+												<td name="biddate"></td>
+											</tr>
+											<tr>
+												<td>內文:</td>
+											</tr>
+											<tr>
+												<td name="context"></td>
+											</tr>
+											<tr>
+												<td>圖片:</td>
+											</tr>
+											<tr>
+												<td name="bidimg"></td>
+											</tr>
+										</table>
+								</form>
+								</tr>
+								<div align="center"><button type="button" class="btn btn-danger" style="margin:10px 0 0 0"  >確認投標</button></div>
+								</table>
+								</div>
+								</form>
+							</div>
+							
+						</div>
+</div></div></div></div>
 </body>
 
 </html>

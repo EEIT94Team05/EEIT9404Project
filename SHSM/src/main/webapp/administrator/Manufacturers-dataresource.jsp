@@ -42,9 +42,7 @@
         </table>
         <!--</div>-->
         <span id='table_page'></span>
-        <!-- Bootstrap core JavaScript
-    ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
+
         <script>
 			$(function(){
 				$('#tb').DataTable({
