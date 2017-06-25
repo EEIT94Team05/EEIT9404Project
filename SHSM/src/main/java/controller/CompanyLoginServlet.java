@@ -75,11 +75,11 @@ public class CompanyLoginServlet extends HttpServlet {
 			request.getRequestDispatcher(
 					"/Manufacturers-logning.jsp").forward(request, response);
 		} else {
-//			request.getRequestDispatcher("/member-Manufacturers.jsp");
-			session.setAttribute("company", bean);
+
+			session.setAttribute("compuser", bean);
 			String path = request.getContextPath();
-//			response.sendRedirect(path+"/member.jsp");
-			response.sendRedirect(path+"/Manufacturers.jsp");//重新導向回首頁
+
+			response.sendRedirect(path+"/TinymapManufactory/click.jsp");//重新導向回首頁
 		}
 	}
 	@Override

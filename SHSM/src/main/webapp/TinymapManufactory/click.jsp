@@ -7,10 +7,10 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>Google Maps JavaScript API Example</title>
+<script src="http://hayageek.github.io/jQuery-Upload-File/jquery.uploadfile.min.js"></script>
 <script
 	src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyDyRk2QLNN4DSoTEnn2jrn8iFhsC6R9nlw"
 	type="text/javascript"></script>
-
 
 <link href="css/pushy-buttons.min.css" rel="stylesheet">
 <link
@@ -26,8 +26,7 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
 <!-- (Optional) Latest compiled and minified JavaScript translation files -->
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-*.min.js"></script>
+
 <style>
 .title {
 	height: 25px;
@@ -100,8 +99,10 @@ a, a:focus {
 <script src="../js/jquery-3.2.1.min.js"></script>
 <script src="../js/jquery.session.js"></script>
 <script type="text/javascript">
+      var abc;
 	$(function() {
 		$("#divid").hide();
+	 	
 		if (GBrowserIsCompatible()) {
 			myMap = new GMap2(document.getElementById("my_map"));
 			//搭配下方setcenter使用
@@ -117,8 +118,10 @@ a, a:focus {
 			var i = 0;
 			while (i < data.length) {
 				addresstolatlng(data[i]);
+				
 				i++;
 			}
+			
 		})
 		//載入後動作
 
@@ -126,15 +129,8 @@ a, a:focus {
 	function createNode(lat, lng, myMap, data) {
 		var point = new GPoint(lng, lat);
 		var marker = new GMarker(point);
-
-		GEvent
-				.addListener(
-						marker,
-						'mouseover',
-						function() {
-							// When clicked, open an Info Window
-							marker
-									.openInfoWindowHtml('<center>'
+		
+		GEvent.addListener(marker,'mouseover',function() {marker.openInfoWindowHtml('<center>'
 											+ '<h4 style='+'color:'+'black'+'>'
 											+ '提案人'
 											+ '</h4>'
@@ -152,52 +148,47 @@ a, a:focus {
 											+ '</h4>'
 											+ '<hr/>'
 											+ '<a href='+'\"#myModal1\"'+' role='+'\"button\"'+' data-target='+'\"#myModal1\"'
-						+' class='+'\"btn btn-default\"'+' data-toggle='+'\"modal\"'+' id='+'\"divId\"'+' scrolling='+'\"no\"'+'>'
-											+ '詳細資訊' + '</a>' + '</center>');
+						                    +' class='+'\"btn btn-default\"'+' data-toggle='+'\"modal\"'+' id='+'\"divId\"'
+						                    +' scrolling='+'\"no\"'+'>'+ '詳細資訊' + '</a>' + '</center>');
 
-							$("a").on(
-									"click",
-									function() {
-										$("#divid").show().css({
-											position : "absolute",
-											top : event.pageY,
-											left : event.pageX
-										});
-										var id = $('#caseid').text();
+										$("a").on("click",function() {
+											$("#divid").show().css({
+												position : "absolute",
+												top : event.pageY,
+												left : event.pageX
+											});
+										abc = data;
 										console.log(data.repaircase_title);
-										$('td[name="casetitle"]').text(
-												data.repaircase_title);
-										$('td[name="area"]').text(
-												data.repaircase_area);
-										$('td[name="place"]').text(
-												data.repaircase_place);
-										$('td[name="budget"]').text(
-												data.repaircase_budget);
-										$('td[name="context"]').text(
-												data.repaircase_context);
-										$.get('GetCaseImageServlet', {
-											'id' : data.repaircase_id
-										}, function(img) {
-											
-											console.log(img.responseText);
-											$('#tablestyle > tbody > tr:nth-child(11) > td > img').val(img);
+										$('td[name="casetitle"]').text(data.repaircase_title);
+										$('td[name="area"]').text(data.repaircase_area);
+										$('td[name="place"]').text(data.repaircase_place);
+										$('td[name="budget"]').text(data.repaircase_budget);
+										$('td[name="context"]').text(data.repaircase_context);
+										$.get('GetCaseImageServlet', {'id' : data.repaircase_id}, function(img) {
+										$('#tablestyle > tbody > tr:nth-child(11) > td > img').val(img);
 										});
-
-										//					$("#divId").mouseleave(function() {
-										//						$("#divId").hide();
-										//					});
+										$.ajax({'url':'CreateBiddingServlet',
+												'data':{'id':data.repaircase_id,'select':'select'},
+												'success':function(obb){
+											console.log(obb)
+											if(obb=="已投標"){
+												$('#hide').hide();
+											}else{
+												$('#hide').show();
+											}
+											
+										}})
+						 			
+										
 									});
+										$("#my_map > div:nth-child(1) > div > div:nth-child(1) > div:nth-child(4) > div:nth-child(4) > div:nth-child(2)").mouseleave(function() {
+											$("#my_map > div:nth-child(1) > div > div:nth-child(1) > div:nth-child(4) > div:nth-child(4) > div:nth-child(2)").hide();});
 						});
 
 		myMap.addOverlay(marker);
-
-		//             var infowindow = new google.maps.InfoWindow({
-		//                 content: contentString
-		//               });
-		//             marker.addListener('click', function() {
-		//                 infowindow.open(map, marker);
-		//               });
+		
 	}
+
 	/*<!--地圖標點-->*/
 	function addresstolatlng(data) {
 		var lat;
@@ -225,18 +216,57 @@ a, a:focus {
 				//在地圖上放置標點 :myMap.addOverlay( 45 行 );
 				myMap.addOverlay(myMarker);
 				createNode(lat, lng, myMap, data);
+				
+			
 
 			}
 		})
 	}
-</script>
-<script>
+
 	$(function() {
 		$("#showdata").hide();
+		
 		$("#clickdata").click(function() {
 			$("#showdata").toggle();
+
+			
+			$('input[name="enter"]').click(function(){
+					var amount = $('input[name="amount"]').val();
+					var context = $('input[name="context"]').val();
+					var enter = $('input[name="enter"]').val();
+//					var img = $('input[name="img"]').val();
+				
+					console.log(amount);
+					console.log(context);
+//					console.log(img);
+					$.ajax({
+						"url":"CreateBiddingServlet",
+						"type":"post",
+						"cache":false,
+						"data":{
+							"id":abc.repaircase_id,
+							"amount":amount,
+							"context":context,
+							"enter":enter,
+//							"img":img
+							"select":"insert"
+								}
+					}).done(function(data){
+						console.log(data)
+						if(data=='欄位不可為空,請重新輸入'){
+							alert(data);
+						}
+						if(data=='投標完成'){
+							alert(data);
+							$('#hide').hide();
+						}
+				
+					});
+					
+				});
 		})
 	});
+	
 </script>
 </head>
 
@@ -303,6 +333,7 @@ a, a:focus {
 											 />
 										</td>
 									</table>
+									<div id="hide">
 									<div>
 										<center>
 											<div>
@@ -313,27 +344,32 @@ a, a:focus {
 											</div>
 											<div id="showdata">
 												點擊顯示投標/隱藏
-
-												<form class="form-horizontal" role="form">
+																
+												<form class="form-horizontal" role="form" enctype="mutiple/form-data"  method="post">
 													<div class="form-group">
 														<label class="col-sm-2 control-label">金額:</label>
 														<div class="col-sm-10">
-															<input class="form-control" id="focusedInput" type="text"
-																value="請輸入金額">
+															<input name="amount" class="form-control" id="focusedInput" type="text"
+																 placeholder="請輸入金額">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-2 control-label">內文:</label>
 														<div class="col-sm-10">
-															<input class="form-control" id="focusedInput" type="text"
-																value="請輸入內文">
+															<input name="context" class="form-control" id="focusedInput" type="text"
+																 placeholder="請輸入說明內容"><td><span>${error.column}</span></td>
 														</div>
 													</div>
-													<div class="form-group">
-														<label class="col-sm-2 control-label">照片:</label>
-														<div class="col-sm-10">
-															<input class="form-control" id="focusedInput" type="file"
-																value="請上傳照片">
+<!-- 													<div class="form-group"> -->
+<!-- 														<label class="col-sm-2 control-label">照片:</label> -->
+<!-- 														<div class="col-sm-10"> -->
+<!-- 															<input name="img" class="form-control" id="focusedInput" type="file" -->
+<!-- 																placeholder="請上傳照片"> -->
+<!-- 														</div> -->
+<!-- 														<div> -->
+															<center>
+																<input type="button" name="enter" value="確定投標" ></input>
+															</center>
 														</div>
 													</div>
 												</form>

@@ -32,6 +32,18 @@ public class BiddingService {
 		}
 		return result;
 	}
+	public boolean returnInsertStatus(BiddingBean bean){
+		BiddingBean data = biddingDao.select(bean.getBiddingPk());
+		if(data==null){
+			bean.setBidding_date(getTime());
+			if(bean.getBidding_context()!=null && bean.getBidding_amount()!=null){
+				biddingDao.insert(bean);
+				return true;
+			}
+			
+		}
+		return false;
+	}
 
 	public boolean delete(BiddingPk biddingPk){
 		if(biddingPk!=null){
