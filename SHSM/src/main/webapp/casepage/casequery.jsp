@@ -10,7 +10,7 @@
     <!--分頁-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" />
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <!-- Latest compiled and minified CSS -->
@@ -24,6 +24,7 @@
     	var data  ;
         var id;
         var title;
+        var casebid;
         $('#example tbody').on( 'click', 'tr', function () {
             
             if ( $(this).hasClass('selected') ) {
@@ -40,17 +41,47 @@
             }
         } );
         
-        $('#bidbutton').click( function () {
-          
+        $('#bidbutton').on('click', function () {
+        	
             $.ajax({
 				"url":"SearchBidding.controller",
 				"data":{"repaircase_Id":id},
 				"type":"get"
             }).done(function(data){
-                console.log(data);
-					$('h4[name="casetitle"]').text(title);
-// 					$('td[name="amount"]').text(data.bidding_amount)
+                
+            	$('h4[name="casetitle"]').text(title);
+            		var i=0;
+            		var j=0;
+					casebid = data;
+					
+						while(i<data.length){
+							
+							
+								var img = '<div style=\"float:left; padding:10px;\"><img width=50 height=50 src=\"${pageContext.request.contextPath}/controller/GetCompanyImageServlet?id='+data[i].com_id+'\" /><br>' +
+								'<input type=\"button\" name=\"'+data[i].com_id+'bidding\" value=\"'+data[i].com_id+'\" /></div>' ;
+								$('#bidcom').after(img)
+														
+							i++;
+						}
+					
+					
+					$('input[name$="bidding"]').on('click',function(biddata){
+						var bid = biddata.currentTarget.defaultValue;
+						console.log(bid)
+						while(j<data.length){
+							if(bid==data[j].com_id){
+								$('td[name="amount"]').text(data[j].bidding_amount)
+								$('td[name="biddate"]').text(data[j].bidding_date)
+								$('td[name="context"]').text(data[j].bidding_context)
+//			 					$('td[name="bidimg"]').text(data[j].bidding_amount)
+							}
+							j++
+						}
+						j=0;
+					})
+					
       		  } );
+            
    		 });
     })
     </script>
@@ -103,7 +134,7 @@
 							
 
 						<div class="modal-body">
-							<div>
+							<div align="center">
 								
 								<div>
 									<h4><font size="4">案件標題  :</font></h4>
@@ -114,14 +145,9 @@
 
 									<h4><font size="4">投標廠商  :</font></h4>
 								<table>
-								<tr><div>
-								<c:forEach var="casebidding" items="${repaircase.biddingBean}">
-									
-									<img width=50 height=50 src="${pageContext.request.contextPath}/controller/GetCompanyImageServlet?id=${casebidding.biddingPk.com_id}" />
-									<input type="button" name="${casebidding.biddingPk.com_id}bidding" 
-									onclick="bid('${casebidding.biddingPk.com_id}','${casebidding.biddingPk.repaircase_Id}')" value="${casebidding.biddingPk.com_id}"/>
+								<tr id="bidcom" >
+								<div >
 								
-								</c:forEach>
 								</div>
 								</tr>
 								<tr>
@@ -137,23 +163,24 @@
 												<td>建立日期:</td>
 											</tr>
 											<tr>
-												<td></td>
+												<td name="biddate"></td>
 											</tr>
 											<tr>
 												<td>內文:</td>
 											</tr>
 											<tr>
-												<td></td>
+												<td name="context"></td>
 											</tr>
 											<tr>
 												<td>圖片:</td>
 											</tr>
 											<tr>
-												<td></td>
+												<td name="bidimg"></td>
 											</tr>
 										</table>
 								</form>
 								</tr>
+								<div align="center"><button type="button" class="btn btn-danger" style="margin:10px 0 0 0"  >確認投標</button></div>
 								</table>
 								</div>
 								</form>

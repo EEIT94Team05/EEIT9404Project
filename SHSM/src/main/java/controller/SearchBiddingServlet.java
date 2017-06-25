@@ -97,7 +97,7 @@ public class SearchBiddingServlet extends HttpServlet {
 		
 //根據Model執行結果呼叫View
 		List<BiddingBean> result = biddingdao.select(repaircase_id);
-		System.out.println(result);
+		
 		if(result==null) {
 			errors.put("action", "Insert失敗");
 		} else {
@@ -109,7 +109,7 @@ public class SearchBiddingServlet extends HttpServlet {
 			while(i<result.size()){
 				BiddingBean data = result.get(i);
 				obj2 = new JSONObject();
-				obj2.put("biddingPk", data.getBiddingPk());
+				obj2.put("com_id", data.getBiddingPk().getCom_id());
 				obj2.put("bidding_amount", data.getBidding_amount());
 				obj2.put("bidding_date", data.getBidding_date());
 				obj2.put("bidding_img", data.getBidding_img());
@@ -119,6 +119,7 @@ public class SearchBiddingServlet extends HttpServlet {
 			}
 //			System.out.println(jsonArray);
 			out.println(jsonArray.toString());
+			System.out.println(jsonArray.toString());
 			
 			
 //			System.out.println(jsonArray);
