@@ -10,6 +10,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
 import hibernate.HibernateUtil;
+import model.BiddingBean;
 import model.CompanyBean;
 
 import model.CustomerBean;
@@ -155,5 +156,14 @@ public class RepaircaseDAO implements IRepaircaseDAO {
 		}
 		return false;
 	}
-
+	@Override
+	public RepaircaseBean checkbidding(RepaircaseBean bean) {
+		if(bean!=null){
+			this.getSession().saveOrUpdate(bean);
+		}
+		return null;
+		
+	}
+	
+	
 }

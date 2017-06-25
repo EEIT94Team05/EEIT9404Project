@@ -52,6 +52,7 @@
             	$('h4[name="casetitle"]').text(title);
             		var i=0;
             		var j=0;
+            		var comid;
 					casebid = data;
 					
 						while(i<data.length){
@@ -66,10 +67,9 @@
 					
 					
 					$('input[name$="bidding"]').on('click',function(biddata){
-						var bid = biddata.currentTarget.defaultValue;
-						console.log(bid)
+						 comid = biddata.currentTarget.defaultValue;
 						while(j<data.length){
-							if(bid==data[j].com_id){
+							if(comid==data[j].com_id){
 								$('td[name="amount"]').text(data[j].bidding_amount)
 								$('td[name="biddate"]').text(data[j].bidding_date)
 								$('td[name="context"]').text(data[j].bidding_context)
@@ -78,6 +78,22 @@
 							j++
 						}
 						j=0;
+					})
+					
+					$('button[name="checkbid"]').on('click',function(){
+						console.log(comid);
+						if(comid!=null){
+							$.ajax({
+								"url" : 'CheckBidding.controller',
+								"data":{"repaircase_Id":id, "com_id" : comid },
+								"type":"get"
+							}).done(function(result){
+								alert(result);
+							})
+						}else{
+							alert('請選擇廠商')
+						}
+						
 					})
 					
       		  } );
@@ -180,7 +196,7 @@
 										</table>
 								</form>
 								</tr>
-								<div align="center"><button type="button" class="btn btn-danger" style="margin:10px 0 0 0"  >確認投標</button></div>
+								<div align="center"><button type="button" name="checkbid" class="btn btn-danger" style="margin:10px 0 0 0"  >選擇廠商</button></div>
 								</table>
 								</div>
 								</form>

@@ -54,7 +54,7 @@ public class RepaircaseBean implements Serializable{
 	private List<BiddingBean> biddingBean = new ArrayList<BiddingBean>();
 //	@ManyToOne
 //	@JoinColumn(name="com_id")
-//	private String companybean;
+	private String com_id;
 	
 	
 	public static void main(String[] args) {
@@ -248,6 +248,18 @@ public class RepaircaseBean implements Serializable{
 	}
 
 
+	public String getCom_id() {
+		return com_id;
+	}
+
+
+	public void setCom_id(String com_id) {
+		this.com_id = com_id;
+	}
+
+
+
+	
 //	public String getCompanybean() {
 //		return companybean;
 //	}
