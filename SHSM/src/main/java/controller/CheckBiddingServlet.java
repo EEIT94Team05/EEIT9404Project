@@ -61,7 +61,7 @@ public class CheckBiddingServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		response.setHeader("content-type", "text/html;charset=UTF-8");
+		response.setHeader("content-type", "text/text;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(false);
 		PrintWriter out = response.getWriter();	
