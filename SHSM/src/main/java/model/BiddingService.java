@@ -2,6 +2,7 @@ package model;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -24,6 +25,7 @@ public class BiddingService {
 		}
 		return null;
 	}
+	
 	public BiddingBean insert(BiddingBean bean){
 		BiddingBean result=null;
 		if(bean!=null){
