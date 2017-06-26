@@ -18,16 +18,24 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" />
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     <script>
     $(document).ready(function() {
     	$("#divId").hide();
-    	var table =  $('#example').DataTable({"ajax":"CusCaseSearchServlet.controller"});
-    	var data  ;
+//     	var table =  $('#example').DataTable({"ajax":"CusCaseSearchServlet.controller"},{"createdRow":function(row, data, index){
+// 			console.log(data[0])}	
+//     	});
+    	var table =  $('#example').DataTable({"ajax":"CusCaseSearchServlet.controller","columnDefs":[{"targets":-1,"data":null,"defaultContent":"<button >評價</button>"}]});
+    	var data;
         var id;
         var title;
         var casebid;
+       console.log(table)
+        	$('tr[role="row"]').find('td:nth-child(10)').html("<input type='button' value='給評價' />");
+// 		
+        
         $('#example tbody').on( 'click', 'tr', function () {
-            
+        	
             if ( $(this).hasClass('selected') ) {
                 $(this).removeClass('selected');
             }
@@ -41,6 +49,20 @@
                 
             }
         } );
+        $('#deletecase').on('click',function(){
+			 table.row('.selected').remove().draw( false );
+			 $.ajax({
+					"url":"RepaircaseDeleteServlet",
+					"data":{"repaircase_Id":id},
+					"type":"get"
+               }).done(function(data){
+               	$('#example').DataTable({destroy:true,"ajax":"CusCaseSearchServlet.controller"});
+               });
+			
+		})
+		
+        
+       
         
         $('#bidbutton').on('click', function () {
         	
@@ -49,24 +71,29 @@
 				"data":{"repaircase_Id":id},
 				"type":"get"
             }).done(function(data){
-                
+            	
             	$('h4[name="casetitle"]').text(title);
             		var i=0;
             		var j=0;
             		var comid;
+            		var img;
 					casebid = data;
 					
 						while(i<data.length){
-							
-							
-								var img = '<div style=\"float:left; padding:10px;\"><img width=50 height=50 src=\"${pageContext.request.contextPath}/controller/GetCompanyImageServlet?id='+data[i].com_id+'\" /><br>' +
+								 img = '<div  id=\"'+data[i].com_id+'" style=\"float:left; padding:10px;\"><img width=50 height=50 src=\"${pageContext.request.contextPath}/controller/GetCompanyImageServlet?id='+data[i].com_id+'\" /><br>' +
 								'<input type=\"button\" name=\"'+data[i].com_id+'bidding\" value=\"'+data[i].com_id+'\" /></div>' ;
 								$('#bidcom').after(img)
 														
 							i++;
+								
 						}
-					
-					
+						$('#closewindow').click(function(){
+						
+							$('#bidcom').remove();
+							
+						});
+						 
+
 					$('input[name$="bidding"]').on('click',function(biddata){
 						 comid = biddata.currentTarget.defaultValue;
 						while(j<data.length){
@@ -97,9 +124,12 @@
 						
 					})
 					
+					
       		  } );
             
    		 });
+        
+       
     })
     </script>
 </head>
@@ -134,8 +164,12 @@
                 </div>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>       
 
-<div class="modExample"><a href="#myModal1" role="button"  data-target="#myModal1"
-		class="btn btn-default" data-toggle="modal" id="bidbutton">查詢投標廠商</a></div>
+		<div class="modExample"><a href="#myModal1" role="button"  data-target="#myModal1"
+		class="btn btn-default" data-toggle="modal" id="bidbutton">查詢投標廠商</a>
+		<input id="deletecase" class="btn btn-default" type="button" value="刪除案件" />
+		</div>
+
+
                       
 <div id="myModal1" class="modal" data-easein="fadeIn" tabindex="-1"
 				role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
@@ -143,7 +177,7 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<center>
-								<button type="button" class="close" data-dismiss="modal"
+								<button id="closewindow" type="button" class="close" data-dismiss="modal"
 									aria-hidden="true">×</button>
 								<h4 class="title" id="myModalLabel">投標廠商</h4>
 							</center>
