@@ -19,19 +19,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" />
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<!--     <link rel="stylesheet" href="asset/css/bootstrap.min.css" type="text/css" media="screen"> -->
+	<link rel="stylesheet" type="text/css" href="css/style.css"	media="screen">
+
+
     <script>
     $(document).ready(function() {
     	$("#divId").hide();
+
     	var table =  $('#example').DataTable({"ajax":"CusCaseSearchServlet.controller","columnDefs":[{"targets":-1,"data":null,"defaultContent":"<button type='button' name='casescore' >評價</button>"}]});
+
     	var data;
         var id;
         var title;
         var casebid;
- 
-        $(document).on('click', 'button[name="casescore"]', function () {
-				$('button[name="casescore"]').hide();
-        });
-       
+
         
         $('#example tbody').on( 'click', 'tr', function () {
         	
@@ -245,6 +247,29 @@
 							
 						</div>
 </div></div></div></div>
+
+
+<!-- 跳出廠商詳細訊息-->
+	<div class="modal fade" id="look" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<!--關閉按鈕-->
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">×</button>
+					<h4 class="modal-title" id="myModalLabel">廠商詳細資訊</h4>
+				</div>
+				<div class="modal-body">按下 ESC 按钮退出。</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">關閉
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
 </body>
 
 </html>

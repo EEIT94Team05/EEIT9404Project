@@ -10,6 +10,7 @@ import org.hibernate.query.Query;
 import model.BiddingBean;
 import model.BiddingDAO;
 import model.BiddingPk;
+import model.RepaircaseBean;
 
 public class BiddingDAOHibernate implements BiddingDAO {
 	private SessionFactory sessionFactory;
@@ -71,7 +72,17 @@ public class BiddingDAOHibernate implements BiddingDAO {
 		}
 		return null;
 	}
+	
+	public List<BiddingBean> selectComRepaircase(String com_id){
+		
+		Query query = this.getSession().createQuery("from BiddingBean where com_id=?",BiddingBean.class);
+		query.setParameter(0, com_id);
+		List<BiddingBean> list = query.list();
+		return list;
+		
+	}
 
+	
 	@Override
 	public BiddingBean update(BiddingBean bean) {
 		if(bean!=null){

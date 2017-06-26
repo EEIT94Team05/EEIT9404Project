@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import hibernate.HibernateUtil;
+import model.dao.BiddingDAOHibernate;
 import model.dao.RepaircaseDAO;
 
 public class RepaircaseService {
@@ -77,7 +78,17 @@ public class RepaircaseService {
 		}
 		return result;
 	}
-	
+	public List<RepaircaseBean> selectComRepaircase(String com_id){
+		List<RepaircaseBean> result = new ArrayList<RepaircaseBean>();
+		BiddingDAOHibernate bdao = new BiddingDAOHibernate(HibernateUtil.getSessionFactory());
+		List<BiddingBean> bean = bdao.selectComRepaircase(com_id);
+		int i=0;
+		while(i<bean.size()){
+			result.add(repaircasedao.select(bean.get(i).getBiddingPk().getRepaircase_Id()));
+			i++;
+		}
+		return result;
+	}
 	public java.sql.Timestamp getTime(){
 		SimpleDateFormat cdformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		java.sql.Timestamp repaircase_createdate = null;
@@ -109,5 +120,34 @@ public class RepaircaseService {
 			
 		}
 		return result;
+	}
+	
+	public boolean CusFincase(Integer repaircase_id, Integer repaircase_score){
+		if(repaircase_id!=null && repaircase_score!=null){
+			RepaircaseBean bean = repaircasedao.select(repaircase_id);
+			if(bean!=null){
+				bean.setRepaircase_score(repaircase_score);
+				RepaircaseBean result = repaircasedao.update(
+						bean.getRepaircase_id(), 
+						bean.getRepaircase_budget(), 
+						bean.getRepaircase_type(), 
+						bean.getRepaircase_title(), 
+						bean.getRepaircase_area(), 
+						bean.getRepaircase_address(), 
+						bean.getRepaircase_place(), 
+						bean.getRepaircase_repairdate(), 
+						bean.getRepaircase_context(), 
+						bean.getRepaircase_img1(), 
+						bean.getRepaircase_media(), 
+						bean.getRepaircase_status(), 
+						bean.getRepaircase_finday(), 
+						bean.getRepaircase_score());
+				if(result.getRepaircase_score().equals(bean.getRepaircase_score())){
+					return true;
+				}
+			}
+			
+		}
+		return false;
 	}
 }
