@@ -50,7 +50,8 @@ public class CusFinCaseServlet extends HttpServlet {
 //接收資料
 		String temp1 = request.getParameter("id");
 		String temp9 = request.getParameter("score");
-		
+		System.out.println(temp1);
+		System.out.println(temp9);
 		
 //驗證資料
 		Map<String, String> errors = new HashMap<String, String>();

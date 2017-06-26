@@ -21,25 +21,49 @@
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 <!--     <link rel="stylesheet" href="asset/css/bootstrap.min.css" type="text/css" media="screen"> -->
 	<link rel="stylesheet" type="text/css" href="css/style.css"	media="screen">
-
+	<script src="../start/js/jquery.raty.js"></script>
 
     <script>
     $(document).ready(function() {
     	$("#divId").hide();
-    	
+    	 var wChild = window.child;
 //     	var table =  $('#example').DataTable({"ajax":"CusCaseSearchServlet.controller"},{"createdRow":function(row, data, index){
 // 			console.log(data[0])}	
 //     	});
-    	var table =  $('#example').DataTable({"ajax":"CusCaseSearchServlet.controller","columnDefs":[{"targets":-1,"data":null,"defaultContent":"<button data-toggle=\"modal\" data-target=\"#look\" type=\"button\" name=\"casescore\">評價</button>"}]});
+    	var table =  $('#example').DataTable({"ajax":"CusCaseSearchServlet.controller","columnDefs":[{"targets":-1,"data":null,"defaultContent":"<button class=\"btn btn-danger\" data-toggle=\"modal\" data-target=\"#look\" type=\"button\" name=\"casescore\">評價</button>"}]});
     	var data;
         var id;
         var title;
         var casebid;
        var a;
-       
+       var star;
        $(document).on('click','button[name="casescore"]',function(){
-//			a = table .row(this) .data();
-			console.log('ss')
+				console.log(data[6])
+				if(data[6]!="處理中"){
+					$('#a').hide();
+					$('#er').remove()
+					$('#a').after('<div id="er" align="center" style="margin:10px 0 10px 0 ;"><h1>尚未選擇廠商</h1></div>')
+					$('#chckdiv').html('<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>')
+					
+
+				}else{
+					$('#er').remove()
+					$('#a').show();
+					$('#chckdiv').html('<button id="finchck" type="button" class="btn btn-default" data-dismiss="modal">YES</button>'+
+							'<button type="button" class="btn btn-default" data-dismiss="modal">NO</button>')
+					$('#finchck').on('click',function(){
+// 							star = $('#result1').text();					
+// 							console.log(wChild.abc(1));
+							star = $("iframe").contents().find("#result1").text();
+							console.log(star);
+			 				$.ajax({
+								"url":'CusFinCaseServlet.controller',
+								'data':{'id':data[10],'score':star},
+								"type":"get"
+							})
+					})
+
+				}
 		})
 		
         
@@ -178,7 +202,7 @@
 		<input id="deletecase" class="btn btn-default" type="button" value="刪除案件" />
 		</div>
 
-
+<input type="hidden" name="star" value="1">
                       
 <div id="myModal1" class="modal" data-easein="fadeIn" tabindex="-1"
 				role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
@@ -255,16 +279,17 @@
 <!-- 跳出廠商詳細訊息-->
 	<div class="modal fade" id="look" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
+		<div  class="modal-dialog">
 			<div class="modal-content">
-				<div class="modal-header">
+				<div id="a"class="modal-header">
 					<!--關閉按鈕-->
 					<button type="button" class="close" data-dismiss="modal"
 						aria-hidden="true">×</button>
-					<h4 class="modal-title" id="myModalLabel">廠商詳細資訊</h4>
+					<div>
+                    <iframe src="http://localhost:8080/SHSM/start/start.html" frameborder="0" width="100%" height="100" scrolling="no" style="margin: 0 0 0 0 "></iframe>
+                </div>
 				</div>
-				<div class="modal-body">按下 ESC 按钮退出。</div>
-				<div class="modal-footer">
+				<div id="chckdiv" class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">關閉
 					</button>
 				</div>

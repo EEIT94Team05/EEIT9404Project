@@ -6,7 +6,10 @@
 <head>
 <title>SHOW HOW SHOW MAP</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script type="application/x-javascript">	
+<script type="application/x-javascript">
+	
+	
+		
     addEventListener("load", function() {
         setTimeout(hideURLbar, 0);
     }, false);
@@ -14,6 +17,9 @@
     function hideURLbar() {
         window.scrollTo(0, 1);
     } 
+
+
+
 
 </script>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
@@ -42,13 +48,13 @@
 					<div class="top-nav">
 						<span class="menu"><img src="images/menu.png" alt=" " /></span>
 						<ul class="nav1 nav nav-wil cl-effect-11" id="cl-effect-11">
-							<li><a class="active" data-hover="" href="index.jsp">首頁
-									<span class="sr-only">(current)</span>
+							<li><a class="active" href="index.jsp">首頁 <span
+									class="sr-only">(current)</span>
 							</a></li>
-							<li><a data-hover="" href="member-login.jsp">會員專區</a></li>
-							<li><a data-hover="" href="Manufacturers-logning.jsp">廠商專區</a></li>
-							<li><a data-hover="" href="Mall.jsp">購物商城</a></li>
-							<li><a data-hover="" href="contact.jsp">關於我們</a></li>
+							<li><a href="member-login.jsp">會員專區</a></li>
+							<li><a href="Manufacturers-logning.jsp">廠商專區</a></li>
+							<li><a href="Mall.jsp">購物商城</a></li>
+							<li><a href="contact.jsp">關於我們</a></li>
 							<li><a href="changlogin.jsp">註冊</a></li>
 						</ul>
 						<!-- script-for-menu -->
@@ -182,15 +188,15 @@
 		</div>
 	</div>
 	<div class="col-md-12" style="background-color: #000">
-		<h4 style="margin: 10px" class="footer-top-color">營業許可證</h4>
+		<h4 style="margin: 10px;font-size:14px ;align:left;" class="footer-top-color" >營業許可證</h4>
 		<p class="footer-top-color" style="margin: 0 0 0 10px">許可證字號：1234
 			就業服務專業人員證書字號：就專字第03319號 就業服務專業人員證書字號：就專字第06299號 機構名稱：SHSM股份有限公司
 			機構地址：台北市大安區信義區三段118號</p>
 		<br />
 	</div>
 	<div class="clearfix"></div>
-	</div>
-	</div>
+
+
 	<a href="#" id="toTop" style="display: block;"> <span
 		id="toTopHover" style="opacity: 1;"> </span></a>
 	<script src="js/bootstrap.js"></script>
