@@ -1,17 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="en">
 <head>
 <title>Margo | Services</title>
 <meta charset="utf-8">
+
 <link rel="stylesheet" href="asset/css/bootstrap.min.css"
 	type="text/css" media="screen">
 <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css"
 	media="screen">
-<link rel="stylesheet" type="text/css" href="css/style.css"
-	media="screen">
+<!-- <link rel="stylesheet" type="text/css" href="css/style.css" -->
+<!-- 	media="screen"> -->
 <link rel="stylesheet" type="text/css" href="css/responsive.css"
 	media="screen">
 <link rel="stylesheet" type="text/css" href="css/colors/red.css"
@@ -54,6 +55,7 @@
 <script type="text/javascript" src="js/jquery.nicescroll.min.js"></script>
 <script type="text/javascript" src="js/jquery.parallax.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
+
 <script>
 	$(function() {
 
@@ -104,8 +106,7 @@
 						<div class="panel-group" id="accordion">
 							<!-- Start Accordion 1 -->
 							<div class="panel panel-default" style="border: 0px">
-								<img src="../images/atama1.png" alt=""
-									style="margin: 10px -20px 10px 120px">
+
 								<div class="panel-heading">
 									<h4 class="panel-title">
 										<a data-toggle="collapse" data-parent="#accordion"
@@ -118,35 +119,33 @@
 									</h4>
 								</div>
 								<!--客戶基本資料  傳送接收 這邊噢 -->
-								<h2 class="sub-header">會員列表</h2>
-								<hr />
 								<div class="table-responsive">
 									<table class="table table-striped" id="tb">
 										<thead>
 											<tr>
 												<th>帳號:${custuser.cus_id}</th>
-												</tr>
-												<tr>
+											</tr>
+											<tr>
 												<th>密碼:${custuser.cus_password}</th>
-												</tr>
-												<tr>
+											</tr>
+											<tr>
 												<th>姓名:${custuser.cus_name}</th>
-												</tr>
-												<tr>
+											</tr>
+											<tr>
 												<th>住址:${custuser.cus_address}</th>
-												</tr>
-												<tr>
+											</tr>
+											<tr>
 												<th>電話:${custuser.cus_phone}</th>
-												</tr>
-												<tr>
+											</tr>
+											<tr>
 												<th>註冊日期:${custuser.cus_regist}</th>
-												</tr>
-												<tr>
+											</tr>
+											<tr>
 												<th>信箱:${custuser.cus_email}</th>
-												</tr>
-												<tr>
+											</tr>
+											<tr>
 												<th>性別:${custuser.sex}</th>
-												</tr>
+											</tr>
 										</thead>
 										<tbody>
 
@@ -155,14 +154,14 @@
 									</table>
 								</div>
 								<script>
-									$(function() {
+									// 									$(function() {
 
-										$('#tb').DataTable({
-											"ajax" : "CustomerALLServlet",
-											"info" : false
-										});
+									// 										$('#tb').DataTable({
+									// 											"ajax" : "CustomerALLServlet",
+									// 											"info" : false
+									// 										});
 
-									});
+									// 									});
 								</script>
 							</div>
 							<!-- End Accordion 1 -->
@@ -213,84 +212,13 @@
 
 
 
-				<!-- 下方導覽 -->
-				<div class="hr1" style="margin-bottom: 25px;"></div>
-				<div class="row">
-					<!-- 以下為 推薦廠商 -->
-					<div class="col-md-8 col-xs-6">
-						<div class="our-clients">
-							<!-- Classic Heading -->
-							<h4 class="classic-title">
-								<span>推薦優良廠商</span>
-							</h4>
-							<div class="clients-carousel custom-carousel touch-carousel"
-								data-appeared-items="4">
-								<!-- Client 1 -->
-								<div class="client-item item">
-									<a href="#"><img src="images/c1.png" alt="" /></a>
-								</div>
-								<!-- Client 2 -->
-								<div class="client-item item">
-									<a href="#"><img src="images/c2.png" alt="" /></a>
-								</div>
-								<!-- Client 3 -->
-								<div class="client-item item">
-									<a href="#"><img src="images/c3.png" alt="" /></a>
-								</div>
-								<!-- Client 4 -->
-								<div class="client-item item">
-									<a href="#"><img src="images/c4.png" alt="" /></a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- 推薦廠商到這裡 -->
-					<!-- 訊息欄位 -->
-					<div class="col-md-4 col-xs-6">
-						<!-- Classic Heading -->
-						<h4 class="classic-title">
-							<span>信息欄位</span>
-						</h4>
-						<!-- Start Testimonials Carousel -->
-						<div class="custom-carousel show-one-slide touch-carousel"
-							data-appeared-items="1">
-							<!-- Testimonial 1 -->
-							<div class="classic-testimonials item">
-								<div class="testimonial-content">
-									<p>你好我是近熊水電工程,目前約2017/12/31號半夜維修噢.</p>
-								</div>
-								<div class="testimonial-author">
-									<span>近熊水電</span> - 林老闆
-								</div>
-							</div>
-							<!-- Testimonial 2 -->
-							<div class="classic-testimonials item">
-								<div class="testimonial-content">
-									<p>手機維修案件已經結束,請查收案件.</p>
-								</div>
-								<div class="testimonial-author">
-									<span>資策茶會</span> - 馬老闆
-								</div>
-							</div>
-							<!-- Testimonial 3 -->
-							<div class="classic-testimonials item">
-								<div class="testimonial-content">
-									<p>你好,我們想承接您的建築外牆維修案件,歡迎觀看蔽公司簡介.以下附上網址:
-										http://www.google.com"</p>
-								</div>
-								<div class="testimonial-author">
-									<span>恆遠股份</span> - 菜例休
-								</div>
-							</div>
-						</div>
-						<!-- 訊息欄位結束 -->
-					</div>
-				</div>
+
 			</div>
 		</div>
+	</div>
+	</div>
 	</div>
 	<!-- End Content -->
 	</div>
 	<!-- End Container -->
-
 </html>

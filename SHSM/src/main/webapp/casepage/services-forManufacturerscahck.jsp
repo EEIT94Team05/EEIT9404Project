@@ -64,9 +64,8 @@
                         <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-                                    <th>案件編號</th>
-<<<<<<< HEAD
-								<th>預算金額</th>
+                                <th>案件編號</th>
+                                <th>預算金額</th>
 								<th>案件種類</th>
 								<th>案件標題</th>
 								<th>案件地址</th>
@@ -77,7 +76,6 @@
 								<th>案件狀態</th>
 								<th>案件完成日期</th>
 								<th>案件評分</th>
-								<th>abc</th>
                                 </tr>
                             </thead>
                             <tbody>

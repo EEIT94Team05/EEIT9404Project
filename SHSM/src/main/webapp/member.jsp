@@ -6,6 +6,9 @@
 <head>
 <title>會員專區</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <link href="css/style.css" rel='stylesheet' type='text/css' />
 <script src="js/jquery-1.11.1.min.js"></script>
@@ -213,6 +216,7 @@
 
 	</div>
 	<script src="js/bootstrap.js"></script>
+	
 </body>
 
 </html>
