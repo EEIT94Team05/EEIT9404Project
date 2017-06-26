@@ -21,7 +21,7 @@
 <body>
     <div class="container">
         <ul class="nav nav-tabs">
-            <li><a href="casepage/services.jsp">會員專區</a></li>
+            <li><a href="bootstarptest.jsp">會員專區</a></li>
             <li class="active"><a href="member-case.jsp">新增案件</a></li>
             <li><a href="member-casequery.jsp">查詢案件</a></li>
             <li>

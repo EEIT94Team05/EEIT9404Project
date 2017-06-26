@@ -9,7 +9,7 @@
    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
     <!--分頁-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" />
+
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
@@ -17,16 +17,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" />
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<!--     <link rel="stylesheet" href="asset/css/bootstrap.min.css" type="text/css" media="screen"> -->
+	<link rel="stylesheet" type="text/css" href="css/style.css"	media="screen">
+
+
     <script>
     $(document).ready(function() {
     	$("#divId").hide();
-    	var table =  $('#example').DataTable({"ajax":"CusCaseSearchServlet.controller"});
-    	var data  ;
+    	
+//     	var table =  $('#example').DataTable({"ajax":"CusCaseSearchServlet.controller"},{"createdRow":function(row, data, index){
+// 			console.log(data[0])}	
+//     	});
+    	var table =  $('#example').DataTable({"ajax":"CusCaseSearchServlet.controller","columnDefs":[{"targets":-1,"data":null,"defaultContent":"<button data-toggle=\"modal\" data-target=\"#look\" type=\"button\" name=\"casescore\">評價</button>"}]});
+    	var data;
         var id;
         var title;
         var casebid;
+       var a;
+       
+       $(document).on('click','button[name="casescore"]',function(){
+//			a = table .row(this) .data();
+			console.log('ss')
+		})
+		
+        
         $('#example tbody').on( 'click', 'tr', function () {
-            
+        	
             if ( $(this).hasClass('selected') ) {
                 $(this).removeClass('selected');
             }
@@ -40,6 +58,20 @@
                 
             }
         } );
+        $('#deletecase').on('click',function(){
+			 table.row('.selected').remove().draw( false );
+			 $.ajax({
+					"url":"RepaircaseDeleteServlet",
+					"data":{"repaircase_Id":id},
+					"type":"get"
+               }).done(function(data){
+               	$('#example').DataTable({destroy:true,"ajax":"CusCaseSearchServlet.controller"});
+               });
+			
+		})
+		
+        
+       
         
         $('#bidbutton').on('click', function () {
         	
@@ -48,24 +80,29 @@
 				"data":{"repaircase_Id":id},
 				"type":"get"
             }).done(function(data){
-                
+            	
             	$('h4[name="casetitle"]').text(title);
             		var i=0;
             		var j=0;
             		var comid;
+            		var img;
 					casebid = data;
 					
 						while(i<data.length){
-							
-							
-								var img = '<div style=\"float:left; padding:10px;\"><img width=50 height=50 src=\"${pageContext.request.contextPath}/controller/GetCompanyImageServlet?id='+data[i].com_id+'\" /><br>' +
+								 img = '<div  id=\"'+data[i].com_id+'" style=\"float:left; padding:10px;\"><img width=50 height=50 src=\"${pageContext.request.contextPath}/controller/GetCompanyImageServlet?id='+data[i].com_id+'\" /><br>' +
 								'<input type=\"button\" name=\"'+data[i].com_id+'bidding\" value=\"'+data[i].com_id+'\" /></div>' ;
 								$('#bidcom').after(img)
 														
 							i++;
+								
 						}
-					
-					
+						$('#closewindow').click(function(){
+						
+							$('#bidcom').remove();
+							
+						});
+						 
+
 					$('input[name$="bidding"]').on('click',function(biddata){
 						 comid = biddata.currentTarget.defaultValue;
 						while(j<data.length){
@@ -96,9 +133,12 @@
 						
 					})
 					
+					
       		  } );
             
    		 });
+        
+       
     })
     </script>
 </head>
@@ -133,8 +173,12 @@
                 </div>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>       
 
-<div class="modExample"><a href="#myModal1" role="button"  data-target="#myModal1"
-		class="btn btn-default" data-toggle="modal" id="bidbutton">查詢投標廠商</a></div>
+		<div class="modExample"><a href="#myModal1" role="button"  data-target="#myModal1"
+		class="btn btn-default" data-toggle="modal" id="bidbutton">查詢投標廠商</a>
+		<input id="deletecase" class="btn btn-default" type="button" value="刪除案件" />
+		</div>
+
+
                       
 <div id="myModal1" class="modal" data-easein="fadeIn" tabindex="-1"
 				role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
@@ -142,7 +186,7 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<center>
-								<button type="button" class="close" data-dismiss="modal"
+								<button id="closewindow" type="button" class="close" data-dismiss="modal"
 									aria-hidden="true">×</button>
 								<h4 class="title" id="myModalLabel">投標廠商</h4>
 							</center>
@@ -196,7 +240,9 @@
 										</table>
 								</form>
 								</tr>
+
 								<div align="center"><button type="button" name="checkbid" class="btn btn-danger" style="margin:10px 0 0 0"  >選擇廠商</button></div>
+
 								</table>
 								</div>
 								</form>
@@ -204,6 +250,29 @@
 							
 						</div>
 </div></div></div></div>
+
+
+<!-- 跳出廠商詳細訊息-->
+	<div class="modal fade" id="look" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<!--關閉按鈕-->
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">×</button>
+					<h4 class="modal-title" id="myModalLabel">廠商詳細資訊</h4>
+				</div>
+				<div class="modal-body">按下 ESC 按钮退出。</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">關閉
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
 </body>
 
 </html>

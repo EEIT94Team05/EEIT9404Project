@@ -74,7 +74,7 @@ public class CaseServlet extends HttpServlet {
 		String repaircase_place = request.getParameter("caseplace");
 		String temp2 = request.getParameter("repairdate");
 		String repaircase_context = request.getParameter("context");
-		String temp3 = request.getParameter("img1");
+//		String temp3 = request.getParameter("img1");
 		String temp7 = request.getParameter("createdate");
 		String repaircase_status = request.getParameter("status");
 		String temp8 = request.getParameter("finday");
@@ -176,6 +176,7 @@ public class CaseServlet extends HttpServlet {
 		bean.setRepaircase_status(repaircase_status);
 		bean.setRepaircase_finday(repaircase_finday);
 		bean.setRepaircase_score(repaircase_score);
+		bean.setRepaircase_img1(blobi);
 		bean.setCustomerbean(custbean);
 
 		

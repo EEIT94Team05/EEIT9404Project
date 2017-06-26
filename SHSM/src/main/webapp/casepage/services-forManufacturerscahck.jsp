@@ -49,6 +49,7 @@
 									<th>案件狀態</th>
 									<th>案件評分</th>
 								</tr>
+
                             </thead>
                             
                         </table>

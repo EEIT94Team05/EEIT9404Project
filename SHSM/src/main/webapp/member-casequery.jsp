@@ -63,7 +63,7 @@ function bid(com_id,repaircase_Id){
 	    <div class="container" >
 	        <ul class="nav nav-tabs">
 	            <li>
-	            	<a href="casepage/services.jsp">會員專區</a>
+	            	<a href="bootstarptest.jsp">會員專區</a>
 	            </li>
 	            <li>
 	            	<a href="member-case.jsp" >新增案件</a>
