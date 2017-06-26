@@ -22,22 +22,22 @@
     <script>
     $(document).ready(function() {
     	$("#divId").hide();
-//     	var table =  $('#example').DataTable({"ajax":"CusCaseSearchServlet.controller"},{"createdRow":function(row, data, index){
-// 			console.log(data[0])}	
-//     	});
-    	var table =  $('#example').DataTable({"ajax":"CusCaseSearchServlet.controller","columnDefs":[{"targets":-1,"data":null,"defaultContent":"<button >評價</button>"}]});
+    	var table =  $('#example').DataTable({"ajax":"CusCaseSearchServlet.controller","columnDefs":[{"targets":-1,"data":null,"defaultContent":"<button type='button' name='casescore' >評價</button>"}]});
     	var data;
         var id;
         var title;
         var casebid;
-       console.log(table)
-        	$('tr[role="row"]').find('td:nth-child(10)').html("<input type='button' value='給評價' />");
-// 		
+ 
+        $(document).on('click', 'button[name="casescore"]', function () {
+				$('button[name="casescore"]').hide();
+        });
+       
         
         $('#example tbody').on( 'click', 'tr', function () {
         	
             if ( $(this).hasClass('selected') ) {
                 $(this).removeClass('selected');
+                
             }
             else {
                 table.$('tr.selected').removeClass('selected');
@@ -46,9 +46,10 @@
                 id = data[10];
                 console.log(data[10]);
                 title = data[0];
-                
+         
             }
         } );
+        
         $('#deletecase').on('click',function(){
 			 table.row('.selected').remove().draw( false );
 			 $.ajax({
@@ -78,24 +79,29 @@
             		var comid;
             		var img;
 					casebid = data;
+					$('td[name="amount"]').text("")
+					$('td[name="biddate"]').text("")
+					$('td[name="context"]').text("")
+					$('#bidcom').empty();
 					
 						while(i<data.length){
 								 img = '<div  id=\"'+data[i].com_id+'" style=\"float:left; padding:10px;\"><img width=50 height=50 src=\"${pageContext.request.contextPath}/controller/GetCompanyImageServlet?id='+data[i].com_id+'\" /><br>' +
-								'<input type=\"button\" name=\"'+data[i].com_id+'bidding\" value=\"'+data[i].com_id+'\" /></div>' ;
-								$('#bidcom').after(img)
+								'<input type=\"button\" name=\"'+data[i].com_id+'bidding\" id="'+data[i].com_id+'" value=\"'+data[i].com_name+'\" /></div>' ;
+								$('#bidcom').prepend(img)
 														
 							i++;
 								
 						}
-						$('#closewindow').click(function(){
-						
-							$('#bidcom').remove();
+// 						$('#closewindow').click(function(){
 							
-						});
+// 							$('#myModal1 > div > div > div > div > div > form > div > table:nth-child(2) > tbody').empty();
+							
+// 						});
 						 
 
 					$('input[name$="bidding"]').on('click',function(biddata){
-						 comid = biddata.currentTarget.defaultValue;
+						console.log(biddata)
+						 comid = biddata.currentTarget.id;
 						while(j<data.length){
 							if(comid==data[j].com_id){
 								$('td[name="amount"]').text(data[j].bidding_amount)
@@ -197,9 +203,7 @@
 									<h4><font size="4">投標廠商  :</font></h4>
 								<table>
 								<tr id="bidcom" >
-								<div >
 								
-								</div>
 								</tr>
 								<tr>
 									<form>

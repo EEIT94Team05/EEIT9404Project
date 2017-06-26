@@ -99,6 +99,7 @@ public class RepaircaseService {
 	public boolean checkbidding(Integer repaircase_id, String com_id){
 		boolean result = false;
 		RepaircaseBean bean = repaircasedao.select(repaircase_id);
+		System.out.println("aaaa");
 		if(bean!=null && bean.getRepaircase_status().equals("招標中")){
 			bean.setCom_id(com_id);
 			bean.setRepaircase_status("處理中");

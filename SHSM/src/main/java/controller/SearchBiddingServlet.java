@@ -31,10 +31,12 @@ import model.BiddingBean;
 import model.BiddingDAO;
 import model.BiddingPk;
 import model.BiddingService;
+import model.CompanyBean;
 import model.CustomerBean;
 import model.RepaircaseBean;
 import model.RepaircaseService;
 import model.dao.BiddingDAOHibernate;
+import model.dao.CompanyDAO;
 import model.dao.RepaircaseDAO;
 
 @MultipartConfig(
@@ -51,10 +53,12 @@ public class SearchBiddingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private SimpleDateFormat sdFormat;
 	private BiddingDAO biddingdao;
+	private CompanyDAO companyDao;
 	private InputStream is=null;
 	@Override
 	public void init() throws ServletException {
 		biddingdao = new BiddingDAOHibernate(HibernateUtil.getSessionFactory());
+		companyDao=new CompanyDAO(HibernateUtil.getSessionFactory());
 	}
 	
 	@Override
@@ -106,10 +110,15 @@ public class SearchBiddingServlet extends HttpServlet {
 			int i=0;
 			JSONObject obj2;
 			JSONArray jsonArray = new JSONArray();
+			CompanyBean companyBean;
 			while(i<result.size()){
+				
 				BiddingBean data = result.get(i);
+				companyBean = companyDao.select(data.getBiddingPk().getCom_id());
 				obj2 = new JSONObject();
+				
 				obj2.put("com_id", data.getBiddingPk().getCom_id());
+				obj2.put("com_name", companyBean.getCom_name());
 				obj2.put("bidding_amount", data.getBidding_amount());
 				obj2.put("bidding_date", data.getBidding_date());
 				obj2.put("bidding_img", data.getBidding_img());
