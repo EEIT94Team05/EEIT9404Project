@@ -16,11 +16,9 @@ import model.CompanyBean;
 import model.CompanyService;
 import model.dao.CompanyDAO;
 
-@WebServlet(
-		urlPatterns={"/Companylogin.controller"}
-
-)
+@WebServlet("/Companylogin.controller")
 public class CompanyLoginServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 	private CompanyService companyservice;
 	
 	@Override
@@ -39,8 +37,7 @@ public class CompanyLoginServlet extends HttpServlet {
 //接收資料
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-				
-		
+
 //驗證資料
 //轉換資料
 		Map<String, String> errors = new HashMap<String, String>();
@@ -80,7 +77,7 @@ public class CompanyLoginServlet extends HttpServlet {
 
 			String path = request.getContextPath();
 
-			response.sendRedirect(path+"/Manufacturers.jsp");//重新導向回首頁
+			response.sendRedirect(path+"/indexaftercomlogin.jsp");//重新導向回首頁
 		}
 	}
 	@Override

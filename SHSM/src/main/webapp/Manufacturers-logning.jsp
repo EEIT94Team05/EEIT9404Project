@@ -70,7 +70,7 @@
 				<div class="registration-grids">
 					<div class="reg-form">
 						<div class="reg">
-							<form action="<c:url value="/Companylogin.controller" />" method="get">
+							<form action="<c:url value="Companylogin.controller" />" method="get">
 								<ul>
 									<li class="text-info">帳號:</li>
 									<li><input type="text" value="eeit9458" style="margin: 0 -150px" name="username"></li>
@@ -80,7 +80,7 @@
 									<li><input type="password" value="a87654321" style="margin: 0 -150px" name="password" ></li>
 								</ul>
 								<div style="margin: -20px 0 0 30px">
-									<a href="member-register.html" style="margin: 0 0 0 250px">尚未擁有帳號?</a>
+									<a href="/Manufacturers-register.jsp" style="margin: 0 0 0 250px">尚未擁有帳號?</a>
 
 									<input type="submit" value="登入" style="margin: 0 0 0 240px">
 								</div>

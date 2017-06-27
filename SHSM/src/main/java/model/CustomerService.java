@@ -1,8 +1,10 @@
 package model;
 
+import model.dao.CustomerDAO;
+
 public class CustomerService {
-	private ICustomerDAO customerDao;
-	public CustomerService(ICustomerDAO customerDao) {
+	private CustomerDAO customerDao;
+	public CustomerService(CustomerDAO customerDao) {
 		this.customerDao = customerDao;
 	}
 	
@@ -20,14 +22,13 @@ public class CustomerService {
 		return null;
 	}
 	
-
+	
 	public CustomerBean insert(CustomerBean bean) {
 		CustomerBean result = null;
-		if(bean!=null){
-			result = bean;
-			return result;
+		if(bean!=null){			
+			result = customerDao.insert(bean);
 		}
-		return null;
+		return result;
 	}
 	
 //	public static void main(String[] args) {

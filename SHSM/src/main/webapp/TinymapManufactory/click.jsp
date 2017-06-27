@@ -153,14 +153,14 @@ a, a:focus {
 		
 		GEvent.addListener(marker,'mouseover',function() {marker.openInfoWindowHtml('<center>'
 
-											+ '<h4 style='+'color:'+'black'+'>'
-											+ '提案人'
-											+ '</h4>'
-											+ '<hr/>'
-											+ '<h4 id='+'\"caseid\"'+' style='+'color:'+'black'+'>'
-											+ data.repaircase_id
-											+ '</h4>'
-											+ '<hr/>'
+// 											+ '<h4 style='+'color:'+'black'+'>'
+// 											+ '提案人'
+// 											+ '</h4>'
+// 											+ '<hr/>'
+// 											+ '<h4 id='+'\"caseid\"'+' style='+'color:'+'black'+'>'
+// 											+ data.repaircase_id
+// 											+ '</h4>'
+// 											+ '<hr/>'
 											+ '<h4 style='+'color:'+'black'+'>'
 											+ '案件標題'
 											+ '</h4>'
@@ -174,8 +174,9 @@ a, a:focus {
 
 						                    +' scrolling='+'\"no\"'+'>'+ '詳細資訊' + '</a>' + '</center>');
 
-
-
+		
+										var url="${pageContext.request.contextPath}/controller/GetCaseImageServlet?id="+data.repaircase_id;
+										$('#imgg').attr('src',url)
 										$("a").on("click",function() {
 											$("#divid").show().css({
 												position : "absolute",
@@ -316,8 +317,8 @@ a, a:focus {
 						</div>
 						<div class="modal-body">
 							<div class="container-fluid">
-								<div class="col-md-12">
-									<table id="tablestyle" style="color: black; font-size: 12px;">
+								<div class="col-md-12" style="align:center;">
+									<table id="tablestyle" style="color: black; font-size: 12px; align:center;">
 										<tr>
 											<td
 												style="text-align: center; padding: 4px; font-size: 14px; background-color: #FFEFD5;">案件標題</td>
@@ -355,7 +356,7 @@ a, a:focus {
 										<tr>
 											<td name="context" align="center" style="padding: 6px;"></td>
 										</tr>
-										<td><img width='100' height='100' /></td>
+										<img id="imgg" width=100 height=100  />
 									</table>
 									<div id="hide">
 									<div>

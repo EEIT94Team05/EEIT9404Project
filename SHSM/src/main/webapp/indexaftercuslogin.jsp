@@ -72,7 +72,7 @@
 					<div class="banner-info">
 						<h2>維修就找SHSM大平台</h2>
 						<a class="hvr-rectangle-out button"
-							href="member-case.jsp"
+							href="member.jsp"
 							style="margin: 80px">開始使用SHSM</a>
 					</div>
 					<div class="arrow text-center">
@@ -128,8 +128,7 @@
 		<div class="container">
 			<h3>還在為維修煩惱嗎</h3>
 			<p>
-				SHSM為您精心挑選多家廠商任君挑選<span href="changlogin.jsp"><a
-					href="member-register.jsp">開始搜尋吧!</a></span>
+				SHSM為您精心挑選多家廠商任君挑選
 			</p>
 		</div>
 	</div>

@@ -27,7 +27,7 @@
         </ul>
         <div class="row">
             <div class="col-md-12">
-                <iframe src="Tinymap/click.jsp" frameborder="0" width="1150" height="650" scrolling="no"></iframe>
+                <iframe src="Tinymap/click.jsp" frameborder="0" width="1150" height="700" scrolling="no"></iframe>
             </div>
         </div>
     </div>

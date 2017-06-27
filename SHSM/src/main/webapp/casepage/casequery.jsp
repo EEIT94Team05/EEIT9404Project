@@ -27,7 +27,7 @@
     $(document).ready(function() {
     	$("#divId").hide();
 
-    	var table =  $('#example').DataTable({"ajax":"CusCaseSearchServlet.controller","columnDefs":[{"targets":-1,"data":null,"defaultContent":"<button class=\"btn btn-danger\" data-toggle=\"modal\" data-target=\"#look\" type=\"button\" name=\"casescore\">評價</button>"}]});
+    	var table =  $('#example').DataTable({"ajax":"CusCaseSearchServlet.controller","info":false,"columnDefs":[{"targets":-1,"data":null,"defaultContent":"<button class=\"btn btn-danger\" data-toggle=\"modal\" data-target=\"#look\" type=\"button\" name=\"casescore\">評價</button>"}]});
 
     	var data;
         var id;

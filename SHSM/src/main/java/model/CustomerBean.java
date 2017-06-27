@@ -20,7 +20,7 @@ import org.hibernate.cfg.Configuration;
 @Table(name="customer")
 public class CustomerBean implements Serializable{
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="cus_id")
 	private String cus_id;
 	private String cus_password;
