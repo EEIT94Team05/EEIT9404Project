@@ -3,15 +3,12 @@ package model.dao;
 
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
-
 import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.query.Query;
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
 import model.CompanyBean;
@@ -26,6 +23,8 @@ public class CompanyDAO implements ICompanyDAO {
 	public Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
+	
+
 	public static void main(String[] args) {
 		Configuration config = new Configuration().configure("hibernate.cfg.xml");
 		SessionFactory sf = config.buildSessionFactory();
@@ -52,7 +51,13 @@ public class CompanyDAO implements ICompanyDAO {
 		return getSession().get(CompanyBean.class, comid);
 	}
 
-	
+	public CompanyBean insert(CompanyBean bean) {
+		if(bean!=null) {
+			this.getSession().save(bean);
+		return bean;
+		}		
+	return null;
+}
 	public String selectJson(){
 		int i = 0;
 		List<CompanyBean> list = this.getSession().createQuery("from CompanyBean",CompanyBean.class).getResultList();

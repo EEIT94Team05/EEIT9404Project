@@ -20,17 +20,9 @@
 
 <body>
     <div class="container">
-        <ul class="nav nav-tabs">
-            <li><a href="bootstarptest.jsp">會員專區</a></li>
-            <li class="active"><a href="member-case.jsp">新增案件</a></li>
-            <li><a href="member-casequery.jsp">查詢案件</a></li>
-            <li>
-                <a href="member-Manufacturers.jsp">廠商列表</a>
-            </li>
-        </ul>
         <div class="row">
             <div class="col-md-12">
-                <iframe src="Tinymap/click.jsp" frameborder="0" width="1150" height="650" scrolling="no"></iframe>
+                <iframe src="Tinymap/click.jsp" frameborder="0" width="1150" height="700" scrolling="no"></iframe>
             </div>
         </div>
     </div>

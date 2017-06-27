@@ -26,11 +26,6 @@
 
 <body>
 	<div class="container">
-		<ul class="nav nav-tabs">
-			<li><a href="bootstarptest2.jsp">廠商專區</a></li>
-			<li class="active"><a href="Manufacturers-case.jsp">查詢案件</a></li>
-			<li><a href="Manufacturers-casequery.jsp">追蹤案件</a></li>
-		</ul>
 		<div class="row">
 			<div class="col-md-12">
 				<iframe src="TinymapManufactory/click.jsp" frameborder="0"

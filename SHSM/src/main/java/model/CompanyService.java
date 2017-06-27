@@ -3,14 +3,15 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-import hibernate.HibernateUtil;
 import model.dao.CompanyDAO;
 
 public class CompanyService {
-	ICompanyDAO companydao;
-	public CompanyService(ICompanyDAO companydao) {
-		this.companydao = companydao;
+	private CompanyDAO companyDao;
+	public CompanyService(CompanyDAO companydao) {
+		this.companyDao = companydao;
 	}
+
+
 //	public static void main(String[] args) {
 //		
 //		try {
@@ -31,28 +32,26 @@ public class CompanyService {
 	public List<CompanyBean> select(CompanyBean bean){
 		List<CompanyBean> result = null;
 		if(bean!=null && bean.getCom_id().length()!=0){
-			CompanyBean temp = companydao.select(bean.getCom_id());
+			CompanyBean temp = companyDao.select(bean.getCom_id());
 			if(temp!=null) {
 				result = new ArrayList<CompanyBean>();
 				result.add(temp);
 			}
 		}else {
-			result = companydao.select(); 
+			result = companyDao.select(); 
+		}
+		return result;
+	}
+	public CompanyBean insert(CompanyBean bean) {
+		CompanyBean result = null;
+		if(bean!=null){			
+			result = companyDao.insert(bean);
 		}
 		return result;
 	}
 	
-//	public CompanyBean insert(CompanyBean bean){
-//		CompanyBean result = null;
-//		if(bean!=null){
-//			result = bean;
-//			
-//		}
-//		return companydao.insert(bean);
-//	}
-	
 	public CompanyBean select(String com_id){
-	CompanyBean companyBean = companydao.select(com_id);
+	CompanyBean companyBean = companyDao.select(com_id);
 		return companyBean;
 	}
 	
@@ -65,7 +64,7 @@ public class CompanyService {
 	}
 	
 	public CompanyBean login(String username, String password) {
-		CompanyBean bean = companydao.select(username);
+		CompanyBean bean = companyDao.select(username);
 		if(bean!=null) {
 			if(password!=null && password.length()!=0) {
 				String pass = password;	

@@ -1,6 +1,5 @@
 package model.dao;
 
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
@@ -59,8 +58,15 @@ public class CustomerDAO implements ICustomerDAO {
 			session.getTransaction().commit();						
 		} catch (Exception e) {
 			session.getTransaction().rollback();
-		}
-		
+		}	
+	}
+	
+	public CustomerBean insert(CustomerBean bean) {
+			if(bean!=null) {
+				this.getSession().save(bean);
+			return bean;
+			}		
+		return null;
 	}
 	
 	
@@ -94,6 +100,8 @@ public class CustomerDAO implements ICustomerDAO {
 		String jsonString = JSONValue.toJSONString(map2);
 		return jsonString;
 	}
+	
+	
 //	public List<CustomerBean> selectAll(){
 //		Query query = this.getSession().createQuery("from CustomerBean" ,CustomerBean.class);
 //		List<CustomerBean> list = query.list();

@@ -15,14 +15,35 @@
     <script type="text/javascript" src="js/jquery.migrate.js"></script>
     <script type="text/javascript" src="js/modernizrr.js"></script>
     <!--jquery datatable-->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
     <script>
     $(document).ready(function() {
-        $('#example').DataTable({destroy:true, "ajax":"ComCaseSearchServlet.controller"});
+       var table = $('#example').DataTable({"info":false,destroy:true, "ajax":"ComCaseSearchServlet.controller","columnDefs":[{"targets":-1,"data":null,"defaultContent":"<button class=\"btn btn-danger\" data-toggle=\"modal\" data-target=\"#look\" type=\"button\" name=\"casechck\">確認</button>"}]});
+       var data;
+        $(document).on('click','button[name="casechck"]',function(){
+        	console.log(data[9])
+        	var id = data[9]
+//         	$.ajax({
+//         		'url':'ComFinCaseServlet.controller',
+//         		'data' : id,
+//         		"type":"get",
+//         		'async': false
+//         	}).done(function(data){
+//         		alert(data)
+//         	})
+				
+		})
+		 $('#example tbody').on( 'click', 'tr', function () {
+	        	data = table .row(this) .data();
+	            id = data[0];
+	            title = data[0];
+	       });
     });
+   
     </script>
 </head>
 
@@ -48,6 +69,7 @@
 									<th>期望維修日期</th>
 									<th>案件狀態</th>
 									<th>案件評分</th>
+									<th>完成案件</th>
 								</tr>
 
                             </thead>
@@ -59,60 +81,28 @@
         </div>
     </div>
     
-    <!-- 跳出廠商詳細訊息-->
-    <div class="modal fade" id="look" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+     <div class="modal fade" id="look" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <!--關閉按鈕-->
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
                     </button>
-                    <h4 class="modal-title" id="myModalLabel">
-                    廠商詳細資訊
+                    <h4 class="modal-title" id="myModalLabel" style="text-align:center">
+                 確定案件已完成?
                 </h4>
                 </div>
-                <div class="modal-body">
-                    按下 ESC 按钮退出。
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">關閉
+               
+                <div class="modal-footer" style="align:center">
+                	 <button type="button" name="checkyes" class="btn btn-default" data-dismiss="modal">確定
+                    </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消
                     </button>
                 </div>
             </div>
         </div>
     </div>
-    <!--再次確認-->
-    <div class="modal fade" id="look-ok" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="moal-body">
-                    <center>
-                        再次確認廠商
-                    </center>
-                </div>
-                <div class="modal-footer">
-                    <center>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">確認
-                        </button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">在考慮
-                        </button>
-                    </center>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script>
-    $(function() {
-        $('#look').modal({
-            keyboard: true
-        })
-    });
-    $(function() {
-        $('#look-ok').modal({
-            keyboard: true,
-        })
-    });
-    </script>
+   
     <script src="js/docs.min.js"></script>
 </body>
 

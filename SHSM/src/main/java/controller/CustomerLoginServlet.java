@@ -79,7 +79,7 @@ public class CustomerLoginServlet extends HttpServlet {
 			String path = request.getContextPath();
 //			response.sendRedirect(path+"/member.jsp");
 
-			response.sendRedirect(path+"/indexafterlogin.jsp");
+			response.sendRedirect(path+"/indexaftercuslogin.jsp");
 
 		}
 	}
