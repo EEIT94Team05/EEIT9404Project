@@ -21,6 +21,7 @@ import model.dao.CustomerDAO;
 		urlPatterns={"/Customerlogin.controller"}
 )
 public class CustomerLoginServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 	private CustomerService customerService;
 	
 	@Override
@@ -78,7 +79,7 @@ public class CustomerLoginServlet extends HttpServlet {
 			String path = request.getContextPath();
 //			response.sendRedirect(path+"/member.jsp");
 
-			response.sendRedirect(path+"/member.jsp");
+			response.sendRedirect(path+"/indexafterlogin.jsp");
 
 		}
 	}
