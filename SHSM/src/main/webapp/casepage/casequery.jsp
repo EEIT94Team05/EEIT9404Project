@@ -37,11 +37,19 @@
        var star;
        $(document).on('click','button[name="casescore"]',function(){
 				console.log(data[6])
-				if(data[6]!="處理中"){
-					$('#a').hide();
-					$('#er').remove()
-					$('#a').after('<div id="er" align="center" style="margin:10px 0 10px 0 ;"><h1>尚未選擇廠商</h1></div>')
-					$('#chckdiv').html('<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>')
+				if(data[6]!="已完成"){
+					if(data[6]=="招標中"){
+						$('#a').hide();
+						$('#er').remove()
+						$('#a').after('<div id="er" align="center" style="margin:10px 0 10px 0 ;"><h1>尚未選擇廠商</h1></div>')
+						$('#chckdiv').html('<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>')
+					}else{
+						$('#a').hide();
+						$('#er').remove()
+						$('#a').after('<div id="er" align="center" style="margin:10px 0 10px 0 ;"><h1>案件尚未完成</h1></div>')
+						$('#chckdiv').html('<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>')
+					}
+					
 					
 
 				}else{
@@ -129,9 +137,7 @@
 							
 // 							$('#myModal1 > div > div > div > div > div > form > div > table:nth-child(2) > tbody').empty();
 							
-// 						});
-						 
-
+// 						});						 
 					$('input[name$="bidding"]').on('click',function(biddata){
 						console.log(biddata)
 						 comid = biddata.currentTarget.id;
@@ -156,6 +162,7 @@
 								"type":"get"
 							}).done(function(result){
 								alert(result);
+								$('#example').DataTable({"ajax":"CusCaseSearchServlet.controller","columnDefs":[{"targets":-1,"data":null,"defaultContent":"<button class=\"btn btn-danger\" data-toggle=\"modal\" data-target=\"#look\" type=\"button\" name=\"casescore\">評價</button>"}]});
 							})
 						}else{
 							alert('請選擇廠商')

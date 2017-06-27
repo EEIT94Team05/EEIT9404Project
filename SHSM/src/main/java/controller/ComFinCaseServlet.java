@@ -21,19 +21,20 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import hibernate.HibernateUtil;
+import model.CompanyBean;
 import model.CustomerBean;
 import model.RepaircaseBean;
 import model.RepaircaseService;
 import model.dao.RepaircaseDAO;
 
 @WebServlet(
-		urlPatterns={"/casepage/CusFinCaseServlet.controller"}
+		urlPatterns={"/casepage/ComFinCaseServlet.controller"}
 )
-public class CusFinCaseServlet extends HttpServlet {
+public class ComFinCaseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private SimpleDateFormat sdFormat;
+
 	private RepaircaseService repaircaseservice;
-	private InputStream is=null;
+
 	@Override
 	public void init() throws ServletException {
 		repaircaseservice = new RepaircaseService(
@@ -44,16 +45,18 @@ public class CusFinCaseServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
-		request.setCharacterEncoding("UTF-8");
-		HttpSession session = request.getSession(false);
 		
+		
+		request.setCharacterEncoding("UTF-8");
+		response.setHeader("Content-Type", "text/plain; charset=UTF-8" ); 
+		HttpSession session = request.getSession(false);
+		PrintWriter out = response.getWriter();
 	
 //接收資料
 		String temp1 = request.getParameter("id");
-		String temp9 = request.getParameter("score");
+//		String temp9 = request.getParameter("check");
 		System.out.println(temp1);
-		System.out.println(temp9);
+//		System.out.println(temp9);
 		
 //驗證資料
 		Map<String, String> errors = new HashMap<String, String>();
@@ -71,30 +74,30 @@ public class CusFinCaseServlet extends HttpServlet {
 				errors.put("id", "Id欄位請輸入整數");
 			}
 		}
-		Integer repaircase_score = 0;
-		if (temp9!=null && temp9.length()!=0) {
-			try {
-				repaircase_score = Integer.parseInt(temp9);
-			} catch (NumberFormatException e) {
-				e.printStackTrace();
-				errors.put("id", "Id欄位請輸入整數");
-			}
-		}
+//		Integer repaircase_score = 0;
+//		if (temp9!=null && temp9.length()!=0) {
+//			try {
+//				repaircase_score = Integer.parseInt(temp9);
+//			} catch (NumberFormatException e) {
+//				e.printStackTrace();
+//				errors.put("id", "Id欄位請輸入整數");
+//			}
+//		}
 //呼叫Model
-		CustomerBean custbean = (CustomerBean)session.getAttribute("custuser");
+		CompanyBean compbean = (CompanyBean)session.getAttribute("compuser");
 //		bean.setRepaircase_score(repaircase_score);
 		
 
 		
 		
 //根據Model執行結果呼叫View
-		boolean result = repaircaseservice.CusFincase(repaircase_id, repaircase_score);
+		boolean result = repaircaseservice.ComFincase(repaircase_id);
 		System.out.println(result);
-//		if(result==null) {
-//			errors.put("action", "Insert失敗");
-//		} else {
-//			request.setAttribute("insert", result);
-//		}
+		if(result) {
+			out.write("案件已完成");
+		} else {
+			out.write("失敗");
+		}
 //		request.getRequestDispatcher(
 //				"/Tinymap/click.jsp").forward(request, response);
 	}

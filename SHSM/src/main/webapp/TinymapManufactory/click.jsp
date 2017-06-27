@@ -102,6 +102,7 @@ a, a:focus {
 <script src="../js/jquery.session.js"></script>
 <script type="text/javascript">
       var abc;
+      
 	$(function() {
 		$("#divid").hide();
 
@@ -116,15 +117,32 @@ a, a:focus {
 			myMap.addControl(new GLargeMapControl());
 			myMap.addControl(new GMapTypeControl());
 		}
-		$.getJSON("casesearch.controller", function(data) {
-			var i = 0;
-			while (i < data.length) {
-				addresstolatlng(data[i]);
-				
-				i++;
-			}
+// 		setInterval( function () {
+	    	  $.ajax({
+				  url: "casesearch.controller",
+				  dataType: 'json',
+				  async: false,
+				  success: function(data) {
+						var i = 0;
+						while (i < data.length) {
+							addresstolatlng(data[i]);
+							
+							i++;
+						}
 
-		})
+					}
+				});
+// 			}, 1000 );
+		
+// 		$.getJSON("casesearch.controller", function(data) {
+// 			var i = 0;
+// 			while (i < data.length) {
+// 				addresstolatlng(data[i]);
+				
+// 				i++;
+// 			}
+
+// 		})
 		//載入後動作
 
 	})

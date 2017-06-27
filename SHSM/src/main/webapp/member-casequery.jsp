@@ -23,10 +23,7 @@ $(function() {
 				$(id).hide();
 			});
 		
-	}
-	
-	
-	
+	}			
 });
 function bid(com_id,repaircase_Id){
 	console.log(com_id,repaircase_Id);
@@ -34,10 +31,7 @@ function bid(com_id,repaircase_Id){
 			$('#searchbidding > tbody > tr:nth-child(2) > td').text(data.bidding_amount);
 			$('#searchbidding > tbody > tr:nth-child(4) > td').text(data.bidding_date);
 			$('#searchbidding > tbody > tr:nth-child(6) > td').text(data.bidding_context);
-				console.log(data.bidding_context)
-				
-		
-			
+				console.log(data.bidding_context)			
 		})
 }
 
@@ -71,16 +65,9 @@ function bid(com_id,repaircase_Id){
 	            <li class="active">
 	            	<a href="member-casequery.jsp">查詢案件</a>
 	            </li>
-	            <li>
-	                <a href="member-Manufacturers.jsp">廠商列表</a>
-	            </li>
 	        </ul>
 	    </div>
-
-
                 <iframe src="casepage/casequery.jsp" frameborder="0" width="1700" height="600"></iframe>
-
-
 
 		<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 

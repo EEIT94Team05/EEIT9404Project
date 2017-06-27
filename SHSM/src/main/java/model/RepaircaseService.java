@@ -150,4 +150,33 @@ public class RepaircaseService {
 		}
 		return false;
 	}
+	public boolean ComFincase(Integer repaircase_id){
+		if(repaircase_id!=null){
+			RepaircaseBean bean = repaircasedao.select(repaircase_id);
+			if(bean!=null){
+				bean.setRepaircase_finday(getTime());
+				bean.setRepaircase_status("已完成");
+				RepaircaseBean result = repaircasedao.update(
+						bean.getRepaircase_id(), 
+						bean.getRepaircase_budget(), 
+						bean.getRepaircase_type(), 
+						bean.getRepaircase_title(), 
+						bean.getRepaircase_area(), 
+						bean.getRepaircase_address(), 
+						bean.getRepaircase_place(), 
+						bean.getRepaircase_repairdate(), 
+						bean.getRepaircase_context(), 
+						bean.getRepaircase_img1(), 
+						bean.getRepaircase_media(), 
+						bean.getRepaircase_status(), 
+						bean.getRepaircase_finday(), 
+						bean.getRepaircase_score());
+				if(result.getRepaircase_status().equals(bean.getRepaircase_status())){
+					return true;
+				}
+			}
+			
+		}
+		return false;
+	}
 }

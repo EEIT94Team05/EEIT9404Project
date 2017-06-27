@@ -54,6 +54,8 @@
 <script type="text/javascript" src="js/jquery.nicescroll.min.js"></script>
 <script type="text/javascript" src="js/jquery.parallax.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
+<!-- <link rel="stylesheet" href="http://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css"> -->
+<!--     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script> -->
 <script>
 	$(function() {
 
@@ -167,7 +169,8 @@
 
 										$('#tb').DataTable({
 											"ajax" : "CustomerALLServlet",
-											"info" : false
+											"info" : false,
+											destroy:true
 										});
 
 									});
