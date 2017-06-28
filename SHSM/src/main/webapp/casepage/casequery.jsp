@@ -96,13 +96,14 @@
         } );
         
         $('#deletecase').on('click',function(){
-			 table.row('.selected').remove().draw( false );
+// 			 table.row('.selected').remove().draw( false );
 			 $.ajax({
 					"url":"RepaircaseDeleteServlet",
 					"data":{"repaircase_Id":id},
 					"type":"get"
                }).done(function(data){
-               	$('#example').DataTable({destroy:true,"ajax":"CusCaseSearchServlet.controller"});
+               
+               	table.ajax.reload();
                });
 			
 		})

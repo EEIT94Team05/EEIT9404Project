@@ -52,6 +52,7 @@ a, a:focus {
 </style>
 <script src="../js/jquery-3.2.1.min.js"></script>
 <script src="../js/jquery.session.js"></script>
+<script src="../js/test.js"></script>
 <script type="text/javascript">
 	$(function () {
 		if (GBrowserIsCompatible()) {
@@ -92,6 +93,7 @@ a, a:focus {
             var marker = new GMarker(point);
             
             myMap.addOverlay(marker);
+//             trigger(true);
 		}
 		/*<!--地圖標點-->*/
 		function addresstolatlng(address){

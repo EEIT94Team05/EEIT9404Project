@@ -101,14 +101,30 @@ a, a:focus {
 </style>
 <script src="../js/jquery-3.2.1.min.js"></script>
 <script src="../js/jquery.session.js"></script>
+<script src="../js/test.js"></script>
 <script type="text/javascript">
 	var abc;
+	
+	
+	function test(){
+		$.ajax({
+			url : "casesearch.controller",
+			dataType : 'json',
+			async : false,
+			success : function(data) {
+				var i = 0;
+				while (i < data.length) {
+					addresstolatlng(data[i]);
+					i++;
 
+				}
+				
+			}
+		});
+	}
 	$(function() {
 		$("#divid").hide();
-// 		setInterval(function(){
-		
-// 		},10000)
+
 		
 		if (GBrowserIsCompatible()) {
 			myMap = new GMap2(document.getElementById("my_map"));
@@ -121,22 +137,12 @@ a, a:focus {
 			myMap.addControl(new GLargeMapControl());
 			myMap.addControl(new GMapTypeControl());
 		}
-		// 		setInterval( function () {
-		$.ajax({
-			url : "casesearch.controller",
-			dataType : 'json',
-			async : false,
-			success : function(data) {
-				var i = 0;
-				while (i < data.length) {
-					addresstolatlng(data[i]);
-					i++;
 
-				}
+		test();
+// 		setInterval(function(){
+			
+// 		},2000)
 
-			}
-		});
-		// 			}, 1000 );
 
 		// 		$.getJSON("casesearch.controller", function(data) {
 		// 			var i = 0;
@@ -153,7 +159,7 @@ a, a:focus {
 	function createNode(lat, lng, myMap, data) {
 		var point = new GPoint(lng, lat);
 		var marker = new GMarker(point);
-		google.maps.event.trigger(myMap, 'resize');
+
 		GEvent
 				.addListener(
 						marker,
