@@ -75,7 +75,7 @@ function myFunction() {
 			<div class="navigation">
 				<div class="logo">
 					<h1>
-						<a class="navbar-brand link link--yaku" href="index.html"><span>S</span><span>H</span><span>S</span><span>M</span></a>
+						<a class="navbar-brand link link--yaku" href="index.jsp"><span>S</span><span>H</span><span>S</span><span>M</span></a>
 					</h1>
 				</div>
 				<div class="top-nav">
@@ -98,8 +98,7 @@ function myFunction() {
 			<div class="registration-grids">
 				<div class="reg-form">
 					<div class="reg">
-						<form role="form"
-							action="<c:url value='/controller/regisercustomerservlet'/>"
+						<form role="form" action="<c:url value='regisercustomerservlet'/>"
 							method="POST">
 							<div class="form-group">
 								<label>帳號</label> <input type="text" class="form-control" id=""

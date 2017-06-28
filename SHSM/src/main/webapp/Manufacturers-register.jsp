@@ -44,7 +44,7 @@
 </script>
 <script>
 function myFunction() {
-    document.location.href = "http://www.yahoo.com.tw";
+
     alert("註冊成功");
 }
 </script>
@@ -90,7 +90,7 @@ Timestamp ts = new Timestamp(System.currentTimeMillis());
 				<div class="registration-grids">
 					<div class="reg-form">
 						<div class="reg">
-							<form role="form" action="<c:url value='/controller/CompanyRegisteredServlet'/>" method="post" enctype="multipart/form-data">
+							<form id="formmm" role="form" action="<c:url value='CompanyRegisteredServlet'/>" method="post" enctype="multipart/form-data">
 								<div class="form-group">
 									<label>帳號</label> <input type="text" class="form-control" id=""
 										placeholder="輸入帳號" name="com_id">
@@ -135,16 +135,16 @@ Timestamp ts = new Timestamp(System.currentTimeMillis());
 										type="file" class="form-control" id=""
 										placeholder="照片上傳" name="com_img" multiple>
 								</div>
+							
 									<div class="form-group">
 									<label for="">公司介紹</label>
-									 <textarea placeholder="請輸入介紹" id="comment" name="com_intr"
+									 <textarea form="formmm" placeholder="請輸入介紹" id="comment" name="com_intr"
 										cols="45" rows="3" maxlength="65525" aria-required="true"
 										required="required" style="resize: none;"></textarea>
-
-								</div>
-								</div>
-								<input type="text" value="<%=ts%>" placeholder="" name="com_regist">
+									</div>
 								<div>
+								<input type="text" value="<%=ts%>" placeholder="" name="com_regist">
+								</div>
 					
 								<div>
 										<button onclick="myFunction()" type="submit" class="btn btn-info">註冊</button>

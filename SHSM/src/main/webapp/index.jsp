@@ -55,7 +55,6 @@
 							<li><a href="Manufacturers-logning.jsp">廠商專區</a></li>
 							<li><a href="Mall.jsp">購物商城</a></li>
 							<li><a href="contact.jsp">關於我們</a></li>
-							<li><a href="changlogin.jsp">註冊</a></li>
 						</ul>
 						<!-- script-for-menu -->
 						<script>
@@ -72,7 +71,7 @@
 					<div class="banner-info">
 						<h2>維修就找SHSM大平台</h2>
 						<a class="hvr-rectangle-out button"
-							href="member-login.jsp"
+							href="changlogin.jsp"
 							style="margin: 80px">開始使用SHSM</a>
 					</div>
 					<div class="arrow text-center">

@@ -160,22 +160,8 @@ a, a:focus {
 		var point = new GPoint(lng, lat);
 		var marker = new GMarker(point);
 
-		GEvent
-				.addListener(
-						marker,
-						'mouseover',
-						function() {
-							marker
-									.openInfoWindowHtml('<center>'
-
-											// 											+ '<h4 style='+'color:'+'black'+'>'
-											// 											+ '提案人'
-											// 											+ '</h4>'
-											// 											+ '<hr/>'
-											// 											+ '<h4 id='+'\"caseid\"'+' style='+'color:'+'black'+'>'
-											// 											+ data.repaircase_id
-											// 											+ '</h4>'
-											// 											+ '<hr/>'
+		google.maps.event.trigger(myMap, 'resize');
+		GEvent.addListener(marker,'mouseover',function() {marker.openInfoWindowHtml('<center>'
 											+ '<h4 style='+'color:'+'black'+'>'
 											+ '案件標題'
 											+ '</h4>'
@@ -186,8 +172,7 @@ a, a:focus {
 											+ '<hr/>'
 											+ '<a href='+'\"#myModal1\"'+' role='+'\"button\"'+' data-target='+'\"#myModal1\"'
 						                    +' class='+'\"btn btn-default\"'+' data-toggle='+'\"modal\"'+' id='+'\"divId\"'
-
-						                    +' scrolling='+'\"no\"'+'>'
+										    +' scrolling='+'\"no\"'+'>'
 											+ '詳細資訊' + '</a>' + '</center>');
 
 							console.log(data.repaircase_status);
@@ -197,21 +182,15 @@ a, a:focus {
 								$('#clickdata').show();
 							}
 
-							var url = "${pageContext.request.contextPath}/controller/GetCaseImageServlet?id="
-									+ data.repaircase_id;
+							var url = "${pageContext.request.contextPath}/controller/GetCaseImageServlet?id="+ data.repaircase_id;
 							$('#imgg').attr('src', url)
-							$("a")
-									.on(
-											"click",
-											function() {
-												$("#divid").show().css({
+							$("a").on("click",function() {$("#divid").show().css({
 													position : "absolute",
 													top : event.pageY,
 													left : event.pageX
 												});
 												abc = data;
-												console
-														.log(data.repaircase_title);
+												console.log(data.repaircase_title);
 												$('td[name="casetitle"]').text(
 														data.repaircase_title);
 												$('td[name="area"]').text(
@@ -220,58 +199,30 @@ a, a:focus {
 														data.repaircase_place);
 												$('td[name="budget"]').text(
 														data.repaircase_budget);
-												$('td[name="context"]')
-														.text(
-																data.repaircase_context);
-												$
-														.get(
-																'GetCaseImageServlet',
-																{
-																	'id' : data.repaircase_id
-																},
-																function(img) {
-																	$(
-																			'#tablestyle > tbody > tr:nth-child(11) > td > img')
-																			.val(
-																					img);
-																});
-												$
-														.ajax({
-															'url' : 'CreateBiddingServlet',
-															'data' : {
-																'id' : data.repaircase_id,
-																'select' : 'select'
+												$('td[name="context"]').text(data.repaircase_context);
+												$.get('GetCaseImageServlet',{'id' : data.repaircase_id},
+												function(img) {$('#tablestyle > tbody > tr:nth-child(11) > td > img').val(img);});
+												$.ajax({'url' : 'CreateBiddingServlet',
+														'data' : {
+														'id' : data.repaircase_id,
+														'select' : 'select'
 															},
-															'success' : function(
-																	obb) {
-
-																console
-																		.log(obb)
+														'success' : function(obb) {
+															console.log(obb)
 																if (obb == "已投標") {
-																	$('#hide')
-																			.hide();
+																	$('#hide').hide();
 																} else {
-																	$('#hide')
-																			.show();
+																	$('#hide').show();
 																}
-
 															}
 														})
-
 											});
-							$(
-									"#my_map > div:nth-child(1) > div > div:nth-child(1) > div:nth-child(4) > div:nth-child(4) > div:nth-child(2)")
-									.mouseleave(
-											function() {
-												$(
-														"#my_map > div:nth-child(1) > div > div:nth-child(1) > div:nth-child(4) > div:nth-child(4) > div:nth-child(2)")
-														.hide();
+							$("#my_map > div:nth-child(1) > div > div:nth-child(1) > div:nth-child(4) > div:nth-child(4) > div:nth-child(2)")
+							.mouseleave(function()
+									{$("#my_map > div:nth-child(1) > div > div:nth-child(1) > div:nth-child(4) > div:nth-child(4) > div:nth-child(2)").hide();
 											});
-
 						});
-
 		myMap.addOverlay(marker);
-
 	}
 
 	/*<!--地圖標點-->*/
@@ -409,7 +360,7 @@ a, a:focus {
 										<tr>
 											<td name="context" align="center" style="padding: 6px;"></td>
 										</tr>
-										<img id="imgg" width=100 height=100 />
+										<img id="imgg" width=200 height=200 />
 									</table>
 									<div id="hide">
 										<center>

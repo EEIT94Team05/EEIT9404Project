@@ -65,12 +65,11 @@
                     <ul class="nav1 nav nav-wil cl-effect-11" id="cl-effect-11">
                         <li><a class="active" data-hover="" href="index.html">首頁 <span class="sr-only">(current)</span></a></li>
 
-                        <li><a data-hover="" href="changlogin.jsp">會員專區</a></li>
-                        <li><a data-hover="" href="changlogin.jsp">廠商專區</a></li>
+                        <li><a data-hover="" href="member-login.jsp">會員專區</a></li>
+                        <li><a data-hover="" href="Manufacturers-logning.jsp">廠商專區</a></li>
                         <li><a data-hover="" href="
 Mall.html">購物商城</a></li>
                         <li><a data-hover="" href="About.jsp">關於我們</a></li>
-                        <li><a href="register.html">註冊</a></li>
                     </ul>
                     <!--轉跳頁面內容開始-->
                     
@@ -91,10 +90,9 @@ Mall.html">購物商城</a></li>
                                     <div class="row">
                                         <!-- Slide Text Layer -->
                                         <div class="slide-text slide_style_left">
-                                            <h1 data-animation="animated zoomInRight">WELCOME TO SHSM</h1>
-                                            <p data-animation="animated fadeInLeft">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</p>
-                                            <a href="member-login.html" target="_self" class="btn btn-default" data-animation="animated fadeInLeft">會員由此進入</a>
-                                            <a href="Manufacturers-register.html" target="_self" class="btn btn-primary" data-animation="animated fadeInRight">廠商由此進入</a>
+                                            <h1 data-animation="animated zoomInRight">WELCOME TO SHSM</h1><br>
+                                            <a href="member-login.jsp" target="_self" class="btn btn-default" data-animation="animated fadeInLeft">會員由此進入</a>
+                                            <a href="Manufacturers-logning.jsp" target="_self" class="btn btn-primary" data-animation="animated fadeInRight">廠商由此進入</a>
                                         </div>
                                     </div>
                                 </div>
