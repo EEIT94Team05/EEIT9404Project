@@ -22,12 +22,12 @@ import model.RepaircaseService;
 import model.dao.CustomerDAO;
 import model.dao.RepaircaseDAO;
 
-@WebServlet("/controller/regisercustomerservlet")
-public class regisercustomerservlet extends HttpServlet {
+@WebServlet("/regisercustomerservlet")
+public class RegiserCustomerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private SimpleDateFormat sdFormat;
 	
-	public regisercustomerservlet() {
+	public RegiserCustomerServlet() {
 	}
 
 	private CustomerService customerservice;
@@ -136,7 +136,7 @@ public class regisercustomerservlet extends HttpServlet {
 
 			String path = request.getContextPath();
 
-			response.sendRedirect(path+"/indexafterlogin.jsp");//重新導向回首頁
+			response.sendRedirect(path+"/member-login.jsp");//重新導向回首頁
 		}
 		
 	}

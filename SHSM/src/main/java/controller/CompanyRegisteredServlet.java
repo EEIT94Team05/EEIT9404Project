@@ -29,7 +29,7 @@ import model.dao.CompanyDAO;
 		maxFileSize=1024*1024*500,
 		maxRequestSize=1024*1024*500*5
 		)
-@WebServlet("/controller/CompanyRegisteredServlet")
+@WebServlet("/CompanyRegisteredServlet")
 public class CompanyRegisteredServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private SimpleDateFormat sdFormat;
@@ -159,7 +159,7 @@ public class CompanyRegisteredServlet extends HttpServlet {
 			session.setAttribute("compuser", result);
 			String path = request.getContextPath();
 
-			response.sendRedirect(path+"/indexaftercomlogin.jsp");//重新導向回首頁
+			response.sendRedirect(path+"/Manufacturers-logning.jsp");
 		}
 	}
 }

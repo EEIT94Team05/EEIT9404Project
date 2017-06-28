@@ -77,7 +77,7 @@ public class CompanyLoginServlet extends HttpServlet {
 
 			String path = request.getContextPath();
 
-			response.sendRedirect(path+"/indexaftercomlogin.jsp");//重新導向回首頁
+			response.sendRedirect(path+"/Manufacturers.jsp");//重新導向回首頁
 		}
 	}
 	@Override

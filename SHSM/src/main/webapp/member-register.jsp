@@ -98,8 +98,7 @@ function myFunction() {
 			<div class="registration-grids">
 				<div class="reg-form">
 					<div class="reg">
-						<form role="form"
-							action="<c:url value='/controller/regisercustomerservlet'/>"
+						<form role="form" action="<c:url value='regisercustomerservlet'/>"
 							method="POST">
 							<div class="form-group">
 								<label>帳號</label> <input type="text" class="form-control" id=""
