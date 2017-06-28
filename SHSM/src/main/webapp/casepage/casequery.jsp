@@ -26,9 +26,13 @@
     <script>
     $(document).ready(function() {
     	$("#divId").hide();
-
-    	var table =  $('#example').DataTable({"ajax":"CusCaseSearchServlet.controller","info":false,"columnDefs":[{"targets":-1,"data":null,"defaultContent":"<button class=\"btn btn-danger\" data-toggle=\"modal\" data-target=\"#look\" type=\"button\" name=\"casescore\">評價</button>"}]});
-
+    	
+    	var table =  $('#example').DataTable({destroy:true, "ajax":"CusCaseSearchServlet.controller","columnDefs":[{"targets":-1,"data":null,"defaultContent":"<button class=\"btn btn-danger\" data-toggle=\"modal\" data-target=\"#look\" type=\"button\" name=\"casescore\">評價</button>"}]});
+    	setInterval( function () {
+    	    table.ajax.reload();
+    	}, 500 );
+    		
+    	
     	var data;
         var id;
         var title;
@@ -107,7 +111,11 @@
        
         
         $('#bidbutton').on('click', function () {
-        	
+        	if(data[11]!=null){
+        		$('button[name="checkbid"]').parent().hide();
+        	}else{
+        		$('button[name="checkbid"]').parent().show();
+        	}
             $.ajax({
 				"url":"SearchBidding.controller",
 				"data":{"repaircase_Id":id},
@@ -153,7 +161,7 @@
 						j=0;
 					})
 					
-					$('button[name="checkbid"]').on('click',function(){
+					$('button[name="checkbid"]').one('click',function(){
 						console.log(comid);
 						if(comid!=null){
 							$.ajax({
@@ -162,7 +170,8 @@
 								"type":"get"
 							}).done(function(result){
 								alert(result);
-								$('#example').DataTable({"ajax":"CusCaseSearchServlet.controller","columnDefs":[{"targets":-1,"data":null,"defaultContent":"<button class=\"btn btn-danger\" data-toggle=\"modal\" data-target=\"#look\" type=\"button\" name=\"casescore\">評價</button>"}]});
+								table.ajax.reload();
+								$('button[name="checkbid"]').parent().hide();
 							})
 						}else{
 							alert('請選擇廠商')

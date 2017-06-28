@@ -182,10 +182,10 @@
 			</div>
 		</div>
 	</div>
-	<div>
+
 		<iframe src="bootstarptest2.jsp" frameborder="0" width="100%"
-			height="800" scrolling="yes"></iframe>
-	</div>
+			height="700" scrolling="no" style="align:center;"></iframe>
+
 	<div class="footer-bottom">
 		<div class="container">
 			<div class="row">

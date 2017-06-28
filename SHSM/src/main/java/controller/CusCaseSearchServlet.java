@@ -75,18 +75,22 @@ public class CusCaseSearchServlet extends HttpServlet {
 //			request.setAttribute("cuscasebean", result);
 			JSONArray array;
 			String createdate = null,repairdate = null, findate = null;
-			for(RepaircaseBean repaircase:result){
-				createdate = sdf.format(repaircase.getRepaircase_createdate());
-				repairdate = sdf.format(repaircase.getRepaircase_repairdate());
-				if(repaircase.getRepaircase_finday()!=null){
-					findate = sdf.format(repaircase.getRepaircase_finday());
-				}
-				
-			}
+			
 			JSONArray array1 = new JSONArray();
 			int i=0;
 			while(i<result.size()){
 				array = new JSONArray();
+				
+					createdate = new String();
+					repairdate = new String();
+					findate = new String();
+					createdate = sdf.format(result.get(i).getRepaircase_createdate());
+					repairdate = sdf.format(result.get(i).getRepaircase_repairdate());
+					if(result.get(i).getRepaircase_finday()!=null){
+						findate = sdf.format(result.get(i).getRepaircase_finday());
+					}
+					
+				
 				array.add(result.get(i).getRepaircase_title()); 
 				array.add(result.get(i).getRepaircase_type());
 				array.add(repairdate);
@@ -101,6 +105,7 @@ public class CusCaseSearchServlet extends HttpServlet {
 				array.add(findate); 
 				array.add(result.get(i).getRepaircase_score());
 				array.add(result.get(i).getRepaircase_id());
+				array.add(result.get(i).getCom_id());
 				array1.add(array);
 				i++;
 			}

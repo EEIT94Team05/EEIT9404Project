@@ -14,14 +14,14 @@
 
 <body>
     <div class="container">
-        <ul class="nav nav-tabs">
+        <ul class="nav nav-tabs" style="align:center;">
             <li><a href="bootstarptest.jsp">會員專區</a></li>
-            <li class="active"><a href="member-case.jsp">新增案件</a></li>
+            <li class="active"><a href="bootstarptest.jsp">新增案件</a></li>
             <li><a href="member-casequery.jsp">查詢案件</a></li>
         </ul>
     </div>
-    <div>
-        <iframe src="member-case.jsp" frameborder="0" width="100%" height="650" scrolling="no"></iframe>
+    <div style="align:center;">
+        <iframe src="member-case.jsp" frameborder="0" width="100%" height="700px" scrolling="no" ></iframe>
     </div>
 </body>
 

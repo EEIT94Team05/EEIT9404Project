@@ -22,17 +22,30 @@
     <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
     <script>
     $(document).ready(function() {
+    	$('#errormsg').hide();
+    	$('#myModalLabel').show();
        var table = $('#example').DataTable({destroy:true, "ajax":"ComCaseSearchServlet.controller","columnDefs":[{"targets":-1,"data":null,"defaultContent":"<button class=\"btn btn-danger\" data-toggle=\"modal\" data-target=\"#look\" type=\"button\" name=\"casechck\">確認</button>"}]});
+       setInterval( function () {
+   	    table.ajax.reload();
+   		}, 5000 );
        var data;
         $(document).on('click','button[name="casechck"]',function(){
         	console.log(data[7])
         	var id = data[9]
         	var status = data[7]
         	if(status!="處理中"){
-        		alert("客戶尚未選擇")
+        		if(status!="已完成"){
+        			$('#myModalLabel').hide();
+            		$('#errormsg').text('客戶尚未選擇').show();
+        		}else{
+        			$('#myModalLabel').hide();
+            		$('#errormsg').text('案件已完成').show();
+        		}
+        		
         	}else{
         		console.log(id)
-        		$('#checkyes').on('click',function(){
+        		$('#errormsg').text('確定案件已完成?');
+        		$('#checkyes').one('click',function(){
 		            	$.ajax({
 		        		'url':'ComFinCaseServlet.controller',
 		        		data : {'id':id},
@@ -40,6 +53,7 @@
 		        	}).done(function(data){
 		        		console.log(data)
 		        		alert(data)
+		        		table.ajax.reload();
 		        	})
         		})
 			}
@@ -97,6 +111,7 @@
                     <!--關閉按鈕-->
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
                     </button>
+                    <h4 class="modal-title" id="errormsg" style="text-align:center"></h4>
                     <h4 class="modal-title" id="myModalLabel" style="text-align:center">
                  確定案件已完成?
                 </h4>

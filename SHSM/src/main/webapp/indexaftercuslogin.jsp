@@ -41,7 +41,7 @@
 			<div class="container">
 				<div class="navigation">
 					<div class="logo">
-						<h1 class="navbar-brand link link--yaku" href="index.html">
+						<h1 class="navbar-brand link link--yaku" href="index.jsp">
 							<span>S</span><span>H</span><span>S</span><span>M</span></a>
 						</h1>
 					</div>
@@ -80,6 +80,7 @@
 							src="images/arrow.png" alt="" /></a>
 					</div>
 				</div>
+				
 			</div>
 		</div>
 	</div>

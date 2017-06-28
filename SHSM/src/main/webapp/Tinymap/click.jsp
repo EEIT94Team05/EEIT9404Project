@@ -123,13 +123,12 @@ a, a:focus {
 					if (point) {
 						//設定標註座標 把point 轉成 字串 存放到 id = inLatLng  的 input/text 內
 						myMarker.setLatLng(point);
-						document.getElementById('inLatLng','getpoint').value = point.toString();
+						
 						var myGeocoder = new GClientGeocoder();
 
 						myGeocoder.getLocations(point,function(addresses) {
 									if (addresses.Status.code != 200) {
-// 										alert("此處為機密地段"+ point.toUrlValue());
-								
+// 										alert("此處為機密地段"+ point.toUrlValue());								
 									} else {
 										var result = addresses.Placemark[0];
 	                                    var add = result.address;
@@ -138,8 +137,7 @@ a, a:focus {
 	                                    $('input[name="caseaddress"]').val(add);
 	                                    
 										myMarker.openInfoWindowHtml(result.address);
-										document.getElementById(
-											'inLatLng','getpoint').value = result.address;
+
 									}
 						})
 					}
@@ -147,18 +145,12 @@ a, a:focus {
 	           		 }
 				 }
 			 )
-		 }
-		 
-	
+		 }		 	
 </script>
 </head>
 
-<body>
-	<div id="my_map" style="width: 100%; height: 600px"></div>
-	<div style="margin: 6px 0 6px 50px">
-		<input id="inLatLng" name="inLatLng" type="text" size="40" value="" />
-		<span>點擊左鍵並選取新增案件</span>
-	</div>
+<body style="align:center;">
+	<div id="my_map" style="width: 100%; height: 700px"  ></div>
 	<!--顯示進階選項按鈕-->
 	<div class="container">
 		<!-- modal examples -->
@@ -173,14 +165,14 @@ a, a:focus {
 							<center>
 								<button type="button" class="close" data-dismiss="modal"
 									aria-hidden="true">×</button>
-								<h4 class="title" id="myModalLabel">新增案件</h4>
+								<h4 class="title" id="myModalLabel" style="color:black;">新增案件</h4>
 							</center>
 						</div>
 						<div class="modal-body">
 							<!--內文-->
 							<form class="form-horizontal" action='<c:url value="/Tinymap/createcase.controller" />' role="form" method="post" enctype="multipart/form-data">
 								<div class="form-group">
-									<label for="name" class="col-sm-4 control-label"> <font
+									<label for="name" class="col-sm-4 control-label" style="color:black;"> <font
 										color="#FF0000">*</font>案件種類
 									</label>
 									<div class="row">
@@ -196,7 +188,7 @@ a, a:focus {
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-4 control-label"> <font
+									<label class="col-sm-4 control-label" style="color:black;"> <font
 										color="#FF0000">*</font>案件標題
 									</label>
 									<div class="col-sm-6">
@@ -205,7 +197,7 @@ a, a:focus {
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-4 control-label" > <font
+									<label class="col-sm-4 control-label"  style="color:black;"> <font
 										color="#FF0000">*</font>金額
 									</label>
 									<div class="col-sm-6">
@@ -214,7 +206,7 @@ a, a:focus {
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-4 control-label"> <font
+									<label class="col-sm-4 control-label" style="color:black;"> <font
 										color="#FF0000">*</font>地址
 									</label>
 									<div class="col-sm-6">
@@ -223,7 +215,7 @@ a, a:focus {
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-4 control-label"> <font
+									<label class="col-sm-4 control-label" style="color:black;"> <font
 										color="#FF0000">*</font>維修日期
 									</label>
 									<div class="col-sm-6">
@@ -233,7 +225,7 @@ a, a:focus {
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-4 control-label"> <font
+									<label class="col-sm-4 control-label" style="color:black;"> <font
 										color="#FF0000">*</font>維修地點
 									</label>
 									<div class="col-sm-6">
@@ -242,7 +234,7 @@ a, a:focus {
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-4 control-label">照片上傳</label>
+									<label class="col-sm-4 control-label" style="color:black;">照片上傳</label>
 									<div class="col-sm-6">
 										<input type="file" class="form-control" name="img1" id="firstname"
 											placeholder="照片上傳" multiple>
@@ -255,14 +247,14 @@ a, a:focus {
 <!-- 											placeholder="影片上傳"> -->
 <!-- 									</div> -->
 <!-- 								</div> -->
-								<div class="input-group" style="margin: 0 0 0 30px">
+								<div class="input-group" style="margin: 0 0 0 50px">
 									<textarea placeholder="請輸入詳細說明" id="comment" name="context"
 										cols="45" rows="3" maxlength="65525" aria-required="true"
 										required="required" style="resize: none;"></textarea>
 								</div>
 								<div class="form-group">
 									<div class="col-sm-offset-8 col-sm-10">
-										<button type="submit" class="btn btn-default">送出新增</button>
+										<button type="submit" class="btn btn-default" style="margin:30px 0 0 0">送出新增</button>
 									</div>
 								</div>
 							</form>

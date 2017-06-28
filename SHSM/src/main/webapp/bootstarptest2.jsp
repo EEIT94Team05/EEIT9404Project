@@ -15,13 +15,11 @@
     <div class="container">
       <ul class="nav nav-tabs">
             <li><a href="bootstarptest2.jsp">廠商專區</a></li>
-            <li class="active"><a href="Manufacturers-case.jsp">查詢案件</a></li>
+            <li class="active"><a href="bootstarptest2.jsp">查詢案件</a></li>
             <li><a href="Manufacturers-casequery.jsp">追蹤案件</a></li>
         </ul>
     </div>
-    <div>
-        <iframe src="Manufacturers-case.jsp" frameborder="0" width="100%" height="500" scrolling="no"></iframe>
-    </div>
+        <iframe src="Manufacturers-case.jsp" frameborder="0" width="100%" height="600px" scrolling="no" style="align:center"></iframe>
 </body>
 
 </html>

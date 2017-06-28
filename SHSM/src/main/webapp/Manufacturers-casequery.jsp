@@ -47,25 +47,17 @@
 </head>
 
 <body>
-
-
 	<div class="container">
 		<ul class="nav nav-tabs">
 			<li><a href="bootstarptest2.jsp">廠商專區</a></li>
-			<li><a href="Manufacturers-case.jsp">查詢案件</a></li>
+			<li><a href="bootstarptest2.jsp">查詢案件</a></li>
 			<li class="active"><a href="Manufacturers-casequery.jsp">追蹤案件</a></li>
 		</ul>
 	</div>
-
-
-
-	<div>
-	
-	
+	<div>	
 	<iframe src="casepage/services-forManufacturerscahck.jsp"
-		frameborder="0" width="1400" height="600" scrolling="no"></iframe>
+		frameborder="0" width="1400" height="600" scrolling="no" style="align:center;"></iframe>
 	</div>
-
 
 	<script type="text/javascript"
 		src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>

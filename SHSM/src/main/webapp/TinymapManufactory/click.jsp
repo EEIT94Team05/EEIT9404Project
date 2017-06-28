@@ -7,7 +7,8 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>Google Maps JavaScript API Example</title>
-<script src="http://hayageek.github.io/jQuery-Upload-File/jquery.uploadfile.min.js"></script>
+<script
+	src="http://hayageek.github.io/jQuery-Upload-File/jquery.uploadfile.min.js"></script>
 <script
 	src="http://hayageek.github.io/jQuery-Upload-File/jquery.uploadfile.min.js"></script>
 <script
@@ -101,11 +102,14 @@ a, a:focus {
 <script src="../js/jquery-3.2.1.min.js"></script>
 <script src="../js/jquery.session.js"></script>
 <script type="text/javascript">
-      var abc;
-      
+	var abc;
+
 	$(function() {
 		$("#divid").hide();
-
+// 		setInterval(function(){
+		
+// 		},10000)
+		
 		if (GBrowserIsCompatible()) {
 			myMap = new GMap2(document.getElementById("my_map"));
 			//搭配下方setcenter使用
@@ -117,50 +121,55 @@ a, a:focus {
 			myMap.addControl(new GLargeMapControl());
 			myMap.addControl(new GMapTypeControl());
 		}
-// 		setInterval( function () {
-	    	  $.ajax({
-				  url: "casesearch.controller",
-				  dataType: 'json',
-				  async: false,
-				  success: function(data) {
-						var i = 0;
-						while (i < data.length) {
-							addresstolatlng(data[i]);
-							
-							i++;
-						}
+		// 		setInterval( function () {
+		$.ajax({
+			url : "casesearch.controller",
+			dataType : 'json',
+			async : false,
+			success : function(data) {
+				var i = 0;
+				while (i < data.length) {
+					addresstolatlng(data[i]);
+					i++;
 
-					}
-				});
-// 			}, 1000 );
-		
-// 		$.getJSON("casesearch.controller", function(data) {
-// 			var i = 0;
-// 			while (i < data.length) {
-// 				addresstolatlng(data[i]);
-				
-// 				i++;
-// 			}
+				}
 
-// 		})
+			}
+		});
+		// 			}, 1000 );
+
+		// 		$.getJSON("casesearch.controller", function(data) {
+		// 			var i = 0;
+		// 			while (i < data.length) {
+		// 				addresstolatlng(data[i]);
+
+		// 				i++;
+		// 			}
+
+		// 		})
 		//載入後動作
 
 	})
 	function createNode(lat, lng, myMap, data) {
 		var point = new GPoint(lng, lat);
 		var marker = new GMarker(point);
+		google.maps.event.trigger(myMap, 'resize');
+		GEvent
+				.addListener(
+						marker,
+						'mouseover',
+						function() {
+							marker
+									.openInfoWindowHtml('<center>'
 
-		
-		GEvent.addListener(marker,'mouseover',function() {marker.openInfoWindowHtml('<center>'
-
-// 											+ '<h4 style='+'color:'+'black'+'>'
-// 											+ '提案人'
-// 											+ '</h4>'
-// 											+ '<hr/>'
-// 											+ '<h4 id='+'\"caseid\"'+' style='+'color:'+'black'+'>'
-// 											+ data.repaircase_id
-// 											+ '</h4>'
-// 											+ '<hr/>'
+											// 											+ '<h4 style='+'color:'+'black'+'>'
+											// 											+ '提案人'
+											// 											+ '</h4>'
+											// 											+ '<hr/>'
+											// 											+ '<h4 id='+'\"caseid\"'+' style='+'color:'+'black'+'>'
+											// 											+ data.repaircase_id
+											// 											+ '</h4>'
+											// 											+ '<hr/>'
 											+ '<h4 style='+'color:'+'black'+'>'
 											+ '案件標題'
 											+ '</h4>'
@@ -172,43 +181,86 @@ a, a:focus {
 											+ '<a href='+'\"#myModal1\"'+' role='+'\"button\"'+' data-target='+'\"#myModal1\"'
 						                    +' class='+'\"btn btn-default\"'+' data-toggle='+'\"modal\"'+' id='+'\"divId\"'
 
-						                    +' scrolling='+'\"no\"'+'>'+ '詳細資訊' + '</a>' + '</center>');
+						                    +' scrolling='+'\"no\"'+'>'
+											+ '詳細資訊' + '</a>' + '</center>');
 
-		
-										var url="${pageContext.request.contextPath}/controller/GetCaseImageServlet?id="+data.repaircase_id;
-										$('#imgg').attr('src',url)
-										$("a").on("click",function() {
-											$("#divid").show().css({
-												position : "absolute",
-												top : event.pageY,
-												left : event.pageX
+							console.log(data.repaircase_status);
+							if (data.repaircase_status == "已完成") {
+								$("#clickdata").hide();
+							}else{
+								$('#clickdata').show();
+							}
+
+							var url = "${pageContext.request.contextPath}/controller/GetCaseImageServlet?id="
+									+ data.repaircase_id;
+							$('#imgg').attr('src', url)
+							$("a")
+									.on(
+											"click",
+											function() {
+												$("#divid").show().css({
+													position : "absolute",
+													top : event.pageY,
+													left : event.pageX
+												});
+												abc = data;
+												console
+														.log(data.repaircase_title);
+												$('td[name="casetitle"]').text(
+														data.repaircase_title);
+												$('td[name="area"]').text(
+														data.repaircase_area);
+												$('td[name="place"]').text(
+														data.repaircase_place);
+												$('td[name="budget"]').text(
+														data.repaircase_budget);
+												$('td[name="context"]')
+														.text(
+																data.repaircase_context);
+												$
+														.get(
+																'GetCaseImageServlet',
+																{
+																	'id' : data.repaircase_id
+																},
+																function(img) {
+																	$(
+																			'#tablestyle > tbody > tr:nth-child(11) > td > img')
+																			.val(
+																					img);
+																});
+												$
+														.ajax({
+															'url' : 'CreateBiddingServlet',
+															'data' : {
+																'id' : data.repaircase_id,
+																'select' : 'select'
+															},
+															'success' : function(
+																	obb) {
+
+																console
+																		.log(obb)
+																if (obb == "已投標") {
+																	$('#hide')
+																			.hide();
+																} else {
+																	$('#hide')
+																			.show();
+																}
+
+															}
+														})
+
 											});
-										abc = data;
-										console.log(data.repaircase_title);
-										$('td[name="casetitle"]').text(data.repaircase_title);
-										$('td[name="area"]').text(data.repaircase_area);
-										$('td[name="place"]').text(data.repaircase_place);
-										$('td[name="budget"]').text(data.repaircase_budget);
-										$('td[name="context"]').text(data.repaircase_context);
-										$.get('GetCaseImageServlet', {'id' : data.repaircase_id}, function(img) {
-										$('#tablestyle > tbody > tr:nth-child(11) > td > img').val(img);
-										});
-										$.ajax({'url':'CreateBiddingServlet',
-												'data':{'id':data.repaircase_id,'select':'select'},
-												'success':function(obb){
-											console.log(obb)
-											if(obb=="已投標"){
-												$('#hide').hide();
-											}else{
-												$('#hide').show();
-											}
-											
-										}})
-						 			
-										
-									});
-										$("#my_map > div:nth-child(1) > div > div:nth-child(1) > div:nth-child(4) > div:nth-child(4) > div:nth-child(2)").mouseleave(function() {
-											$("#my_map > div:nth-child(1) > div > div:nth-child(1) > div:nth-child(4) > div:nth-child(4) > div:nth-child(2)").hide();});
+							$(
+									"#my_map > div:nth-child(1) > div > div:nth-child(1) > div:nth-child(4) > div:nth-child(4) > div:nth-child(2)")
+									.mouseleave(
+											function() {
+												$(
+														"#my_map > div:nth-child(1) > div > div:nth-child(1) > div:nth-child(4) > div:nth-child(4) > div:nth-child(2)")
+														.hide();
+											});
 
 						});
 
@@ -243,62 +295,58 @@ a, a:focus {
 				//在地圖上放置標點 :myMap.addOverlay( 45 行 );
 				myMap.addOverlay(myMarker);
 				createNode(lat, lng, myMap, data);
-				
-			
 
 			}
-		})
+		});
 	}
 
 	$(function() {
 		$("#showdata").hide();
-		
+
 		$("#clickdata").click(function() {
 			$("#showdata").toggle();
 
-			
-			$('input[name="enter"]').click(function(){
-					var amount = $('input[name="amount"]').val();
-					var context = $('input[name="context"]').val();
-					var enter = $('input[name="enter"]').val();
-//					var img = $('input[name="img"]').val();
-				
-					console.log(amount);
-					console.log(context);
-//					console.log(img);
-					$.ajax({
-						"url":"CreateBiddingServlet",
-						"type":"post",
-						"cache":false,
-						"data":{
-							"id":abc.repaircase_id,
-							"amount":amount,
-							"context":context,
-							"enter":enter,
-//							"img":img
-							"select":"insert"
-								}
-					}).done(function(data){
-						console.log(data)
-						if(data=='欄位不可為空,請重新輸入'){
-							alert(data);
-						}
-						if(data=='投標完成'){
-							alert(data);
-							$('#hide').hide();
-						}
-				
-					});
-					
+			$('input[name="enter"]').click(function() {
+				var amount = $('input[name="amount"]').val();
+				var context = $('input[name="context"]').val();
+				var enter = $('input[name="enter"]').val();
+				//					var img = $('input[name="img"]').val();
+
+				console.log(amount);
+				console.log(context);
+				//					console.log(img);
+				$.ajax({
+					"url" : "CreateBiddingServlet",
+					"type" : "post",
+					"cache" : false,
+					"data" : {
+						"id" : abc.repaircase_id,
+						"amount" : amount,
+						"context" : context,
+						"enter" : enter,
+						//							"img":img
+						"select" : "insert"
+					}
+				}).done(function(data) {
+					console.log(data)
+					if (data == '欄位不可為空,請重新輸入') {
+						alert(data);
+					}
+					if (data == '投標完成') {
+						alert(data);
+						$('#hide').hide();
+					}
+
 				});
+
+			});
 		})
 	});
-	
 </script>
 </head>
 
 <body>
-	<div id="my_map" style="width: 100%; height: 600px"></div>
+	<div id="my_map" style="width: 100%; height: 700px; align: center;"></div>
 
 	<div class="container">
 		<!-- modal examples -->
@@ -317,8 +365,9 @@ a, a:focus {
 						</div>
 						<div class="modal-body">
 							<div class="container-fluid">
-								<div class="col-md-12" style="align:center;">
-									<table id="tablestyle" style="color: black; font-size: 12px; align:center;">
+								<div class="col-md-12" style="align: center;">
+									<table id="tablestyle"
+										style="color: black; font-size: 12px; align: center;">
 										<tr>
 											<td
 												style="text-align: center; padding: 4px; font-size: 14px; background-color: #FFEFD5;">案件標題</td>
@@ -351,60 +400,55 @@ a, a:focus {
 											<td
 												style="text-align: center; padding: 4px; font-size: 14px; background-color: #FFEFD5;">內容:</td>
 										</tr>
-
-
 										<tr>
 											<td name="context" align="center" style="padding: 6px;"></td>
 										</tr>
-										<img id="imgg" width=100 height=100  />
+										<img id="imgg" width=100 height=100 />
 									</table>
 									<div id="hide">
-									<div>
 										<center>
 											<div>
+
 												<button class="button" style="vertical-align: middle"
 													id="clickdata">
 													<span>我要投標</span>
 												</button>
+
 											</div>
 											<div id="showdata">
 												點擊顯示投標/隱藏
 
-																
-												<form class="form-horizontal" role="form" enctype="mutiple/form-data"  method="post">
-
+												<form class="form-horizontal" role="form"
+													enctype="mutiple/form-data" method="post">
 													<div class="form-group">
 														<label class="col-sm-2 control-label">金額:</label>
 														<div class="col-sm-10">
-
-															<input name="amount" class="form-control" id="focusedInput" type="text"
-																 placeholder="請輸入金額">
-
+															<input name="amount" class="form-control"
+																id="focusedInput" type="text" placeholder="請輸入金額">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-2 control-label">內文:</label>
 														<div class="col-sm-10">
 
-															<input name="context" class="form-control" id="focusedInput" type="text"
-																 placeholder="請輸入說明內容"><td><span>${error.column}</span></td>
+															<input name="context" class="form-control"
+																id="focusedInput" type="text" placeholder="請輸入說明內容">
+															<td><span>${error.column}</span></td>
 
 														</div>
 													</div>
+													<!-- 													<div class="form-group"> -->
+													<!-- 														<label class="col-sm-2 control-label">照片:</label> -->
+													<!-- 														<div class="col-sm-10"> -->
+													<!-- 															<input name="img" class="form-control" id="focusedInput" type="file" -->
+													<!-- 																placeholder="請上傳照片"> -->
+													<!-- 														</div> -->
+													<!-- 														<div> -->
+													<center>
+														<input type="button" class="button"
+															style="vertical-align: middle" value="確定投標" name="enter"></input>
 
-<!-- 													<div class="form-group"> -->
-<!-- 														<label class="col-sm-2 control-label">照片:</label> -->
-<!-- 														<div class="col-sm-10"> -->
-<!-- 															<input name="img" class="form-control" id="focusedInput" type="file" -->
-<!-- 																placeholder="請上傳照片"> -->
-<!-- 														</div> -->
-<!-- 														<div> -->
-															<center>
-																<input type="button" name="enter" value="確定投標" ></input>
-
-															</center>
-														</div>
-													</div>
+													</center>
 												</form>
 											</div>
 										</center>
@@ -417,6 +461,8 @@ a, a:focus {
 			</div>
 		</div>
 	</div>
+
+
 
 	<script src="http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"
 		type="text/javascript"></script>

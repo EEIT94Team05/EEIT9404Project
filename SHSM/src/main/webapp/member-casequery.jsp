@@ -60,14 +60,14 @@ function bid(com_id,repaircase_Id){
 	            	<a href="bootstarptest.jsp">會員專區</a>
 	            </li>
 	            <li>
-	            	<a href="member-case.jsp" >新增案件</a>
+	            	<a href="bootstarptest.jsp" >新增案件</a>
 	            </li>
 	            <li class="active">
 	            	<a href="member-casequery.jsp">查詢案件</a>
 	            </li>
 	        </ul>
 	    </div>
-                <iframe src="casepage/casequery.jsp" frameborder="0" width="1700" height="600"></iframe>
+                <iframe src="casepage/casequery.jsp" frameborder="0" width="1400" height="600"></iframe>
 
 		<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 

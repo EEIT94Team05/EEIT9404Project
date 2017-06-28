@@ -25,14 +25,9 @@
 </head>
 
 <body>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
 				<iframe src="TinymapManufactory/click.jsp" frameborder="0"
-					width="1200" height="600" scrolling="no"></iframe>
-			</div>
-		</div>
-	</div>
+					width="100%" height="700px" scrolling="no" style="align:center;"></iframe>
+
 	<script src="js/bootstrap.js"></script>
 </body>
 
