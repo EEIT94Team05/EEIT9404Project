@@ -159,10 +159,11 @@ a, a:focus {
 	function createNode(lat, lng, myMap, data) {
 		var point = new GPoint(lng, lat);
 		var marker = new GMarker(point);
-
+		
+		
 		google.maps.event.trigger(myMap, 'resize');
 		GEvent.addListener(marker,'mouseover',function() {marker.openInfoWindowHtml('<center>'
-											+ '<h4 style='+'color:'+'black'+'>'
+											+ '<h4 id="titleca" style='+'color:'+'black'+'>'
 											+ '案件標題'
 											+ '</h4>'
 											+ '<hr/>'
@@ -251,8 +252,11 @@ a, a:focus {
 				var myMarker = new GMarker(myLatLng);
 				//在地圖上放置標點 :myMap.addOverlay( 45 行 );
 				myMap.addOverlay(myMarker);
+				if(data.repaircase_status!="已完成"){
+					
+				
 				createNode(lat, lng, myMap, data);
-
+				}
 			}
 		});
 	}
