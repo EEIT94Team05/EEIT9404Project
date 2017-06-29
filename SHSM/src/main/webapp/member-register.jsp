@@ -134,9 +134,9 @@ function myFunction() {
 									id="" value="女性" name="member_chackbox">女
 								</label>
 							</div>
-							<div>
-								註冊時間:<%=ts%>
-							</div>
+<!-- 							<div> -->
+<%-- 								註冊時間:<%=ts%> --%>
+<!-- 							</div> -->
 							<input type="hidden" value="<%=ts%>" readonly="readonly"
 								style="border: 0" name="member_regist">
 							<div>

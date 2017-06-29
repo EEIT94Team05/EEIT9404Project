@@ -68,7 +68,7 @@ function bid(com_id,repaircase_Id){
 	        </ul>
 	    </div>
 	    <div style="margin:0 0 0 250px;">
-                <iframe src="casepage/casequery.jsp" frameborder="0" width=1100px height="600"></iframe>
+                <iframe src="casepage/casequery.jsp" frameborder="0" width="1400" height="600"></iframe>
 		</div>
 		<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 

@@ -7,36 +7,6 @@
 <title>會員登入與註冊</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<style type="text/css">
-            .code {
-                background: url(code_bg.jpg);
-                font-family: Arial;
-                font-style: italic;
-                color: blue;
-                font-size: 30px;
-                border: 0;
-                padding: 2px 3px;
-                letter-spacing: 3px;
-                font-weight: bolder;
-                float: left;
-                cursor: pointer;
-                width: 150px;
-                height: 60px;
-                line-height: 60px;
-                text-align: center;
-                vertical-align: middle;
-            }
-            
-            a {
-                text-decoration: none;
-                font-size: 12px;
-                color: #288bc4;
-            }
-            
-            a:hover {
-                text-decoration: underline;
-            }
-            </style>
 <script type="application/x-javascript">
 	
     addEventListener("load", function() {
@@ -53,39 +23,7 @@
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script language="javascript" type="text/javascript">
-            var code;
-            function createCode() {
-                code = "";
-                var codeLength = 4; //验证码的长度
-                var checkCode = document.getElementById("checkCode");
-                var codeChars = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
-                    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
-                    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'); //所有候选组成验证码的字符，当然也可以用中文的
-                for (var i = 0; i < codeLength; i++) {
-                    var charNum = Math.floor(Math.random() * 52);
-                    code += codeChars[charNum];
-                }
-                if (checkCode) {
-                    checkCode.className = "code";
-                    checkCode.innerHTML = code;
-                }
-            }
-			
-            function validateCode() {
-                var inputCode = document.getElementById("inputCode").value;
-                if (inputCode.length <= 0) {
-                    alert("请輸入驗證碼！");
-                } else if (inputCode.toUpperCase() != code.toUpperCase()) {
-                    alert("驗證碼錯誤！");
-                    createCode();
-                    
-                } else {
-                    alert("驗證碼正確！");
-                    str="驗證碼正確！";
-                }
-            }
-            </script>
+
 </head>
 
 <body onload="createCode()">
@@ -125,13 +63,11 @@
 
 								<ul>
 									<li class="text-info">帳號:</li>
-
-									<li><input type="text" name="username" value="eeit9410" style="margin: 0 -150px"></li>
+									<li><input type="text" name="username" value="" style="margin: 0 -150px"></li>
 								</ul>
 								<ul>
 									<li class="text-info">密碼:</li>
-
-									<li><input type="password" name="password" value="a87654321" style="margin: 0 -150px"></li>
+									<li><input type="password" name="password" value="" style="margin: 0 -150px"></li>
 								</ul>
 								
 			<table border="0" cellspacing="2" cellpadding="2" style="margin: 0 100px 0 0 ;">

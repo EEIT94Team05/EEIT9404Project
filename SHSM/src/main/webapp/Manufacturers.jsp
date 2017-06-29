@@ -184,7 +184,7 @@
 	</div>
 
 		<iframe src="bootstarptest2.jsp" frameborder="0" width="100%"
-			height="700" scrolling="no" style="align:center;"></iframe>
+			height="800" scrolling="no" style="align:center;"></iframe>
 
 	<div class="footer-bottom">
 		<div class="container">

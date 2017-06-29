@@ -28,11 +28,13 @@
     $(document).ready(function() {
     	$("#divId").hide();
     	
-    	var table =  $('#example').DataTable({destroy:true, "ajax":"CusCaseSearchServlet.controller","columnDefs":[{"targets":-1,"data":null,"defaultContent":"<button class=\"btn btn-danger\" data-toggle=\"modal\" data-target=\"#look\" type=\"button\" name=\"casescore\">評價</button>"}]});
+    	var table =  $('#example').DataTable({destroy:true, "ajax":"CusCaseSearchServlet.controller","columnDefs":[{"targets":-2,"data":null,"defaultContent":"<button class=\"btn btn-info\" data-toggle=\"modal\" data-target=\"#look\" type=\"button\" name=\"casescore\">評價</button>"},
+																												   {"targets" : -1,"data" : null,"defaultContent" : "<button class=\"btn btn-info\" data-toggle=\"modal\" data-target=\"#myModal5\" type=\"button\" name=\"compdetail\">確認</button>"} 
+    																											]});
+    	
     	setInterval( function () {
     	    table.ajax.reload();
-    	}, 1000 );
-    	
+    	}, 2000 );
     	var data;
         var id;
         var title;
@@ -147,7 +149,34 @@
 			})
 		 });
 			
-        
+        $(document).on('click','button[name="compdetail"]',function(){
+			console.log(data[11])
+			var comid = data[11]
+			if(data[11]!=null){
+				$('#comDN').hide()
+				$('#comD').show()
+				$.ajax({
+						url : 'ComDetailServlet.controller',
+						data : {
+						'id' : comid
+						}
+					}).done(function(data) {
+						console.log(data.com_name)
+						
+							
+							$('td[name="com_name"]').text(data.com_name);
+							$('td[name="com_contact"]').text(data.com_contact);
+							$('td[name="com_address"]').text(data.com_address);
+							$('td[name="com_email"]').text(data.com_email);
+							$('td[name="com_phone"]').text(data.com_phone);
+							$('td[name="Fax"]').text(data.Fax);
+						
+				})
+        	}else{	
+        		$('#comD').hide()
+        		$('#comDN').show()
+        	}
+		})
         $('#bidbutton').on('click', function () {
         	$('#err').hide();
         	if(data[11]!=null){
@@ -173,8 +202,8 @@
 					$('#bidcom').empty();
 					
 						while(i<data.length){
-								 img = '<div  id=\"'+data[i].com_id+'" style=\"float:left; padding:10px;\"><img width=50 height=50 src=\"${pageContext.request.contextPath}/controller/GetCompanyImageServlet?id='+data[i].com_id+'\" /><br>' +
-								'<input type=\"button\" name=\"'+data[i].com_id+'bidding\" id="'+data[i].com_id+'" value=\"'+data[i].com_name+'\" /></div>' ;
+								 img = '<div  id=\"'+data[i].com_id+'" style=\"float:left; padding:10px;\"><table align=\'center\'><tr><td width=\"100\" height=\"100\"><img  src=\"${pageContext.request.contextPath}/controller/GetCompanyImageServlet?id='+data[i].com_id+'\" /></td></tr></table><br>' +
+								'<tr><td><input type=\"button\" name=\"'+data[i].com_id+'bidding\" id="'+data[i].com_id+'" value=\"'+data[i].com_name+'\" /></td></tr></div>' ;
 								$('#bidcom').prepend(img)
 														
 							i++;
@@ -215,7 +244,13 @@
 								$('button[name="checkbid"]').parent().hide();
 							})
 						}else{
-							$('#err').show();
+							$('#qoo').on("click",function() {
+								  $('#qoo').popover('show');
+							    setTimeout(function() {
+							        $('#qoo').popover('hide');
+							    }, 1000);
+							    $('#qoo').popover('reset');
+							});
 							
 						}
 						
@@ -260,6 +295,7 @@
 								<th>建立日期</th>
 								<th>結束日期</th>
 								<th>評分</th>
+								<th>廠商資訊</th>
                                 </tr>
                             </thead>
                         </table>
@@ -284,7 +320,7 @@
 							<center>
 								<button id="closewindow" type="button" class="close" data-dismiss="modal"
 									aria-hidden="true">×</button>
-								<h4 class="title" id="myModalLabel">投標廠商</h4>
+								
 							</center>
 						<div class="modal-body">
 							<div align="center">
@@ -329,8 +365,13 @@
 										</table>
 								</form>
 								</tr>
-								<div id="err" align="center"><button type="button" name="checkbid" class="btn ntn-lg btn-danger" data-toggle="popover" title="popver title" data-content="And here some" style="margin:10px 0 0 0"  >選擇廠商</button></div>
-								<span id="err">請選擇廠商</span>
+
+								<div align="center">
+								<button type="button" name="checkbid" class="btn btn-lg btn-danger" data-placement="bottom" id="qoo"  data-content="請選擇廠商" style="margin:20px 0 0 0 "  >選擇廠商</button>
+								</div>
+
+<!-- 								<div id="err" align="center"><button type="button" name="checkbid" class="btn ntn-lg btn-danger" data-toggle="popover" title="popver title" data-content="And here some" style="margin:10px 0 0 0"  >選擇廠商</button></div> -->
+<!-- 								<span id="err">請選擇廠商</span> -->
 
 								</table>
 								</div>
@@ -419,7 +460,78 @@
 						</div>
 </div></div></div></div>
 
+<div id="myModal5" class="modal" data-easein="fadeIn" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-body">
+					<h4 id="comDN" align="center">尚未選擇廠商</h4>
+					<div id="comD" align="center">
+						<div>
+							<h4>
+								<strong><p class="bg-info">廠商資訊 :</p></strong>
+							</h4>
+<!-- 							<h4 name="casetitle"> -->
+<!-- 								<font size="4"></font> -->
+<!-- 							</h4> -->
+						</div>
+						<form method="post">
+							<div>
+								<table>
+									<tr>
+										<form>
+											<table  border="1">
+												<tr>
+													<td>廠商名稱:</td>
+												</tr>
+												<tr>
+													<td name="com_name"></td>
+												</tr>
+												<tr>
+													<td>性別:</td>
+												</tr>
+												<tr>
+													<td name="com_contact"></td>
+												</tr>
+												<tr>
+													<td>E-mail:</td>
+												</tr>
+												<tr>
+													<td name="com_email"></td>
+												</tr>
+												<tr>
+													<td>地址:</td>
+												</tr>
+												<tr>
+													<td name="com_address"></td>
+												</tr>
+												<tr>
+													<td>聯絡電話:</td>
+												</tr>
+												<tr>
+													<td name="com_phone"></td>
+												</tr>
+												<tr>
+													<td>FAX:</td>
+												</tr>
+												<tr>
+													<td name="Fax"></td>
+												</tr>
+											</table>
+										</form>
+									</tr>
 
+
+								</table>
+							</div>
+						</form>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
 
 
 
@@ -444,7 +556,9 @@
 			</div>
 		</div>
 	</div>
+	<script>
 	
+	</script>
 
 </body>
 
