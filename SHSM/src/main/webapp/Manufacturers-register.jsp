@@ -34,6 +34,7 @@
 </style>
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
+		$('#gas').hide()
 		$(".scroll").click(function(event) {
 			event.preventDefault();
 			$('html,body').animate({
@@ -143,7 +144,7 @@ Timestamp ts = new Timestamp(System.currentTimeMillis());
 										required="required" style="resize: none;"></textarea>
 									</div>
 								<div>
-								<input type="text" value="<%=ts%>" placeholder="" name="com_regist">
+								<input id="gas" type="text" value="<%=ts%>" placeholder="" name="com_regist">
 								</div>
 					
 								<div>

@@ -202,8 +202,8 @@
 					$('#bidcom').empty();
 					
 						while(i<data.length){
-								 img = '<div  id=\"'+data[i].com_id+'" style=\"float:left; padding:10px;\"><img width=50 height=50 src=\"${pageContext.request.contextPath}/controller/GetCompanyImageServlet?id='+data[i].com_id+'\" /><br>' +
-								'<input type=\"button\" name=\"'+data[i].com_id+'bidding\" id="'+data[i].com_id+'" value=\"'+data[i].com_name+'\" /></div>' ;
+								 img = '<div  id=\"'+data[i].com_id+'" style=\"float:left; padding:10px;\"><table align=\'center\'><tr><td width=\"100\" height=\"100\"><img  src=\"${pageContext.request.contextPath}/controller/GetCompanyImageServlet?id='+data[i].com_id+'\" /></td></tr></table><br>' +
+								'<tr><td><input type=\"button\" name=\"'+data[i].com_id+'bidding\" id="'+data[i].com_id+'" value=\"'+data[i].com_name+'\" /></td></tr></div>' ;
 								$('#bidcom').prepend(img)
 														
 							i++;
@@ -320,7 +320,7 @@
 							<center>
 								<button id="closewindow" type="button" class="close" data-dismiss="modal"
 									aria-hidden="true">×</button>
-								<h4 class="title" id="myModalLabel">投標廠商</h4>
+								
 							</center>
 						<div class="modal-body">
 							<div align="center">
@@ -471,9 +471,9 @@
 							<h4>
 								<strong><p class="bg-info">廠商資訊 :</p></strong>
 							</h4>
-							<h4 name="casetitle">
-								<font size="4"></font>
-							</h4>
+<!-- 							<h4 name="casetitle"> -->
+<!-- 								<font size="4"></font> -->
+<!-- 							</h4> -->
 						</div>
 						<form method="post">
 							<div>
