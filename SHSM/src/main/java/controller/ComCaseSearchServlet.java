@@ -92,7 +92,7 @@ public class ComCaseSearchServlet extends HttpServlet {
 				array = new JSONArray();
 				array.add(result.get(i).getRepaircase_title()); 
 				array.add(result.get(i).getRepaircase_type());
-				array.add(result.get(i).getCustomerbean().getCus_id());
+				array.add(result.get(i).getCustomerbean().getCus_name());
 				array.add(result.get(i).getRepaircase_budget());
 				array.add(result.get(i).getRepaircase_place());
 				array.add(result.get(i).getRepaircase_address());
@@ -103,6 +103,7 @@ public class ComCaseSearchServlet extends HttpServlet {
 				array.add(result.get(i).getRepaircase_status());
 				array.add(result.get(i).getRepaircase_score());
 				array.add(result.get(i).getRepaircase_id());
+				array.add(result.get(i).getCustomerbean().getCus_id());
 				array1.add(array);
 				i++;
 			}

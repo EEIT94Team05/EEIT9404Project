@@ -17,9 +17,10 @@
             <li><a href="bootstarptest2.jsp">廠商專區</a></li>
             <li class="active"><a href="bootstarptest2.jsp">查詢案件</a></li>
             <li><a href="Manufacturers-casequery.jsp">追蹤案件</a></li>
+            
         </ul>
     </div>
-        <iframe src="Manufacturers-case.jsp" frameborder="0" width="100%" height="600px" scrolling="no" style="align:center"></iframe>
+        <iframe src="Manufacturers-case.jsp" frameborder="0" width="100%" height="700px" scrolling="no" style="align:center"></iframe>
 </body>
 
 </html>

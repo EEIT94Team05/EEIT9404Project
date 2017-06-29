@@ -43,8 +43,7 @@
 			<div class="navigation">
 				<div class="logo">
 					<h1>
-
-						<a class="navbar-brand link link--yaku" href="index.html"><span>S</span><span>H</span><span>S</span><span>M</span></a>
+						<a class="navbar-brand link link--yaku" href="index.jsp"><span>S</span><span>H</span><span>S</span><span>M</span></a>
 					</h1>
 				</div>
 				<div class="top-nav">
@@ -66,7 +65,7 @@
 		<div class="container">
 			<h2 class="tittle">
 				廠商登入
-				</h3>
+				</h2>
 				<div class="registration-grids">
 					<div class="reg-form">
 						<div class="reg">
@@ -80,8 +79,7 @@
 									<li><input type="password" value="a87654321" style="margin: 0 -150px" name="password" ></li>
 								</ul>
 								<div style="margin: -20px 0 0 30px">
-									<a href="Manufacturers-register.jsp" style="margin: 0 0 0 250px">尚未擁有帳號?</a>
-
+									<a href="Manufacturers-register.jsp" style="margin: 0 0 0 250px">尚未擁有帳號?</a>					
 									<input type="submit" value="登入" style="margin: 0 0 0 240px">
 								</div>
 
@@ -98,11 +96,8 @@
 							src="images/atama1.png" alt="">
 						<hr />
 						<h3 class="lorem">3天發包,7天維修完成</h3>
-						<p>Tincidunt metus, sed euismod elit enim ut mi. Nulla
-							porttitor et dolor sed condimentum. Praesent porttitor lorem dui,
-							in pulvinar enim rhoncus vitae. Curabitur tincidunt, turpis ac
-							lobortis hendrerit, ex elit vestibulum est, at faucibus erat
-							ligula non neque.</p>
+						<p>這次使用SHSM算是我的一次，坦白說之前的完全對於維修這件事情都以為是非常麻煩的，但是使用過SHSM維修平台後讓我對廠商的選擇更加多元化並且品質也有保證，
+						在朋友的推薦下就來使用了SHSM，品質非常好。</p>
 					</div>
 					<div class="clearfix"></div>
 

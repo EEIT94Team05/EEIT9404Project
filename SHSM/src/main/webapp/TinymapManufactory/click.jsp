@@ -303,7 +303,7 @@ a, a:focus {
 </head>
 
 <body>
-	<div id="my_map" style="width: 100%; height: 700px; align: center;"></div>
+	<div id="my_map" style="width: 100%; height: 900px; align: center;"></div>
 
 	<div class="container">
 		<!-- modal examples -->

@@ -27,10 +27,10 @@
     $(document).ready(function() {
     	$("#divId").hide();
     	
-    	var table =  $('#example').DataTable({destroy:true, "ajax":"CusCaseSearchServlet.controller","columnDefs":[{"targets":-1,"data":null,"defaultContent":"<button class=\"btn btn-danger\" data-toggle=\"modal\" data-target=\"#look\" type=\"button\" name=\"casescore\">評價</button>"}]});
+    	var table =  $('#example').DataTable({destroy:true, "ajax":"CusCaseSearchServlet.controller","columnDefs":[{"targets":-1,"data":null,"defaultContent":"<button class=\"btn btn-info\" data-toggle=\"modal\" data-target=\"#look\" type=\"button\" name=\"casescore\">評價</button>"}]});
     	setInterval( function () {
     	    table.ajax.reload();
-    	}, 500 );
+    	}, 1000 );
     		
     	
     	var data;
@@ -112,6 +112,7 @@
        
         
         $('#bidbutton').on('click', function () {
+        	$('#err').hide();
         	if(data[11]!=null){
         		$('button[name="checkbid"]').parent().hide();
         	}else{
@@ -149,6 +150,7 @@
 // 						});						 
 					$('input[name$="bidding"]').on('click',function(biddata){
 						console.log(biddata)
+						
 						 comid = biddata.currentTarget.id;
 						while(j<data.length){
 							if(comid==data[j].com_id){
@@ -162,9 +164,10 @@
 						j=0;
 					})
 					
-					$('button[name="checkbid"]').one('click',function(){
+					$('button[name="checkbid"]').on('click',function(){
 						console.log(comid);
 						if(comid!=null){
+							$('#err').hide();
 							$.ajax({
 								"url" : 'CheckBidding.controller',
 								"data":{"repaircase_Id":id, "com_id" : comid },
@@ -175,7 +178,14 @@
 								$('button[name="checkbid"]').parent().hide();
 							})
 						}else{
-							alert('請選擇廠商')
+							$('#qoo').on("click",function() {
+								  $('#qoo').popover('show');
+							    setTimeout(function() {
+							        $('#qoo').popover('hide');
+							    }, 1000);
+							    $('#qoo').popover('reset');
+							});
+							
 						}
 						
 					})
@@ -286,7 +296,9 @@
 								</form>
 								</tr>
 
-								<div align="center"><button type="button" name="checkbid" class="btn btn-danger" style="margin:10px 0 0 0"  >選擇廠商</button></div>
+								<div align="center">
+								<button type="button" name="checkbid" class="btn btn-lg btn-danger" data-placement="bottom" id="qoo"  data-content="請選擇廠商" style="margin:20px 0 0 0 "  >選擇廠商</button>
+								</div>
 
 								</table>
 								</div>
@@ -317,7 +329,9 @@
 			</div>
 		</div>
 	</div>
+	<script>
 	
+	</script>
 
 </body>
 

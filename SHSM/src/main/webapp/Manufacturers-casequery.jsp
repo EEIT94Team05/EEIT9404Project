@@ -54,11 +54,10 @@
 			<li class="active"><a href="Manufacturers-casequery.jsp">追蹤案件</a></li>
 		</ul>
 	</div>
-	<div>	
+	<div style="margin:0 0 0 200px;">
 	<iframe src="casepage/services-forManufacturerscahck.jsp"
-		frameborder="0" width="1400" height="600" scrolling="no" style="align:center;"></iframe>
-	</div>
-
+		frameborder="0" width="1400" height="800" scrolling="no" ></iframe>
+		</div>
 	<script type="text/javascript"
 		src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 	<script src="js/bootstrap.js"></script>
