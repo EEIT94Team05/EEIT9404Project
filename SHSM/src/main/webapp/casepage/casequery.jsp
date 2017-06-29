@@ -228,6 +228,13 @@
        
     })
     </script>
+    
+    <script>
+    function myFunction() {
+       
+        alert("修改成功");
+    }
+    </script>
 </head>
 <body>
     <!-- Container -->
@@ -338,14 +345,12 @@
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
-							<center>
 								<button id="closewindow" type="button" class="close" data-dismiss="modal"
 									aria-hidden="true">×</button>
 								<h4 class="title" id="myModalLabel">修改案件</h4>
-							</center>
 						<div class="modal-body">
 							<div align="center">
-								<form class="form-horizontal"  role="form" method="post" >
+								<form class="form-horizontal" role="form" method="post" >
 								<div class="form-group">
 									<label for="name" class="col-sm-4 control-label" style="color:black;">案件種類</label>
 									<div class="row">
@@ -405,7 +410,8 @@
 								</div>
 								<div class="form-group">
 									<div >
-										<button id="checkupdate" type="submit">確認修改</button>
+										<button id="checkupdate" type="submit" onclick="myFunction()">確認修改</button>
+									
 									</div>
 								</div>
 							</form>
