@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -30,15 +31,14 @@
     	var table =  $('#example').DataTable({destroy:true, "ajax":"CusCaseSearchServlet.controller","columnDefs":[{"targets":-1,"data":null,"defaultContent":"<button class=\"btn btn-danger\" data-toggle=\"modal\" data-target=\"#look\" type=\"button\" name=\"casescore\">評價</button>"}]});
     	setInterval( function () {
     	    table.ajax.reload();
-    	}, 500 );
-    		
+    	}, 1000 );
     	
     	var data;
         var id;
         var title;
         var casebid;
 		var a;
-       var star;
+        var star;
        $(document).on('click','button[name="casescore"]',function(){
 				console.log(data[6])
 				if(data[6]!="已完成"){
@@ -96,21 +96,60 @@
         } );
         
         $('#deletecase').on('click',function(){
-			 table.row('.selected').remove().draw( false );
+// 			 table.row('.selected').remove().draw( false );
 			 $.ajax({
 					"url":"RepaircaseDeleteServlet",
 					"data":{"repaircase_Id":id},
 					"type":"get"
                }).done(function(data){
-               	$('#example').DataTable({destroy:true,"ajax":"CusCaseSearchServlet.controller"});
+               
+               	table.ajax.reload();
                });
 			
 		})
 		
-        
-       
+		 $('#updatecase').on('click',function(){
+// 			 table.row('.selected').remove().draw( false );
+			$('#myModal3').show();
+			$.getJSON({
+				"url":"RepaircaseALLServlet",
+				"data":{
+					"repaircase_id":id
+					}
+				
+			}).done(function(data){
+				$('input[name="casebudget"]').val(data.repaircase_budget);
+				$('input[name="casetitle"]').val(data.repaircase_title);
+				$('input[name="caseaddress"]').val(data.repaircase_address);
+				$('input[name="caseplace"]').val(data.repaircase_place);
+				$('textarea[name="context"]').val(data.repaircase_context);
+				$('#checkupdate').on('click',function(){
+					
+					 $.ajax({
+							"url":"RepaircaseUpdateServlet",
+							"type":"get",
+		 					"data":{
+		 						"repaircase_Id":data.repaircase_id,
+		 						"repaircase_type":$('select[name="casetype"]').val(),
+		 						"repaircase_budget":$('input[name="casebudget"]').val(),
+		 						"repaircase_title":$('input[name="casetitle"]').val(),
+		 						"repaircase_address":$('input[name="caseaddress"]').val(),
+		 						"repaircase_place":$('input[name="caseplace"]').val(),
+		 						"repaircase_context":$('textarea[name="context"]').val(),
+		 						"repaircase_repairdate":$('input[name="repairdate"]').val()
+		 					}
+							})
+
+		               }).done(function(data){
+		               
+		               	table.ajax.reload();
+		               });
+			})
+		 });
+			
         
         $('#bidbutton').on('click', function () {
+        	$('#err').hide();
         	if(data[11]!=null){
         		$('button[name="checkbid"]').parent().hide();
         	}else{
@@ -148,6 +187,7 @@
 // 						});						 
 					$('input[name$="bidding"]').on('click',function(biddata){
 						console.log(biddata)
+						
 						 comid = biddata.currentTarget.id;
 						while(j<data.length){
 							if(comid==data[j].com_id){
@@ -161,9 +201,10 @@
 						j=0;
 					})
 					
-					$('button[name="checkbid"]').one('click',function(){
+					$('button[name="checkbid"]').on('click',function(){
 						console.log(comid);
 						if(comid!=null){
+							$('#err').hide();
 							$.ajax({
 								"url" : 'CheckBidding.controller',
 								"data":{"repaircase_Id":id, "com_id" : comid },
@@ -174,11 +215,11 @@
 								$('button[name="checkbid"]').parent().hide();
 							})
 						}else{
-							alert('請選擇廠商')
+							$('#err').show();
+							
 						}
 						
 					})
-					
 					
       		  } );
             
@@ -221,6 +262,8 @@
 
 		<div class="modExample"><a href="#myModal1" role="button"  data-target="#myModal1"
 		class="btn btn-default" data-toggle="modal" id="bidbutton">查詢投標廠商</a>
+		<a href="#myModal3" role="button"  data-target="#myModal3"
+		class="btn btn-default" data-toggle="modal" id="updatecase">修改案件</a>
 		<input id="deletecase" class="btn btn-default" type="button" value="刪除案件" />
 		</div>
 
@@ -236,19 +279,14 @@
 									aria-hidden="true">×</button>
 								<h4 class="title" id="myModalLabel">投標廠商</h4>
 							</center>
-
-							
-
 						<div class="modal-body">
 							<div align="center">
-								
 								<div>
 									<h4><font size="4">案件標題  :</font></h4>
 									<h4 name="casetitle"><font size="4"></font></h4>
 								</div>
 								<form method="post">
 								<div>
-
 									<h4><font size="4">投標廠商  :</font></h4>
 								<table>
 								<tr id="bidcom" >
@@ -284,16 +322,100 @@
 										</table>
 								</form>
 								</tr>
-
-								<div align="center"><button type="button" name="checkbid" class="btn btn-danger" style="margin:10px 0 0 0"  >選擇廠商</button></div>
+								<div id="err" align="center"><button type="button" name="checkbid" class="btn ntn-lg btn-danger" data-toggle="popover" title="popver title" data-content="And here some" style="margin:10px 0 0 0"  >選擇廠商</button></div>
+								<span id="err">請選擇廠商</span>
 
 								</table>
 								</div>
 								</form>
 							</div>
-							
 						</div>
 </div></div></div></div>
+
+<!-- 修改案件 -->
+<div id="myModal3" class="modal" data-easein="fadeIn" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<center>
+								<button id="closewindow" type="button" class="close" data-dismiss="modal"
+									aria-hidden="true">×</button>
+								<h4 class="title" id="myModalLabel">修改案件</h4>
+							</center>
+						<div class="modal-body">
+							<div align="center">
+								<form class="form-horizontal"  role="form" method="post" >
+								<div class="form-group">
+									<label for="name" class="col-sm-4 control-label" style="color:black;">案件種類</label>
+									<div class="row">
+										<div class="col-xs-6">
+											<select class="selectpicker" name="casetype" style="margin: 0 0 0 10px">
+												<option>水電類</option>
+												<option>電氣類</option>
+												<option>建築類</option>
+												<option>家用類</option>
+												<option>汽機車類</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-4 control-label" style="color:black;">案件標題</label>
+									<div class="col-sm-6">
+										<input type="text" class="form-control" name="casetitle" id="firstname"
+											placeholder="請輸入標題">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-4 control-label"  style="color:black;">金額</label>
+									<div class="col-sm-6">
+										<input type="text" class="form-control" id="firstname" name="casebudget"
+											placeholder="請輸入金額">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-4 control-label" style="color:black;">地址</label>
+									<div class="col-sm-6">
+										<input type="text" class="form-control" id="firstname" name="caseaddress"
+											placeholder="请輸入地址" id="getpoint">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-4 control-label" style="color:black;">維修日期</label>
+									<div class="col-sm-6">
+										<input type="date" class="form-control" name="repairdate" id="firstname"
+
+											placeholder="请輸入日期">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-4 control-label" style="color:black;">維修地點</label>
+									<div class="col-sm-6">
+										<input type="text" class="form-control" name="caseplace" id="firstname"
+											placeholder="请輸入地點">
+									</div>
+								</div>
+							
+								</div>
+								<div class="input-group" style="margin: 0 0 0 50px">
+									<textarea placeholder="請輸入詳細說明" id="comment" name="context"
+										cols="45" rows="3" maxlength="65525" aria-required="true"
+										required="required" style="resize: none;"></textarea>
+								</div>
+								<div class="form-group">
+									<div >
+										<button id="checkupdate" type="submit">確認修改</button>
+									</div>
+								</div>
+							</form>
+							</div>
+						</div>
+</div></div></div></div>
+
+
+
+
 
 
 <!-- 跳出廠商詳細訊息-->
