@@ -208,7 +208,7 @@ a, a:focus {
 														'select' : 'select'
 															},
 														'success' : function(obb) {
-															console.log(obb)
+															console.log(obb+'aaa')
 																if (obb == "已投標") {
 																	$('#hide').hide();
 																} else {
@@ -291,6 +291,8 @@ a, a:focus {
 					}
 					if (data == '投標完成') {
 						alert(data);
+						$('#focusedInput').val('')
+						$('#focusedInput1').val('')
 						$('#hide').hide();
 					}
 
@@ -389,7 +391,7 @@ a, a:focus {
 														<div class="col-sm-10">
 
 															<input name="context" class="form-control"
-																id="focusedInput" type="text" placeholder="請輸入說明內容">
+																id="focusedInput1" type="text" placeholder="請輸入說明內容">
 															<td><span>${error.column}</span></td>
 
 														</div>

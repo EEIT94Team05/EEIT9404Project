@@ -11,6 +11,8 @@
 		
 		<property name="hibernate.connection.datasource">java:comp/env/jdbc/SHSM</property>
 		
+		
+
 <!-- 		jdbc:sqlserver://starbooksdb15.database.windows.net:1433;database=SHSM; -->
 <!-- 		user=starbooksuser@starbooksdb15; -->
 <!-- 		password={Ak2061234}; -->

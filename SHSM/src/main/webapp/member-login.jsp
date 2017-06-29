@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
 <head>
 <title>會員登入與註冊</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,6 +17,8 @@
     function hideURLbar() {
         window.scrollTo(0, 1);
     }
+    
+
 </script>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <link href="css/style.css" rel='stylesheet' type='text/css' />
@@ -26,69 +29,57 @@
 
 </head>
 
-<body onload="createCode()">
-	  <div class="page-head">
-                <div class="container">
-                    <div class="navigation">
-                        <div class="logo">
-                            <h1>
+<body>
+	<div class="page-head">
+		<div class="container">
+			<div class="navigation">
+				<div class="logo">
+					<h1>
 						<a class="navbar-brand link link--yaku" href="index.jsp"><span>S</span><span>H</span><span>S</span><span>M</span></a>
 					</h1>
-                        </div>
-                        <div class="top-nav">
-                            <span class="menu"><img src="images/menu.png" alt=" " /></span>
-                            <ul class="nav1 nav nav-wil cl-effect-11" id="cl-effect-11">
-                                <li><a class="active"  href="index.jsp">首頁
+				</div>
+				<div class="top-nav">
+					<span class="menu"><img src="images/menu.png" alt=" " /></span>
+					<ul class="nav1 nav nav-wil cl-effect-11" id="cl-effect-11">
+						<li><a class="active" data-hover="" href="index.jsp">首頁
 								<span class="sr-only">(current)</span>
 						</a></li>
-                                <li><a  href="member-register.jsp">會員專區</a></li>
-                                <li><a  href="Manufacturers-register.jsp">廠商專區</a></li>
-                            </ul>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-            </div>
-            <!-- registration-form -->
-            <div class="registration-form">
-                <div class="container">
-                    <h2 class="tittle">
+						<li><a data-hover="" href="member-register.jsp">會員專區</a></li>
+						<li><a data-hover="" href="Manufacturers-register.jsp">廠商專區</a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!-- registration-form -->
+	<div class="registration-form">
+		<div class="container">
+			<h2 class="tittle">
 				會員登入
-				</h2>
+				</h3>
 				<div class="registration-grids">
 					<div class="reg-form">
 						<div class="reg">
 
-							<form  action="<c:url value="Customerlogin.controller" />" method="get">
+							<form action="<c:url value="/Customerlogin.controller" />" method="get">
 
 								<ul>
 									<li class="text-info">帳號:</li>
+
 									<li><input type="text" name="username" value="" style="margin: 0 -150px"></li>
 								</ul>
 								<ul>
 									<li class="text-info">密碼:</li>
+
 									<li><input type="password" name="password" value="" style="margin: 0 -150px"></li>
 								</ul>
-								
-			<table border="0" cellspacing="2" cellpadding="2" style="margin: 0 100px 0 0 ;">
-                <tr>
-                    <td>
-                        <div class="code" id="checkCode" onclick="createCode()"></div>
-                    </td>
-                    <td><a href="#" onclick="createCode()">換一張</a></td>
-                </tr>
-                <tr>
-                    <td width="100px"><input style="float:left;" type="text" id="inputCode" width="50px" /> </td>
-                  
-                    <td><a style="margin: 0 0 0 10px">輸入驗證碼</a></td>
-                </tr>
-            </table>
-                                    <div style="margin: -60px 0 0 30px">
+								<div style="margin: -20px 0 0 30px">
 									<a href="member-register.jsp" style="margin: 0 0 0 250px">尚未擁有帳號?</a>
-									
-									<input type="submit"  onclick="validateCode()" value="登入" style="margin: 0 0 0 240px">
-								
+									<input type="submit" value="登入" style="margin: 0 0 0 240px">
 								</div>
+
+
 							</form>
 						</div>
 					</div>
@@ -113,6 +104,7 @@
 				<!-- registration-form -->
 
 				<script src="js/bootstrap.js"></script>
+
 </body>
 
 </html>
