@@ -32,7 +32,7 @@ public class OpenSession implements Filter {
 		try {
 			Transaction transaction = HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
 			if(transaction==null||!transaction.isActive()){
-				transaction.begin();
+				HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
 			}
 			chain.doFilter(request, response);
 			HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();

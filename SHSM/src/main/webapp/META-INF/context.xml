@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
-<!-- 	<Resource name="jdbc/SHSM" auth="Container" type="javax.sql.DataSource" -->
-<!--                maxTotal="100" maxIdle="30" maxWaitMillis="10000" -->
-<!--                username="sa" password="sa123456" -->
-<!--                driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver" -->
-<!--                url="jdbc:sqlserver://localhost:1433;database=SHSM"/> -->
-
 	<Resource name="jdbc/SHSM" auth="Container" type="javax.sql.DataSource"
                maxTotal="100" maxIdle="30" maxWaitMillis="10000"
-               username="starbooksuser@starbooksdb15" password="Ak2061234"
+               username="sa" password="sa123456"
                driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
-               url="jdbc:sqlserver://starbooksdb15.database.windows.net:1433;database=SHSM"/>
+               url="jdbc:sqlserver://localhost:1433;database=SHSM"/>
+
+<!-- 	<Resource name="jdbc/SHSM" auth="Container" type="javax.sql.DataSource" -->
+<!--                maxTotal="100" maxIdle="30" maxWaitMillis="10000" -->
+<!--                username="starbooksuser@starbooksdb15" password="Ak2061234" -->
+<!--                driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver" -->
+<!--                url="jdbc:sqlserver://starbooksdb15.database.windows.net:1433;database=SHSM"/> -->
                
                
       
