@@ -64,7 +64,7 @@ public class ComDetailServlet extends HttpServlet {
 			
 			array = new JSONObject();
 			array.put("com_name",result.getCom_name());
-			array.put("com_email",result.getCom_contact());
+			array.put("com_contact",result.getCom_contact());
 			array.put("com_address",result.getCom_address());
 			array.put("com_email",result.getCom_email());
 			array.put("com_phone",result.getCom_phone());

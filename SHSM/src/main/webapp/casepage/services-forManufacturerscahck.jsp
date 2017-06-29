@@ -124,6 +124,10 @@
 										function() {
 											console.log(data[10]);
 											var cusid = data[10]
+											if(data[7]!="招標中"){
+												$('#cusDN').hide()
+												$('#cusD').show()
+												
 											$
 													.ajax(
 															{
@@ -157,6 +161,10 @@
 																		.text(
 																				data.sex);
 															})
+											}else{
+												$('#cusDN').show()
+												$('#cusD').hide()
+											}			
 										})
 
 					});
@@ -201,10 +209,11 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-body">
-					<div align="center">
+						<h4 id="cusDN" align="center">尚在招標中</h4>
+					<div id="cusD" align="center">
 						<div>
 							<h4>
-								<strong><p class="bg-info">案件標題 :</p></strong>
+								<strong><p class="bg-info">客戶資訊 :</p></strong>
 							</h4>
 							<h4 name="casetitle">
 								<font size="4"></font>
@@ -212,10 +221,6 @@
 						</div>
 						<form method="post">
 							<div>
-
-								<h4>
-									<p size="4" class="">投標廠商 :</p>
-								</h4>
 								<table>
 									<tr id="bidcom">
 
