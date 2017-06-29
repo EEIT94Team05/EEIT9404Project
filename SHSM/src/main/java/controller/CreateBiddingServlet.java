@@ -115,8 +115,12 @@ public class CreateBiddingServlet extends HttpServlet {
 		if(type.equals("select")){
 			BiddingBean result = biddingService.select(bpk);
 			System.out.println(result);
-			if(result!=null)
-			out.write("已投標");
+			if(result!=null){
+				out.write("已投標");
+			}else{
+				out.write("未投標");
+			}
+			
 		}else{
 			boolean strMsg = biddingService.returnInsertStatus(biddingBean);
 

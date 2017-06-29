@@ -35,11 +35,9 @@ public class OpenSession implements Filter {
 				transaction.begin();
 			}
 			chain.doFilter(request, response);
-			
 			HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
 		} catch (HibernateException e) {
 			e.printStackTrace();
-			
 			HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().rollback();
 			chain.doFilter(request, response);
 		}
