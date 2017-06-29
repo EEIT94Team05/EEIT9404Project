@@ -11,6 +11,12 @@
 		
 		<property name="hibernate.connection.datasource">java:comp/env/jdbc/SHSM</property>
 		
+<!-- 		jdbc:sqlserver://starbooksdb15.database.windows.net:1433;database=SHSM; -->
+<!-- 		user=starbooksuser@starbooksdb15; -->
+<!-- 		password={Ak2061234}; -->
+<!-- 		encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30; -->
+		
+		
 		<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
 		<property name="hibernate.current_session_context_class">thread</property>
 		<property name="hibernate.show_sql">true</property>
