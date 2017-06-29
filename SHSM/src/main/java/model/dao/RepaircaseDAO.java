@@ -146,6 +146,42 @@ public class RepaircaseDAO implements IRepaircaseDAO {
 		return bean;
 	}
 	
+	public RepaircaseBean updateagain(
+			Integer repaircase_id,
+			String repaircase_budget,
+			String repaircase_type,
+			String repaircase_title,
+			String repaircase_area,
+			String repaircase_address,
+			String repaircase_place,
+			java.util.Date repaircase_repairdate,
+			String repaircase_context,
+			Blob repaircase_img1,
+			byte[] repaircase_media,
+			String repaircase_status,
+			java.util.Date repaircase_finday,
+			Integer repaircase_score) {
+
+		RepaircaseBean bean = this.select(repaircase_id);
+		if(bean!=null) {
+			bean.setRepaircase_budget(repaircase_budget); 
+			bean.setRepaircase_type(repaircase_type);
+			bean.setRepaircase_title(repaircase_title); 
+			bean.setRepaircase_area(repaircase_area); 
+			bean.setRepaircase_address(repaircase_address); 
+			bean.setRepaircase_place(repaircase_place);
+			bean.setRepaircase_repairdate(repaircase_repairdate);
+			bean.setRepaircase_context(repaircase_context);
+			bean.setRepaircase_img1(bean.getRepaircase_img1()); 
+			bean.setRepaircase_media(repaircase_media);
+			
+			bean.setRepaircase_status(bean.getRepaircase_status()); 
+			bean.setRepaircase_finday(bean.getRepaircase_finday()); 
+			bean.setRepaircase_score(bean.getRepaircase_score());
+		}
+		return bean;
+	}
+	
 	
 	@Override
 	public boolean delete(Integer id) {

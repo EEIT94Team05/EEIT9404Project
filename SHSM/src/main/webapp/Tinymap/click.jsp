@@ -242,13 +242,6 @@ a, a:focus {
 											placeholder="照片上傳" multiple>
 									</div>
 								</div>
-<!-- 								<div class="form-group"> -->
-<!-- 									<label class="col-sm-4 control-label">影片上傳</label> -->
-<!-- 									<div class="col-sm-6"> -->
-<!-- 										<input type="file" class="form-control" name="media" id="firstname" -->
-<!-- 											placeholder="影片上傳"> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
 								<div class="input-group" style="margin: 0 0 0 50px">
 									<textarea placeholder="請輸入詳細說明" id="comment" name="context"
 										cols="45" rows="3" maxlength="65525" aria-required="true"

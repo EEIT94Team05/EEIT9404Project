@@ -30,9 +30,8 @@ public class OpenSession implements Filter {
 		HttpServletResponse response = (HttpServletResponse) resp;
 		
 		try {
-			
 			Transaction transaction = HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
-			if(transaction==null || !transaction.isActive()){
+			if(transaction==null||!transaction.isActive()){
 				transaction.begin();
 			}
 			chain.doFilter(request, response);
