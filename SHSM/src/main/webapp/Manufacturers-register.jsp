@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="java.sql.*" %>
+<%@ page import="java.sql.*"%>
 <%-- <jsp:include page=""></jsp:include> --%>
 <!DOCTYPE html>
 <html>
@@ -13,6 +13,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript">
 	
+	
     addEventListener("load", function() {
         setTimeout(hideURLbar, 0);
     }, false);
@@ -20,6 +21,7 @@
     function hideURLbar() {
         window.scrollTo(0, 1);
     }
+
 
 </script>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
@@ -44,10 +46,10 @@
 	});
 </script>
 <script>
-function myFunction() {
+	function myFunction() {
 
-    alert("註冊成功");
-}
+		alert("註冊成功");
+	}
 </script>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
@@ -58,7 +60,7 @@ function myFunction() {
 </head>
 
 <%
-Timestamp ts = new Timestamp(System.currentTimeMillis());
+	Timestamp ts = new Timestamp(System.currentTimeMillis());
 %>
 <body>
 	<div class="page-head">
@@ -91,7 +93,9 @@ Timestamp ts = new Timestamp(System.currentTimeMillis());
 				<div class="registration-grids">
 					<div class="reg-form">
 						<div class="reg">
-							<form id="formmm" role="form" action="<c:url value='CompanyRegisteredServlet'/>" method="post" enctype="multipart/form-data">
+							<form id="formmm" role="form"
+								action="<c:url value='CompanyRegisteredServlet'/>" method="post"
+								enctype="multipart/form-data">
 								<div class="form-group">
 									<label>帳號</label> <input type="text" class="form-control" id=""
 										placeholder="輸入帳號" name="com_id">
@@ -107,14 +111,12 @@ Timestamp ts = new Timestamp(System.currentTimeMillis());
 										id="" placeholder="輸入名稱" name="com_name">
 								</div>
 								<div class="form-group">
-									<label>地址</label> <input
-										type="text" class="form-control" id=""
+									<label>地址</label> <input type="text" class="form-control" id=""
 										placeholder="輸入地址" name="com_address">
 								</div>
 								<div class="form-group">
-									<label >電話</label> <input type="text"
-										class="form-control" id="" placeholder="輸入電話"
-										name="com_phone">
+									<label>電話</label> <input type="text" class="form-control"
+										id="" placeholder="輸入電話" name="com_phone">
 								</div>
 								<div class="form-group">
 									<label for="exampleInputEmail1">電子郵件</label> <input
@@ -122,33 +124,35 @@ Timestamp ts = new Timestamp(System.currentTimeMillis());
 										placeholder="輸入電子郵件" name="com_email">
 								</div>
 								<div class="form-group">
-									<label >負責人</label> <input
-										type="text" class="form-control" id=""
-										placeholder="請輸入負責人" name="com_confact">
+									<label>負責人</label> <input type="text" class="form-control"
+										id="" placeholder="請輸入負責人" name="com_confact">
 								</div>
 								<div class="form-group">
-									<label for="">傳真</label> <input
-										type=""text"" class="form-control" id=""
-										placeholder="請輸入傳真" name="com_fax">
+									<label for="">傳真</label> <input type=""
+										text"" class="form-control" id="" placeholder="請輸入傳真"
+										name="com_fax">
 								</div>
 								<div class="form-group">
-									<label for="">公司照片</label> <input
-										type="file" class="form-control" id=""
-										placeholder="照片上傳" name="com_img" multiple>
+									<label for="">公司照片</label> <input type="file"
+										class="form-control" id="" placeholder="照片上傳" name="com_img"
+										multiple>
 								</div>
-							
-									<div class="form-group">
-									<label for="">公司介紹</label>
-									 <textarea form="formmm" placeholder="請輸入介紹" id="comment" name="com_intr"
-										cols="45" rows="3" maxlength="65525" aria-required="true"
-										required="required" style="resize: none;"></textarea>
-									</div>
-								<div>
-								<input id="gas" type="text" value="<%=ts%>" placeholder="" name="com_regist">
+
+								<div class="form-group">
+									<label for="" style="margin: 0 10px 0 0">公司介紹</label>
 								</div>
-					
+								<textarea form="formmm" placeholder="請輸入介紹" id="comment"
+									name="com_intr" cols="45" rows="3" maxlength="65525"
+									aria-required="true" required="required" style="resize: none;"></textarea>
+
 								<div>
-										<button onclick="myFunction()" type="submit" class="btn btn-info">註冊</button>
+									<input id="gas" type="text" value="<%=ts%>" placeholder=""
+										name="com_regist">
+								</div>
+
+								<div>
+									<button onclick="myFunction()" type="submit"
+										class="btn btn-info">註冊</button>
 								</div>
 							</form>
 

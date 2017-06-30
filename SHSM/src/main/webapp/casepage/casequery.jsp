@@ -444,13 +444,13 @@
 								</div>
 							
 								</div>
-								<div class="input-group" style="margin: 0 0 0 50px">
+								<div class="input-group" style="margin: 0 0 0 180px">
 									<textarea placeholder="請輸入詳細說明" id="comment" name="context"
 										cols="45" rows="3" maxlength="65525" aria-required="true"
 										required="required" style="resize: none;"></textarea>
 								</div>
 								<div class="form-group">
-									<div >
+									<div style="margin: 0 0 0 180px" >
 										<button id="checkupdate" type="submit" onclick="myFunction()">確認修改</button>
 									
 									</div>
@@ -546,7 +546,7 @@
 					<button type="button" class="close" data-dismiss="modal"
 						aria-hidden="true">×</button>
 					<div>
-                    <iframe src="http://localhost:8080/SHSM/start/start.html" frameborder="0" width="100%" height="100" scrolling="no" style="margin: 0 0 0 0 "></iframe>
+                    <iframe src="../start/start.html" frameborder="0" width="100%" height="100" scrolling="no" style="margin: 0 0 0 0 "></iframe>
                 </div>
 				</div>
 				<div id="chckdiv" class="modal-footer">
